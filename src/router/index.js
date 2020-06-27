@@ -1,40 +1,34 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home/Home.vue'
-import Booking from '../views/Booking/Booking.vue'
-import Checkout from '../views/Checkout/Checkout.vue'
-import Sitemap from '../views/Information/Sitemap.vue'
+import home from './modules/home'
+import about from './modules/about'
+import dinning from './modules/dinning'
+import events from './modules/events'
+import information from './modules/information'
+import room from './modules/room'
+import specials from './modules/specials'
+import wellness from './modules/wellness'
 
 Vue.use(VueRouter)
 
 const routes = [
+  ...home,
+  ...about,
+  ...room,
+  ...dinning,
+  ...events,
+  ...wellness,
+  ...information,
+  ...specials,
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/jobs',
+    name: 'Jobs',
+    component: () => import('@/views/Information/section/Jobs.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About/About.vue')
-  },
-  {
-    path: '/booking',
-    name: 'Booking',
-    component: Booking
-  },
-  {
-    path: '/checkout',
-    name: 'Checkout',
-    component: Checkout
-  },
-  {
-    path: '/sitemap',
-    name: 'Sitemap',
-    component: Sitemap
+    path: '*',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound/NotFound.vue')
   }
 ]
 
@@ -43,5 +37,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+console.log(routes)
 
 export default router

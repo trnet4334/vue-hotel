@@ -1,49 +1,56 @@
 <template>
   <main id="app">
     <router-view/>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/booking">Booking</router-link> |
-      <router-link to="/checkout">Checkout</router-link> |
-      <router-link to="/sitemap">Sitemap</router-link>
-    </div>
   </main>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  #app {
+    /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
+    font-family: 'Crimson Text', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #3d405b;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  body {
+    background-color: #f4f1de;
+    /*background-color: #b8b08d;*/
+  }
+  .util {
+    /* General use for flexbox styling */
+    &__flex--row {
+      display: flex;
+      flex-direction: row;
+    }
+    &__flex--column {
+      display: flex;
+      flex-direction: column;
+    }
+    &__flex--center {
+      justify-content: center;
+      align-items: center;
+    }
+    /* General use for header styling */
+    &__header--title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      text-align: start;
+      font-weight: 600;
+    }
+    &__header--subtitle {
+      font-size: 3.2rem;
+      line-height: 3.6rem;
+      text-align: start;
+      font-weight: 700;
+    }
+    &__header--description {
+      font-size: 1.3rem;
+      text-align: start;
     }
   }
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-body {
-  background-color: #f3eee7;
-}
-.util__flex--row {
-  display: flex;
-  flex-direction: row;
-}
-.util__flex--column {
-  display: flex;
-  flex-direction: column;
-}
 </style>
