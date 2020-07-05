@@ -23,13 +23,8 @@
                 </ul>
               </li>
               <li><router-link to="/dinning">Dinning</router-link></li>
-              <li>
-                <router-link to="/events">Events</router-link>
-                <ul>
-                  <li><router-link to="/events/meeting">Meeting & Event inquiry</router-link></li>
-                  <li><router-link to="/events/wedding">Wedding inquiry</router-link></li>
-                </ul>
-              </li>
+              <li><router-link to="/meeting">Meeting & Event inquiry</router-link></li>
+              <li><router-link to="/wedding">Wedding inquiry</router-link></li>
               <li><router-link to="/wellness">Spa & Wellness</router-link></li>
               <li>
                 Information

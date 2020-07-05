@@ -1,0 +1,66 @@
+.wellness {
+  padding: 5vh 5vw;
+  .body {
+    padding: 15vh 0;
+    .image {
+      width: 450px;
+      height: 450px;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+    }
+    .content {
+      width: 30%;
+      margin: 0 80px;
+      & p {
+        line-height: 2rem;
+      }
+      & ul {
+        text-align: start;
+        font-size: 1.7rem;
+        line-height: 3rem;
+      }
+      & button {
+        margin: 40px auto;
+        padding: 20px 50px;
+        background-color: transparent;
+        border: 1px solid #3d405b;
+        border-radius: 5px;
+        & a {
+          font-family: inherit;
+          font-weight: 600;
+          font-size: 1rem;
+          color: #3d405b;
+          text-decoration: none;
+          letter-spacing: 1px;
+          &:visited {
+            color: #3d405b;
+          }
+        }
+        &:hover {
+          background-color: #3d405b;
+          cursor: pointer;
+          & a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  .notice {
+    & h1 {
+      text-align: center;
+    }
+    .content {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+  .body.util__flex--row {
+    justify-content: center;
+    align-items: center;
+  }
+}

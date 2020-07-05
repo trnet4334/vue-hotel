@@ -2,19 +2,17 @@ const events = [
   {
     path: '/events',
     name: 'Events',
-    component: () => import('@/views/Events/Events.vue'),
-    children: [
-      {
-        path: 'meeting',
-        name: 'Meeting inquiry',
-        component: () => import('@/views/Events/EventType/Meeting.vue')
-      },
-      {
-        path: 'wedding',
-        name: 'Wedding inquiry',
-        component: () => import('@/views/Events/EventType/Wedding.vue')
-      }
-    ]
+    component: () => import('@/views/Events/Events.vue')
+  },
+  {
+    path: '/wedding',
+    name: 'Wedding',
+    component: () => import('@/views/Events/Wedding.vue')
+  },
+  {
+    path: '/inquiry',
+    name: 'Events Inquiry',
+    component: () => import('@/views/Events/Inquiry/Inquiry.vue')
   }
 ]
 

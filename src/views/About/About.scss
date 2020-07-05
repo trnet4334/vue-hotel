@@ -1,0 +1,28 @@
+.about {
+  &__container {
+    padding: 15vh 5vw;
+  }
+  .body {
+    justify-content: space-evenly;
+    padding: 10vh 0;
+    .content {
+      width: 40%;
+      & ul {
+        & li {
+          text-align: start;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .image {
+      width: 475px;
+      height: 475px;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+    }
+  }
+}

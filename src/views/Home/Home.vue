@@ -42,11 +42,14 @@
       </div>
     </section>
     <section class="room util__flex--row">
-      <div class="room--images"></div>
+      <div class="room--images">
+        <img src="@/assets/images/homepage/room-img.jpg" alt="Room">
+      </div>
       <div>
         <div class="room--type util__flex--column">
-          <span>Stay with us</span>
-          <h4>Beautifully set amidst the wonderful nature around.</h4>
+          <h1 class="util__header--subtitle">Stay with us</h1>
+          <h4 class="util__header--title">Beautifully set amidst the wonderful nature around.</h4>
+          <br>
           <ul>
             <li><router-link to="/rooms/classic-guestroom">Classic Guestroom</router-link></li>
             <el-divider/>
@@ -61,68 +64,117 @@
       </div>
     </section>
     <section class="carousel">
-      <div class="carousel__container"></div>
-    </section>
-    <section class="dinning util__flex--row">
-      <div class="dinning__content">
-        <span>Dine with stunning view</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
+      <div class="carousel__container">
+        <vue-flux
+          :options="options"
+          :images="images"
+          :transitions="transitions"
+        >
+          <template v-slot:preloader>
+            <flux-preloader />
+          </template>
+
+          <template v-slot:controls>
+            <flux-controls />
+          </template>
+        </vue-flux>
       </div>
-      <div class="dinning__image"></div>
+    </section>
+    <section class="dinning util__flex--column util__flex--center">
+      <div class="util__flex--row">
+        <div class="dinning__content util__flex--column">
+          <div>
+            <h1 class="util__header--subtitle">Dine with stunning view</h1>
+            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
+          </div>
+          <button><router-link to="/dinning">DINE WITH US</router-link></button>
+        </div>
+        <div class="dinning__image">
+          <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dinning">
+        </div>
+      </div>
     </section>
     <section class="spa util__flex--column">
       <div class="spa__container util__flex--row">
         <div class="spa__container--slogan">
-          <span>Recover and relax with rejuvenating spa treatment</span>
+          <h1>Recover and relax with rejuvenating spa treatment</h1>
         </div>
         <div class="spa__container--content util__flex--column">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? Deleniti dolores eligendi, enim error est impedit in inventore ipsa iusto labore magnam minima officiis pariatur perferendis possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
-          <button>VIEW MORE</button>
+          <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
+          <button><router-link to="/wellness">VIEW MORE</router-link></button>
         </div>
       </div>
     </section>
     <section class="events">
       <div class="events__container util__flex--column">
-        <div class="events__container--header util__flex--column">
-          <span>Inspired Gatherings</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
-          <a href="javascript:;">MEETING & EVENTS</a>
+        <div class="events__header util__flex--column">
+          <h1 class="util__header--subtitle">Inspired Gatherings</h1>
+          <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
         </div>
-        <div class="events__container--images util__flex--row">
-          <div style="background-color: grey; width: 500px; height: 500px;margin: 0 auto;"/>
-          <div style="background-color: grey; width: 500px; height: 500px; margin: 0 auto;"/>
+        <div class="events__body util__flex--row">
+          <div class="util__flex--column">
+            <div class="image">
+              <img src="@/assets/images/homepage/events-img.jpg" alt="Events">
+            </div>
+            <div class="content">
+              <h4 class="util__header--title">Meeting & Events</h4>
+              <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eum explicabo quidem.</p>
+              <router-link to="/events">Learn more</router-link>
+            </div>
+          </div>
+          <div class="util__flex--column">
+            <div class="image">
+              <img src="@/assets/images/homepage/wedding-img.jpg" alt="Wedding">
+            </div>
+            <div class="content">
+              <h4 class="util__header--title">Wedding</h4>
+              <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at dolorum exercitationem!</p>
+              <router-link to="/wedding">Learn more</router-link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     <section class="offers">
       <div class="offers__container util__flex--column">
-        <div class="offers__container--header util__flex--column">
-          <span>Special Offers & Packages</span>
-          <a href="javascript:;">VIEW ALL OFFERS</a>
+        <div class="offers__header util__flex--column">
+          <h1 class="util__header--subtitle">Special Offers & Packages</h1>
+          <router-link to="/specials">VIEW ALL OFFERS</router-link>
         </div>
-        <div class="offers__container--images util__flex--row">
-          <div>
-<!--            <img src="" alt="">-->
-            <div style="width: 400px; height: 400px; background-color: grey;"/>
+        <div class="offers__body util__flex--row">
+          <div class="content util__flex--column">
+            <div class="image">
+              <img src="@/assets/images/homepage/specials-img-1.jpg" alt="Spa">
+            </div>
+            <br>
             <div>
-              <span>Title 1</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci, aut autem consectetur delectus earum facere, laboriosam molestias numquam quaerat totam voluptate! Ad atque consequuntur eaque earum error mollitia totam?10</p>
+              <h4 class="util__header--title">Spa & Breakfast Package</h4>
+              <p class="util__header--description">Refresh your mind and bodies with a couples
+              massage, our classic spa treatment, or private in-room treatment, including one continental
+              breakfast in offer.</p>
             </div>
           </div>
-          <div>
-            <!--            <img src="" alt="">-->
-            <div style="width: 400px; height: 400px; background-color: grey;"/>
+          <div class="content util__flex--column">
+            <div class="image">
+              <img src="@/assets/images/homepage/specials-img-2.jpg" alt="River">
+            </div>
+            <br>
             <div>
-              <span>Title 2</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci, aut autem consectetur delectus earum facere, laboriosam molestias numquam quaerat totam voluptate! Ad atque consequuntur eaque earum error mollitia totam?10</p>
+              <h4 class="util__header--title">Summertime Escape</h4>
+              <p class="util__header--description">It's easy to fall in love and free your soul through the stunning
+                nature from your private deck. There're only few spots available for Deluxe Guestrooms and Luxury Suite.
+                Contact us to get the early deal as soon as possible.</p>
             </div>
           </div>
-          <div>
-            <!--            <img src="" alt="">-->
-            <div style="width: 400px; height: 400px; background-color: grey;"/>
+          <div class="content util__flex--column">
+            <div class="image">
+              <img src="@/assets/images/homepage/specials-img-3.jpg" alt="Adventure">
+            </div>
+            <br>
             <div>
-              <span>Title 2</span>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci, aut autem consectetur delectus earum facere, laboriosam molestias numquam quaerat totam voluptate! Ad atque consequuntur eaque earum error mollitia totam?10</p>
+              <h4 class="util__header--title">Nature Adventure Package</h4>
+              <p class="util__header--description">Experience with one-day hike with our local hiking
+              guides to create the forgettable memories in this trip that best suits your desires.</p>
             </div>
           </div>
         </div>
@@ -137,206 +189,48 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import Header from '@/components/header/Header.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
+import {
+  VueFlux,
+  FluxControls,
+  FluxPreloader
+} from 'vue-flux'
 export default {
   components: {
+    VueFlux,
+    FluxControls,
+    FluxPreloader,
     Navbar,
     Header,
     SignupBanner,
     Footer
+  },
+  data () {
+    return {
+      options: {
+        allowFullscreen: false,
+        allowToSkipTransition: true,
+        autohideTime: 2500,
+        autoplay: false,
+        bindKeys: false,
+        delay: 5000,
+        enableGestures: false,
+        infinite: true,
+        lazyLoad: true,
+        lazyLoadAfter: 3
+      },
+      images: ['', '', ''],
+      transitions: [
+        'blinds3d',
+        'blocks2',
+        'book',
+        'cube',
+        'round2',
+        'swipe',
+        'warp',
+        'wave'
+      ]
+    }
   }
 }
 </script>
-<style lang="scss" scoped>
-  .home {
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    &__slogan {
-      width: 65vw;
-      height: 50vh;
-      align-items: center;
-      justify-content: center;
-      &--icon {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 50px;
-      }
-      &--title h1{
-        font-size: 2.3rem;
-        font-weight: bold;
-      }
-      &--subtitle p{
-        font-size: 1.3rem;
-        text-wrap: normal;
-      }
-    }
-  }
-  .room {
-    width: 100%;
-    height: 100vh;
-    margin-bottom: 15vh;
-    justify-content: center;
-    align-items: center;
-    &--images {
-      width: 400px;
-      height: 500px;
-      background-color: grey;
-    }
-    &--type {
-      width: 80%;
-      margin: 0 auto;
-      padding-left: 60px;
-      align-items: flex-start;
-      & span {
-        font-size: 3rem;
-        padding: 25px 0;
-      }
-      & h4 {
-        font-size: 1.4rem;
-        text-wrap: normal;
-        text-align: start;
-        margin-bottom: 30px;
-      }
-      & ul {
-        width: 100%;
-        text-align: start;
-        padding-left: 0;
-        margin-bottom: 50px;
-        & li {
-          list-style-type: none;
-          font-size: 1.6rem;
-          padding: 0;
-          & a {
-            text-decoration: none;
-            &:visited {
-              color: #3d405b;
-            }
-          }
-          &:hover {
-            border-left: 5px solid #e07a5f;
-            padding-left: 15px;
-            cursor: pointer;
-          }
-        }
-      }
-      .room--link {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-right: 20px;
-        text-decoration: none;
-        position: relative;
-        color: #e07a5f;
-        &:visited {
-          color: #e07a5f;
-        }
-        &:hover:after {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 3px;
-          position: absolute;
-          left: 0;
-          bottom: -1px;
-          background-color: #e07a5f;
-        }
-      }
-    }
-  }
-  .carousel {
-    width: 100%;
-    height: 100vh;
-    &__container {
-      width: 90%;
-      height: 90%;
-      margin: 0 auto;
-      background-color: grey;
-    }
-  }
-  .dinning {
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    &__content {
-      width: 35vw;
-      padding: 0 2.5vw;
-      & span {
-        font-size: 2.2rem;
-        padding: 25px 0;
-      }
-      & p {
-        text-wrap: normal;
-      }
-    }
-    &__image {
-      width: 400px;
-      height: 500px;
-      background-color: grey;
-    }
-  }
-  .spa {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    padding: 15vh 2vw 0 2vw;
-    &:before {
-      content: '';
-      width: 100%;
-      height: 100%;
-      background: url("../../assets/images/background/Home/background-1.jpg") no-repeat center center fixed;
-      background-size: cover;
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      filter: blur(1.5px) opacity(0.95);
-    }
-    &__container {
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-      &--slogan {
-        width: 35vw;
-        height: 70%;
-        padding: 0 1vw;
-        & span {
-          font-size: 3.3rem;
-          font-weight: bold;
-          color: #ffffff;
-          width: 35vw;
-          padding: 0 2.5vw;
-          text-wrap: normal;
-          text-align: start;
-        }
-      }
-      &--content {
-        width: 35vw;
-        height: 70%;
-        padding: 0 2.5vw;
-        & p {
-          font-size: 1.2rem;
-          line-height: 1.5rem;
-          color: #ffffff;
-          text-wrap: normal;
-          text-align: start;
-          margin-bottom: 40px;
-        }
-        & button {
-          color: #ffffff;
-          padding: 8px 10px;
-          background-color: transparent;
-          border-radius: 5px;
-        }
-      }
-    }
-  }
-  .events {
-    width: 100%;
-    height: 100vh;
-  }
-  .offers {
-    width: 100%;
-    height: 100vh;
-  }
-</style>
+<style src="./Home.scss" lang="scss" scoped/>

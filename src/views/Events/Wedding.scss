@@ -1,0 +1,130 @@
+.wedding {
+  width: 100%;
+  position: relative;
+  padding: 25vh 0 0 0;
+  &__body {
+    &--first, &--second, &--third, &--fourth, &--fifth, &--sixth {
+      padding: 0 5vw;
+      & button {
+        margin: 0 auto;
+        padding: 10px 30px;
+        background-color: transparent;
+        border: 2px solid #3d405b;
+        border-radius: 5px;
+        & a {
+          font-family: inherit;
+          font-weight: 400;
+          font-size: 1rem;
+          color: #3d405b;
+          text-decoration: none;
+          &:visited {
+            color: #3d405b;
+          }
+        }
+        &:hover {
+          background-color: #3d405b;
+          cursor: pointer;
+          & a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    &--first, &--second {
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      .content {
+        width: 40%;
+        height: 100%;
+        margin: 0 50px;
+      }
+    }
+    &--first {
+      padding: 0 5vw 15vh 5vw;
+    }
+    &--second {
+      padding: 5vh 5vw;
+    }
+    &--third {
+      padding: 0;
+      height: 100vh;
+    }
+    &--fourth {
+      height: 100vh;
+      .content {
+        width: 80%;
+        overflow: scroll;
+        border: 1px solid rgba(61, 64, 91, 0.3);
+        border-radius: 5px;
+        padding: 50px;
+        & ul {
+          columns: 3;
+          & li {
+            text-align: start;
+            font-size: 1.3rem;
+            line-height: 2rem;
+          }
+        }
+        & h2 {
+          font-size: 2.8rem;
+          padding: 40px;
+        }
+      }
+    }
+    &--fifth {
+      justify-content: space-evenly;
+      height: 100vh;
+      .content {
+        width: 40%;
+        & h4 {
+          font-size: 1.4rem;
+          padding: 10px;
+        }
+        & p {
+          width: 80%;
+          font-size: 1.2rem;
+          margin: 0 auto;
+        }
+      }
+    }
+    &--sixth {
+      padding: 10vh 5vw 20vh 5vw;
+      & p {
+        width: 80%;
+      }
+      & a {
+        font-size: 1.2rem;
+        margin: 10px 10px;
+        text-decoration: none;
+        color: #e07a5f;
+        font-weight: 600;
+        position: relative;
+        &:visited {
+          color: #e07a5f;
+        }
+        &:hover:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          background-color: #e07a5f;
+        }
+      }
+    }
+  }
+  &--image {
+    width: 550px;
+    height: 550px;
+    margin: 0 auto;
+    & img {
+      object-fit: cover;
+      object-position: 50% 50%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

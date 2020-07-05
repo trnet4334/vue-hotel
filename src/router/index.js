@@ -8,6 +8,8 @@ import information from './modules/information'
 import room from './modules/room'
 import specials from './modules/specials'
 import wellness from './modules/wellness'
+import checkout from './modules/checkout'
+import booking from './modules/booking'
 
 Vue.use(VueRouter)
 
@@ -20,6 +22,8 @@ const routes = [
   ...wellness,
   ...information,
   ...specials,
+  ...checkout,
+  ...booking,
   {
     path: '/jobs',
     name: 'Jobs',

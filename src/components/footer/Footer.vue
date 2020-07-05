@@ -39,7 +39,6 @@
           <li>F. 480.000.0002</li>
         </ul>
       </div>
-      <el-divider direction="vertical"/>
       <div class="footer__main--info util__flex--column">
         <ul class="util__flex--column">
           <li><router-link to="/information/contact">Contact us</router-link></li>
@@ -72,7 +71,7 @@
             </svg>
           </a>
         </div>
-        <span>© Hotel All right reserved</span>
+        <span>© A Hotel All right reserved</span>
       </div>
     </div>
   </footer>

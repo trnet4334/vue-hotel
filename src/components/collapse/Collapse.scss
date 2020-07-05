@@ -1,0 +1,37 @@
+.collapse {
+  width: 90%;
+  text-align: start;
+  text-wrap: normal;
+  &__header {
+    cursor: pointer;
+    padding: 2px 0 4px 0;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    & span {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
+  &__body {
+    transition: 0.3s ease all;
+    max-height: 20rem;
+    overflow: hidden;
+  }
+  &__content {
+    & p {
+      font-size: 1.3rem;
+    }
+  }
+}
+.is-closed .collapse__body {
+  height: 0;
+}
+.is-rotated {
+  transform: rotate(45deg);
+  transition: 0.4s ease all;
+}
+.is-shown {
+  border-left: 3px solid #2c3e50;
+  padding-left: 15px;
+}
