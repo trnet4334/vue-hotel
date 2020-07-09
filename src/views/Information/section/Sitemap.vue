@@ -22,9 +22,9 @@
                   <li><router-link to="/pet-friendly">Pet Friendly</router-link></li>
                 </ul>
               </li>
-              <li><router-link to="/dinning">Dinning</router-link></li>
-              <li><router-link to="/meeting">Meeting & Event inquiry</router-link></li>
-              <li><router-link to="/wedding">Wedding inquiry</router-link></li>
+              <li><router-link to="/dining">Dining</router-link></li>
+              <li><router-link to="/events">Meeting & Event</router-link></li>
+              <li><router-link to="/wedding">Wedding</router-link></li>
               <li><router-link to="/wellness">Spa & Wellness</router-link></li>
               <li>
                 Information
@@ -36,7 +36,7 @@
                   <li><router-link to="/information/faq">FAQ</router-link></li>
                 </ul>
               </li>
-              <li>Manage my Booking</li>
+              <li><router-link to="/manage-booking">Manage my Booking</router-link></li>
               <li>Activities</li>
               <li><router-link to="/specials">Special Offers & Packages</router-link></li>
             </ul>

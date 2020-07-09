@@ -1,8 +1,12 @@
-.menu {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  &__container {
+.overlay {
+  width: 0;
+  height: 0;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  overflow-x: hidden;
+  transition: 0.5s ease-in-out;
+  &__background {
     width: 100%;
     height: 100%;
     position: relative;
@@ -10,21 +14,23 @@
       content: '';
       width: 100%;
       height: 100%;
+      background-color: #202c39;
       background: no-repeat center center fixed url("../../../assets/images/background/menu-img.jpg");
       background-size: cover;
       position: absolute;
-      z-index: 4;
+      z-index: 11;
       top: 0;
       left: 0;
-      filter: opacity(0.8);
-      //filter: contrast(350%);
+      //filter: opacity(0.8);
+      //filter: contrast(35%);
+      filter: contrast(25%) blur(1.3px) grayscale(0.1);
     }
   }
   &__half-background {
-    z-index: 5;
+    z-index: 12;
     width: 42.5%;
     height: 100%;
-    background-color: #3d405b;
+    background-color: #202c39;
     opacity: 1;
     position: absolute;
     top: 0;
@@ -32,31 +38,102 @@
   }
   &__body {
     width: 100%;
-    height: 20vh;
+    height: 100vh;
+    overflow-y: scroll;
     position: absolute;
     top: 0;
-    z-index: 6;
+    z-index: 13;
     padding: 20px 5vw;
     .icon {
       width: 110px;
       height: 110px;
-      & span {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #ffffff;
+      & figure {
+        align-items: center;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      .icon-color {
+        fill: #ffffff;
       }
     }
   }
   &__content {
-    align-items: center;
-    justify-content: space-between;
-    .link {
-      & span {
-        padding: 0 10px;
-        color: #ffffff;
-        font-size: 1.3rem;
-        font-weight: 600;
+    &--first {
+      align-items: center;
+      justify-content: space-between;
+      flex-basis: 15%;
+      .button--close {
+        & div {
+          width: 30px;
+          height: 2px;
+          background-color: #ffffff;
+        }
+        & div:nth-of-type(1) {
+          transform: rotate(45deg);
+        }
+        & div:nth-of-type(2) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    &--second {
+      flex-basis: 70%;
+      padding: 0 2.5vw;
+      justify-content: center;
+      width: 100%;
+      .links {
+        flex-direction: row-reverse;
+        width: 100%;
+        padding-left: 30px;
+        .link {
+          width: 85%;
+          margin: 0 auto;
+          justify-content: space-evenly;
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+      }
+      & ul {
+        list-style-image: url("../../../assets/images/icons/Cactus.svg");
+        & li {
+          color: #ffffff;
+          font-size: 2rem;
+          font-weight: 700;
+          text-align: start;
+          line-height: 3.5rem;
+          & a {
+            text-decoration: none;
+            &:visited {
+              color: #ffffff;
+            }
+          }
+        }
       }
     }
   }
+  &__footer {
+    flex-direction: row-reverse;
+    flex-basis: 15%;
+    padding: 0 15vw;
+    .content {
+      align-items: flex-start;
+      & h5, p, a {
+        color: #ffffff;
+      }
+      & a:visited {
+        color: #ffffff;
+      }
+      & h5 {
+        font-size: 1rem;
+      }
+      & p, a {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+.display-menu {
+  width: 100%;
+  height: 100%;
 }

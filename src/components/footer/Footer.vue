@@ -42,7 +42,7 @@
       <div class="footer__main--info util__flex--column">
         <ul class="util__flex--column">
           <li><router-link to="/information/contact">Contact us</router-link></li>
-          <li><a href="javascript:;">Manage booking</a></li>
+          <li><router-link to="/booking">Manage booking</router-link></li>
           <li><router-link to="/information/careers">Careers</router-link></li>
           <li><router-link to="/information/privacy-policy">Privacy Policy</router-link></li>
           <li><router-link to="/information/sitemap">Sitemap</router-link></li>
@@ -71,95 +71,10 @@
             </svg>
           </a>
         </div>
-        <span>© A Hotel All right reserved</span>
+        <span>© A Resort & Spa All right reserved</span>
       </div>
     </div>
   </footer>
 </template>
 <script></script>
-<style lang="scss" scoped>
-  footer {
-    padding: 5vh 10vw;
-    background-color: #283845;
-  }
-  .footer__container {
-    width: 100%;
-    padding-top: 30px;
-    height: 100%;
-    justify-content: space-around;
-    color: #ffffff;
-  }
-  .footer__main {
-    &--logo, &--hotels, &--info, &--connection {
-      width: 20%;
-      margin: 0;
-      & ul {
-        list-style-type: none;
-      }
-    }
-    &--logo {
-      width: 250px;
-      height: 75px;
-      font-size: 1.8rem;
-      text-align: center;
-      & a {
-        align-items: center;
-        text-decoration: none;
-        & svg {
-          width: 80px;
-          height: 80px;
-        }
-        &:visited {
-          color: #ffffff;
-        }
-      }
-    }
-    &--hotels {
-      & ul li {
-        text-align: left;
-        padding: 5px 0;
-      }
-    }
-    &--info {
-      & ul li {
-        text-align: left;
-        padding: 5px 0;
-        & a {
-          color: #ffffff;
-        }
-      }
-    }
-    &--connection {
-      height: 100%;
-    }
-    &--hotels, &--info, &--connection {
-      & span {
-        text-align: left;
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-      & ul {
-        align-items: flex-start;
-        padding-left: 0;
-        margin-top: 10px;
-        font-size: 1.2rem;
-        & a {
-          text-decoration: none;
-          color: #000000;
-        }
-      }
-    }
-  }
-  .connection__icons {
-    justify-content: space-around;
-    padding: 30px 0;
-    & a {
-      width: 30px;
-      height: 30px;
-    }
-  }
-  .el-divider--vertical {
-    height: auto;
-  }
-</style>
+<style src="./Footer.scss" lang="scss" scoped/>

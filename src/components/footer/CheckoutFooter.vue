@@ -46,25 +46,4 @@
   </footer>
 </template>
 <script></script>
-<style lang="scss" scoped>
-  footer {
-    padding: 5vh 5vw;
-    justify-content: space-between;
-    align-items: center;
-    & ul {
-      list-style-type: none;
-      font-size: 1rem;
-      padding-left: 0;
-      & li {
-        padding: 0 5px;
-        & a {
-          text-decoration: none;
-          vertical-align: middle;
-          &:visited {
-            color: #3d405b;
-          }
-        }
-      }
-    }
-  }
-</style>
+<style src="./CheckoutFooter.scss" lang="scss" scoped/>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar/>
+    <Navbar :isOnHomepage="isOnHomepage"/>
     <Header/>
     <section class="home util__flex--column">
       <div class="home__slogan util__flex--column">
@@ -80,17 +80,17 @@
         </vue-flux>
       </div>
     </section>
-    <section class="dinning util__flex--column util__flex--center">
+    <section class="dining util__flex--column util__flex--center">
       <div class="util__flex--row">
-        <div class="dinning__content util__flex--column">
+        <div class="dining__content util__flex--column">
           <div>
             <h1 class="util__header--subtitle">Dine with stunning view</h1>
             <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
           </div>
-          <button><router-link to="/dinning">DINE WITH US</router-link></button>
+          <button><router-link to="/dining">DINE WITH US</router-link></button>
         </div>
-        <div class="dinning__image">
-          <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dinning">
+        <div class="dining__image">
+          <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dining">
         </div>
       </div>
     </section>
@@ -101,7 +101,7 @@
         </div>
         <div class="spa__container--content util__flex--column">
           <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
-          <button><router-link to="/wellness">VIEW MORE</router-link></button>
+          <button><router-link to="/spa-wellness">VIEW MORE</router-link></button>
         </div>
       </div>
     </section>
@@ -206,19 +206,27 @@ export default {
   },
   data () {
     return {
+      isOnHomepage: true,
       options: {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
         autoplay: false,
         bindKeys: false,
-        delay: 5000,
+        delay: 3000,
         enableGestures: false,
         infinite: true,
         lazyLoad: true,
         lazyLoadAfter: 3
       },
-      images: ['', '', ''],
+      images: [
+        require('@/assets/images/homepage/carousel/hotel.jpg'),
+        require('@/assets/images/homepage/carousel/dining.jpg'),
+        require('@/assets/images/homepage/carousel/private-deck.jpg'),
+        require('@/assets/images/homepage/carousel/outdoor.jpg'),
+        require('@/assets/images/homepage/carousel/room.jpg'),
+        require('@/assets/images/homepage/carousel/bar.jpg')
+      ],
       transitions: [
         'blinds3d',
         'blocks2',

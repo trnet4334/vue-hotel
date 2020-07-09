@@ -1,7 +1,7 @@
 const wellness = [
   {
-    path: '/wellness',
-    name: 'Wellness',
+    path: '/spa-wellness',
+    name: 'Spa & Wellness',
     component: () => import('@/views/Wellness/Wellness.vue')
   }
 ]

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar/>
+    <navbar :isOnHomepage="isOnHomepage"/>
     <section class="events">
       <div class="events__container">
         <div class="events__body--first util__flex--row">
@@ -109,6 +109,7 @@ export default {
   },
   data () {
     return {
+      isOnHomepage: false,
       options: {
         allowFullscreen: false,
         allowToSkipTransition: true,

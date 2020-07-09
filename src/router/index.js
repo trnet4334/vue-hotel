@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from './modules/home'
 import about from './modules/about'
-import dinning from './modules/dinning'
+import dining from './modules/dining'
 import events from './modules/events'
 import information from './modules/information'
 import room from './modules/room'
@@ -17,7 +17,7 @@ const routes = [
   ...home,
   ...about,
   ...room,
-  ...dinning,
+  ...dining,
   ...events,
   ...wellness,
   ...information,
