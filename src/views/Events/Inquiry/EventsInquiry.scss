@@ -1,0 +1,155 @@
+@import '../../../styles/app';
+
+form {
+  width: 100%;
+  align-items: flex-start;
+  & h2 {
+    font-size: 1.8rem;
+    text-align: start;
+  }
+  & label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: start;
+    padding: 5px 15px 5px 0;
+    margin-top: 10px;
+  }
+  & input[type="radio"] {
+    margin-top: 10px;
+    margin-right: 5px;
+  }
+  & input[type="text"], input[type="date"], select {
+    width: 225px;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #3d405b;
+  }
+  & input[id="address"], input[id="numberOfGuestroom"], input[id="eventName"], input[id="attendeesNum"] {
+    width: 500px;
+  }
+  & textarea {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #3d405b;
+  }
+  & a:visited {
+    color: #3d405b;
+  }
+  & button {
+    margin: 25px auto;
+    padding: 10px 80px;
+    background-color: transparent;
+    border: 2px solid #3d405b;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: #3d405b;
+    &:hover {
+      background-color: #3d405b;
+      cursor: pointer;
+      color: #ffffff;
+    }
+  }
+}
+.header p {
+  width: 70%;
+}
+.body {
+  width: 50%;
+}
+.content {
+  &--first, &--second, &--third, &--fourth, &--fifth, &--sixth {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  &--fourth {
+    .row {
+      justify-content: space-between;
+    }
+  }
+}
+.date {
+  align-items: center;
+  width: fit-content;
+  border-bottom: 1px solid #3d405b;
+  padding: 3px 0;
+  /deep/ .date-picker-input {
+    font-family: inherit;
+    width: 225px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+}
+.radio-input-group {
+  align-items: center;
+}
+.center {
+  align-items: center;
+}
+
+@include respond-below(phone) {
+  .header {
+    width: 100%;
+    & p {
+      width: 100%;
+    }
+  }
+  .body {
+    width: 100%;
+  }
+  & form {
+    & input[type="text"], input[type="date"], select {
+      width: 200px;
+    }
+    & input[id="address"], input[id="numberOfGuestroom"], input[id="eventName"], input[id="attendeesNum"] {
+      width: 100%;
+    }
+  }
+  .radio-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .header {
+    width: 100%;
+    & p {
+      width: 100%;
+    }
+  }
+  .body {
+    width: 100%;
+  }
+  & form {
+    & input[id="address"], input[id="numberOfGuestroom"], input[id="eventName"], input[id="attendeesNum"] {
+      width: 80%;
+    }
+  }
+  .radio-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@include respond-between(tablet, tablet-lg) {
+  .header {
+    width: 100%;
+    & p {
+      width: 80%;
+    }
+  }
+  .body {
+    width: 85%;
+  }
+}

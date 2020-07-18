@@ -1,7 +1,7 @@
 <template>
   <main>
     <navbar/>
-    <div class="information util__flex--column">
+    <div class="information flex--column">
       <div>
         <router-view/>
       </div>
@@ -24,24 +24,6 @@ export default {
 </script>
 <style lang="scss" scoped>
   .information {
-    padding: 10vh 2vw 2vh 2vw;
     align-items: center;
-    &__lists {
-      & ul {
-        list-style-type: none;
-        & a {
-          text-decoration: none;
-          padding: 5px 10px;
-          font-weight: bold;
-          font-size: 1.2rem;
-          &:visited {
-            color: #2c3e50;
-          }
-          &:active {
-            color: red;
-          }
-        }
-      }
-    }
   }
 </style>

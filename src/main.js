@@ -6,13 +6,14 @@ import store from './store'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/en'
 import './styles.scss'
+import 'normalize.css/normalize.css'
 import VCalendar from 'v-calendar'
 
 // Use element-ui component
 Vue.use(ElementUI, { locale })
 // Use v-calendar & v-date-picker components
 Vue.use(VCalendar, {
-  componentPrefix: 'vc'
+  componentPrefix: 'v'
 })
 
 Vue.config.productionTip = false

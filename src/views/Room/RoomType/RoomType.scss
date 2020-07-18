@@ -1,0 +1,101 @@
+.room-details {
+  width: 100%;
+  position: relative;
+  &__container {
+    width: 100%;
+    position: relative;
+    padding: 20vh 0 5vh 0;
+  }
+  &__body {
+    &--first, &--second, &--third, &--fourth {
+      margin-bottom: 20vh;
+      width: 100%;
+      padding: 0 5vw;
+    }
+    &--first {
+      justify-content: space-evenly;
+    }
+    &--third {
+      height: 100vh;
+    }
+    &--fourth {
+      padding: 0 5vw;
+    }
+  }
+  &__content {
+    &--first {
+      width: 35%;
+      & button {
+        margin: 55px auto;
+        padding: 10px 60px;
+        background-color: transparent;
+        border: 2px solid #3d405b;
+        border-radius: 3px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: 3px;
+        color: #3d405b;
+        & a {
+          text-decoration: none;
+          &:visited {
+            color: #3d405b;
+          }
+        }
+        &:hover {
+          background-color: #3d405b;
+          cursor: pointer;
+          & a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    &--second {
+      width: 87.5%;
+      margin: 0 auto;
+      border: 1px solid #3d405b;
+      border-radius: 5px;
+      padding: 20px 20px 20px 50px;
+      & ul {
+        columns: 3;
+        text-align: start;
+        padding: 0 10px;
+        list-style-image: url("../../../assets/images/icons/Right-5.svg");
+        & li {
+          font-size: 1.3rem;
+          line-height: 2.5rem;
+        }
+      }
+    }
+    &--third {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+    }
+    &--fourth {
+      width: 100%;
+      align-items: center;
+    }
+  }
+  &__image {
+    width: 450px;
+    height: 450px;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-position: 50% 50%;
+      object-fit: cover;
+    }
+  }
+}
+.room-cards {
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  .room-card {
+    width: 50%;
+  }
+}

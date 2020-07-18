@@ -1,0 +1,137 @@
+@import '../../../../styles/app';
+
+.careers {
+  position: relative;
+  &__header {
+    align-items: center;
+    & p {
+      width: 65%;
+    }
+    & a {
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 3px 0;
+      text-decoration: none;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #2c3e50;
+      }
+      &:visited {
+        color: #2c3e50;
+      }
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+  &__context {
+    &--first, &--second {
+      justify-content: space-around;
+      padding: 5vh 0;
+    }
+    &--first {
+      flex-direction: row-reverse;
+    }
+    &--first div:nth-of-type(2), &--second div:nth-of-type(2) {
+      width: 40%;
+    }
+    &--third {
+      align-items: center;
+      padding: 5vh 0;
+      & a {
+        font-size: 1.3rem;
+        font-weight: bold;
+        padding: 3px 0;
+        text-decoration: none;
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          background-color: #2c3e50;
+        }
+        &:visited {
+          color: #2c3e50;
+        }
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  &__context--image {
+    width: 50%;
+    height: auto;
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+@include respond-below(phone) {
+  .careers__context--first, .careers__context--second {
+    & div:nth-of-type(2) {
+      width: 100%;
+    }
+    .careers__context--image {
+      width: 80vw;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+  .careers__header {
+    & p {
+      width: 85%;
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .careers__context--first, .careers__context--second {
+    & div:nth-of-type(2) {
+      width: 100%;
+    }
+    .careers__context--image {
+      width: 80vw;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+  .careers__header {
+    & p {
+      width: 85%;
+    }
+  }
+}
+
+@include respond-between(tablet, tablet-lg) {
+  .careers__context--first, .careers__context--second {
+    & div:nth-of-type(2) {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .careers__context--image {
+      width: 80vw;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+  .careers__header {
+    & p {
+      width: 90%;
+    }
+  }
+}

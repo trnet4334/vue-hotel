@@ -2,28 +2,25 @@
   <div>
     <navbar :isOnHomepage="isOnHomepage"/>
     <section class="events">
-      <div class="events__container">
-        <div class="events__body--first util__flex--row">
-          <div class="events__content events__header">
-            <h4 class="util__header--title">Meeting & Events</h4>
-            <h1 class="util__header--subtitle">Gather in a Royal-Like Setting</h1>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam consequuntur distinctio eligendi est inventore nemo sint, soluta temporibus totam.</p>
+      <div class="page-wrapper">
+        <div class="events__body--first flex--row">
+          <div class="events__content events__header page-content--header">
+            <h4>Meeting & Events</h4>
+            <h1>Gather in a Royal-Like Setting</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam consequuntur distinctio eligendi est inventore nemo sint, soluta temporibus totam.</p>
             <br>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur est iure, magni non quae. Consequuntur expedita, laudantium! Eius, repellendus!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur est iure, magni non quae. Consequuntur expedita, laudantium! Eius, repellendus!</p>
             <button>
-              <router-link to="/inquiry">REQUEST PROPOSAL</router-link>
+              <router-link to="/events/inquiry">REQUEST PROPOSAL</router-link>
             </button>
           </div>
-          <div class="events--image">
+          <div class="image">
             <img src="@/assets/images/meeting/meeting-img-1.jpg" alt="Meeting">
           </div>
         </div>
-        <div class="events__body--second util__flex--row">
-          <div class="events--image">
-            <img src="@/assets/images/meeting/meeting-img-2.jpg" alt="Meeting">
-          </div>
-          <div class="events__content">
-            <h1 class="util__header--subtitle">The Essentials</h1>
+        <div class="events__body--second flex--row flex--reverse">
+          <div class="events__content page-content--header">
+            <h1>The Essentials</h1>
             <br>
             <ul>
               <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
@@ -34,11 +31,14 @@
             </ul>
             <button><a href="javascript:;">VIEW FLOOR PLANS</a></button>
           </div>
+          <div class="image">
+            <img src="@/assets/images/meeting/meeting-img-2.jpg" alt="Meeting">
+          </div>
         </div>
-        <div class="events__body--third util__flex--row">
-          <div class="events__content">
-            <h1 class="util__header--subtitle">Spaces for all purposes</h1>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dignissimos id ipsa iste iusto laboriosam nihil, odio, provident quia recusandae similique voluptate? Blanditiis dolore doloribus, eius error excepturi harum incidunt inventore ipsam laborum maiores modi nihil officia, perspiciatis quod recusandae sapiente tempore totam vero voluptate voluptates. Consectetur, et libero?</p>
+        <div class="events__body--third flex--row">
+          <div class="events__content page-content--header">
+            <h1>Spaces for all purposes</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dignissimos id ipsa iste iusto laboriosam nihil, odio, provident quia recusandae similique voluptate? Blanditiis dolore doloribus, eius error excepturi harum incidunt inventore ipsam laborum maiores modi nihil officia, perspiciatis quod recusandae sapiente tempore totam vero voluptate voluptates. Consectetur, et libero?</p>
             <br>
             <ul>
               <li>Family Celebrations</li>
@@ -51,7 +51,7 @@
             </ul>
             <button><a href="javascript:;">VIEW FLOOR PLANS</a></button>
           </div>
-          <div class="events--image">
+          <div class="image">
             <img src="@/assets/images/meeting/meeting-img-3.jpg" alt="Meeting">
           </div>
         </div>
@@ -70,18 +70,16 @@
             </template>
           </vue-flux>
         </div>
-        <div class="events__body--fifth util__flex--column util__flex--center">
-          <div class="util__flex--row" style="justify-content: space-evenly; align-items: center;">
-            <div style="width: 40%;">
-              <h1 class="util__header--subtitle">Let Us Help You Plan Your Event</h1>
+        <div class="events__body--fifth flex--row page-content--header">
+            <div class="events__content">
+              <h1>Let Us Help You Plan Your Event</h1>
             </div>
-            <div class="util__flex--column" style="width: 40%;">
-              <p class="util__header--description" style="margin-bottom: 30px;">For questions regarding your meeting or event, please contact the sales team at 480-000-0009 or sales@ahotel.com.</p>
+            <div class="events__content">
+              <p>For questions regarding your meeting or event, please contact the sales team at 480-000-0009 or sales@ahotel.com.</p>
               <button>
-                <router-link to="/inquiry">REQUEST PROPOSAL</router-link>
+                <router-link to="/events/inquiry">REQUEST PROPOSAL</router-link>
               </button>
             </div>
-          </div>
         </div>
       </div>
     </section>
@@ -116,20 +114,21 @@ export default {
         autohideTime: 2500,
         autoplay: false,
         bindKeys: false,
-        delay: 5000,
+        delay: 3000,
         enableGestures: false,
         infinite: true,
         lazyLoad: true,
         lazyLoadAfter: 3
       },
-      images: ['', '', ''],
+      images: [
+        require('@/assets/images/meeting/carousel/meeting-carousel-1.jpg'),
+        require('@/assets/images/meeting/carousel/meeting-carousel-2.jpg'),
+        require('@/assets/images/meeting/carousel/meeting-carousel-3.jpg'),
+        require('@/assets/images/meeting/carousel/meeting-carousel-4.jpg')
+      ],
       transitions: [
         'blinds3d',
         'blocks2',
-        'book',
-        'cube',
-        'round2',
-        'swipe',
         'warp',
         'wave'
       ]

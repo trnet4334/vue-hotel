@@ -1,0 +1,23 @@
+.sitemap {
+  width: 100%;
+  &__container {
+    align-items: flex-start;
+    justify-content: center;
+  }
+  &__content {
+    width: auto;
+    & ul {
+      text-align: start;
+      font-size: 1.2rem;
+      line-height: 2.2rem;
+      font-weight: bold;
+      & a {
+        text-decoration: none;
+        color: #2c3e50;
+        &:visited {
+          color: #2c3e50;
+        }
+      }
+    }
+  }
+}

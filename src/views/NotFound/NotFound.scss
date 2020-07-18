@@ -1,0 +1,47 @@
+@import '../../styles/app';
+
+.not-found {
+  height: 100vh;
+  & button {
+    margin: 5px auto;
+    padding: 10px 80px;
+    background-color: transparent;
+    border: 2px solid #3d405b;
+    border-radius: 5px;
+    &:hover {
+      background-color: #3d405b;
+      cursor: pointer;
+      & a {
+        color: #ffffff;
+      }
+    }
+    & a {
+      font-family: 'Crimson Text', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      color: #3d405b;
+      text-decoration: none;
+    }
+  }
+}
+.content {
+  padding: 5vh 5vw;
+  & h1, p {
+    text-align: center;
+  }
+  & p {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+@include respond-below(phone) {
+  .content p {
+    width: 100%;
+  }
+}

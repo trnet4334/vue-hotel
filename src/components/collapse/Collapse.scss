@@ -1,3 +1,5 @@
+@import '../../styles/app';
+
 .collapse {
   width: 90%;
   text-align: start;
@@ -9,22 +11,23 @@
     align-items: center;
     margin-bottom: 5px;
     & span {
+      flex-basis: 90%;
       font-size: 1.3rem;
       font-weight: 600;
     }
+    & img {
+      flex-basis: 10%;
+      transition: .4s ease all;
+    }
   }
   &__body {
-    transition: 0.3s ease all;
+    transition: 0.4s ease all;
     max-height: 20rem;
     overflow: hidden;
   }
-  &__content {
-    & p {
-      font-size: 1.3rem;
-    }
-  }
 }
 .is-closed .collapse__body {
+  transition: .4s ease all;
   height: 0;
 }
 .is-rotated {
@@ -32,6 +35,13 @@
   transition: 0.4s ease all;
 }
 .is-shown {
+  transition: .4s ease all;
   border-left: 3px solid #2c3e50;
   padding-left: 15px;
+}
+
+@include respond-below(phone) {
+  .collapse {
+    width: 100%;
+  }
 }

@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   &__slogan {
-    width: 65vw;
-    height: 50vh;
+    width: 100%;
     align-items: center;
     justify-content: center;
     &--icon {
@@ -15,11 +14,14 @@
     }
     &--title h1{
       font-size: 2.3rem;
-      font-weight: bold;
+      font-weight: 700;
+      margin-bottom: 5px;
     }
     &--subtitle p{
       font-size: 1.3rem;
       text-wrap: normal;
+      width: 60%;
+      margin: 0 auto;
     }
   }
 }
@@ -264,6 +266,9 @@
       text-align: center;
     }
   }
+  &__content {
+    width: 45%;
+  }
 }
 .offers {
   width: 100%;
@@ -285,8 +290,10 @@
   }
   &__body {
     .content {
+      width: 33%;
       & p {
         padding: 15px;
+        width: 100%;
       }
       & h4 {
         text-align: center;

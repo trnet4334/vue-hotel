@@ -1,0 +1,66 @@
+@import './media-queries';
+
+// General page container to define padding, margin or width setting
+.page-container {
+  width: 100%;
+  padding: 20vh 7.5vw;
+}
+
+// General page wrapper to define padding, margin or width setting
+.page-wrapper {
+  max-width: 100%;
+}
+
+// General page content style in header section, include h4 for title,
+// h1 for subtitle, p for description
+.page-content--header {
+  & h4 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    text-align: start;
+    font-weight: 600;
+  }
+  & h1 {
+    font-size: 3rem;
+    line-height: 3.2rem;
+    text-align: start;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    @include respond-below(tablet-lg) {
+      font-size: 2.6rem;
+      line-height: 2.8rem;
+    }
+  }
+  & p {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    text-align: start;
+    text-wrap: normal;
+  }
+}
+
+// General page content style in body section, include h4 for title,
+// h1 for subtitle, p for description
+.page-content--body {
+  & h4 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  & p {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    text-align: start;
+    text-wrap: normal;
+  }
+}
+
+.list-group {
+  & li {
+    text-align: start;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+  }
+}

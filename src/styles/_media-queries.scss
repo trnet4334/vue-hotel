@@ -1,0 +1,61 @@
+/* Custom application mixins available through out the app */
+
+/* Define screen width breakpoint to be used in the mixin */
+$breakpoints: (
+        phone: 480px,
+        tablet: 768px,
+        tablet-lg: 1024px,
+        desktop: 1224px,
+        desktop-lg: 1824px
+);
+
+// Respond Above
+@mixin respond-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get breakpoint value
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Use the media query
+    @media only screen and (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    // Warning log
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+// Respond below
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get breakpoint value
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+    // Use the media query
+    @media only screen and (max-width: ($breakpoint-value - 1)) {
+      @content
+    }
+  } @else {
+    // Warning log
+    @warn 'Invalid breakpoint: #{$breakpoint}.'
+  }
+}
+
+// Respond between
+@mixin respond-between($lower-breakpoint, $upper-breakpoint) {
+  @if map-has-key($breakpoints, $lower-breakpoint) and map-has-key($breakpoints, $upper-breakpoint) {
+    // Get the lower and upper breakpoint
+    $lower-breakpoint-value: map-get($breakpoints, $lower-breakpoint);
+    $upper-breakpoint-value: map-get($breakpoints, $upper-breakpoint);
+    // Use the media query
+    @media only screen and (min-width: $lower-breakpoint-value) and (max-width: ($upper-breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($breakpoints, $lower-breakpoint) == false) {
+      @warn 'Lower breakpoint was invalid: #{$lower-breakpoint}.';
+    }
+    @if (map-has-key($breakpoints, $upper-breakpoint) == false) {
+      @warn 'Upper breakpoint was invalid: #{$upper-breakpoint}.';
+    }
+  }
+}

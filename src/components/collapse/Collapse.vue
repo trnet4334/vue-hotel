@@ -1,11 +1,11 @@
 <template>
   <div class="collapse" :class="collapseClasses">
-    <div class="collapse__header util__flex--row" @click="toggleCollapse">
+    <div class="collapse__header flex--row" @click="toggleCollapse">
       <span>{{faq.question}}</span>
       <img src="@/assets/images/icons/Add.svg" width="17px" height="17px" :class="rotateIcon">
     </div>
     <div class="collapse__body">
-      <div class="collapse__content" :class="displayContentBorder">
+      <div class="page-content--body" :class="displayContentBorder">
         <p>{{faq.answer}}</p>
       </div>
     </div>
@@ -14,7 +14,9 @@
 </template>
 <script>
 export default {
-  props: ['faq'],
+  props: {
+    faq: Object
+  },
   data: function () {
     return {
       isOpen: false
@@ -23,6 +25,8 @@ export default {
   methods: {
     toggleCollapse: function () {
       this.isOpen = !this.isOpen
+      console.log(this.$el)
+      console.log(this.$el.children)
     }
   },
   computed: {

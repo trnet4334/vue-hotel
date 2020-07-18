@@ -10,9 +10,14 @@ const events = [
     component: () => import('@/views/Events/Wedding.vue')
   },
   {
-    path: '/inquiry',
+    path: '/events/inquiry',
     name: 'Events Inquiry',
-    component: () => import('@/views/Events/Inquiry/Inquiry.vue')
+    component: () => import('@/views/Events/Inquiry/EventsInquiry.vue')
+  },
+  {
+    path: '/wedding/inquiry',
+    name: 'Wedding Inquiry',
+    component: () => import('@/views/Events/Inquiry/WeddingInquiry.vue')
   }
 ]
 

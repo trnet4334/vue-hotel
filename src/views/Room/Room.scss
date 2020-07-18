@@ -1,0 +1,84 @@
+.rooms {
+  padding: 25vh 5vw;
+  &__header {
+    width: 50%;
+    text-align: start;
+    text-wrap: normal;
+    margin: 0 auto;
+    padding-bottom: 50px;
+  }
+  &__slogan {
+    width: 100%;
+    height: 100vh;
+    & span {
+      width: 65%;
+      text-wrap: normal;
+      font-size: 1.7rem;
+      padding: 30px 0;
+    }
+  }
+  &__accessible {
+    justify-content: space-around;
+    padding: 5vh 5vw;
+    &--image {
+      width: 500px;
+      height: 500px;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &--body {
+      width: 37.5%;
+      align-items: center;
+      & p {
+        font-size: 1.2rem;
+        text-align: start;
+      }
+      & a {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-right: 20px;
+        text-decoration: none;
+        position: relative;
+        &:visited {
+          color: #e07a5f;
+        }
+        &:hover:after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          background-color: #e07a5f;
+        }
+      }
+    }
+    &--header {
+      text-align: start;
+      margin-bottom: 25px;
+      & h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 3.4rem;
+        margin-bottom: 10px;
+      }
+      & h4 {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        /*font-weight: 400;*/
+      }
+    }
+  }
+}
+.room__cards {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .room__card {
+    width: 50%;
+  }
+}

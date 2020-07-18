@@ -8,20 +8,20 @@
         <div class="links util__flex--row">
           <div class="link util__flex--row">
             <ul>
-              <li><router-link to="/story">About us</router-link></li>
-              <li><router-link to="/rooms">Stay</router-link></li>
-              <li><router-link to="/dining">Eat & Drink</router-link></li>
-              <li><router-link to="/spa-wellness">Spa & Wellness</router-link></li>
-              <li><router-link to="/events">Meetings & Events</router-link></li>
-              <li><router-link to="/wedding">Wedding</router-link></li>
+              <li><router-link to="/story" @click="displayMenu = !displayMenu">About us</router-link></li>
+              <li><router-link to="/rooms" @click="displayMenu = !displayMenu">Stay</router-link></li>
+              <li><router-link to="/dining" @click="displayMenu = !displayMenu">Eat & Drink</router-link></li>
+              <li><router-link to="/spa-wellness" @click="displayMenu = !displayMenu">Spa & Wellness</router-link></li>
+              <li><router-link to="/events" @click="displayMenu = !displayMenu">Meetings & Events</router-link></li>
+              <li><router-link to="/wedding" @click="displayMenu = !displayMenu">Wedding</router-link></li>
             </ul>
             <ul>
-              <li><router-link to="/specials">Specials</router-link></li>
+              <li><router-link to="/specials" @click="displayMenu = !displayMenu">Specials</router-link></li>
 <!--              <li><a href="javascript:;">Activities</a></li>-->
-              <li><router-link to="/checkout">Reservation</router-link></li>
-              <li><router-link to="/manage-booking">Manage Booking</router-link></li>
-              <li><router-link to="/information/faq">FAQ</router-link></li>
-              <li><router-link to="/information/contact">Contact Us</router-link></li>
+              <li><router-link to="/reservation" @click="displayMenu = !displayMenu">Reservation</router-link></li>
+              <li><router-link to="/manage-booking" @click="displayMenu = !displayMenu">Manage Booking</router-link></li>
+              <li><router-link to="/information/faq" @click="displayMenu = !displayMenu">FAQ</router-link></li>
+              <li><router-link to="/information/contact" @click="displayMenu = !displayMenu">Contact Us</router-link></li>
             </ul>
           </div>
         </div>

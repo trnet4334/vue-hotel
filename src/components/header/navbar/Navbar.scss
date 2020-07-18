@@ -1,3 +1,5 @@
+@import "../../../styles/app.scss";
+
 .navbar {
   background-color: transparent;
   justify-content: center;
@@ -13,6 +15,7 @@
     position: relative;
     .link {
       position: relative;
+      align-items: center;
       & a {
         text-decoration: none;
         align-items: center;
@@ -20,9 +23,6 @@
         &:visited {
           color: inherit;
         }
-        //& svg {
-        //  display: none;
-        //}
       }
       & span {
         font-size: 1.3rem;
@@ -131,3 +131,41 @@
   background-color: transparent;
 }
 
+@include respond-below(phone) {
+  .navbar {
+    &__container {
+      .link {
+        & a {
+          padding: 0 10px;
+          & span {
+            display: none;
+            width: 0;
+          }
+        }
+      }
+      .menuBtn {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .navbar {
+    &__container {
+      .link {
+        & a {
+          padding: 0 10px;
+          & span {
+            display: none;
+            width: 0;
+          }
+        }
+      }
+      .menuBtn {
+        margin-left: 10px;
+      }
+    }
+  }
+}

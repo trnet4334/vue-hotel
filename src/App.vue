@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+  @import 'styles/app';
   #app {
     /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
     font-family: 'Crimson Text', serif;
@@ -21,11 +22,15 @@
     background-color: #f4f1de;
     /*background-color: #b8b08d;*/
   }
+  a {
+    color: #3d405b;
+  }
   .util {
     /* General use for flexbox styling */
     &__flex--row {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
     &__flex--column {
       display: flex;

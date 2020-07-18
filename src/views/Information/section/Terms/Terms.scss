@@ -1,0 +1,32 @@
+@import '../../../../styles/app';
+.terms {
+  position: relative;
+  width: 100%;
+  &__content {
+    width: 75%;
+    margin: 0 auto;
+    & ul li {
+      font-size: 1.3rem;
+      line-height: 2.2rem;
+      text-align: start;
+    }
+  }
+}
+
+@include respond-below(phone) {
+  .terms__content {
+    width: 100%;
+    & ul li {
+      line-height: 1.8rem;
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .terms__content {
+    width: 90%;
+    & ul li {
+      line-height: 2rem;
+    }
+  }
+}

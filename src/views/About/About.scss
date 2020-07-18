@@ -1,27 +1,55 @@
+@import '../../styles/app';
+
 .about {
-  &__container {
-    padding: 15vh 5vw;
-  }
   .body {
     justify-content: space-evenly;
     padding: 10vh 0;
+    width: 100%;
+    height: auto;
     .content {
       width: 40%;
-      & ul {
-        & li {
-          text-align: start;
-          font-size: 1.2rem;
-        }
+    }
+  }
+  .image {
+    width: 45%;
+    height: 400px;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+  .reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+@include respond-below(phone) {
+  .about {
+    .image {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 30px;
+    }
+    .body {
+      .content {
+        width: 100%;
       }
     }
+  }
+}
+
+@include respond-between(phone, tablet-lg) {
+  .about {
     .image {
-      width: 475px;
-      height: 475px;
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
+      width: 80%;
+      height: 350px;
+      margin-bottom: 30px;
+    }
+    .body {
+      .content {
+        width: 80%;
       }
     }
   }

@@ -2,8 +2,8 @@
   <div class="home">
     <Navbar :isOnHomepage="isOnHomepage"/>
     <Header/>
-    <section class="home util__flex--column">
-      <div class="home__slogan util__flex--column">
+    <section class="home flex--column">
+      <div class="home__slogan flex--column flex--center">
         <div class="home__slogan--icon">
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; fill: #3d405b;" xml:space="preserve">
@@ -31,7 +31,7 @@
             <circle id="XMLID_418_" cx="4.5" cy="17.5" r="0.5"/>
           </svg>
         </div>
-        <div class="util__flex--column" style="height: 125px; justify-content: space-around;">
+        <div class="flex--column flex--center">
           <div class="home__slogan--title">
             <h1>Let Your Soul Follow the Nature</h1>
           </div>
@@ -41,12 +41,12 @@
         </div>
       </div>
     </section>
-    <section class="room util__flex--row">
+    <section class="room flex--row">
       <div class="room--images">
         <img src="@/assets/images/homepage/room-img.jpg" alt="Room">
       </div>
       <div>
-        <div class="room--type util__flex--column">
+        <div class="room--type flex--column">
           <h1 class="util__header--subtitle">Stay with us</h1>
           <h4 class="util__header--title">Beautifully set amidst the wonderful nature around.</h4>
           <br>
@@ -80,7 +80,7 @@
         </vue-flux>
       </div>
     </section>
-    <section class="dining util__flex--column util__flex--center">
+    <section class="dining flex--column flex--center">
       <div class="util__flex--row">
         <div class="dining__content util__flex--column">
           <div>
@@ -94,7 +94,7 @@
         </div>
       </div>
     </section>
-    <section class="spa util__flex--column">
+    <section class="spa flex--column">
       <div class="spa__container util__flex--row">
         <div class="spa__container--slogan">
           <h1>Recover and relax with rejuvenating spa treatment</h1>
@@ -112,7 +112,7 @@
           <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
         </div>
         <div class="events__body util__flex--row">
-          <div class="util__flex--column">
+          <div class="util__flex--column events__content">
             <div class="image">
               <img src="@/assets/images/homepage/events-img.jpg" alt="Events">
             </div>
@@ -122,7 +122,7 @@
               <router-link to="/events">Learn more</router-link>
             </div>
           </div>
-          <div class="util__flex--column">
+          <div class="util__flex--column events__content">
             <div class="image">
               <img src="@/assets/images/homepage/wedding-img.jpg" alt="Wedding">
             </div>
@@ -195,6 +195,7 @@ import {
   FluxPreloader
 } from 'vue-flux'
 export default {
+  name: 'Home',
   components: {
     VueFlux,
     FluxControls,

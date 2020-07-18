@@ -5,7 +5,7 @@
         <li>135 Bear Wallow Ln, Sedona, AZ 86336</li> |
         <li>Direct: (480) 000-0101</li> |
         <li>Reservation: (480) 000-0001</li> |
-        <li>© A Hotel All right reserved</li>
+        <li>© A Resort & Spa All right reserved</li>
       </ul>
       <ul class="util__flex--row">
         <li><router-link to="/information/contact">Contact</router-link></li> |

@@ -8,7 +8,7 @@ import information from './modules/information'
 import room from './modules/room'
 import specials from './modules/specials'
 import wellness from './modules/wellness'
-import checkout from './modules/checkout'
+import reservation from './modules/reservation'
 import booking from './modules/booking'
 
 Vue.use(VueRouter)
@@ -22,12 +22,12 @@ const routes = [
   ...wellness,
   ...information,
   ...specials,
-  ...checkout,
+  ...reservation,
   ...booking,
   {
     path: '/jobs',
     name: 'Jobs',
-    component: () => import('@/views/Information/section/Jobs.vue')
+    component: () => import('@/views/Information/section/Jobs/Jobs.vue')
   },
   {
     path: '*',
