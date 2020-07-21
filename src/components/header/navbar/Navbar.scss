@@ -130,6 +130,9 @@
 .menu-scroll {
   background-color: transparent;
 }
+.logo-display {
+  display: none;
+}
 
 @include respond-below(phone) {
   .navbar {

@@ -27,17 +27,17 @@ const room = [
   {
     path: '/rooms/accessible-accommodation',
     name: 'Accessible Accommodation',
-    component: () => import('@/views/Room/Accessible.vue')
+    component: () => import('@/views/Room/RoomType/Accessible/Accessible.vue')
   },
   {
     path: '/pet-friendly',
     name: 'Pet Friendly',
-    component: () => import('@/views/Room/PetFriendly.vue')
+    component: () => import('@/views/Room/RoomType/PetFriendly/PetFriendly.vue')
   },
   {
     path: '/pet-friendly/pet-firendly-form',
     name: 'Pet Friendly Form',
-    component: () => import('@/views/Room/PetFriendlyForm.vue')
+    component: () => import('@/views/Room/RoomType/PetFriendly/PetFriendlyForm.vue')
   }
   // ,
   // {

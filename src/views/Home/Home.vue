@@ -31,36 +31,30 @@
             <circle id="XMLID_418_" cx="4.5" cy="17.5" r="0.5"/>
           </svg>
         </div>
-        <div class="flex--column flex--center">
-          <div class="home__slogan--title">
-            <h1>Let Your Soul Follow the Nature</h1>
-          </div>
-          <div class="home__slogan--subtitle">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem cupiditate dolor eaque ex fuga inventore, ipsa molestiae perspiciatis sunt? A excepturi explicabo natus nisi nobis omnis, placeat quod ut.</p>
-          </div>
+        <div class="home__slogan--content flex--column flex--center">
+          <h1>Let Your Soul Follow the Nature</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem cupiditate dolor eaque ex fuga inventore, ipsa molestiae perspiciatis sunt? A excepturi explicabo natus nisi nobis omnis, placeat quod ut.</p>
         </div>
       </div>
     </section>
     <section class="room flex--row">
-      <div class="room--images">
+      <div class="room--image">
         <img src="@/assets/images/homepage/room-img.jpg" alt="Room">
       </div>
-      <div>
-        <div class="room--type flex--column">
-          <h1 class="util__header--subtitle">Stay with us</h1>
-          <h4 class="util__header--title">Beautifully set amidst the wonderful nature around.</h4>
-          <br>
-          <ul>
-            <li><router-link to="/rooms/classic-guestroom">Classic Guestroom</router-link></li>
-            <el-divider/>
-            <li><router-link to="/rooms/deluxe-guestroom">Deluxe Guestroom</router-link></li>
-            <el-divider/>
-            <li><router-link to="/rooms/the-spa-suite">The Spa Suite</router-link></li>
-            <el-divider/>
-            <li><router-link to="/rooms/luxury-suite">Luxury Suite</router-link></li>
-          </ul>
-          <router-link to="/rooms" class="room--link">VIEW DETAIL</router-link>
-        </div>
+      <div class="room--type flex--column page-content--header">
+        <h1>Stay with us</h1>
+        <h4>Beautifully set amidst the wonderful nature around.</h4>
+        <br>
+        <ul>
+          <li><router-link to="/rooms/classic-guestroom">Classic Guestroom</router-link></li>
+          <el-divider/>
+          <li><router-link to="/rooms/deluxe-guestroom">Deluxe Guestroom</router-link></li>
+          <el-divider/>
+          <li><router-link to="/rooms/the-spa-suite">The Spa Suite</router-link></li>
+          <el-divider/>
+          <li><router-link to="/rooms/luxury-suite">Luxury Suite</router-link></li>
+        </ul>
+        <router-link to="/rooms" class="room--link">VIEW DETAIL</router-link>
       </div>
     </section>
     <section class="carousel">
@@ -80,100 +74,104 @@
         </vue-flux>
       </div>
     </section>
-    <section class="dining flex--column flex--center">
-      <div class="util__flex--row">
-        <div class="dining__content util__flex--column">
-          <div>
-            <h1 class="util__header--subtitle">Dine with stunning view</h1>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
-          </div>
-          <button><router-link to="/dining">DINE WITH US</router-link></button>
+    <section class="dining flex--row">
+      <div class="dining__content flex--column">
+        <div class="page-content--header">
+          <h1>Dine with stunning view</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
         </div>
-        <div class="dining__image">
-          <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dining">
-        </div>
+        <button><router-link to="/dining">DINE WITH US</router-link></button>
+      </div>
+      <div class="dining__image">
+        <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dining">
       </div>
     </section>
-    <section class="spa flex--column">
-      <div class="spa__container util__flex--row">
+    <section class="spa flex--column flex--center">
+      <div class="spa__container flex--row">
         <div class="spa__container--slogan">
           <h1>Recover and relax with rejuvenating spa treatment</h1>
         </div>
-        <div class="spa__container--content util__flex--column">
-          <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
+        <div class="spa__container--content flex--column page-content--body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
+          <br>
           <button><router-link to="/spa-wellness">VIEW MORE</router-link></button>
         </div>
       </div>
     </section>
-    <section class="events">
-      <div class="events__container util__flex--column">
-        <div class="events__header util__flex--column">
-          <h1 class="util__header--subtitle">Inspired Gatherings</h1>
-          <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
-        </div>
-        <div class="events__body util__flex--row">
-          <div class="util__flex--column events__content">
-            <div class="image">
-              <img src="@/assets/images/homepage/events-img.jpg" alt="Events">
-            </div>
-            <div class="content">
-              <h4 class="util__header--title">Meeting & Events</h4>
-              <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eum explicabo quidem.</p>
-              <router-link to="/events">Learn more</router-link>
-            </div>
+    <section class="events flex--column flex--center">
+      <div class="events__header flex--column page-content--header">
+        <h1>Inspired Gatherings</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
+      </div>
+      <div class="events__body flex--row">
+        <div class="flex--column events__content">
+          <div class="image">
+            <img src="@/assets/images/homepage/events-img.jpg" alt="Events">
           </div>
-          <div class="util__flex--column events__content">
-            <div class="image">
-              <img src="@/assets/images/homepage/wedding-img.jpg" alt="Wedding">
-            </div>
-            <div class="content">
-              <h4 class="util__header--title">Wedding</h4>
-              <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at dolorum exercitationem!</p>
-              <router-link to="/wedding">Learn more</router-link>
-            </div>
+          <div class="content page-content--body">
+            <h4>Meeting & Events</h4>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eum explicabo quidem.</p>
+            <br>
+            <router-link to="/events">Learn more</router-link>
+          </div>
+        </div>
+        <div class="flex--column events__content">
+          <div class="image">
+            <img src="@/assets/images/homepage/wedding-img.jpg" alt="Wedding">
+          </div>
+          <div class="content page-content--body">
+            <h4>Wedding</h4>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at dolorum exercitationem!</p>
+            <br>
+            <router-link to="/wedding">Learn more</router-link>
           </div>
         </div>
       </div>
     </section>
     <section class="offers">
-      <div class="offers__container util__flex--column">
-        <div class="offers__header util__flex--column">
-          <h1 class="util__header--subtitle">Special Offers & Packages</h1>
+      <div class="flex--column flex--center">
+        <div class="offers__header flex--column page-content--header">
+          <h1>Special Offers</h1>
           <router-link to="/specials">VIEW ALL OFFERS</router-link>
         </div>
-        <div class="offers__body util__flex--row">
-          <div class="content util__flex--column">
+        <div class="offers__body flex--row">
+          <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-1.jpg" alt="Spa">
+              <img src="@/assets/images/homepage/specials-1.jpg" alt="Spa">
             </div>
             <br>
-            <div>
-              <h4 class="util__header--title">Spa & Breakfast Package</h4>
-              <p class="util__header--description">Refresh your mind and bodies with a couples
+            <div class="page-content--body">
+              <h4>Spa & Breakfast Package</h4>
+              <br>
+              <p>Refresh your mind and bodies with a couples
               massage, our classic spa treatment, or private in-room treatment, including one continental
               breakfast in offer.</p>
             </div>
           </div>
-          <div class="content util__flex--column">
+          <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-2.jpg" alt="River">
+              <img src="@/assets/images/homepage/specials-2.jpg" alt="River">
             </div>
             <br>
-            <div>
-              <h4 class="util__header--title">Summertime Escape</h4>
-              <p class="util__header--description">It's easy to fall in love and free your soul through the stunning
+            <div class="page-content--body">
+              <h4>Summertime Escape</h4>
+              <br>
+              <p>It's easy to fall in love and free your soul through the stunning
                 nature from your private deck. There're only few spots available for Deluxe Guestrooms and Luxury Suite.
                 Contact us to get the early deal as soon as possible.</p>
             </div>
           </div>
-          <div class="content util__flex--column">
+          <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-3.jpg" alt="Adventure">
+              <img src="@/assets/images/homepage/specials-3.jpg" alt="Adventure">
             </div>
             <br>
-            <div>
-              <h4 class="util__header--title">Nature Adventure Package</h4>
-              <p class="util__header--description">Experience with one-day hike with our local hiking
+            <div class="page-content--body">
+              <h4>Nature Adventure Package</h4>
+              <br>
+              <p>Experience with one-day hike with our local hiking
               guides to create the forgettable memories in this trip that best suits your desires.</p>
             </div>
           </div>

@@ -1,9 +1,9 @@
 <template>
   <div>
     <checkout-navbar/>
-    <section class="checkout">
-      <div class="checkout__container">
-        <div class="checkout--alert">
+    <section class="reservation">
+      <div class="reservation__container">
+        <div class="reservation--alert">
           <span class="flex--row">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 1.1rem; height: 1.1rem; margin-right: 5px;" xml:space="preserve">
@@ -66,9 +66,9 @@
             </div>
             <div class="checkout__content">
               <room-select/>
-<!--              <add-ons/>-->
-<!--              <guest-details/>-->
-<!--              <confirmation/>-->
+              <!--              <add-ons/>-->
+              <!--              <guest-details/>-->
+              <!--              <confirmation/>-->
             </div>
           </div>
           <sidebar :bookingDetails="bookingDetails" v-if="!isBookingCompleted"/>

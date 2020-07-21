@@ -7,21 +7,21 @@
           <div class="accessible-room__image">
             <img src="@/assets/images/room/accessible-img-2.jpg" alt="Accessible">
           </div>
-          <div class="accessible-room__content--first">
-            <h4 class="util__header--title">Accessible Accommodations</h4>
-            <h1 class="util__header--subtitle">For people with disabilities</h1>
-            <p class="util__header--description">We offer rooms for accommodate guests with disabilities.
+          <div class="accessible-room__content--first page-content--header">
+            <h4>Accessible Accommodations</h4>
+            <h1>For people with disabilities</h1>
+            <p>We offer rooms for accommodate guests with disabilities.
             All details will be provided below, and you call book online or call our Reservation Specialist if
             you'd like to make a reservation or have any questions. We are really happy to help you everything as
             you request for.</p>
             <button>RESERVATION NOW</button>
           </div>
         </div>
-        <div class="accessible-room__body--second util__flex--row">
-          <div class="accessible-room__content--second util__flex--column">
-            <h1 class="util__header--subtitle">Amenities</h1>
+        <div class="accessible-room__body--second flex--row">
+          <div class="accessible-room__content--second flex--column page-content--body page-content--title">
+            <h2>Amenities</h2>
             <div>
-              <h4 class="util__header--title">Communication/Hearing Room Features</h4>
+              <h4>Communication/Hearing Room Features</h4>
               <ul>
                 <li>Strobed doorbell</li>
                 <li>Fire Alarm and Smoke Detector Strobe</li>
@@ -29,7 +29,7 @@
               </ul>
             </div>
             <div>
-              <h4 class="util__header--title">Mobility Room Features</h4>
+              <h4>Mobility Room Features</h4>
               <ul>
                 <li>Grab Bars in Bathroom</li>
                 <li>Fold Down Shower Seat</li>
@@ -72,13 +72,14 @@ export default {
         justify-content: space-evenly;
       }
       &--second {
+        justify-content: space-evenly;
         padding: 30vh 0 0 0;
       }
     }
     &__image {
-      width: 450px;
-      height: 450px;
-      & img {
+      width: 40%;
+      height: 425px;
+      img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -87,9 +88,8 @@ export default {
     }
     &__content {
       &--first {
-        width: 45%;
-        padding: 0 50px;
-        & button {
+        width: 37.5%;
+        button {
           margin: 40px auto;
           padding: 10px 50px;
           background-color: transparent;
@@ -109,14 +109,16 @@ export default {
         }
       }
       &--second {
-        width: 45%;
-        padding: 0 50px;
-        & ul {
-          padding-top: 20px;
-          padding-bottom: 20px;
+        width: 37.5%;
+        h4 {
           text-align: start;
-          font-size: 1.2rem;
-          line-height: 3rem;
+        }
+        ul {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-align: start;
+          font-size: 1.3rem;
+          line-height: 2.2rem;
         }
       }
     }

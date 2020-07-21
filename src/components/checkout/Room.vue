@@ -9,10 +9,11 @@
           <h4 class="util__header--title">Classic Guestroom</h4>
           <h5>Sleep 2 | 1 King | 610 square ft</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem beatae culpa enim, maiores ratione sint suscipit veniam! Dicta rerum, sunt tenetur ullam velit vero.</p>
-          <span>Room details</span>
+<!--          TODO: Change link to popout modal-->
+          <span><router-link to="/rooms/classic-guestroom" target="_blank" rel="noreferrer noopener">Room details</router-link></span>
         </div>
         <el-divider/>
-        <div class="util__flex--row room--best-rate">
+        <div class="flex--row room--best-rate">
           <div>
             <span>Best Available Rate</span>
             <p>Best rate guaranteed with fully flexible cancellation policy</p>

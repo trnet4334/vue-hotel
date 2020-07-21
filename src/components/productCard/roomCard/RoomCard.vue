@@ -1,5 +1,5 @@
 <template>
-  <div class="card util__flex--column">
+  <div class="card flex--column">
     <div class="card__carousel">
       <vue-flux
         :options="options"
@@ -14,14 +14,20 @@
         </template>
       </vue-flux>
     </div>
-    <div class="card__body util__flex--column">
-      <div class="card__body--content">
-        <h3>{{room.name}}</h3>
+    <div class="card__body flex--column flex--center">
+      <div class="card__body--content page-content--body">
+        <h4>{{room.name}}</h4>
+        <br>
         <p>{{room.description}}</p>
       </div>
+      <br>
       <div class="card__body--link">
-        <router-link :to="{ name: `${room.routeName}` }">ROOM DETAILS</router-link>
-        <router-link to="/reservation">RESERVE NOW</router-link>
+        <router-link :to="{ name: `${room.routeName}` }">
+          ROOM DETAILS
+        </router-link>
+        <router-link to="/reservation" target="_blank" rel="noreferrer noopener">
+          RESERVE NOW
+        </router-link>
       </div>
     </div>
   </div>

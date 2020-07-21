@@ -1,3 +1,5 @@
+@import '../../styles/app';
+
 .home {
   width: 100%;
   height: 100vh;
@@ -12,28 +14,30 @@
       height: 80px;
       margin-bottom: 50px;
     }
-    &--title h1{
-      font-size: 2.3rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-    &--subtitle p{
-      font-size: 1.3rem;
-      text-wrap: normal;
-      width: 60%;
-      margin: 0 auto;
+    &--content {
+      & h1{
+        font-size: 2.3rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      & p{
+        font-size: 1.3rem;
+        text-wrap: normal;
+        width: 60%;
+        margin: 0 auto;
+      }
     }
   }
 }
 .room {
   width: 100%;
-  height: 100vh;
+  height: auto;
   margin-bottom: 15vh;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  &--images {
-    width: 500px;
-    height: 500px;
+  &--image {
+    width: 35%;
+    height: 450px;
     & img {
       width: 100%;
       height: 100%;
@@ -42,12 +46,10 @@
     }
   }
   &--type {
-    width: 80%;
-    margin: 0 auto;
-    padding-left: 60px;
+    width: 35%;
     align-items: flex-start;
     & ul {
-      width: 100%;
+      width: 250px;
       text-align: start;
       padding-left: 0;
       margin-bottom: 50px;
@@ -96,23 +98,23 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  margin-bottom: 15vh;
   &__container {
     width: 100%;
-    height: 90%;
-    background-color: grey;
+    height: 100%;
   }
 }
 .dining {
   width: 100%;
-  height: 100vh;
-  justify-content: center;
+  height: auto;
+  margin-bottom: 15vh;
+  justify-content: space-evenly;
   &__content {
-    width: 37.5vw;
-    padding: 5vh 2.5vw;
+    width: 37.5%;
   }
   &__image {
-    width: 500px;
-    height: 500px;
+    width: 35%;
+    height: 450px;
     & img {
       width: 100%;
       height: 100%;
@@ -150,7 +152,8 @@
   width: 100%;
   height: 100vh;
   position: relative;
-  padding: 15vh 2vw 0 2vw;
+  padding: 0 2vw;
+  margin-bottom: 15vh;
   &:before {
     content: '';
     width: 100%;
@@ -167,11 +170,10 @@
     width: 100%;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     &--slogan {
-      width: 35vw;
-      height: 70%;
-      padding: 0 1vw;
+      width: 35%;
+      height: fit-content;
       & h1 {
         font-size: 3.3rem;
         font-weight: bold;
@@ -184,17 +186,10 @@
       }
     }
     &--content {
-      width: 40vw;
-      height: 70%;
+      width: 40%;
+      height: fit-content;
       padding: 0 2.5vw;
-      & p {
-        font-size: 1.3rem;
-        line-height: 1.8rem;
-        color: #ffffff;
-        text-wrap: normal;
-        text-align: start;
-        margin-bottom: 40px;
-      }
+      color: #ffffff;
       & button {
         margin: 20px auto;
         padding: 20px 80px;
@@ -225,13 +220,11 @@
 }
 .events {
   width: 100%;
-  &__container {
-    padding: 10vh 5vw;
-  }
+  margin-bottom: 15vh;
   &__body {
     justify-content: space-evenly;
     .image {
-      width: 450px;
+      width: 95%;
       height: 450px;
       margin: 20px auto;
       & img {
@@ -242,20 +235,14 @@
       }
     }
     .content {
-      & h4, p {
-        text-align: center;
-      }
+      width: 90%;
+      margin: 0 auto;
       & a {
         font-size: 1.3rem;
         color: #3d405b;
         &:visited {
           color: #3d405b;
         }
-      }
-      & p {
-        padding: 15px 0;
-        width: 75%;
-        margin: 0 auto;
       }
     }
   }
@@ -267,21 +254,17 @@
     }
   }
   &__content {
-    width: 45%;
+    width: 35%;
+    align-items: center;
   }
 }
 .offers {
   width: 100%;
   position: relative;
-  &__container {
-    padding: 10vh 5vw;
-  }
+  margin-bottom: 15vh;
   &__header {
-    & h1 {
-      text-align: center;
-    }
     & a {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin: 15px auto;
       &:visited {
         color: #3d405b;
@@ -289,25 +272,293 @@
     }
   }
   &__body {
+    justify-content: space-evenly;
     .content {
-      width: 33%;
+      width: 30%;
+      align-items: center;
       & p {
-        padding: 15px;
-        width: 100%;
-      }
-      & h4 {
-        text-align: center;
+        width: 90%;
+        margin: 0 auto;
       }
       .image {
-        width: 375px;
-        height: 375px;
-        margin: 0 auto;
+        width: 85%;
+        height: 325px;
         & img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: 50% 50%;
         }
+      }
+    }
+  }
+}
+
+@include respond-below(phone) {
+  .home__slogan--content {
+    & h1 {
+      font-size: 2rem;
+    }
+    & p {
+      width: 90%;
+    }
+  }
+  .room {
+    &--image {
+      width: 90%;
+      height: 350px;
+      margin-bottom: 20px;
+    }
+    &--type {
+      width: 85%;
+      margin: 0 auto;
+      & ul li {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .carousel {
+    display: none;
+  }
+  .dining {
+    flex-direction: column-reverse;
+    align-items: center;
+    &__content {
+      width: 85%;
+    }
+    &__image {
+      width: 90%;
+      height: 350px;
+      margin-bottom: 20px;
+    }
+  }
+  .spa {
+    height: auto;
+    &__container {
+      &--slogan {
+        width: 100%;
+        & h1 {
+          font-size: 1.6rem;
+          width: 95%;
+          margin: 0 auto;
+          padding: 20px 0;
+          text-align: center;
+        }
+      }
+      &--content {
+        width: 100%;
+        height: auto;
+        & p {
+          width: 90%;
+          margin: 0 auto;
+        }
+        & button {
+          padding: 10px 40px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+  .events {
+    &__header {
+      width: 90%;
+    }
+    &__content {
+      width: 90%;
+      margin-bottom: 20px;
+    }
+    &__body {
+      .image {
+        height: 350px;
+      }
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 95%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .home__slogan--content {
+    & p {
+      width: 85%;
+    }
+  }
+  .room {
+    &--image {
+      width: 85%;
+      height: 325px;
+      margin-bottom: 20px;
+    }
+    &--type {
+      width: 75%;
+      margin: 0 auto;
+      & ul li {
+        font-size: 1.4rem;
+      }
+    }
+  }
+  .carousel {
+    display: none;
+  }
+  .dining {
+    flex-direction: column-reverse;
+    align-items: center;
+    &__content {
+      width: 75%;
+    }
+    &__image {
+      width: 85%;
+      height: 325px;
+      margin-bottom: 20px;
+    }
+  }
+  .spa {
+    height: auto;
+    &__container {
+      &--slogan {
+        width: 100%;
+        & h1 {
+          font-size: 1.9rem;
+          width: 95%;
+          margin: 0 auto;
+          padding: 20px 0;
+          text-align: center;
+        }
+      }
+      &--content {
+        width: 100%;
+        height: auto;
+        & p {
+          width: 90%;
+          margin: 0 auto;
+        }
+        & button {
+          padding: 10px 40px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+  .events {
+    &__header {
+      width: 90%;
+    }
+    &__content {
+      width: 75%;
+      margin-bottom: 20px;
+    }
+    &__body {
+      .image {
+        height: 325px;
+      }
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 87.5%;
+        margin-bottom: 30px;
+        .image {
+          height: 275px;
+        }
+      }
+    }
+  }
+}
+
+@include  respond-between(tablet, tablet-lg) {
+  .room {
+    &--image {
+      width: 75%;
+      height: 325px;
+      margin-bottom: 20px;
+    }
+    &--type {
+      width: 72.5%;
+      margin: 0 auto;
+      & ul li {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .carousel {
+    height: auto;
+  }
+  .spa {
+    &__container {
+      &--slogan {
+        & h1 {
+          font-size: 2.8rem;
+          line-height: 3.5rem;
+          width: 95%;
+          margin: 0 auto;
+          padding: 20px 0;
+        }
+      }
+      &--content {
+        width: 55%;
+        & p {
+          width: 100%;
+        }
+        & button {
+          padding: 15px 50px;
+        }
+      }
+    }
+  }
+  .events {
+    &__header {
+      width: 85%;
+    }
+    &__content {
+      width: 75%;
+      margin-bottom: 20px;
+    }
+    &__body {
+      .image {
+        height: 325px;
+      }
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 82.5%;
+        margin-bottom: 30px;
+        .image {
+          height: 300px;
+        }
+      }
+    }
+  }
+}
+
+@include respond-between(tablet, desktop) {
+  .room {
+    &--image {
+      width: 45%;
+      height: 450px;
+    }
+    &--type {
+      width: 30%;
+    }
+  }
+  .events__body {
+    .image {
+      height: 375px;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 67.5%;
+        margin-bottom: 30px;
       }
     }
   }

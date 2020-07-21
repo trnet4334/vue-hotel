@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="background"/>
-    <div class="body">
-      <h1 class="slogan util__flex--column">
+    <div class="body flex--column">
+      <h1 class="slogan flex--column">
         <span>Find</span>
         <span>Yourself</span>
         <span>Here</span>

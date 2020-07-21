@@ -14,7 +14,7 @@
         <div class="body flex--row">
           <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-1.jpg" alt="Package 1">
+              <img src="@/assets/images/specials/specials-img-4.jpg" alt="Package 1">
             </div>
             <div class="flex--column context page-content--body">
               <h4>Spa & Breakfast Package</h4>
@@ -27,7 +27,7 @@
           </div>
           <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-2.jpg" alt="Package 2">
+              <img src="@/assets/images/specials/specials-img-5.jpg" alt="Package 2">
             </div>
             <div class="flex--column context page-content--body">
               <h4>Nature Adventure Package</h4>
@@ -40,7 +40,7 @@
           </div>
           <div class="content flex--column">
             <div class="image">
-              <img src="@/assets/images/homepage/specials-img-3.jpg" alt="Package 3">
+              <img src="@/assets/images/specials/specials-img-6.jpg" alt="Package 3">
             </div>
             <div class="flex--column context page-content--body">
               <h4>Summertime Escape</h4>

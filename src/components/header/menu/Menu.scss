@@ -1,3 +1,5 @@
+@import '../../../styles/app';
+
 .overlay {
   width: 0;
   height: 0;
@@ -60,40 +62,15 @@
   }
   &__content {
     &--first {
-      align-items: center;
-      justify-content: space-between;
       flex-basis: 15%;
-      .button--close {
-        & div {
-          width: 30px;
-          height: 2px;
-          background-color: #ffffff;
-        }
-        & div:nth-of-type(1) {
-          transform: rotate(45deg);
-        }
-        & div:nth-of-type(2) {
-          transform: rotate(-45deg);
-        }
-      }
+      position: relative;
     }
     &--second {
       flex-basis: 70%;
       padding: 0 2.5vw;
       justify-content: center;
       width: 100%;
-      .links {
-        flex-direction: row-reverse;
-        width: 100%;
-        padding-left: 30px;
-        .link {
-          width: 85%;
-          margin: 0 auto;
-          justify-content: space-evenly;
-          align-items: flex-start;
-          flex-wrap: wrap;
-        }
-      }
+      position: relative;
       & ul {
         list-style-image: url("../../../assets/images/icons/Cactus.svg");
         & li {
@@ -115,7 +92,8 @@
   &__footer {
     flex-direction: row-reverse;
     flex-basis: 15%;
-    padding: 0 15vw;
+    position: relative;
+    width: 100%;
     .content {
       align-items: flex-start;
       & h5, p, a {
@@ -133,7 +111,80 @@
     }
   }
 }
+.links {
+  flex-direction: row-reverse;
+  width: 100%;
+  padding-left: 30px;
+  .link {
+    width: 85%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
 .display-menu {
   width: 100%;
   height: 100%;
+}
+
+@include respond-below(phone) {
+  .overlay__half-background {
+    width: 100%;
+    overflow: hidden;
+  }
+  .overlay__content--first {
+    height: 10vh;
+    flex-basis: unset;
+  }
+  .overlay__footer {
+    align-items: center;
+    margin-top: 30px;
+    & p {
+      text-align: start;
+    }
+  }
+  .links .link {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    & ul li {
+      font-size: 1.5rem;
+      line-height: 2.1rem;
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .overlay__half-background {
+    width: 100%;
+    overflow: hidden;
+  }
+  .overlay__content--first {
+    height: 10vh;
+    flex-basis: unset;
+  }
+  .overlay__footer {
+    align-items: center;
+    margin-top: 30px;
+    & p {
+      text-align: start;
+    }
+  }
+  .links .link {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15vw;
+    & ul li {
+      font-size: 1.7rem;
+      line-height: 2.3rem;
+    }
+  }
+}
+
+@include respond-between(tablet, tablet-lg) {
+  .overlay__half-background {
+    width: 100%;
+  }
 }
