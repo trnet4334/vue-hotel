@@ -3,52 +3,54 @@
     <navbar/>
     <section class="room-details">
       <div class="room-details__container">
-        <div class="room-details__body--first util__flex--row">
-          <div class="room-details__image">
-            <img src="@/assets/images/room/classic-guestroom-img.jpg" alt="#">
+        <div class="page-wrapper">
+          <div class="room-details__body--first flex--row">
+            <div class="room-details__image">
+              <img src="@/assets/images/room/classic-guestroom-img.jpg" alt="#">
+            </div>
+            <div class="room-details__content--first page-content--header">
+              <h4>{{classicGuestroom.name}}</h4>
+              <h1>{{classicGuestroom.title}}</h1>
+              <p>{{classicGuestroom.description}}</p>
+              <br>
+              <p>{{classicGuestroom.description2}}</p>
+              <button>
+                <router-link to="/reservation">
+                  RESERVATION NOW
+                </router-link>
+              </button>
+            </div>
           </div>
-          <div class="room-details__content--first">
-            <h4 class="util__header--title">{{classicGuestroom.name}}</h4>
-            <h1 class="util__header--subtitle">{{classicGuestroom.title}}</h1>
-            <p class="util__header--description">{{classicGuestroom.description}}</p>
-            <br>
-            <p class="util__header--description">{{classicGuestroom.description2}}</p>
-            <button>
-              <router-link to="/reservation">
-                RESERVATION NOW
-              </router-link>
-            </button>
+          <div class="room-details__body--second">
+            <div class="room-details__content--second">
+              <ul>
+                <li v-for="item in classicGuestroom.amenities" :key="item.index">{{item}}</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="room-details__body--second">
-          <div class="room-details__content--second">
-            <ul>
-              <li v-for="item in classicGuestroom.amenities" :key="item.index">{{item}}</li>
-            </ul>
+          <div class="room-details__body--third">
+            <div class="room-details__content--third">
+              <vue-flux
+                :options="options"
+                :images="images"
+                :transitions="transitions"
+              >
+                <template v-slot:preloader>
+                  <flux-preloader />
+                </template>
+                <template v-slot:controls>
+                  <flux-controls />
+                </template>
+              </vue-flux>
+            </div>
           </div>
-        </div>
-        <div class="room-details__body--third">
-          <div class="room-details__content--third">
-            <vue-flux
-              :options="options"
-              :images="images"
-              :transitions="transitions"
-            >
-              <template v-slot:preloader>
-                <flux-preloader />
-              </template>
-              <template v-slot:controls>
-                <flux-controls />
-              </template>
-            </vue-flux>
-          </div>
-        </div>
-        <div class="room-details__body--fourth">
-          <div class="room-details__content--fourth util__flex--column">
-            <h1 class="util__header--subtitle">More rooms</h1>
-            <div class="room-cards util__flex--row">
-              <div class="room-card" v-for="room in rooms" :key="room.id">
-                <room-card :room="room"/>
+          <div class="room-details__body--fourth">
+            <div class="room-details__content--fourth flex--column">
+              <h2 class="page-content--title">More rooms</h2>
+              <div class="room__cards flex--row">
+                <div class="room__card" v-for="room in rooms" :key="room.id">
+                  <room-card :room="room"/>
+                </div>
               </div>
             </div>
           </div>

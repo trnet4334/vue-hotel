@@ -3,16 +3,16 @@
     <navbar/>
     <section class="room-details">
       <div class="room-details__container">
-        <div class="room-details__body--first util__flex--row">
+        <div class="room-details__body--first flex--row">
           <div class="room-details__image">
             <img src="@/assets/images/room/luxury-suite-img.jpg" alt="#">
           </div>
-          <div class="room-details__content--first">
-            <h4 class="util__header--title">{{luxurySuite.name}}</h4>
-            <h1 class="util__header--subtitle">{{luxurySuite.title}}</h1>
-            <p class="util__header--description">{{luxurySuite.description}}</p>
+          <div class="room-details__content--first page-content--header">
+            <h4>{{luxurySuite.name}}</h4>
+            <h1>{{luxurySuite.title}}</h1>
+            <p>{{luxurySuite.description}}</p>
             <br>
-            <p class="util__header--description">{{luxurySuite.description2}}</p>
+            <p>{{luxurySuite.description2}}</p>
             <button>
               <router-link to="/reservation">
                 RESERVATION NOW
@@ -44,10 +44,10 @@
           </div>
         </div>
         <div class="room-details__body--fourth">
-          <div class="room-details__content--fourth util__flex--column">
-            <h1 class="util__header--subtitle">More rooms</h1>
-            <div class="room-cards util__flex--row">
-              <div class="room-card" v-for="room in rooms" :key="room.id">
+          <div class="room-details__content--fourth flex--column">
+            <h2 class="page-content--title">More rooms</h2>
+            <div class="room__cards flex--row">
+              <div class="room__card" v-for="room in rooms" :key="room.id">
                 <room-card :room="room"/>
               </div>
             </div>

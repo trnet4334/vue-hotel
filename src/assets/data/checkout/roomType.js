@@ -3,7 +3,7 @@ const roomType = [
     name: 'Classic Guestroom',
     title: 'Mediterranean Inspired',
     description: 'You will find that is exceptionally alluring and surprisingly spacious ' +
-      'inside our Classic Guestroom. A spacious private bathroom with a shower and over-sized' +
+      'inside our Classic Guestroom. A spacious private bathroom with a shower and over-sized ' +
       'soaking tub, relaxation and restorative sleep awaits.',
     description2: 'Available with one king or double queen beds.',
     amenities: [

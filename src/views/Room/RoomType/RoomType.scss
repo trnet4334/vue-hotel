@@ -1,3 +1,5 @@
+@import '../../../styles/app';
+
 .room-details {
   width: 100%;
   position: relative;
@@ -7,7 +9,7 @@
     padding: 20vh 0 5vh 0;
   }
   &__body {
-    &--first, &--second, &--third, &--fourth {
+    &--first, &--second, &--fourth {
       margin-bottom: 20vh;
       width: 100%;
       padding: 0 5vw;
@@ -17,6 +19,7 @@
     }
     &--third {
       height: 100vh;
+      margin-bottom: 20vh;
     }
     &--fourth {
       padding: 0 5vw;
@@ -80,8 +83,8 @@
     }
   }
   &__image {
-    width: 450px;
-    height: 450px;
+    width: 40%;
+    height: 425px;
     & img {
       width: 100%;
       height: 100%;
@@ -96,6 +99,144 @@
   flex-wrap: wrap;
   margin-top: 40px;
   .room-card {
+    width: 50%;
+  }
+}
+
+
+@include respond-below(phone) {
+  .room-details {
+    &__image {
+      width: 100%;
+      height: 225px;
+      margin-bottom: 30px;
+    }
+    &__content {
+      &--first {
+        width: 90%;
+      }
+      &--second {
+        width: 100%;
+        padding: 5px 15px;
+        ul {
+          columns: 2;
+          padding: 0 0 0 10px;
+          li {
+            line-height: 2rem;
+          }
+        }
+      }
+    }
+    &__body--first, &__body--second {
+      margin-bottom: 10vh;
+    }
+    &__body--third {
+      display: none;
+    }
+  }
+  .room__cards {
+    margin-top: 0;
+    .room__card {
+      width: 100%;
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+   .room-details {
+     &__image {
+       width: 90%;
+       height: 225px;
+       margin-bottom: 30px;
+     }
+     &__content {
+       &--first {
+         width: 85%;
+       }
+       &--second {
+         width: 100%;
+         padding: 5px 15px;
+         ul {
+           columns: 2;
+           padding: 0 0 0 10px;
+           li {
+             line-height: 2.2rem;
+           }
+         }
+       }
+     }
+     &__body--first, &__body--second {
+       margin-bottom: 10vh;
+     }
+     &__body--third {
+       display: none;
+     }
+   }
+   .room__cards {
+     margin-top: 0;
+     .room__card {
+       width: 90%;
+       margin: 0 auto;
+     }
+   }
+ }
+
+@include respond-between(tablet, tablet-lg) {
+  .room-details {
+    &__image {
+      width: 85%;
+      height: 325px;
+      margin-bottom: 30px;
+    }
+    &__content {
+      &--first {
+        width: 80%;
+      }
+      &--second {
+        width: 100%;
+        ul {
+          columns: 2;
+          padding: 0 0 0 10px;
+          li {
+            line-height: 2.4rem;
+          }
+        }
+      }
+    }
+    &__body--first, &__body--second, &__body--third {
+      height: auto;
+      margin-bottom: 10vh;
+    }
+  }
+  .room__cards .room__card {
+      width: 85%;
+      margin: 0 auto;
+  }
+}
+
+@include respond-between(tablet-lg, desktop) {
+  .room-details {
+    &__image {
+      height: 375px;
+    }
+    &__content--second {
+      width: 80%;
+      ul {
+        columns: 2;
+        padding: 0 0 0 10px;
+        li {
+          line-height: 2.6rem;
+        }
+      }
+    }
+  }
+  .room__cards .room__card {
+    width: 50%;
+  }
+}
+
+@include respond-above(desktop) {
+  .room__cards .room__card {
     width: 50%;
   }
 }

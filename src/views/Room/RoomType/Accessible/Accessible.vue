@@ -2,45 +2,47 @@
   <div>
     <Navbar/>
     <section class="accessible-room">
-      <div class="accessible-room__container">
-        <div class="accessible-room__body--first util__flex--row">
-          <div class="accessible-room__image">
-            <img src="@/assets/images/room/accessible-img-2.jpg" alt="Accessible">
-          </div>
-          <div class="accessible-room__content--first page-content--header">
-            <h4>Accessible Accommodations</h4>
-            <h1>For people with disabilities</h1>
-            <p>We offer rooms for accommodate guests with disabilities.
-            All details will be provided below, and you call book online or call our Reservation Specialist if
-            you'd like to make a reservation or have any questions. We are really happy to help you everything as
-            you request for.</p>
-            <button>RESERVATION NOW</button>
-          </div>
-        </div>
-        <div class="accessible-room__body--second flex--row">
-          <div class="accessible-room__content--second flex--column page-content--body page-content--title">
-            <h2>Amenities</h2>
-            <div>
-              <h4>Communication/Hearing Room Features</h4>
-              <ul>
-                <li>Strobed doorbell</li>
-                <li>Fire Alarm and Smoke Detector Strobe</li>
-                <li>Assistive listening devices are available</li>
-              </ul>
+      <div class="page-container">
+        <div class="page-wrapper">
+          <div class="accessible-room__body--first flex--row">
+            <div class="accessible-room__image">
+              <img src="@/assets/images/room/accessible-img-2.jpg" alt="Accessible">
             </div>
-            <div>
-              <h4>Mobility Room Features</h4>
-              <ul>
-                <li>Grab Bars in Bathroom</li>
-                <li>Fold Down Shower Seat</li>
-                <li>Roll In Shower</li>
-                <li>Accessible Entry, Bathroom Doorways and Commode</li>
-                <li>Patio Access</li>
-              </ul>
+            <div class="accessible-room__content--first page-content--header">
+              <h4>Accessible Accommodations</h4>
+              <h1>For people with disabilities</h1>
+              <p>We offer rooms for accommodate guests with disabilities.
+                All details will be provided below, and you call book online or call our Reservation Specialist if
+                you'd like to make a reservation or have any questions. We are really happy to help you everything as
+                you request for.</p>
+              <button>RESERVATION NOW</button>
             </div>
           </div>
-          <div class="accessible-room__image">
-            <img src="@/assets/images/room/accessible-img-3.jpg" alt="Accessible">
+          <div class="accessible-room__body--second flex--row">
+            <div class="accessible-room__content--second flex--column page-content--body page-content--title">
+              <h2>Amenities</h2>
+              <div>
+                <h4>Communication/Hearing Room Features</h4>
+                <ul>
+                  <li>Strobed doorbell</li>
+                  <li>Fire Alarm and Smoke Detector Strobe</li>
+                  <li>Assistive listening devices are available</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Mobility Room Features</h4>
+                <ul>
+                  <li>Grab Bars in Bathroom</li>
+                  <li>Fold Down Shower Seat</li>
+                  <li>Roll In Shower</li>
+                  <li>Accessible Entry, Bathroom Doorways and Commode</li>
+                  <li>Patio Access</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accessible-room__image">
+              <img src="@/assets/images/room/accessible-img-3.jpg" alt="Accessible">
+            </div>
           </div>
         </div>
       </div>
@@ -61,66 +63,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-  .accessible-room {
-    position: relative;
-    &__container {
-      padding: 20vh 5vw;
-    }
-    &__body {
-      &--first, &--second {
-        justify-content: space-evenly;
-      }
-      &--second {
-        justify-content: space-evenly;
-        padding: 30vh 0 0 0;
-      }
-    }
-    &__image {
-      width: 40%;
-      height: 425px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
-    }
-    &__content {
-      &--first {
-        width: 37.5%;
-        button {
-          margin: 40px auto;
-          padding: 10px 50px;
-          background-color: transparent;
-          border: 2px solid #3d405b;
-          border-radius: 5px;
-          font-family: inherit;
-          font-weight: 700;
-          font-size: 1rem;
-          letter-spacing: 2px;
-          color: #3d405b;
-
-          &:hover {
-            background-color: #3d405b;
-            cursor: pointer;
-            color: #ffffff;
-          }
-        }
-      }
-      &--second {
-        width: 37.5%;
-        h4 {
-          text-align: start;
-        }
-        ul {
-          padding-top: 10px;
-          padding-bottom: 10px;
-          text-align: start;
-          font-size: 1.3rem;
-          line-height: 2.2rem;
-        }
-      }
-    }
-  }
-</style>
+<style src="./Accessible.scss" lang="scss" scoped/>
