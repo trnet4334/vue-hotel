@@ -1,37 +1,47 @@
+@import '../../../styles/app';
+
 nav {
   position: relative;
   width: 100%;
   height: 10vh;
-  padding: 20px 5vw;
-  .nav {
-    &__container {
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
+  padding: 20px 2vw;
+}
+.nav {
+  &__container {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    h1 {
+      font-size: 2rem;
     }
-    &__logo {
-      & h1 {
-        font-size: 2rem;
-      }
+  }
+}
+.list-items {
+  list-style-type: none;
+}
+.list-item {
+  padding: 0 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  align-items: center;
+  a {
+    text-decoration: none;
+    &:visited {
+      color: #3d405b;
     }
-    &__link {
-      & ul {
-        list-style-type: none;
-        & li {
-          padding: 0 10px;
-          font-size: 1.2rem;
-          font-weight: 600;
-          & a {
-            text-decoration: none;
-            &:visited {
-              color: #3d405b;
-            }
-          }
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@include  respond-below(tablet) {
+  .list-item {
+    padding: 0 3px;
+    a, span {
+      display: none;
     }
   }
 }

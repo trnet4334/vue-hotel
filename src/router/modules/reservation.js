@@ -2,7 +2,7 @@ const reservation = [
   {
     path: '/reservation',
     name: 'Reservation',
-    component: () => import('@/views/Checkout/Checkout.vue')
+    component: () => import('@/views/Reservation/Reservation.vue')
   }
 ]
 

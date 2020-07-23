@@ -1,0 +1,97 @@
+.checkout {
+  width: 100%;
+  padding: 12.5vh 5vw;
+  &__container {
+    width: 100%;
+    justify-content: space-between;
+  }
+  &__main {
+    flex-basis: 67.5%;
+    justify-content: space-evenly;
+  }
+  &__body {
+    width: 100%;
+  }
+  &__header {
+    width: 100%;
+    &--search {
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+      padding: 15px 10px;
+      border: 1px solid #3d405b;
+      background-color: #ffffff;
+      border-radius: 5px;
+      & button {
+        padding: 12px 12px;
+        font-size: 1.1rem;
+        border: none;
+        background-color: #283845;
+        color: #ffffff;
+        border-radius: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &--breadcrumb {
+      & h1 {
+        font-size: 2.6rem;
+      }
+    }
+    .search--col {
+      width: 100%;
+      height: 100%;
+      & span {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      & p {
+        font-size: 1.1rem;
+      }
+      & div:nth-of-type(1) {
+        align-items: flex-start;
+      }
+      & label {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      & input[id="code"] {
+        width: 75%;
+        margin: 0 auto;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid #3d405b;
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+        padding: 2px 10px;
+      }
+    }
+  }
+  &--alert {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto 2vh auto;
+    background-color: #ededee;
+    border-radius: 5px;
+    align-items: center;
+    & svg {
+      flex-basis: 5%;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-right: 5px;
+    }
+    & span {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      flex-basis: 92.5%;
+      text-align: center;
+    }
+  }
+}
+.item-30 {
+  flex-basis: 30%;
+}
+.item-10 {
+  flex-basis: 10%;
+}
