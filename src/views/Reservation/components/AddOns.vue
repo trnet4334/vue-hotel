@@ -12,7 +12,7 @@
 </template>
 <script>
 import addOns from '@/assets/data/checkout/addOns'
-import AddOnCard from '@/components/checkout/AddOnCard.vue'
+import AddOnCard from '@/components/checkout/AddOnCard/AddOnCard.vue'
 export default {
   components: {
     AddOnCard

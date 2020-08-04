@@ -103,7 +103,7 @@
               </div>
               <div class="flex--column">
                 <label for="budget">Total Budget*</label>
-                <input type="text" id="budget" v-model="requestInfo.budget" required>
+                <input type="text" id="budget" v-model="requestInfo.budget" placeholder="Number of budget" required>
               </div>
               <div class="flex--column">
                 <label for="comments">Comments</label>
@@ -121,7 +121,8 @@
                         id="scheduledArrivalDate"
                         required
                         v-model="requestInfo.scheduledDateRange.scheduledArrivalDate"
-                        class="util__flex--row"
+                        class="flex--row"
+                        :min-date="new Date()"
                         :input-props="{
                         class: 'date-picker-input',
                         readonly: true,

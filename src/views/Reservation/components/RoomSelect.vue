@@ -1,30 +1,31 @@
 <template>
   <section class="room__select">
-    <div class="room__alert--modification util__flex--row" v-if="isModifying">
+    <div class="room__alert--modification flex--row" v-if="isModifying">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewBox="0 0 30 30" style="enable-background:new 0 0 30 30; width: 45px; height:45px; margin-right: 20px;" xml:space="preserve">
         <path d="M13.362,16.939c0.711,0.164,1.874,0.589,2.992,1.708c1.119,1.119,1.544,2.282,1.708,2.993l9.042-9.329L22.69,7.898L13.362,16.939z M26.924,5c-0.822,0-1.594,0.32-2.168,0.895l-1.348,1.306l4.391,4.391l1.3-1.342C29.68,9.669,30,8.897,30,8.074C30,6.379,28.62,5,26.924,5z M12.146,22.854C12.242,22.949,12.37,23,12.5,23c0.032,0,0.065-0.003,0.098-0.01l4.535-0.907c-0.088-0.503-0.401-1.644-1.486-2.73c-1.097-1.097-2.23-1.404-2.729-1.488l-0.907,4.536C11.977,22.566,12.029,22.735,12.146,22.854z M23.688,17.72c-0.187-0.076-0.403-0.031-0.547,0.115l-4.563,4.708c-0.213,0.22-0.483,0.367-0.782,0.427l-5.001,1c-0.499,0.102-1.002-0.058-1.354-0.41c-0.355-0.356-0.509-0.862-0.41-1.354l1-5c0.06-0.3,0.207-0.57,0.427-0.783L23.849,5.382c0.098-0.094,0.152-0.224,0.152-0.359V1.5c0-0.827-0.673-1.5-1.5-1.5H21v4.5C21,5.327,20.328,6,19.5,6C18.674,6,18,5.327,18,4.5c0-0.651,0.419-1.201,1-1.408V4.5C19,4.776,19.224,5,19.5,5S20,4.776,20,4.5V0h-4v4.5C16,5.327,15.328,6,14.5,6C13.674,6,13,5.327,13,4.5c0-0.651,0.419-1.201,1-1.408V4.5C14,4.776,14.224,5,14.5,5S15,4.776,15,4.5V0h-4v4.5C11,5.327,10.328,6,9.5,6C8.674,6,8,5.327,8,4.5c0-0.651,0.419-1.201,1-1.408V4.5C9,4.776,9.224,5,9.5,5S10,4.776,10,4.5V0H6v4.5C6,5.327,5.328,6,4.5,6C3.674,6,3,5.327,3,4.5c0-0.651,0.419-1.201,1-1.408V4.5C4,4.776,4.224,5,4.5,5S5,4.776,5,4.5V0H1.5C0.674,0,0,0.673,0,1.5v27C0,29.327,0.674,30,1.5,30h21c0.827,0,1.5-0.673,1.5-1.5V18.184C24,17.98,23.878,17.796,23.688,17.72z M3.5,13H12c0.276,0,0.5,0.224,0.5,0.5S12.276,14,12,14H3.5C3.224,14,3,13.776,3,13.5S3.224,13,3.5,13z M9.5,24h-6C3.224,24,3,23.776,3,23.5S3.224,23,3.5,23h6c0.276,0,0.5,0.224,0.5,0.5S9.776,24,9.5,24z M10.5,19h-7C3.224,19,3,18.776,3,18.5S3.224,18,3.5,18h7c0.276,0,0.5,0.224,0.5,0.5S10.776,19,10.5,19z"/>
       </svg>
-      <div class="util__flex--column alert__content">
+      <div class="flex--column alert__content">
         <span>You're modifying your reservation.</span>
         <p>Please select a different room and rate below, or update your stay details above.</p>
       </div>
       <button>DISCARD EDITS</button>
     </div>
-    <div style="padding: 15px 20px;background-color: #ffffff;margin-top: 10px;">
-      <Room/>
+    <div style="margin-top: 10px;">
+      <Room v-for="item in roomsList" :room="item" :key="item.id"/>
     </div>
   </section>
 </template>
 <script>
-import Room from '@/components/checkout/Room.vue'
+import Room from '@/components/checkout/Room/Room.vue'
 export default {
   components: {
     Room
   },
   data () {
     return {
-      isModifying: true
+      isModifying: true,
+      roomsList: this.$checkoutRooms
     }
   }
 }
