@@ -1,75 +1,75 @@
 <template>
   <section class="confirmation">
     <div class="confirmation__container">
-      <div class="content--info">
-        <h4 class="util__header--title">Reservation Details</h4>
+      <div class="content--info page-content--header">
+        <h4>Reservation Details</h4>
         <el-divider/>
-        <div class="util__flex--column">
-          <div class="util__flex--row row">
+        <div class="flex--column">
+          <div class="flex--row row">
             <span>Guest Name</span>
-            <p class="util__header--description">test</p>
+            <p>test</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Check-in Date</span>
-            <p class="util__header--description">test</p>
+            <p>test</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Check-out Date</span>
-            <p class="util__header--description">test</p>
+            <p>test</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Room Type</span>
-            <p class="util__header--description">2 Classic Guestrooms</p>
+            <p>2 Classic Guestrooms</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Email Address</span>
-            <p class="util__header--description">test@test.com</p>
+            <p>test@test.com</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Phone Number</span>
-            <p class="util__header--description">xxx-xxx-xxxx</p>
+            <p>xxx-xxx-xxxx</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Address</span>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Payment Method</span>
-            <p class="util__header--description">Pay at Check-in</p>
+            <p>Pay at Check-in</p>
           </div>
-          <div class="util__flex--row row">
+          <div class="flex--row row">
             <span>Special Request</span>
-            <p class="util__header--description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, accusantium aspernatur culpa minima non nostrum perspiciatis soluta. Eveniet, quidem sed!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, accusantium aspernatur culpa minima non nostrum perspiciatis soluta. Eveniet, quidem sed!</p>
           </div>
         </div>
       </div>
-      <div class="content--policies util__flex--column">
-        <h4 class="util__header--title">Policies</h4>
+      <div class="content--policies flex--column page-content--header">
+        <h4>Policies</h4>
         <el-divider/>
-        <div class="util__flex--row">
-          <div class="util__flex--column col">
+        <div class="flex--row">
+          <div class="flex--column col">
             <span>Check-in</span>
-            <p class="util__header--description">After 2 PM</p>
+            <p>After 2 PM</p>
           </div>
-          <div class="util__flex--column col">
+          <div class="flex--column col">
             <span>Check-out</span>
-            <p class="util__header--description">Before 11 AM</p>
+            <p>Before 11 AM</p>
           </div>
         </div>
-        <div class="util__flex--column row">
-          <div class="util__flex--column">
-            <p class="util__header--description" style="font-weight: 600;">Guarantee Policy</p>
-            <p class="util__header--description">One night room/tax deposit required at time of booking.</p>
+        <div class="flex--column row">
+          <div class="flex--column page-content--body">
+            <p style="font-weight: 600;">Guarantee Policy</p>
+            <p>One night room/tax deposit required at time of booking.</p>
           </div>
-          <div class="util__flex--column row">
-            <p class="util__header--description" style="font-weight: 600;">Cancellation Policy</p>
-            <p class="util__header--description">Please contact us to cancel your reservation <u>at least 72-hour</u>
+          <div class="flex--column row page-content--body">
+            <p style="font-weight: 600;">Cancellation Policy</p>
+            <p>Please contact us to cancel your reservation <u>at least 72-hour</u>
               prior to arrival date to avoid a cancellation fee of one night room and tax charge.</p>
           </div>
         </div>
       </div>
-      <div class="content--consent util__flex--column">
-        <h4 class="util__header--title">Acknowledgement</h4>
+      <div class="content--consent flex--column page-content--header">
+        <h4>Acknowledgement</h4>
         <el-divider/>
         <label for="subscription">
           <input type="checkbox" id="subscription">
@@ -104,17 +104,18 @@
         }
         &--info {
           & span {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
           }
           .row {
             padding: 5px 0;
+            align-items: center;
             & span {
-              flex-basis: 20%;
+              flex-basis: 25%;
               text-align: start;
             }
             & p {
-              flex-basis: 80%;
+              flex-basis: 70%;
             }
           }
         }
@@ -144,5 +145,8 @@
         }
       }
     }
+  }
+  /deep/ .el-divider--horizontal {
+    margin: 10px 0;
   }
 </style>

@@ -23,7 +23,7 @@
               <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
               <path d="M20.181,12.473c-0.351-0.351-0.818-0.518-1.306-0.475c-0.519,0.047-0.992,0.33-1.298,0.775C16.662,14.105,14.421,15,12,15c-2.42,0-4.662-0.895-5.577-2.227c-0.306-0.446-0.779-0.729-1.298-0.776c-0.485-0.042-0.952,0.123-1.303,0.474l-2.792,2.792C0.308,15.985,0,16.604,0,17.328V19.5C0,20.879,1.122,22,2.5,22h19c1.379,0,2.5-1.121,2.5-2.5v-2.172c0-0.668-0.26-1.295-0.732-1.768L20.181,12.473z"/>
             </svg>
-            (480) 000-0101 (Direct)
+            480-000-0101 (Direct)
           </span>
           <span class="flex--row" style="align-items: center;">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -32,7 +32,7 @@
               <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
               <path d="M20.181,12.473c-0.351-0.351-0.818-0.518-1.306-0.475c-0.519,0.047-0.992,0.33-1.298,0.775C16.662,14.105,14.421,15,12,15c-2.42,0-4.662-0.895-5.577-2.227c-0.306-0.446-0.779-0.729-1.298-0.776c-0.485-0.042-0.952,0.123-1.303,0.474l-2.792,2.792C0.308,15.985,0,16.604,0,17.328V19.5C0,20.879,1.122,22,2.5,22h19c1.379,0,2.5-1.121,2.5-2.5v-2.172c0-0.668-0.26-1.295-0.732-1.768L20.181,12.473z"/>
             </svg>
-            (480) 000-0001 (Reservation)
+            480-000-0001 (Reservation)
           </span>
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="reservation__container flex--row">
         <div class="reservation__main flex--column flex--center">
           <div class="reservation__header">
-            <div class="reservation--alert flex--row">
+            <div class="reservation--alert flex--row" v-if="currentStep === 1">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 24 24" xml:space="preserve">
                 <path d="M12,0C5.383,0,0,5.383,0,12c0,6.617,5.383,12,12,12c6.617,0,12-5.383,12-12C24,5.383,18.617,0,12,0z M12,4c1.654,0,3,1.346,3,3s-1.346,3-3,3S9,8.654,9,7S10.346,4,12,4z M15.5,20h-6C8.673,20,8,19.327,8,18.5S8.673,17,9.5,17H10v-3H9.5C8.673,14,8,13.327,8,12.5S8.673,11,9.5,11h4c0.827,0,1.5,0.673,1.5,1.5V17h0.5c0.827,0,1.5,0.673,1.5,1.5S16.327,20,15.5,20z"/>
@@ -50,7 +50,7 @@
                 If the dates or accommodations do not match what your needs, please call our reservations specialists for additional availability through 480.001.0002.
               </span>
             </div>
-            <div class="reservation__header--search flex--row" v-if="!isRoomSelected">
+            <div class="reservation__header--search flex--row" v-if="currentStep === 1">
               <div class=" search--col col-1 dropdown">
                 <div class="flex--row" @click="isGuestSelected = !isGuestSelected">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -111,11 +111,11 @@
                 <button>SEARCH</button>
               </div>
             </div>
-            <div class="reservation__header--breadcrumb flex--column">
-              <h1>{{steps[3]}}</h1>
+            <div class="reservation__header--breadcrumb flex--column" v-show="currentStep === 0">
+              <h1>{{steps[currentStep - 1]}}</h1>
               <div>
                 <el-steps
-                  :active="3"
+                  :active="currentStep - 1"
                   finish-status="success"
                   process-status="process"
                   align-center
@@ -133,14 +133,24 @@
           <!--          -->
           <div class="reservation__body">
             <div class="reservation__content">
-              <room-select/>
-              <!--              <add-ons/>-->
-              <!--              <guest-details/>-->
-              <!--              <confirmation/>-->
+              <keep-alive>
+                <router-view name="RoomSelect" v-if="currentStep === 1"></router-view>
+                <router-view name="AddOns" v-if="currentStep === 2"></router-view>
+                <router-view name="GuestDetails" v-if="currentStep === 3"></router-view>
+                <router-view name="Confirmation" v-if="currentStep === 4"></router-view>
+<!--                <room-select v-if="currentStep === 1"/>-->
+<!--                <add-ons v-if="currentStep === 2"/>-->
+<!--                <guest-details v-if="currentStep === 3"/>-->
+<!--                <confirmation v-if="currentStep === 4"/>-->
+              </keep-alive>
             </div>
           </div>
         </div>
-        <sidebar :bookingDetails="bookingDetails" v-if="!isBookingCompleted"/>
+        <sidebar
+          :bookingDetails="bookingDetails"
+          :isRoomSelected="isRoomSelected"
+          v-if="!isBookingCompleted"
+        />
       </div>
     </section>
     <checkout-footer/>
@@ -150,7 +160,7 @@
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
-import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
+// import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
 // import AddOns from '@/views/Reservation/components/AddOns.vue'
 // import GuestDetails from '@/views/Reservation/components/GuestDetails.vue'
 // import Confirmation from '@/views/Reservation/components/Confirmation.vue'
@@ -158,8 +168,8 @@ export default {
   components: {
     CheckoutNavbar,
     CheckoutFooter,
-    Sidebar,
-    RoomSelect
+    Sidebar
+    // RoomSelect,
     // AddOns,
     // GuestDetails,
     // Confirmation
@@ -192,7 +202,11 @@ export default {
       }
     }
   },
+  methods: {},
   computed: {
+    currentStep () {
+      return this.$store.getters.currentStep
+    },
     dropdownClass () {
       return {
         'display-dropdown': this.isGuestSelected

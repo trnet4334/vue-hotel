@@ -25,37 +25,4 @@
   a {
     color: #3d405b;
   }
-  .util {
-    /* General use for flexbox styling */
-    &__flex--row {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    &__flex--column {
-      display: flex;
-      flex-direction: column;
-    }
-    &__flex--center {
-      justify-content: center;
-      align-items: center;
-    }
-    /* General use for header styling */
-    &__header--title {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      text-align: start;
-      font-weight: 600;
-    }
-    &__header--subtitle {
-      font-size: 3.2rem;
-      line-height: 3.6rem;
-      text-align: start;
-      font-weight: 700;
-    }
-    &__header--description {
-      font-size: 1.3rem;
-      text-align: start;
-    }
-  }
 </style>

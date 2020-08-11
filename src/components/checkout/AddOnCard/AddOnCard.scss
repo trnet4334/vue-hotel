@@ -1,6 +1,6 @@
 .addon-card {
   width: 100%;
-  height: 25vh;
+  height: 30vh;
   border: 1px solid #3d405b;
   background-color: #ffffff;
   padding: 10px;
@@ -21,13 +21,16 @@
   &__content {
     flex-basis: 70%;
     justify-content: space-between;
+    padding: 10px;
     .content--col-first {
       flex-basis: 70%;
       & h4 {
         text-align: start;
+        font-size: 1.3rem;
       }
       & p {
         text-align: start;
+        font-size: 1.1rem;
       }
     }
     .content--col-second {
