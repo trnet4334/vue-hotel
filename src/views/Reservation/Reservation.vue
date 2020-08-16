@@ -41,7 +41,7 @@
       <div class="reservation__container flex--row">
         <div class="reservation__main flex--column flex--center">
           <div class="reservation__header">
-            <div class="reservation--alert flex--row" v-if="currentStep === 1">
+            <div class="reservation--alert flex--row" v-if="currentStep <= 1">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 24 24" xml:space="preserve">
                 <path d="M12,0C5.383,0,0,5.383,0,12c0,6.617,5.383,12,12,12c6.617,0,12-5.383,12-12C24,5.383,18.617,0,12,0z M12,4c1.654,0,3,1.346,3,3s-1.346,3-3,3S9,8.654,9,7S10.346,4,12,4z M15.5,20h-6C8.673,20,8,19.327,8,18.5S8.673,17,9.5,17H10v-3H9.5C8.673,14,8,13.327,8,12.5S8.673,11,9.5,11h4c0.827,0,1.5,0.673,1.5,1.5V17h0.5c0.827,0,1.5,0.673,1.5,1.5S16.327,20,15.5,20z"/>
@@ -50,7 +50,7 @@
                 If the dates or accommodations do not match what your needs, please call our reservations specialists for additional availability through 480.001.0002.
               </span>
             </div>
-            <div class="reservation__header--search flex--row" v-if="currentStep === 1">
+            <div class="reservation__header--search flex--row" v-if="currentStep <= 1">
               <div class=" search--col col-1 dropdown">
                 <div class="flex--row" @click="isGuestSelected = !isGuestSelected">
                   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -59,7 +59,7 @@
                   </svg>
                   <div class="flex--column flex--center">
                     <span>Guests</span>
-                    <p>Adults: {{bookingDetails.guests.numOfAdultGuests}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
+                    <p>Adults: {{bookingDetails.guests.numOfAdultGuest}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
                   </div>
                 </div>
                 <div class="dropdown__content flex--column" :class="dropdownClass">
@@ -67,11 +67,11 @@
                   <el-divider/>
                   <div class="flex--row dropdown__item">
                     <span>Adults</span>
-                    <el-input-number size="small" :min="0" :max="4" v-model="bookingDetails.guests.numOfAdultGuests"></el-input-number>
+                    <el-input-number size="small" :min="0" :max="8" v-model="bookingDetails.guests.numOfAdultGuest"></el-input-number>
                   </div>
                   <div class="flex--row dropdown__item">
                     <span>Children</span>
-                    <el-input-number size="small" :min="0" :max="4" v-model="bookingDetails.guests.numOfChildrenGuest"></el-input-number>
+                    <el-input-number size="small" :min="0" :max="6" v-model="bookingDetails.guests.numOfChildrenGuest"></el-input-number>
                   </div>
                 </div>
               </div>
@@ -108,10 +108,13 @@
                 </div>
               </div>
               <div class="col-3">
-                <button>SEARCH</button>
+                <button @click="setSearchChoice">
+<!--                  <router-link to="/reservation/s1">SEARCH</router-link>-->
+                  SEARCH
+                </button>
               </div>
             </div>
-            <div class="reservation__header--breadcrumb flex--column" v-show="currentStep === 0">
+            <div class="reservation__header--breadcrumb flex--column" v-show="currentStep >= 1">
               <h1>{{steps[currentStep - 1]}}</h1>
               <div>
                 <el-steps
@@ -134,14 +137,14 @@
           <div class="reservation__body">
             <div class="reservation__content">
               <keep-alive>
-                <router-view name="RoomSelect" v-if="currentStep === 1"></router-view>
-                <router-view name="AddOns" v-if="currentStep === 2"></router-view>
-                <router-view name="GuestDetails" v-if="currentStep === 3"></router-view>
-                <router-view name="Confirmation" v-if="currentStep === 4"></router-view>
-<!--                <room-select v-if="currentStep === 1"/>-->
-<!--                <add-ons v-if="currentStep === 2"/>-->
-<!--                <guest-details v-if="currentStep === 3"/>-->
-<!--                <confirmation v-if="currentStep === 4"/>-->
+<!--                <router-view v-if="currentStep === 1"></router-view>-->
+<!--                <router-view v-if="currentStep === 2"></router-view>-->
+<!--                <router-view v-if="currentStep === 3"></router-view>-->
+<!--                <router-view v-if="currentStep === 4"></router-view>-->
+                <room-select v-if="currentStep === 1"/>
+                <add-ons v-if="currentStep === 2"/>
+                <guest-details v-if="currentStep === 3"/>
+                <confirmation v-if="currentStep === 4"/>
               </keep-alive>
             </div>
           </div>
@@ -149,7 +152,7 @@
         <sidebar
           :bookingDetails="bookingDetails"
           :isRoomSelected="isRoomSelected"
-          v-if="!isBookingCompleted"
+          v-show="displaySidebar"
         />
       </div>
     </section>
@@ -160,25 +163,25 @@
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
-// import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
-// import AddOns from '@/views/Reservation/components/AddOns.vue'
-// import GuestDetails from '@/views/Reservation/components/GuestDetails.vue'
-// import Confirmation from '@/views/Reservation/components/Confirmation.vue'
+import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
+import AddOns from '@/views/Reservation/components/AddOns.vue'
+import GuestDetails from '@/views/Reservation/components/GuestDetails.vue'
+import Confirmation from '@/views/Reservation/components/Confirmation.vue'
 export default {
+  name: 'reservation',
   components: {
     CheckoutNavbar,
     CheckoutFooter,
-    Sidebar
-    // RoomSelect,
-    // AddOns,
-    // GuestDetails,
-    // Confirmation
+    Sidebar,
+    RoomSelect,
+    AddOns,
+    GuestDetails,
+    Confirmation
   },
   data () {
     return {
       isRoomSelected: false,
       isGuestSelected: false,
-      isBookingCompleted: false,
       steps: [
         'Select a Room',
         'Choose your favorite Add-ons',
@@ -187,11 +190,11 @@ export default {
       ],
       bookingDetails: {
         date: {
-          start: undefined,
-          end: undefined
+          start: new Date(),
+          end: new Date()
         },
         guests: {
-          numOfAdultGuests: 0,
+          numOfAdultGuest: 0,
           numOfChildrenGuest: 0
         },
         nightsOfStay: 5,
@@ -202,16 +205,30 @@ export default {
       }
     }
   },
-  methods: {},
+  methods: {
+    setSearchChoice () {
+      const selection = {
+        date: this.bookingDetails.date,
+        guests: this.bookingDetails.guests
+      }
+      this.$store.dispatch('searchRoomType', selection)
+    }
+  },
   computed: {
     currentStep () {
       return this.$store.getters.currentStep
+    },
+    displaySidebar () {
+      return this.$store.getters.currentStep >= 3
     },
     dropdownClass () {
       return {
         'display-dropdown': this.isGuestSelected
       }
     }
+  },
+  created () {
+    this.$store.dispatch('initRoom')
   }
 }
 </script>

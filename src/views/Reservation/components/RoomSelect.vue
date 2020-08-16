@@ -12,7 +12,7 @@
       <button>DISCARD EDITS</button>
     </div>
     <div style="margin-top: 10px;">
-      <Room v-for="item in roomsList" :room="item" :key="item.id"/>
+      <Room v-for="item in roomsIntro" :room="item" :key="item.id"/>
     </div>
   </section>
 </template>
@@ -24,8 +24,12 @@ export default {
   },
   data () {
     return {
-      isModifying: true,
-      roomsList: this.$checkoutRooms
+      isModifying: false
+    }
+  },
+  computed: {
+    roomsIntro () {
+      return this.$store.getters.displayRoomSearchResult
     }
   }
 }

@@ -59,5 +59,9 @@
     &:hover {
       cursor: pointer;
     }
+    &:disabled {
+      background-color: rgba(40, 56, 69, 0.3);
+      cursor: default;
+    }
   }
 }

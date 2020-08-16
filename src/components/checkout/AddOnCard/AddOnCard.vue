@@ -16,14 +16,34 @@
         </div>
       </div>
       <div class="flex--row content--button">
-        <button>ADD TO MY STAY</button>
+        <button @click="selectAddOn" :disabled="isSelected">ADD TO MY STAY</button>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['addOn']
+  props: {
+    addOn: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      isSelected: false
+    }
+  },
+  methods: {
+    selectAddOn () {
+      const selection = {
+        name: this.addOn.name,
+        price: this.addOn.price
+      }
+      this.$store.dispatch('addAddonsToSelection', selection)
+      this.isSelected = true
+    }
+  }
 }
 </script>
 <style src="./AddOnCard.scss" lang="scss" scoped/>

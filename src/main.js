@@ -14,8 +14,8 @@ import rooms from './data/rooms'
 import offers from './data/offers'
 import roomType from './data/roomType'
 import addOns from './data/checkout/addOns'
-import roomsIntro from './data/checkout/roomsIntro'
 import countries from './data/checkout/countries'
+import dayjs from 'dayjs'
 
 // Use element-ui component
 Vue.use(ElementUI, { locale })
@@ -27,13 +27,14 @@ Vue.use(VCalendar, {
 Vue.config.productionTip = false
 // Define prototype for Lodash
 Vue.prototype._ = _
+// Define prototype for dayjs
+Vue.prototype.$dayjs = dayjs
 
 // Define prototype for preload data
 Vue.prototype.$faq = faq
 Vue.prototype.$roomCardsInfo = rooms
 Vue.prototype.$roomsInfo = roomType
 Vue.prototype.$offersInfo = offers
-Vue.prototype.$checkoutRooms = roomsIntro
 Vue.prototype.$checkoutAddOns = addOns
 Vue.prototype.$countriesList = countries
 

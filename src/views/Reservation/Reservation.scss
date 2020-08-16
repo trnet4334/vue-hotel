@@ -3,11 +3,12 @@
   padding: 10vh 5vw;
   &__container {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
   }
   &__main {
     flex-basis: 67.5%;
     justify-content: space-evenly;
+    margin: 0 auto;
   }
   &__body {
     width: 100%;

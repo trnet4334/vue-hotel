@@ -57,13 +57,14 @@
       </div>
     </div>
     <div class="side__button">
-      <button v-if="currentStep <= 3" @click="goNext">CONTINUE TO BOOK</button>
+      <button v-if="currentStep === 3" @click="goNext">CONTINUE TO BOOK</button>
       <button v-if="currentStep === 4">COMPLETE BOOKING</button>
     </div>
   </aside>
 </template>
 <script>
 export default {
+  name: 'sidebar',
   props: ['bookingDetails', 'isRoomSelected'],
   data () {
     return {
@@ -97,6 +98,25 @@ export default {
     },
     totalPriceCalculate () {
       return this.reservationDetails.fee.roomFee + this.reservationDetails.fee.addOns + this.reservationDetails.fee.packageFee + this.reservationDetails.fee.tax
+    },
+    validateDetailInput () {
+      return this.$store.getters.reservationSelection === [] ? {
+        date: {
+          start: undefined,
+          end: undefined
+        },
+        nightsOfStay: undefined,
+        guests: {
+          numOfAdultGuests: undefined,
+          numOfChildrenGuest: undefined
+        },
+        fee: {
+          roomFee: undefined,
+          addOns: undefined,
+          packageFee: undefined,
+          tax: undefined
+        }
+      } : this.$store.getters.reservationSelection
     }
   }
 }
