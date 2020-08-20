@@ -7,19 +7,19 @@
           <div class="flex--row">
             <div class="form--col flex--row">
               <label for="firstName">First Name*</label>
-              <input type="text" id="firstName" v-model="contactInfo.firstName" required>
+              <input type="text" id="firstName" v-model="customerInfo.contactDetail.firstName" required>
             </div>
             <div class="form--col flex--row">
               <label for="lastName">Last Name*</label>
-              <input type="text" id="lastName" v-model="contactInfo.lastName" required>
+              <input type="text" id="lastName" v-model="customerInfo.contactDetail.lastName" required>
             </div>
             <div class="form--col flex--row">
               <label for="phoneNum">Phone*</label>
-              <input type="text" id="phoneNum" v-model="contactInfo.phoneNum" required>
+              <input type="text" id="phoneNum" v-model="customerInfo.contactDetail.phoneNum" required>
             </div>
             <div class="form--col flex--row">
               <label for="email">Email Address*</label>
-              <input type="email" id="email" v-model="contactInfo.email" required>
+              <input type="email" id="email" v-model="customerInfo.contactDetail.email" required>
             </div>
           </div>
         </div>
@@ -28,21 +28,21 @@
           <div class="flex--row">
             <div class="flex--row form--col">
               <label for="country">Country</label>
-              <select v-model="contactInfo.country" id="country" required>
+              <select v-model="customerInfo.addressDetail.country" id="country" required>
                 <option v-for="country in countries" :key="country.code" :value="country.code">{{country.name}}</option>
               </select>
             </div>
             <div class="flex--row form--col">
               <label for="address">Address*</label>
-              <input type="text" id="address" v-model="contactInfo.address" required>
+              <input type="text" id="address" v-model="customerInfo.addressDetail.address" required>
             </div>
             <div class="flex--row form--col">
               <label for="city">City*</label>
-              <input type="text" id="city" v-model="contactInfo.city" required>
+              <input type="text" id="city" v-model="customerInfo.addressDetail.city" required>
             </div>
             <div class="flex--row form--col">
               <label for="zipCode">Zip/Postal Code</label>
-              <input type="text" id="zipCode" v-model="contactInfo.zipCode">
+              <input type="text" id="zipCode" v-model="customerInfo.addressDetail.zipCode">
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
             cols="30"
             rows="10"
             placeholder="Please note your requests or special needs"
-            v-model="contactInfo.note"
+            v-model="customerInfo.note"
           />
         </div>
         <el-divider/>
@@ -94,6 +94,9 @@
         </div>
       </div>
     </div>
+    <div class="flex--row buttons">
+      <button @click="addCustomerInfo">CONTINUE</button>
+    </div>
   </section>
 </template>
 <script>
@@ -102,17 +105,31 @@ export default {
   data () {
     return {
       countries,
-      contactInfo: {
-        firstName: '',
-        lastName: '',
-        phoneNum: '',
-        email: '',
-        country: '',
-        city: '',
-        address: '',
-        zipCode: '',
+      customerInfo: {
+        contactDetail: {
+          firstName: '',
+          lastName: '',
+          phoneNum: '',
+          email: ''
+        },
+        addressDetail: {
+          country: '',
+          city: '',
+          address: '',
+          zipCode: ''
+        },
         note: ''
       }
+    }
+  },
+  methods: {
+    addCustomerInfo () {
+      const information = {
+        contact: this.customerInfo.contactDetail,
+        address: this.customerInfo.addressDetail,
+        note: this.customerInfo.note
+      }
+      this.$store.dispatch('forwardToConfirmation', information)
     }
   }
 }
@@ -187,6 +204,23 @@ export default {
             flex-wrap: wrap;
           }
         }
+      }
+    }
+  }
+  .buttons {
+    justify-content: center;
+    margin-top: 30px;
+    & button {
+      width: 150px;
+      margin: 0 30px;
+      padding: 12px 12px;
+      font-size: 1.1rem;
+      border: none;
+      background-color: #283845;
+      color: #ffffff;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
       }
     }
   }

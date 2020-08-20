@@ -123,10 +123,10 @@
                   process-status="process"
                   align-center
                 >
-                  <el-step title="Rooms"/>
-                  <el-step title="Add-ons"/>
-                  <el-step title="Guest Details"/>
-                  <el-step title="Confirmation"/>
+                  <el-step title="Rooms" @click.native="switchStep(1)"/>
+                  <el-step title="Add-ons" @click.native="switchStep(2)"/>
+                  <el-step title="Guest Details" @click.native="switchStep(3)"/>
+                  <el-step title="Confirmation" @click.native="switchStep(4)"/>
                 </el-steps>
               </div>
             </div>
@@ -137,21 +137,12 @@
           <div class="reservation__body">
             <div class="reservation__content">
               <keep-alive>
-<!--                <router-view v-if="currentStep === 1"></router-view>-->
-<!--                <router-view v-if="currentStep === 2"></router-view>-->
-<!--                <router-view v-if="currentStep === 3"></router-view>-->
-<!--                <router-view v-if="currentStep === 4"></router-view>-->
-                <room-select v-if="currentStep === 1"/>
-                <add-ons v-if="currentStep === 2"/>
-                <guest-details v-if="currentStep === 3"/>
-                <confirmation v-if="currentStep === 4"/>
+                <router-view></router-view>
               </keep-alive>
             </div>
           </div>
         </div>
         <sidebar
-          :bookingDetails="bookingDetails"
-          :isRoomSelected="isRoomSelected"
           v-show="displaySidebar"
         />
       </div>
@@ -163,24 +154,15 @@
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
-import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
-import AddOns from '@/views/Reservation/components/AddOns.vue'
-import GuestDetails from '@/views/Reservation/components/GuestDetails.vue'
-import Confirmation from '@/views/Reservation/components/Confirmation.vue'
 export default {
   name: 'reservation',
   components: {
     CheckoutNavbar,
     CheckoutFooter,
-    Sidebar,
-    RoomSelect,
-    AddOns,
-    GuestDetails,
-    Confirmation
+    Sidebar
   },
   data () {
     return {
-      isRoomSelected: false,
       isGuestSelected: false,
       steps: [
         'Select a Room',
@@ -196,12 +178,7 @@ export default {
         guests: {
           numOfAdultGuest: 0,
           numOfChildrenGuest: 0
-        },
-        nightsOfStay: 5,
-        roomFee: 500,
-        addOns: 200,
-        packageFee: 300,
-        tax: 400
+        }
       }
     }
   },
@@ -212,6 +189,12 @@ export default {
         guests: this.bookingDetails.guests
       }
       this.$store.dispatch('searchRoomType', selection)
+      this.$router.push('/reservation/s1')
+    },
+    switchStep (step) {
+      if (this.$store.getters.reservationSelection.length !== 0) {
+        this.$store.dispatch('switchStep', step)
+      }
     }
   },
   computed: {
@@ -227,8 +210,20 @@ export default {
       }
     }
   },
-  created () {
-    this.$store.dispatch('initRoom')
+  // created () {
+  //   this.$store.dispatch('initRoom')
+  // },
+  deactivated () {
+    this.bookingDetails = {
+      date: {
+        start: new Date(),
+        end: new Date()
+      },
+      guests: {
+        numOfAdultGuest: 0,
+        numOfChildrenGuest: 0
+      }
+    }
   }
 }
 </script>

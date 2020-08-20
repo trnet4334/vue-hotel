@@ -34,6 +34,7 @@ export default {
         rate: this.packageRate.rate
       }
       this.$store.dispatch('addRoomToSelection', selection)
+      this.$router.push('/reservation/s2')
     }
   }
 }

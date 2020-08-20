@@ -1,0 +1,17 @@
+.side__content {
+  &--row {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    & span {
+      font-weight: 600;
+      line-height: 1.4rem;
+    }
+    & p {
+      font-size: 1.1rem;
+    }
+  }
+}
+/deep/ .el-divider--horizontal {
+  margin: 10px 0;
+}

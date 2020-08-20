@@ -184,3 +184,7 @@
   opacity: 1;
   display: block;
 }
+
+/deep/ .el-step__icon {
+  cursor: pointer;
+}

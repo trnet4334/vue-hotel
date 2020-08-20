@@ -4,44 +4,9 @@
       <div class="content--info page-content--header">
         <h4>Reservation Details</h4>
         <el-divider/>
-        <div class="flex--column">
-          <div class="flex--row row">
-            <span>Guest Name</span>
-            <p>test</p>
-          </div>
-          <div class="flex--row row">
-            <span>Check-in Date</span>
-            <p>test</p>
-          </div>
-          <div class="flex--row row">
-            <span>Check-out Date</span>
-            <p>test</p>
-          </div>
-          <div class="flex--row row">
-            <span>Room Type</span>
-            <p>2 Classic Guestrooms</p>
-          </div>
-          <div class="flex--row row">
-            <span>Email Address</span>
-            <p>test@test.com</p>
-          </div>
-          <div class="flex--row row">
-            <span>Phone Number</span>
-            <p>xxx-xxx-xxxx</p>
-          </div>
-          <div class="flex--row row">
-            <span>Address</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          </div>
-          <div class="flex--row row">
-            <span>Payment Method</span>
-            <p>Pay at Check-in</p>
-          </div>
-          <div class="flex--row row">
-            <span>Special Request</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, accusantium aspernatur culpa minima non nostrum perspiciatis soluta. Eveniet, quidem sed!</p>
-          </div>
-        </div>
+        <confirmation-card
+          :info="reservationInfo"
+        />
       </div>
       <div class="content--policies flex--column page-content--header">
         <h4>Policies</h4>
@@ -86,7 +51,19 @@
     </div>
   </section>
 </template>
-<script></script>
+<script>
+import ConfirmationCard from '@/components/checkout/ConfirmationCard/ConfirmationCard'
+export default {
+  data () {
+    return {
+      reservationInfo: this.$store.getters.customerInfo
+    }
+  },
+  components: {
+    ConfirmationCard
+  }
+}
+</script>
 <style lang="scss" scoped>
   .confirmation {
     width: 100%;

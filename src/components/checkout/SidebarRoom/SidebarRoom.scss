@@ -1,0 +1,35 @@
+.side__content {
+  &--row {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    & span {
+      font-weight: 600;
+      line-height: 1.4rem;
+    }
+    & p {
+      font-size: 1.1rem;
+    }
+  }
+  &--action {
+    text-decoration: underline;
+    padding-top: 10px;
+    & span {
+      margin: 0 5px;
+    }
+  }
+}
+.list-items {
+  list-style-type: none;
+  padding-left: 20px;
+}
+.list-item {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+}
+/deep/ .el-divider--horizontal {
+  margin: 10px 0;
+}

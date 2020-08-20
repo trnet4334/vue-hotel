@@ -6,7 +6,11 @@
       </div>
       <div class="flex--row buttons">
         <button @click="backPrevious">BACK</button>
-        <button @click="goNext">SKIP</button>
+        <button @click="goNext">{{
+            this.$store.getters.addOnSelection.length === 0 ?
+              'SKIP':
+              'CONTINUE'
+          }}</button>
       </div>
     </div>
   </section>
@@ -28,9 +32,10 @@ export default {
   },
   methods: {
     goNext () {
-      this.$store.dispatch('goNextStep')
+      this.$store.dispatch('forwardToCustomerInfo')
     },
     backPrevious () {
+      this.$router.push('/reservation/s1')
       this.$store.dispatch('backPreviousStep')
     }
   }
