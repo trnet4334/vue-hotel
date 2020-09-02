@@ -1,27 +1,27 @@
 <template>
   <div class="flex--column">
     <div class="flex--row row">
-      <span>Guest Name</span>
+      <span><u>Guest Name</u></span>
       <p>{{customer.contactDetail.firstName + ' ' + customer.contactDetail.lastName}}</p>
     </div>
     <div class="flex--row row">
-      <span>Email Address</span>
+      <span><u>Email Address</u></span>
       <p>{{customer.contactDetail.email}}</p>
     </div>
     <div class="flex--row row">
-      <span>Phone Number</span>
+      <span><u>Phone Number</u></span>
       <p>{{customer.contactDetail.phoneNum}}</p>
     </div>
     <div class="flex--row row">
-      <span>Address</span>
-      <p>{{customer.addressDetail.address}}</p>
+      <span><u>Address</u></span>
+      <p>{{address}}</p>
     </div>
     <div class="flex--row row">
-      <span>Payment Method</span>
+      <span><u>Payment Method</u></span>
       <p>Pay at Check-in</p>
     </div>
     <div class="flex--row row">
-      <span>Special Request</span>
+      <span><u>Special Request</u></span>
       <p>{{customer.note}}</p>
     </div>
   </div>
@@ -37,6 +37,14 @@ export default {
   data () {
     return {
       customer: this.info
+    }
+  },
+  computed: {
+    address () {
+      return this.customer.addressDetail.address + ', ' +
+        this.customer.addressDetail.city + ', ' +
+        this.customer.addressDetail.country + ' ' +
+        this.customer.addressDetail.zipCode
     }
   }
 }

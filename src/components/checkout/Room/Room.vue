@@ -10,7 +10,7 @@
           <h5>{{room.properties}}</h5>
           <p>{{room.description}}</p>
 <!--          TODO: Change link to popout modal-->
-          <span><router-link to="/rooms/classic-guestroom" target="_blank" rel="noreferrer noopener">Room details</router-link></span>
+          <span><router-link :to="`/rooms/${room.detailsLink}`" target="_blank" rel="noreferrer noopener">Room details</router-link></span>
         </div>
         <room-package v-for="item in room.package" :packageRate="item" :key="item.id"/>
       </div>

@@ -7,7 +7,7 @@
       <div class="flex--row buttons">
         <button @click="backPrevious">BACK</button>
         <button @click="goNext">{{
-            this.$store.getters.addOnSelection.length === 0 ?
+            addOnSelection.length === 0 ?
               'SKIP':
               'CONTINUE'
           }}</button>
@@ -16,8 +16,8 @@
   </section>
 </template>
 <script>
-// import addOns from '@/assets/data/checkout/addOns'
 import AddOnCard from '@/components/checkout/AddOnCard/AddOnCard.vue'
+import { mapState } from 'vuex'
 export default {
   components: {
     AddOnCard
@@ -26,9 +26,10 @@ export default {
     return {}
   },
   computed: {
-    displayAddOns () {
-      return this.$store.getters.displayAddOns
-    }
+    ...mapState({
+      displayAddOns: state => state.reservation.addOns,
+      addOnSelection: state => state.reservation.onSearchRoom.addOns
+    })
   },
   methods: {
     goNext () {
@@ -41,25 +42,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-  .add-ons {
-    padding-top: 5vh;
-  }
-  .buttons {
-    justify-content: center;
-    margin-top: 30px;
-    & button {
-      width: 150px;
-      margin: 0 30px;
-      padding: 12px 12px;
-      font-size: 1.1rem;
-      border: none;
-      background-color: #283845;
-      color: #ffffff;
-      border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-</style>
+<style src="./AddOns.scss" lang="scss" scoped/>

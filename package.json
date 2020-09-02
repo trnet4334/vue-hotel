@@ -41,6 +41,7 @@
     "shortid": "^2.2.15",
     "v-calendar": "^1.0.8",
     "vee-validate": "^3.3.8",
+    "vue-axios": "^2.1.5",
     "vue-cli-plugin-element-ui": "~1.1.4",
     "vue-flux": "^6.2.1",
     "vue-template-compiler": "^2.6.11",

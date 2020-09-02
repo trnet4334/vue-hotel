@@ -1,3 +1,5 @@
+@import '../../../../src/styles/app';
+
 .room {
   width: 100%;
   margin: 12.5px 0;
@@ -37,4 +39,26 @@
 }
 /deep/ .el-divider--horizontal {
   margin: 12.5px 0;
+}
+
+@include respond-below(tablet) {
+  .room {
+    div:first-of-type {
+      flex-direction: column;
+    }
+    .col-1 {
+      width: 90%;
+      margin: 20px auto;
+    }
+    &--introduction {
+      text-align: start;
+      & h4 {
+        font-size: 1.25rem;
+      }
+      & h5 {
+        font-size: 1rem;
+        padding: 5px 0;
+      }
+    }
+  }
 }

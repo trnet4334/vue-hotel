@@ -53,77 +53,19 @@
 </template>
 <script>
 import ConfirmationCard from '@/components/checkout/ConfirmationCard/ConfirmationCard'
+import { mapState } from 'vuex'
 export default {
   data () {
-    return {
-      reservationInfo: this.$store.getters.customerInfo
-    }
+    return {}
   },
   components: {
     ConfirmationCard
+  },
+  computed: {
+    ...mapState({
+      reservationInfo: state => state.reservation.reservationDetails.customerInfo
+    })
   }
 }
 </script>
-<style lang="scss" scoped>
-  .confirmation {
-    width: 100%;
-    position: relative;
-    &__container {
-      width: 100%;
-      .content {
-        &--info, &--policies, &--consent {
-          width: 100%;
-          border-radius: 5px;
-          border: 1px solid #3d405b;
-          background-color: #ffffff;
-          margin: 10px 0;
-          padding: 15px 20px;
-        }
-        &--info {
-          & span {
-            font-size: 1.3rem;
-            font-weight: 600;
-          }
-          .row {
-            padding: 5px 0;
-            align-items: center;
-            & span {
-              flex-basis: 25%;
-              text-align: start;
-            }
-            & p {
-              flex-basis: 70%;
-            }
-          }
-        }
-        &--policies {
-          & span {
-            font-size: 1.3rem;
-            font-weight: 700;
-          }
-          .col {
-            margin-right: 20px;
-          }
-          .row {
-            margin-top: 20px;
-          }
-        }
-        &--consent {
-          align-items: flex-start;
-          & label {
-            font-size: 1.3rem;
-            text-align: start;
-          }
-          & a {
-            &:visited {
-              color: #3d405b;
-            }
-          }
-        }
-      }
-    }
-  }
-  /deep/ .el-divider--horizontal {
-    margin: 10px 0;
-  }
-</style>
+<style src="./Confirmation.scss" lang="scss" scoped/>

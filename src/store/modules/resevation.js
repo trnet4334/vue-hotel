@@ -2,11 +2,15 @@ import roomsIntro from '@/data/checkout/roomsIntro'
 import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
+import shortid from 'shortid'
 
 const state = {
   roomsIntro: roomsIntro,
-  addons: addOns,
+  tempId: '',
+  addOns: addOns,
   currentStep: 0,
+  isOnBooking: undefined,
+  isEditingRoom: '',
   reservationDetails: {
     createTime: '',
     lastUpdateTime: '',
@@ -16,6 +20,7 @@ const state = {
   },
   onSearchRoom: {
     createTime: '',
+    totalNight: undefined,
     date: {
       start: null,
       end: null
@@ -40,9 +45,6 @@ const state = {
 }
 
 const getters = {
-  currentStep (state) {
-    return state.currentStep
-  },
   reservationSelection (state) {
     if (state.reservationDetails.roomSelections.length === 0) {
       return [state.onSearchRoom]
@@ -50,21 +52,9 @@ const getters = {
       return state.reservationDetails.roomSelections
     }
   },
-  customerInfo (state) {
-    return state.reservationDetails.customerInfo
-  },
-  addOnSelection (state) {
-    return state.onSearchRoom.addOns
-  },
   displayRoomSearchResult (state) {
     const totalGuests = state.onSearchRoom.guests.numOfAdultGuests + state.onSearchRoom.guests.numOfChildrenGuest
     return state.roomsIntro.filter(element => element.maxGuestAvailable >= totalGuests)
-  },
-  displayAddOns (state) {
-    return state.addons
-  },
-  displayTotalAmount (state) {
-    return state.reservationDetails.totalAmount
   }
 }
 const mutations = {
@@ -74,11 +64,39 @@ const mutations = {
   'RESET_RESERVATION' (state) {
     state.reservationDetails = {}
   },
+  'RESET_ONSEARCHROOM' (state) {
+    state.onSearchRoom = {
+      createTime: '',
+      totalNight: undefined,
+      date: {
+        start: null,
+        end: null
+      },
+      guests: {
+        numOfAdultGuests: undefined,
+        numOfChildrenGuest: undefined
+      },
+      roomSelect: {
+        roomType: '',
+        packageName: '',
+        rate: undefined
+      },
+      addOns: []
+    }
+  },
   'GO_NEXT_STEP' (state) {
-    state.currentStep += 1
+    if (state.currentStep > 4) {
+      state.currentStep = 4
+    } else {
+      state.currentStep += 1
+    }
   },
   'BACK_PREVIOUS_STEP' (state) {
-    state.currentStep -= 1
+    if (state.currentStep < 0) {
+      state.currentStep = 0
+    } else {
+      state.currentStep -= 1
+    }
   },
   'SWITCH_STEP' (state, step) {
     state.currentStep = step
@@ -88,9 +106,12 @@ const mutations = {
     state.onSearchRoom.createTime = dayjs().toISOString()
     state.onSearchRoom.date.start = date.start
     state.onSearchRoom.date.end = date.end
+    state.onSearchRoom.totalNight = dayjs(date.end).diff(date.start, 'day')
     state.onSearchRoom.guests.numOfAdultGuests = guests.numOfAdultGuest
     state.onSearchRoom.guests.numOfChildrenGuest = guests.numOfChildrenGuest
-    state.currentStep += 1
+    state.currentStep === 0 ? state.currentStep += 1 : state.currentStep = 1
+    state.tempId = shortid.generate()
+    state.isEditingRoom = false
   },
   'ADD_ROOM' (state, { type, packageName, rate }) {
     state.onSearchRoom.roomSelect.roomType = type
@@ -106,7 +127,7 @@ const mutations = {
   },
   'CALCULATE_TOTAL_AMOUNT' (state) {
     const arr = []
-    if (state.reservationDetails.roomSelections.length === 0) {
+    if (state.reservationDetails.roomSelections.length === 0 && state.reservationDetails.onSearchRoom.createTime !== '') {
       // eslint-disable-next-line valid-typeof
       if (state.reservationDetails.onSearchRoom.addOns.length !== 0) {
         const sum = state.reservationDetails.onSearchRoom.addOns.forEach(
@@ -115,25 +136,27 @@ const mutations = {
               return acc + item
             }, 0)
           })
-        state.reservationDetails.totalAmount = sum + state.reservationDetails.onSearchRoom.roomSelect.rate
+        state.reservationDetails.totalAmount = Math.round((sum + state.reservationDetails.onSearchRoom.roomSelect.rate * state.reservationDetails.onSearchRoom.totalNight) * 1.08 * 100) / 100
       } else {
-        state.reservationDetails.totalAmount = state.reservationDetails.onSearchRoom.roomSelect.rate
+        state.reservationDetails.totalAmount = Math.round(state.reservationDetails.onSearchRoom.roomSelect.rate * state.reservationDetails.onSearchRoom.totalNight * 1.08 * 100) / 100
       }
-    } else {
+    } else if (state.reservationDetails.roomSelections.length !== 0) {
       state.reservationDetails.roomSelections.forEach(
         (element) => {
           if (element.addOns.length !== 0) {
             const sum = element.addOns.reduce((acc, item) => {
               return acc + item.addOnPrice
             }, 0)
-            arr.push(sum + element.roomSelect.rate)
+            arr.push((sum + element.roomSelect.rate * element.totalNight) * 1.08)
           } else {
-            arr.push(element.roomSelect.rate)
+            arr.push(element.roomSelect.rate * element.totalNight * 1.08)
           }
         })
-      state.reservationDetails.totalAmount = arr.reduce((acc, item) => {
+      state.reservationDetails.totalAmount = Math.round(arr.reduce((acc, item) => {
         return acc + item
-      }, 0)
+      }, 0) * 100) / 100
+    } else {
+      return null
     }
   },
   'SAVE_ROOM_SELECTION_TO_RESERVATION' (state) {
@@ -148,6 +171,40 @@ const mutations = {
     } else {
       state.reservationDetails.roomSelections.push(state.onSearchRoom)
     }
+    state.isEditingRoom = false
+  },
+  'REMOVE_ROOM_FROM_SELECTION' (state, selection) {
+    const record = state.reservationDetails.roomSelections.map(
+      (element) => {
+        return element.createTime
+      }).indexOf(selection)
+    // TODO: Re-design the logic
+    if (state.reservationDetails.roomSelections.length > 1) {
+      state.reservationDetails.roomSelections.splice(record, 1)
+    } else {
+      state.currentStep = 0
+      state.reservationDetails.roomSelections = []
+    }
+  },
+  'EDIT_ROOM_FROM_SELECTION' (state, selection) {
+    const recordIdx = state.reservationDetails.roomSelections.map(
+      (element) => {
+        return element.createTime
+      }).indexOf(selection)
+    const record = state.reservationDetails.roomSelections.slice(recordIdx, recordIdx + 1)[0]
+    console.log(record)
+    state.onSearchRoom.createTime = record.createTime
+    state.onSearchRoom.totalNight = record.totalNight
+    state.onSearchRoom.date.start = record.date.start
+    state.onSearchRoom.date.end = record.date.end
+    state.onSearchRoom.guests.numOfAdultGuests = record.guests.numOfAdultGuests
+    state.onSearchRoom.guests.numOfChildrenGuest = record.guests.numOfChildrenGuest
+    state.onSearchRoom.roomSelect.roomType = record.roomSelect.roomType
+    state.onSearchRoom.roomSelect.rate = record.roomSelect.rate
+    state.onSearchRoom.roomSelect.packageName = record.roomSelect.packageName
+    state.onSearchRoom.addOns = record.addOns
+    state.currentStep = 1
+    state.isEditingRoom = true
   },
   'ADD_CUSTOMER_DETAIL' (state, { contact, address, note }) {
     state.onEditCustomerInfo.contactDetail = contact
@@ -195,8 +252,10 @@ const actions = {
   initReservation ({ commit }) {
     commit('RESET_RESERVATION')
   },
+  async initOnSearchRoom ({ commit }) {
+    commit('RESET_ONSEARCHROOM')
+  },
   async addAnotherRoom ({ commit, dispatch }) {
-    await dispatch('saveRoomSelectionToReservation')
     await router.push('/reservation')
     commit('ADD_ANOTHER_ROOM')
   },
@@ -206,7 +265,17 @@ const actions = {
   async addRoomToSelection ({ commit }, selection) {
     commit('ADD_ROOM', selection)
   },
-  removeRoomFromSelection ({ commit }) {},
+  async removeRoomFromSelection ({ state, commit }, selection) {
+    if (state.reservationDetails.roomSelections.length === 1) {
+      await router.push('/reservation')
+      commit('REMOVE_ROOM_FROM_SELECTION', selection)
+    } else {
+      commit('REMOVE_ROOM_FROM_SELECTION', selection)
+    }
+  },
+  async editRoomFromSelection ({ commit }, selection) {
+    commit('EDIT_ROOM_FROM_SELECTION', selection)
+  },
   async addAddonsToSelection ({ commit }, selection) {
     commit('ADD_ADDONS', selection)
   },
@@ -217,7 +286,9 @@ const actions = {
     commit('SAVE_ROOM_SELECTION_TO_RESERVATION')
   },
   async forwardToCustomerInfo ({ commit, dispatch }) {
-    // await dispatch('calculateTotalAmount')
+    await dispatch('saveRoomSelectionToReservation')
+    await dispatch('calculateTotalAmount')
+    await dispatch('initOnSearchRoom')
     await router.push('/reservation/s3')
     commit('GO_NEXT_STEP')
   },
@@ -232,7 +303,6 @@ const actions = {
   },
   async forwardToConfirmation ({ commit, dispatch }, information) {
     await dispatch('addCustomerDetails', information)
-    await dispatch('saveRoomSelectionToReservation')
     await dispatch('saveCustomerInfoToReservation')
     await router.push('/reservation/s4')
     commit('GO_NEXT_STEP')

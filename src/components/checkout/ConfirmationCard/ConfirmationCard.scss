@@ -1,15 +1,30 @@
+@import "src/styles/app";
 .row {
   padding: 5px 0;
   align-items: center;
-  & span {
+  max-width: 100%;
+  span {
     flex-basis: 25%;
     text-align: start;
   }
-  & p {
+  p {
     flex-basis: 70%;
+    word-wrap: anywhere;
   }
 }
 span {
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+@include respond-below(tablet-lg) {
+  .row {
+    span, p {
+      flex-basis: 100%;
+    }
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }

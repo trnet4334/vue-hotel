@@ -5,9 +5,9 @@
       <el-divider/>
       <div>
         <sidebar-room
-          v-for="(item, index) in reservationDetails"
+          v-for="item in reservationDetails"
           :reservationInfo="item"
-          :key="index"
+          :key="item.createTime"
         />
         <span @click="addAnotherRoom">Add Room</span>
       </div>
@@ -21,6 +21,7 @@
 <script>
 import SidebarRoom from '@/components/checkout/SidebarRoom/SidebarRoom'
 import SidebarTotal from '@/components/checkout/SidebarTotal/SidebarTotal'
+import { mapState } from 'vuex'
 export default {
   name: 'sidebar',
   components: {
@@ -29,8 +30,6 @@ export default {
   },
   data () {
     return {
-      reservationDetails: [],
-      totalAmount: undefined
     }
   },
   methods: {
@@ -39,13 +38,13 @@ export default {
     }
   },
   computed: {
-    currentStep () {
-      return this.$store.getters.currentStep
+    ...mapState({
+      currentStep: state => state.reservation.currentStep,
+      totalAmount: state => state.reservation.reservationDetails.totalAmount
+    }),
+    reservationDetails () {
+      return this.$store.getters.reservationSelection
     }
-  },
-  beforeUpdate () {
-    this.reservationDetails = this.$store.getters.reservationSelection
-    // this.totalAmount = this.$store.getters.displayTotalAmount
   }
 }
 </script>

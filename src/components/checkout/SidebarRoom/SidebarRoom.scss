@@ -10,10 +10,15 @@
     & p {
       font-size: 1.1rem;
     }
+    & h5 {
+      font-weight: 600;
+      line-height: 1.3rem;
+    }
   }
   &--action {
     text-decoration: underline;
     padding-top: 10px;
+    padding-bottom: 25px;
     & span {
       margin: 0 5px;
     }
@@ -22,13 +27,15 @@
 .list-items {
   list-style-type: none;
   padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .list-item {
   justify-content: space-between;
   align-items: center;
   width: 100%;
   font-size: 1.1rem;
-  line-height: 1.4rem;
+  line-height: 1.6rem;
 }
 /deep/ .el-divider--horizontal {
   margin: 10px 0;

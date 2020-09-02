@@ -3,8 +3,8 @@
 nav {
   position: relative;
   width: 100%;
-  height: 10vh;
-  padding: 20px 2vw;
+  height: auto;
+  padding: 10px 2vw;
 }
 .nav {
   &__container {
@@ -37,7 +37,10 @@ nav {
   }
 }
 
-@include  respond-below(tablet) {
+@include  respond-below(tablet-lg) {
+  nav {
+    background-color: #ffffff;
+  }
   .list-item {
     padding: 0 3px;
     a, span {

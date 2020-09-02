@@ -1,3 +1,5 @@
+@import '../../../../styles/app';
+
 .sidebar {
   width: 30%;
   height: fit-content;
@@ -56,4 +58,10 @@
 }
 /deep/ .el-divider--horizontal {
   margin: 12.5px 0;
+}
+
+@include respond-below(tablet-lg) {
+  .sidebar {
+    display: none;
+  }
 }

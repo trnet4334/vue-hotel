@@ -8,7 +8,7 @@ const roomsIntro = [
       'One king or two twin beds provided.',
     imageUrl: 'classic-guestroom-img',
     imageAlt: 'Classic Guestroom',
-    detailsLink: '',
+    detailsLink: 'classic-guestroom',
     maxGuestAvailable: 4,
     package: [
       {
@@ -66,7 +66,7 @@ const roomsIntro = [
       'Deluxe guestroom furnished with either a plush king or two queen-sized beds.',
     imageUrl: 'deluxe-guestroom-img',
     imageAlt: 'Deluxe Guestroom',
-    detailsLink: '',
+    detailsLink: 'deluxe-guestroom',
     maxGuestAvailable: 4,
     package: [
       {
@@ -127,7 +127,7 @@ const roomsIntro = [
       'and a separate entrance.',
     imageUrl: 'the-spa-suite-img',
     imageAlt: 'The Spa Suite',
-    detailsLink: '',
+    detailsLink: 'the-spa-suite',
     maxGuestAvailable: 6,
     package: [
       {
@@ -186,7 +186,7 @@ const roomsIntro = [
       'also own its private massage room. We offer luxury accommodations to fit what you needs.',
     imageUrl: 'luxury-suite-img',
     imageAlt: 'Luxury Suite',
-    detailsLink: '',
+    detailsLink: 'luxury-suite',
     maxGuestAvailable: 8,
     package: [
       {

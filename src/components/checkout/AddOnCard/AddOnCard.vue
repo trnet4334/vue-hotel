@@ -12,7 +12,7 @@
         <div class="flex--column content--col-second">
           <span>${{addOn.price}}</span>
           <p>Per Stay</p>
-          <p>Including Taxes and Fee</p>
+          <p>Excluding Taxes and Fee</p>
         </div>
       </div>
       <div class="flex--row content--button">
