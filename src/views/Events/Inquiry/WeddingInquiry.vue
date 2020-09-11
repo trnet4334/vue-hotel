@@ -5,44 +5,76 @@
       <ValidationObserver
         ref="form"
         class="page-wrapper"
-        v-slot="{ handleSubmit }"
+        v-slot="{ handleSubmit, invalid }"
       >
         <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
           <div class="header page-content--header">
             <h4>Weddings</h4>
             <h1>Request Proposal</h1>
             <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dignissimos dolor earum eveniet fuga laboriosam maiores ratione repellendus rerum temporibus? Amet aspernatur dolorem impedit ipsum maiores, officiis placeat qui totam.</p>
+            <p>We offer a various range of possibilities for your wedding. Please take a moment
+             to fill out your information in the form below in two weeks before your wedding date.
+              Our team staff will contact you for more details as soon as possible.</p>
             <br>
             <p>If you would like to contact us directly, please call 480.000.0008</p>
           </div>
           <div class="body">
             <div class="content flex--column">
               <div class="flex--column">
-                <ValidationProvider class="flex--column">
+                <ValidationProvider
+                  rules="required"
+                  name="Your title"
+                  class="flex--column"
+                  v-slot="{ errors }"
+                >
                   <label for="title">Title</label>
                   <select name="title" id="title" v-model="requestWeddingInfo.title">
-                    <option value="mr">Mr.</option>
-                    <option value="ms">Ms.</option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Ms.">Ms.</option>
                   </select>
+                  <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <div class="flex--row">
-                  <ValidationProvider class="flex--column">
+                  <ValidationProvider
+                    rules="required|alpha_spaces"
+                    name="Your first name"
+                    v-slot="{ errors }"
+                    class="flex--column"
+                  >
                     <label for="firstName">First Name*</label>
                     <input type="text" id="firstName" placeholder="First name" required v-model="requestWeddingInfo.firstName">
+                    <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
-                  <ValidationProvider class="flex--column">
+                  <ValidationProvider
+                    rules="required|alpha"
+                    name="Your last name"
+                    v-slot="{ errors }"
+                    class="flex--column"
+                  >
                     <label for="lastName">Last Name*</label>
                     <input type="text" id="lastName" placeholder="Last name" required v-model="requestWeddingInfo.lastName">
+                    <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
-                <ValidationProvider class="flex--column">
+                <ValidationProvider
+                  rules="required|regexPhoneNum"
+                  name="Your phone number"
+                  v-slot="{ errors }"
+                  class="flex--column"
+                >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Phone Number" required v-model="requestWeddingInfo.phoneNum">
+                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-model="requestWeddingInfo.phoneNum">
+                  <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
-                <ValidationProvider class="flex--column">
+                <ValidationProvider
+                  rules="required|regexEmail"
+                  name="Your email address"
+                  v-slot="{ errors }"
+                  class="flex--column"
+                >
                   <label for="email">Email Address*</label>
                   <input type="text" id="email" placeholder="Email Address" required v-model="requestWeddingInfo.email">
+                  <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <div class="flex--column">
                   <label>Wedding Date</label>
@@ -51,12 +83,22 @@
                       id="weddingDate"
                       required
                       v-model="requestWeddingInfo.weddingDate"
-                      class="util__flex--row"
+                      class="flex--row"
                       :input-props="{
-                      class: 'date-picker-input',
-                      readonly: true,
-                      isRequired: true
-                    }"
+                        class: 'date-picker-input',
+                        readonly: true,
+                        isRequired: true
+                      }"
+                      :disabled-dates="[
+                        {
+                          start: null,
+                          end: new Date(new Date().setDate(new Date().getDate() + 14))
+                        },
+                        {
+                          start: new Date( new Date().setMonth(new Date().getMonth() + 6)),
+                          end: null
+                        }
+                      ]"
                     />
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 30px; height: 30px; fill: #3d405b;" xml:space="preserve">
@@ -70,46 +112,50 @@
                 <div class="flex--column">
                   <label>Select all that apply</label>
                   <label for="ceremony">
-                    <input type="checkbox" id="ceremony" v-model="requestWeddingInfo.serviceNeed">
+                    <input type="checkbox" id="ceremony" value="Ceremony / Reception" v-model="requestWeddingInfo.serviceNeed">
                     Ceremony / Reception
                   </label>
                   <label for="shower">
-                    <input type="checkbox" id="shower" v-model="requestWeddingInfo.serviceNeed">
+                    <input type="checkbox" id="shower" value="Wedding Shower" v-model="requestWeddingInfo.serviceNeed">
                     Wedding Shower
                   </label>
                   <label for="dinner">
-                    <input type="checkbox" id="dinner" v-model="requestWeddingInfo.serviceNeed">
-                    Rehersal Dinner
+                    <input type="checkbox" id="dinner" value="Rehearsal Dinner" v-model="requestWeddingInfo.serviceNeed">
+                    Rehearsal Dinner
                   </label>
                   <label for="guestrooms">
-                    <input type="checkbox" id="guestrooms" v-model="requestWeddingInfo.serviceNeed">
+                    <input type="checkbox" id="guestrooms" value="Guestrooms Only" v-model="requestWeddingInfo.serviceNeed">
                     Guestrooms Only
                   </label>
                   <label for="reception">
-                    <input type="checkbox" id="reception" v-model="requestWeddingInfo.serviceNeed">
+                    <input type="checkbox" id="reception" value="Reception Only" v-model="requestWeddingInfo.serviceNeed">
                     Reception Only
                   </label>
                   <label for="brunch">
-                    <input type="checkbox" id="brunch" v-model="requestWeddingInfo.serviceNeed">
+                    <input type="checkbox" id="brunch" value="Arrival / Departure Brunch" v-model="requestWeddingInfo.serviceNeed">
                     Arrival / Departure Brunch
                   </label>
                 </div>
-                <ValidationProvider class="flex--column">
+                <ValidationProvider
+                  rules="required|min_value:8|numeric"
+                  name="Number of guests"
+                  v-slot="{ errors }"
+                  class="flex--column"
+                >
                   <label for="numberOfGuest">Number of Guests*</label>
                   <input type="text" id="numberOfGuest" required v-model="requestWeddingInfo.numberOfGuest">
+                  <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
-                <ValidationProvider class="flex--column">
-                  <label for="consent">
-                    <input type="checkbox" id="consent" v-model="requestWeddingInfo.consent" required>
-                    I understand that this form collects my name, email and phone number so I can be contacted.
-                    For more information, please check our
-                    <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
-                  </label>
-                </ValidationProvider>
+                <label for="consent">
+                  <input type="checkbox" id="consent" required>
+                  I understand that this form collects my name, email and phone number so I can be contacted.
+                  For more information, please check our
+                  <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
+                </label>
               </div>
             </div>
           </div>
-          <button type="submit">SUBMIT</button>
+          <button type="submit" :disabled="invalid">SUBMIT</button>
         </form>
       </ValidationObserver>
     </section>
@@ -122,6 +168,15 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
+// eslint-disable-next-line camelcase
+import { alpha, alpha_spaces, min_value, numeric } from 'vee-validate/dist/rules'
+import apiService from '@/common/api'
+import shortid from 'shortid'
+import dayjs from 'dayjs'
+extend('alpha', alpha)
+extend('alpha_spaces', alpha_spaces)
+extend('min_value', min_value)
+extend('numeric', numeric)
 extend('required', {
   validate (value) {
     return {
@@ -130,6 +185,25 @@ extend('required', {
     }
   },
   computesRequired: true
+})
+extend('regexPhoneNum', {
+  validate (value) {
+    const regex = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-s.]?[(]?[0-9]{1,3}[)]?([-s.]?[0-9]{3})([-s.]?[0-9]{3,4})/g
+    return {
+      required: true,
+      valid: regex.test(value)
+    }
+  }
+})
+extend('regexEmail', {
+  validate (value) {
+    // eslint-disable-next-line no-control-regex
+    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
+    return {
+      required: true,
+      valid: regex.test(value)
+    }
+  }
 })
 export default {
   components: {
@@ -142,21 +216,32 @@ export default {
   data () {
     return {
       requestWeddingInfo: {
+        id: '',
+        confirmationNum: '',
+        createdTime: '',
         title: '',
         firstName: '',
         lastName: '',
         email: '',
         phoneNum: '',
-        weddingDate: null,
+        weddingDate: '',
         serviceNeed: [],
-        numberOfGuest: '',
-        consent: false
+        numberOfGuest: ''
       }
     }
   },
   methods: {
     onSubmit () {
-      this.$ref.form.validate().then()
+      this.requestWeddingInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
+      this.requestWeddingInfo.createdTime = dayjs().format()
+      // Alert message for inquiry confirmation
+      const confirmation = window.confirm('Ready to submit?')
+      if (confirmation) {
+        apiService.postData('/weddingRequestList', this.requestWeddingInfo)
+        alert('Your wedding inquiry has been submitted successfully!')
+      }
+      // Reload current page to reset all data
+      this.$router.go(0)
     }
   }
 }

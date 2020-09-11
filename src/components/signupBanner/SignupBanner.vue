@@ -13,7 +13,7 @@
       ref="form"
       v-if="displaySignupCollapse && !signupSuccess"
       class="signup-banner__form flex--column flex--center"
-      v-slot="{ handleSubmit }"
+      v-slot="{ handleSubmit, invalid }"
     >
       <form @submit.prevent="handleSubmit(onSubmit)">
         <div class="row flex--row">
@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="row">
-          <button type="submit">
+          <button type="submit" :disabled="invalid">
             <span>SIGN UP</span>
           </button>
         </div>
@@ -96,6 +96,9 @@
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate'
 // eslint-disable-next-line camelcase
 import { alpha_spaces } from 'vee-validate/dist/rules'
+import shortid from 'shortid'
+import dayjs from 'dayjs'
+import apiService from '@/common/api'
 extend('alpha_spaces', alpha_spaces)
 extend('required', {
   validate (value) {
@@ -135,6 +138,9 @@ export default {
       displaySignupCollapse: false,
       signupSuccess: false,
       signupDetail: {
+        id: '',
+        membershipNum: '',
+        createdTime: '',
         name: '',
         email: '',
         address: '',
@@ -142,11 +148,6 @@ export default {
         country: '',
         zipCode: ''
       }
-    }
-  },
-  mounted () {
-    if (sessionStorage.signupDetail) {
-      this.signupDetail = sessionStorage.signupDetail
     }
   },
   methods: {
@@ -157,20 +158,27 @@ export default {
       this.displaySignupCollapse = !this.displaySignupCollapse
       this.signupSuccess = false
     },
-    saveSignupDetail () {
-      // this.displaySignupCollapse = !this.displaySignupCollapse
-      this.signupSuccess = true
-      console.log(sessionStorage.signupDetail)
-      console.log('Successfully saved!')
-    },
     onSubmit () {
-      this.$refs.form.validate().then(success => {
-        if (success) {
-          this.signupSuccess = true
-        } else {
-          return null
-        }
-      })
+      this.signupDetail.membershipNum = shortid.generate() + dayjs().format('MMDD')
+      this.signupDetail.createdTime = dayjs().format()
+      // Alert message for inquiry confirmation
+      const confirmation = window.confirm('Ready to submit?')
+      if (confirmation) {
+        apiService.postData('/subscriptionList', this.signupDetail)
+      }
+      this.signupSuccess = true
+      // Reset all data
+      this.signupDetail = {
+        id: '',
+        membershipNum: '',
+        createdTime: '',
+        name: '',
+        email: '',
+        address: '',
+        state: '',
+        country: '',
+        zipCode: ''
+      }
     }
   },
   computed: {}

@@ -48,6 +48,19 @@
         color: #3d405b;
       }
     }
+    &:disabled {
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      & span {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      &:hover {
+        background-color: transparent;
+        cursor: not-allowed;
+        & span {
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
   }
   &__sent {
     height: 100%;
