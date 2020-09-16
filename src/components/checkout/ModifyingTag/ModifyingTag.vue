@@ -8,7 +8,7 @@
       <span>You're modifying your reservation.</span>
       <p>Please select a different room and rate below, or update your stay details above.</p>
     </div>
-    <button>DISCARD EDITS</button>
+    <button @click.prevent="discardEdit">DISCARD EDITS</button>
   </div>
 </template>
 <script>
@@ -17,6 +17,11 @@ export default {
     isModifying: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    discardEdit () {
+      this.$store.dispatch('discardChanges')
     }
   }
 }

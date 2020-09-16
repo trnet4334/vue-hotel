@@ -6,7 +6,6 @@
       <div class="booking__content flex--column">
         <h4>With Confirmation Number</h4>
         <div class="flex--column row-1">
-          <input type="text" placeholder="Confirmation Number" required v-model="confirmationDetails.confirmationNum">
           <input type="text" placeholder="Email Address" required v-model="confirmationDetails.email">
           <input type="text" placeholder="Last Name" required v-model="confirmationDetails.lastName">
         </div>
@@ -25,6 +24,7 @@
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 export default {
+  name: 'Booking',
   components: {
     CheckoutNavbar,
     CheckoutFooter
@@ -32,7 +32,6 @@ export default {
   data () {
     return {
       confirmationDetails: {
-        confirmationNum: '',
         email: '',
         lastName: ''
       }

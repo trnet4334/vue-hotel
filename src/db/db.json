@@ -1,5 +1,312 @@
 {
-  "reservationList": [],
+  "reservationList": [
+    {
+      "createTime": "2020-09-12T08:58:42.320Z",
+      "lastUpdateTime": "",
+      "confirmationNum": "",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T08:58:42.320Z",
+          "totalNight": 2,
+          "date": {
+            "start": "2020-09-21T16:00:00.000Z",
+            "end": "2020-09-23T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 3,
+            "numOfChildrenGuest": 2
+          },
+          "roomSelect": {
+            "roomType": "The Spa Suite",
+            "packageName": "Best Available Rate",
+            "rate": 550
+          },
+          "addOns": [
+            {
+              "addOnName": "Bedtime Snacks & Milk",
+              "addOnPrice": 35
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 1225.8,
+      "id": 1
+    },
+    {
+      "createTime": "",
+      "lastUpdateTime": "",
+      "confirmationNum": "",
+      "roomSelections": [],
+      "customerInfo": {},
+      "id": 2
+    },
+    {
+      "createTime": "",
+      "lastUpdateTime": "",
+      "confirmationNum": "",
+      "roomSelections": [],
+      "customerInfo": {},
+      "id": 3
+    },
+    {
+      "createTime": "2020-09-12T13:23:28.589Z",
+      "lastUpdateTime": "2020-09-12T13:23:28.589Z",
+      "confirmationNum": "VzKan9c1P",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T13:23:28.589Z",
+          "totalNight": 3,
+          "date": {
+            "start": "2020-09-21T16:00:00.000Z",
+            "end": "2020-09-24T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 4,
+            "numOfChildrenGuest": 1
+          },
+          "roomSelect": {
+            "roomType": "The Spa Suite",
+            "packageName": "Spa & Breakfast Package",
+            "rate": 650
+          },
+          "addOns": [
+            {
+              "addOnName": "Sparkling Water",
+              "addOnPrice": 30
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 2138.4,
+      "id": 4
+    },
+    {
+      "createTime": "2020-09-12T13:27:13.231Z",
+      "lastUpdateTime": "2020-09-12T13:27:13.231Z",
+      "confirmationNum": "YhMy8UaS9",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T13:27:13.231Z",
+          "totalNight": 3,
+          "date": {
+            "start": "2020-09-20T16:00:00.000Z",
+            "end": "2020-09-23T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 7,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "Luxury Suite",
+            "packageName": "Best Available Rate",
+            "rate": 800
+          },
+          "addOns": [
+            {
+              "addOnName": "Bedtime Snacks & Milk",
+              "addOnPrice": 35
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 2629.8,
+      "id": 5
+    },
+    {
+      "createTime": "",
+      "lastUpdateTime": "",
+      "confirmationNum": "",
+      "roomSelections": [],
+      "customerInfo": {},
+      "id": 6
+    },
+    {
+      "createTime": "2020-09-12T13:40:30.825Z",
+      "lastUpdateTime": "2020-09-12T13:40:30.825Z",
+      "confirmationNum": "hArEYSITM4045",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T13:40:30.825Z",
+          "totalNight": 1,
+          "date": {
+            "start": "2020-09-28T16:00:00.000Z",
+            "end": "2020-09-29T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 1,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "Classic Guestroom",
+            "packageName": "Best Available Rate",
+            "rate": 300
+          },
+          "addOns": [
+            {
+              "addOnName": "Sparkling Water",
+              "addOnPrice": 30
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 356.4,
+      "id": 7
+    },
+    {
+      "createTime": "2020-09-12T13:46:15.768Z",
+      "lastUpdateTime": "2020-09-12T13:46:15.768Z",
+      "confirmationNum": "K--i-cpKK4631",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T13:46:15.768Z",
+          "totalNight": 2,
+          "date": {
+            "start": "2020-09-27T16:00:00.000Z",
+            "end": "2020-09-29T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 1,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "Classic Guestroom",
+            "packageName": "Best Available Rate",
+            "rate": 300
+          },
+          "addOns": [
+            {
+              "addOnName": "Bedtime Snacks & Milk",
+              "addOnPrice": 35
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 685.8,
+      "id": 8
+    },
+    {
+      "createTime": "2020-09-12T13:52:16.764Z",
+      "lastUpdateTime": "2020-09-12T13:52:16.764Z",
+      "confirmationNum": "mQ9gCSuqv5233",
+      "roomSelections": [
+        {
+          "createTime": "2020-09-12T13:52:16.764Z",
+          "totalNight": 3,
+          "date": {
+            "start": "2020-09-21T16:00:00.000Z",
+            "end": "2020-09-24T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 5,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "The Spa Suite",
+            "packageName": "Best Available Rate",
+            "rate": 550
+          },
+          "addOns": [
+            {
+              "addOnName": "Sparkling Water",
+              "addOnPrice": 30
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 1814.4,
+      "id": 9
+    }
+  ],
   "eventsRequestList": [
     {
       "id": 1,
@@ -56,6 +363,64 @@
       "alternateDates": {
         "start": "2020-10-06T16:00:00.000Z",
         "end": "2020-10-09T16:00:00.000Z"
+      },
+      "additionalInfo": ""
+    },
+    {
+      "id": "HFJANCoPF809112334",
+      "confirmationNum": "Hh6o6xNX_09112334",
+      "createdTime": "2020-09-11T23:34:36+08:00",
+      "title": "Ms.",
+      "firstName": "test",
+      "lastName": "lu",
+      "address": "123test dsfgsr rd",
+      "company": "d2",
+      "email": "test@test.us",
+      "phoneNum": "+3584806666666",
+      "guestroomRequirement": "no",
+      "numberOfGuestroom": "",
+      "eventName": "fddsfdsf",
+      "attendeesNum": "5",
+      "foodRequirement": "no",
+      "avRequirement": "no",
+      "budget": "4553344",
+      "comments": "",
+      "scheduledDates": {
+        "start": "2020-09-25T16:00:00.000Z",
+        "end": "2020-09-29T16:00:00.000Z"
+      },
+      "alternateDates": {
+        "start": "2020-09-30T16:00:00.000Z",
+        "end": "2020-10-08T16:00:00.000Z"
+      },
+      "additionalInfo": ""
+    },
+    {
+      "id": 3,
+      "confirmationNum": "NlE29WrVF09112338",
+      "createdTime": "2020-09-11T23:38:23+08:00",
+      "title": "Ms.",
+      "firstName": "test",
+      "lastName": "lu",
+      "address": "123test dsfgsr rd",
+      "company": "4147202358825014",
+      "email": "test@test.us",
+      "phoneNum": "+3584806666666",
+      "guestroomRequirement": "no",
+      "numberOfGuestroom": "",
+      "eventName": "fddsfdsf",
+      "attendeesNum": "5",
+      "foodRequirement": "no",
+      "avRequirement": "no",
+      "budget": "4553344",
+      "comments": "",
+      "scheduledDates": {
+        "start": "2020-09-25T16:00:00.000Z",
+        "end": "2020-09-29T16:00:00.000Z"
+      },
+      "alternateDates": {
+        "start": "2020-10-01T16:00:00.000Z",
+        "end": "2020-10-08T16:00:00.000Z"
       },
       "additionalInfo": ""
     }

@@ -32,12 +32,24 @@ const apiService = {
       throw new Error(err)
     }
   },
-  // Delete data from db
+  // Replace data from db
   // resource: data category
-  async updateData (resource, payload) {
+  // id: data id
+  async replaceData (resource, id, payload) {
     try {
-      return await instance.put(resource, {
-        data: `${payload}`
+      return await instance.put(`${resource}/${id}`, {
+        data: payload
+      })
+    } catch (err) {
+      throw new Error(err)
+    }
+  },
+  // Update data from db
+  // resource: data category
+  async updateData (resource, id, payload) {
+    try {
+      return await instance.patch(`${resource}/${id}`, {
+        data: payload
       })
     } catch (err) {
       throw new Error(err)

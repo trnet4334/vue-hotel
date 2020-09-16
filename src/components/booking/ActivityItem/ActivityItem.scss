@@ -1,0 +1,98 @@
+.activity-item {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 10px;
+  margin: 20px auto;
+  svg {
+    fill: #e07a5f;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.date-items {
+  align-items: center;
+}
+.date-item-1, .date-item-2 {
+  align-items: center;
+  margin: 0 7px;
+  div:nth-of-type(1) {
+    text-align: start;
+    margin-left: 2px;
+  }
+}
+
+.date-1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 2.6rem;
+}
+.date-2 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3rem;
+}
+.date-3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3rem;
+}
+
+.detail {
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.type {
+  align-items: center;
+  span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 5px;
+    font-size: 1.2rem;
+    margin-left: 20px;
+  }
+}
+
+.status span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.option {
+  &-item {
+    align-items: center;
+    margin: 5px 0;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      font-size: 1.3rem;
+      margin-left: 5px;
+      font-weight: 600;
+    }
+    &:hover {
+      cursor: pointer;
+      span {
+        font-style: italic;
+      }
+      svg {
+        transform: rotate(180deg);
+        transition: 1.5s ease-out;
+      }
+    }
+  }
+}
+
+/deep/ .el-divider--vertical {
+  width: 2px;
+  height: 3.2rem;
+}

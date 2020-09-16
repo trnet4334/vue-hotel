@@ -1,0 +1,63 @@
+.activity {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: space-between;
+  height: auto;
+  &-container {
+    padding: 5vh 5vw 0 5vw;
+    flex-grow: 1;
+    align-items: stretch;
+  }
+  &-content {
+    align-items: center;
+    justify-content: space-between;
+    label {
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      text-align: start;
+    }
+    select {
+      border: none;
+      border-bottom: 1px solid #202c39;
+      margin-left: 20px;
+      background-color: transparent;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 5px 15px;
+      text-align: center;
+      width: 200px;
+      outline: none;
+    }
+  }
+  .buttons {
+    button {
+      margin: 0 10px;
+      border: none;
+      background-color: #202c39;
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 7px 20px;
+      border-radius: 10px;
+      width: 125px;
+      outline: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &-items-wrapper {
+    height: 50vh;
+    overflow: scroll;
+    padding: 0 5%;
+    ul {
+      list-style: none;
+      padding: 10px 0 10px 0;
+    }
+  }
+}
+
+/deep/ .el-divider--horizontal {
+  margin: 7.5px 0;
+}

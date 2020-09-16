@@ -217,6 +217,7 @@ export default {
     return {
       requestWeddingInfo: {
         id: '',
+        type: 'Wedding Inquiry',
         confirmationNum: '',
         createdTime: '',
         title: '',

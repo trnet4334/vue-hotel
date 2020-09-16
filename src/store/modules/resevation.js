@@ -3,17 +3,22 @@ import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
 import shortid from 'shortid'
+import apiService from '@/common/api'
 
 const state = {
   roomsIntro: roomsIntro,
   tempId: '',
   addOns: addOns,
   currentStep: 0,
+  previousStep: 0,
   isOnBooking: undefined,
-  isEditingRoom: '',
+  isEditingRoom: false,
   reservationDetails: {
     createTime: '',
     lastUpdateTime: '',
+    confirmationNum: '',
+    type: 'Stay',
+    status: 'Upcoming',
     roomSelections: [],
     customerInfo: {},
     totalAmount: undefined
@@ -104,6 +109,7 @@ const mutations = {
   'SET_SEARCH_SELECTION' (state, { date, guests }) {
     state.reservationDetails.createTime = dayjs().toISOString()
     state.onSearchRoom.createTime = dayjs().toISOString()
+    state.reservationDetails.lastUpdateTime = state.reservationDetails.createTime
     state.onSearchRoom.date.start = date.start
     state.onSearchRoom.date.end = date.end
     state.onSearchRoom.totalNight = dayjs(date.end).diff(date.start, 'day')
@@ -203,6 +209,7 @@ const mutations = {
     state.onSearchRoom.roomSelect.rate = record.roomSelect.rate
     state.onSearchRoom.roomSelect.packageName = record.roomSelect.packageName
     state.onSearchRoom.addOns = record.addOns
+    state.previousStep = state.currentStep
     state.currentStep = 1
     state.isEditingRoom = true
   },
@@ -233,6 +240,52 @@ const mutations = {
       },
       addOns: []
     }
+  },
+  'SET_CONFIRMATION_NUM' (state) {
+    state.reservationDetails.confirmationNum = shortid.generate() + dayjs().format('mmss')
+  },
+  'DISCARD_CHANGES' (state) {
+    state.isEditingRoom = false
+    state.currentStep = state.previousStep
+  },
+  'SUBMIT_RESERVATION' (state) {
+    state.tempId = ''
+    state.currentStep = 0
+    state.previousStep = 0
+    state.isOnBooking = undefined
+    state.isEditingRoom = ''
+    state.reservationDetails = {
+      createTime: '',
+      lastUpdateTime: '',
+      confirmationNum: '',
+      roomSelections: [],
+      customerInfo: {},
+      totalAmount: undefined
+    }
+    state.onSearchRoom = {
+      createTime: '',
+      totalNight: undefined,
+      date: {
+        start: null,
+        end: null
+      },
+      guests: {
+        numOfAdultGuests: undefined,
+        numOfChildrenGuest: undefined
+      },
+      roomSelect: {
+        roomType: '',
+        packageName: '',
+        rate: undefined
+      },
+      addOns: []
+    }
+    state.onEditCustomerInfo = {
+      contactDetail: {},
+      addressDetail: {},
+      note: ''
+    }
+    state.currentSelectedRoomIdx = 0
   }
 }
 const actions = {
@@ -311,7 +364,19 @@ const actions = {
   removeCustomerDetails ({ commit }) {},
 
   //
-  submitReservation ({ commit }) {},
+  async setConfirmationNum ({ commit }) {
+    commit('SET_CONFIRMATION_NUM')
+  },
+  async submitReservation ({ commit, dispatch }) {
+    await dispatch('setConfirmationNum')
+    await apiService.postData('/reservationList', state.reservationDetails)
+    commit('SUBMIT_RESERVATION')
+  },
+  async discardChanges ({ commit, dispatch }) {
+    await dispatch('initOnSearchRoom')
+    await router.go(-1)
+    commit('DISCARD_CHANGES')
+  },
   getReservation ({ commit }) {}
 }
 

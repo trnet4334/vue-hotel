@@ -154,6 +154,9 @@ import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
 import { mapState } from 'vuex'
+import dayjs from 'dayjs'
+const toObject = require('dayjs/plugin/toObject')
+dayjs.extend(toObject)
 export default {
   name: 'reservation',
   components: {
@@ -217,6 +220,8 @@ export default {
   },
   created () {
     this.$store.dispatch('initRoom')
+    const a = new Date(dayjs().toJSON()).toUTCString()
+    console.log(dayjs(a).toObject())
   }
 }
 </script>

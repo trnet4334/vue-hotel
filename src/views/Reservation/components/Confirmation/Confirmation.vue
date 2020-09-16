@@ -41,7 +41,7 @@
           Please email me promotions and latest news.
         </label>
         <label for="consent">
-          <input type="checkbox" id="consent">
+          <input type="checkbox" id="consent" required>
           By checking the box, you agree to our Privacy Policy and T&C for use of this website, along with
           the charges accompanied with the rate you have selected. Please read our Privacy Policy for information
           on our data collection and usage practices.
@@ -55,6 +55,7 @@
 import ConfirmationCard from '@/components/checkout/ConfirmationCard/ConfirmationCard'
 import { mapState } from 'vuex'
 export default {
+  name: 'Confirmation',
   data () {
     return {}
   },

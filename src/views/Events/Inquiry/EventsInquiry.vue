@@ -371,6 +371,7 @@ export default {
         id: '',
         confirmationNum: '',
         createdTime: '',
+        type: 'Event/Meeting Inquiry',
         title: '',
         firstName: '',
         lastName: '',
