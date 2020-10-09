@@ -12,7 +12,6 @@
     }
   }
   .side__body {
-    padding: 10px 15px 25px 15px;
     height: 85%;
     background-color: #ffffff;
     justify-content: space-between;
@@ -20,6 +19,8 @@
       font-size: 1.6rem;
       font-weight: 600;
       text-align: start;
+      padding-top: 10px;
+      padding-left: 15px;
     }
     a {
       &:visited {
@@ -28,36 +29,21 @@
     }
   }
 }
-.side__content {
-  &--row {
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.2rem;
-    & span {
-      font-weight: 600;
-      line-height: 1.4rem;
-    }
-    & p {
-      font-size: 1.1rem;
-    }
+
+.span-add {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  &:hover {
+    font-weight: 700;
+    font-style: oblique;
+    cursor: pointer;
   }
 }
-.side__button {
-  & button {
-    margin: 20px auto;
-    padding: 12px 12px;
-    font-size: 1.1rem;
-    border: none;
-    background-color: #283845;
-    color: #ffffff;
-    border-radius: 5px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
+
 /deep/ .el-divider--horizontal {
-  margin: 12.5px 0;
+  margin: 7.5px auto;
+  width: 95%;
 }
 
 @include respond-below(tablet-lg) {

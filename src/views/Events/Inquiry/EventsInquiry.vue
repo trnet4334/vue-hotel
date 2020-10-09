@@ -5,7 +5,7 @@
       <ValidationObserver
         ref="form"
         class="page-wrapper"
-        v-slot="{ handleSubmit, invalid }"
+        v-slot="{ handleSubmit }"
       >
         <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
           <div class="header page-content--header">
@@ -43,7 +43,7 @@
                     class="flex--column"
                   >
                     <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" placeholder="First name" required v-model="requestInfo.firstName">
+                    <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestInfo.firstName">
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                   <ValidationProvider
@@ -53,7 +53,7 @@
                     v-slot="{ errors }"
                   >
                     <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" placeholder="Last name" required v-model="requestInfo.lastName">
+                    <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestInfo.lastName">
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
@@ -65,7 +65,7 @@
                 class="content--second flex--column"
               >
                 <label for="address">Address*</label>
-                <input type="text" id="address" placeholder="Address" v-model="requestInfo.address" required>
+                <input type="text" id="address" placeholder="Address" v-model.trim="requestInfo.address" required>
                 <span class="alert-message">{{errors[0]}}</span>
               </ValidationProvider>
               <div class="flex--column">
@@ -77,7 +77,7 @@
                     v-slot="{ errors }"
                   >
                     <label for="company">Company*</label>
-                    <input type="text" id="company" placeholder="Company" v-model="requestInfo.company" required>
+                    <input type="text" id="company" placeholder="Company" v-model.trim="requestInfo.company" required>
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                   <ValidationProvider
@@ -87,7 +87,7 @@
                     v-slot="{ errors }"
                   >
                     <label for="email">Email*</label>
-                    <input type="text" id="email" placeholder="email" v-model="requestInfo.email" required>
+                    <input type="text" id="email" placeholder="email" v-model.trim="requestInfo.email" required>
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
@@ -98,7 +98,7 @@
                   class="flex--column"
                 >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Phone Number" v-model="requestInfo.phoneNum" required>
+                  <input type="text" id="phoneNum" placeholder="Phone Number" v-model.trim="requestInfo.phoneNum" required>
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
@@ -111,7 +111,7 @@
                 name="Selection"
                 v-slot="{ errors }"
               >
-                <label>Guest Rooms Required?</label>
+                <label>Guest Rooms Required?*</label>
                 <div class="flex--row center">
                   <input type="radio" value="yes" id="needGuestrooms" v-model="requestInfo.guestroomRequirement">
                   <label for="needGuestrooms">Yes</label>
@@ -131,7 +131,7 @@
                   type="text"
                   id="numberOfGuestroom"
                   placeholder="Number of guest Rooms required"
-                  v-model="requestInfo.numberOfGuestroom"
+                  v-model.number.trim="requestInfo.numberOfGuestroom"
                   :disabled="requestInfo.guestroomRequirement === 'no'|| requestInfo.guestroomRequirement === ''"
                 >
                 <span class="alert-message">{{errors[0]}}</span>
@@ -147,7 +147,7 @@
                   v-slot="{ errors }"
                 >
                   <label for="eventName">Meeting/Event Name*</label>
-                  <input type="text" placeholder="Enter meeting / event name" id="eventName" v-model="requestInfo.eventName" required>
+                  <input type="text" placeholder="Enter meeting / event name" id="eventName" v-model.trim="requestInfo.eventName" required>
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <ValidationProvider
@@ -157,7 +157,7 @@
                   v-slot="{ errors }"
                 >
                   <label for="attendeesNum">Number of Attendees*</label>
-                  <input type="text" placeholder="Enter number" id="attendeesNum" v-model="requestInfo.attendeesNum" required>
+                  <input type="text" placeholder="Enter number" id="attendeesNum" v-model.number="requestInfo.attendeesNum" required>
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
@@ -167,7 +167,7 @@
                 v-slot="{ errors }"
                 class="flex--row radio-input-group"
               >
-                <label>Food Service Requirements?</label>
+                <label>Food Service Requirements?*</label>
                 <div class="flex--row center">
                   <input type="radio" value="yes" id="foodRequired" v-model="requestInfo.foodRequirement">
                   <label for="foodRequired">Yes</label>
@@ -182,7 +182,7 @@
                 class="flex--row radio-input-group"
                 v-slot="{ errors }"
               >
-                <label>Any AV Requirements for the meeting/event?</label>
+                <label>Any AV Requirements for the meeting/event?*</label>
                 <div class="flex--row center">
                   <input type="radio" value="yes" id="AvRequired" v-model="requestInfo.avRequirement">
                   <label for="AvRequired">Yes</label>
@@ -197,7 +197,7 @@
                 v-slot="{ errors }"
                 class="flex--column">
                 <label for="budget">Total Budget*</label>
-                <input type="text" id="budget" v-model="requestInfo.budget" placeholder="Number of budget" required>
+                <input type="text" id="budget" v-model.number="requestInfo.budget" placeholder="Number of budget" required>
                 <span class="alert-message">{{errors[0]}}</span>
               </ValidationProvider>
               <div class="flex--column">
@@ -291,14 +291,14 @@
               class="content--sixth flex--column"
             >
               <label for="consent">
-                <input type="checkbox" id="consent" required>
+                <input type="checkbox" id="consent" @click="checked = !checked" required>
                 I understand that this form collects my name, email and phone number so I can be contacted.
                 For more information, please check our
                 <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
               </label>
             </div>
           </div>
-          <button type="submit" :disabled="invalid">SUBMIT</button>
+          <button type="submit" :disabled="!checked">SUBMIT</button>
         </form>
       </ValidationObserver>
     </section>
@@ -367,11 +367,14 @@ export default {
   },
   data () {
     return {
+      checked: false,
       requestInfo: {
         id: '',
         confirmationNum: '',
-        createdTime: '',
+        createTime: '',
+        lastUpdateTime: '',
         type: 'Event/Meeting Inquiry',
+        status: 'Upcoming',
         title: '',
         firstName: '',
         lastName: '',
@@ -402,15 +405,34 @@ export default {
   methods: {
     onSubmit () {
       this.requestInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
-      this.requestInfo.createdTime = dayjs().format()
+      this.requestInfo.createTime = dayjs().format()
+      this.requestInfo.lastUpdateTime = dayjs().format()
+      this.requestInfo.firstName = this.requestInfo.firstName.toUpperCase()
+      this.requestInfo.lastName = this.requestInfo.lastName.toUpperCase()
+      this.requestInfo.email = this.requestInfo.email.toUpperCase()
       // Alert message for inquiry confirmation
-      const confirmation = window.confirm('Ready to submit?')
-      if (confirmation) {
+      this.$confirm('Ready to submit?',
+        'Confirmation',
+        {
+          confirmButtonText: 'YES',
+          cancelButtonText: 'CANCEL',
+          type: 'warning'
+        }).then(() => {
         apiService.postData('/eventsRequestList', this.requestInfo)
-        alert('Your event/meeting inquiry has been submitted successfully!')
-      }
-      // Reload current page to reset all data
-      this.$router.go(0)
+        this.$message({
+          type: 'success',
+          message: 'Your request has been submitted successfully.'
+        })
+        // Reload current page to reset all data
+        setTimeout(() => {
+          this.$router.push('/events')
+        }, 2000)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Request canceled'
+        })
+      })
     }
   },
   computed: {

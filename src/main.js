@@ -26,7 +26,7 @@ Vue.use(VCalendar, {
 
 Vue.config.productionTip = false
 // Define prototype for Lodash
-Vue.prototype._ = _
+Vue.prototype.$_ = _
 // Define prototype for dayjs
 Vue.prototype.$dayjs = dayjs
 

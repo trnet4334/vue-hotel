@@ -26,7 +26,7 @@
       background-color: #ffffff;
       border-radius: 5px;
       button {
-        padding: 12px 12px;
+        padding: 12px 36px;
         font-size: 1.1rem;
         border: none;
         background-color: #283845;
@@ -65,13 +65,13 @@
   }
 }
 .col-1 {
-  flex-basis: 25%;
+  flex-basis: 30%;
 }
 .col-2 {
-  flex-basis: 42.5%;
+  flex-basis: 45%;
 }
 .col-3 {
-  flex-basis: 22.5%;
+  flex-basis: 15%;
 }
 .search--col {
   width: 100%;
@@ -79,6 +79,9 @@
   span {
     font-size: 1.2rem;
     font-weight: 700;
+    p {
+      font-weight: 400;
+    }
   }
   p {
     font-size: 1.2rem;
@@ -155,41 +158,23 @@
 }
 
 .dropdown {
-  position: relative;
-  &__content {
-    visibility: hidden;
-    display: none;
-    opacity: 0;
-    background-color: #ffffff;
-    border: 0.3px solid rgba(61, 64, 91, 0.3);
-    border-radius: 5px;
-    padding: 10px;
-    width: 130%;
-    align-items: flex-start;
-    position: absolute;
-    margin-top: 0.5rem;
-    transition: all 0.5s ease-in-out;
-    z-index: 2;
-    h4 {
-      font-size: 1.4rem;
-      font-weight: 600;
-    }
-    /deep/ .el-divider--horizontal {
-      margin: 10px 0;
-    }
+  h4 {
+    font-size: 1.3rem;
+  }
+  /deep/ .el-divider--horizontal {
+    margin: 10px 0;
   }
   &__item {
-    width: 100%;
-    margin: 5px 0;
-    align-items: center;
     justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    span {
+      font-size: 1.2rem;
+    }
+    /deep/ .el-input__inner {
+      font-size: 1.2rem;
+    }
   }
-}
-
-.display-dropdown {
-  visibility: visible;
-  opacity: 1;
-  display: block;
 }
 
 /deep/ .el-step__icon {
@@ -216,7 +201,7 @@
     }
   }
   .col-1, .col-2 {
-    flex-basis: 75%;
+    flex-basis: 95%;
     margin: 5px auto;
   }
   .col-3 {
@@ -234,7 +219,6 @@
   }
   /deep/ .date-picker-input {
     font-size: 1.1rem;
-    width: 150px;
   }
 }
 
@@ -258,7 +242,7 @@
     }
   }
   .col-1, .col-2 {
-    flex-basis: 50%;
+    flex-basis: 100%;
     margin: 5px auto;
   }
   .col-3 {
@@ -294,7 +278,7 @@
     }
   }
   .col-1, .col-2 {
-    flex-basis: 37.5%;
+    flex-basis: 42.5%;
     margin: 5px auto;
   }
   .col-3 {

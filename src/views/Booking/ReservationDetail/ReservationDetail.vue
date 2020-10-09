@@ -8,21 +8,21 @@
           <div class="flex--row" style="align-items: center">
             <label for="types">Filters:</label>
             <select name="types" id="types" v-model="type">
-              <option value="all">All Types</option>
-              <option value="upcoming">Upcoming Stays</option>
-              <option value="canceled">Canceled Stays</option>
-              <option value="previous">Previous Stays</option>
-              <option value="other">Other Activity</option>
+              <option value="All">All Types</option>
+              <option value="Upcoming">Upcoming Activities</option>
+              <option value="Canceled">Canceled Activities</option>
+              <option value="Other">Other Activities</option>
             </select>
             <select name="time range" id="range" v-model="dateRange">
               <option value="three">Three Months</option>
               <option value="six">Six Months</option>
+              <option value="nine">Nine Months</option>
               <option value="twelve">Twelve Months</option>
             </select>
           </div>
           <div class="flex--row buttons">
-            <button>RESET</button>
-            <button>UPDATE</button>
+            <button @click="resetFilter">RESET</button>
+            <button @click="filterSelectedResult">UPDATE</button>
           </div>
         </div>
         <el-divider/>
@@ -33,9 +33,8 @@
           v-infinite-scroll="load"
           infinite-scroll-disabled="disabled"
         >
-          <activity-item/>
+          <activity-item v-for="item in sortedResult" :bookingItem="item" :key="item.createTime"/>
         </ul>
-        <span v-if="loading">Loading...</span>
       </div>
     </div>
     <checkout-footer></checkout-footer>
@@ -45,6 +44,7 @@
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
 import ActivityItem from '@/components/booking/ActivityItem/ActivityItem'
+import { mapGetters } from 'vuex'
 export default {
   name: 'ReservationDetail',
   components: {
@@ -54,14 +54,16 @@ export default {
   },
   data () {
     return {
-      count: 4,
+      count: 3,
       loading: false,
-      type: 'all',
-      dateRange: 'three',
-      result: []
+      type: 'All',
+      dateRange: 'six'
     }
   },
   computed: {
+    ...mapGetters({
+      sortedResult: 'sortedResult'
+    }),
     noMore () {
       return this.count >= 20
     },
@@ -81,12 +83,30 @@ export default {
         this.loading = false
       }, 3000)
     },
-    // Filter the result from type and date range
-    filterResult () {},
+    // Filter the the result from both selections
+    filterSelectedResult () {
+      const select = {
+        status: this.type,
+        range: this.dateRange
+      }
+      this.$store.dispatch('submitFilterChoice', select)
+    },
+    // Filter search result with booking type
+    filterType () {},
+    // Filter search result with month range
+    filterMonthRange () {},
     // Reset filter setting
-    resetFilter () {},
+    resetFilter () {
+      this.$store.dispatch('resetFilterChoice')
+      this.type = 'All'
+      this.dateRange = 'six'
+    },
     // Update filter setting
     updateFilter () {}
+  },
+  destroyed () {
+    // this.$store.dispatch('leaveSearchResult')
+    // window.sessionStorage.clear()
   }
 }
 </script>

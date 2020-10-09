@@ -157,6 +157,7 @@ import countries from '../../../../assets/data/checkout/countries'
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate'
 // eslint-disable-next-line camelcase
 import { alpha, alpha_spaces } from 'vee-validate/dist/rules'
+import { mapState } from 'vuex'
 extend('required', {
   validate (value) {
     return {
@@ -232,6 +233,9 @@ export default {
   },
   methods: {
     async onSubmit () {
+      this.customerInfo.contactDetail.firstName = this.customerInfo.contactDetail.firstName.toUpperCase()
+      this.customerInfo.contactDetail.lastName = this.customerInfo.contactDetail.lastName.toUpperCase()
+      this.customerInfo.contactDetail.email = this.customerInfo.contactDetail.email.toUpperCase()
       this.$refs.form.validate().then(success => {
         if (success) {
           const information = {
@@ -252,6 +256,16 @@ export default {
           })
         }
       })
+    }
+  },
+  computed: {
+    ...mapState({
+      customer: state => state.reservation.reservationDetails.customerInfo
+    })
+  },
+  created () {
+    if (!this.$_.isEmpty(this.customer)) {
+      this.customerInfo = this.customer
     }
   }
 }

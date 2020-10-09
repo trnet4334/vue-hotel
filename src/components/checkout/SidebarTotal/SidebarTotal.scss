@@ -1,4 +1,5 @@
-.side__content {
+.price__content {
+  padding: 10px 15px;
   &--row {
     justify-content: space-between;
     align-items: center;
@@ -13,5 +14,6 @@
   }
 }
 /deep/ .el-divider--horizontal {
-  margin: 10px 0;
+  margin: 7.5px auto;
+  width: 95%;
 }

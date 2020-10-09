@@ -35,6 +35,12 @@
       &:hover {
         cursor: pointer;
       }
+      &:disabled {
+        background-color: rgba(105, 105, 105, 0.6);
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }

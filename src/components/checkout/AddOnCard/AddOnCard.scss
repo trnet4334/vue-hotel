@@ -50,6 +50,9 @@
     .content--button {
       justify-content: flex-end;
       align-items: center;
+      .btn-remove {
+        background-color: rgba(105, 105, 105, 0.5);
+      }
     }
   }
   button {
@@ -61,10 +64,6 @@
     border-radius: 5px;
     &:hover {
       cursor: pointer;
-    }
-    &:disabled {
-      background-color: rgba(40, 56, 69, 0.3);
-      cursor: default;
     }
   }
 }

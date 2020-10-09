@@ -10,6 +10,7 @@ const instance = Vue.axios.create({
 })
 instance.defaults.headers.get['Content-Type'] = 'application/json'
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+instance.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded'
 
 const apiService = {
   // Fetch data from api
@@ -35,22 +36,18 @@ const apiService = {
   // Replace data from db
   // resource: data category
   // id: data id
-  async replaceData (resource, id, payload) {
+  async replaceData (resource, payload) {
     try {
-      return await instance.put(`${resource}/${id}`, {
-        data: payload
-      })
+      return await instance.put(resource, payload)
     } catch (err) {
       throw new Error(err)
     }
   },
   // Update data from db
   // resource: data category
-  async updateData (resource, id, payload) {
+  async updateData (resource, payload) {
     try {
-      return await instance.patch(`${resource}/${id}`, {
-        data: payload
-      })
+      return await instance.patch(resource, payload)
     } catch (err) {
       throw new Error(err)
     }

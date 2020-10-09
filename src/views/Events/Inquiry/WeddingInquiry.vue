@@ -5,7 +5,7 @@
       <ValidationObserver
         ref="form"
         class="page-wrapper"
-        v-slot="{ handleSubmit, invalid }"
+        v-slot="{ handleSubmit }"
       >
         <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
           <div class="header page-content--header">
@@ -42,7 +42,7 @@
                     class="flex--column"
                   >
                     <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" placeholder="First name" required v-model="requestWeddingInfo.firstName">
+                    <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestWeddingInfo.firstName">
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                   <ValidationProvider
@@ -52,7 +52,7 @@
                     class="flex--column"
                   >
                     <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" placeholder="Last name" required v-model="requestWeddingInfo.lastName">
+                    <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestWeddingInfo.lastName">
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
@@ -63,7 +63,7 @@
                   class="flex--column"
                 >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-model="requestWeddingInfo.phoneNum">
+                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-model.trim="requestWeddingInfo.phoneNum">
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <ValidationProvider
@@ -73,7 +73,7 @@
                   class="flex--column"
                 >
                   <label for="email">Email Address*</label>
-                  <input type="text" id="email" placeholder="Email Address" required v-model="requestWeddingInfo.email">
+                  <input type="text" id="email" placeholder="Email Address" required v-model.trim="requestWeddingInfo.email">
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <div class="flex--column">
@@ -91,16 +91,16 @@
                       }"
                       :disabled-dates="[
                         {
-                          start: null,
+                          start: new Date(new Date().setFullYear(new Date().getFullYear() - 1000)),
                           end: new Date(new Date().setDate(new Date().getDate() + 14))
                         },
                         {
                           start: new Date( new Date().setMonth(new Date().getMonth() + 6)),
-                          end: null
+                          end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
                         }
                       ]"
                     />
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                          viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 30px; height: 30px; fill: #3d405b;" xml:space="preserve">
                         <path d="M5.5,5C5.224,5,5,4.776,5,4.5v-4C5,0.224,5.224,0,5.5,0S6,0.224,6,0.5v4C6,4.776,5.776,5,5.5,5z"/>
                       <path d="M18.5,5C18.224,5,18,4.776,18,4.5v-4C18,0.224,18.224,0,18.5,0S19,0.224,19,0.5v4C19,4.776,18.776,5,18.5,5z"/>
@@ -143,11 +143,11 @@
                   class="flex--column"
                 >
                   <label for="numberOfGuest">Number of Guests*</label>
-                  <input type="text" id="numberOfGuest" required v-model="requestWeddingInfo.numberOfGuest">
+                  <input type="text" id="numberOfGuest" required v-model.number="requestWeddingInfo.numberOfGuest">
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
                 <label for="consent">
-                  <input type="checkbox" id="consent" required>
+                  <input type="checkbox" id="consent" @click="checked = !checked" required>
                   I understand that this form collects my name, email and phone number so I can be contacted.
                   For more information, please check our
                   <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
@@ -155,7 +155,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" :disabled="invalid">SUBMIT</button>
+          <button type="submit" :disabled="!checked">SUBMIT</button>
         </form>
       </ValidationObserver>
     </section>
@@ -215,11 +215,14 @@ export default {
   },
   data () {
     return {
+      checked: false,
       requestWeddingInfo: {
         id: '',
         type: 'Wedding Inquiry',
+        status: 'Upcoming',
         confirmationNum: '',
-        createdTime: '',
+        createTime: '',
+        lastUpdateTime: '',
         title: '',
         firstName: '',
         lastName: '',
@@ -234,15 +237,34 @@ export default {
   methods: {
     onSubmit () {
       this.requestWeddingInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
-      this.requestWeddingInfo.createdTime = dayjs().format()
+      this.requestWeddingInfo.createTime = dayjs().format()
+      this.requestWeddingInfo.lastUpdateTime = dayjs().format()
+      this.requestWeddingInfo.firstName = this.requestWeddingInfo.firstName.toUpperCase()
+      this.requestWeddingInfo.lastName = this.requestWeddingInfo.lastName.toUpperCase()
+      this.requestWeddingInfo.email = this.requestWeddingInfo.email.toUpperCase()
       // Alert message for inquiry confirmation
-      const confirmation = window.confirm('Ready to submit?')
-      if (confirmation) {
+      this.$confirm('Ready to submit?',
+        'Confirmation',
+        {
+          confirmButtonText: 'YES',
+          cancelButtonText: 'CANCEL',
+          type: 'warning'
+        }).then(() => {
         apiService.postData('/weddingRequestList', this.requestWeddingInfo)
-        alert('Your wedding inquiry has been submitted successfully!')
-      }
-      // Reload current page to reset all data
-      this.$router.go(0)
+        this.$message({
+          type: 'success',
+          message: 'Your request has been submitted successfully.'
+        })
+        // Reload current page to reset all data
+        setTimeout(() => {
+          this.$router.push('/wedding')
+        }, 2000)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Request canceled'
+        })
+      })
     }
   }
 }

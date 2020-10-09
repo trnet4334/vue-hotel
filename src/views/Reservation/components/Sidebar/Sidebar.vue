@@ -5,16 +5,14 @@
       <el-divider/>
       <div>
         <sidebar-room
-          v-for="item in reservationDetails"
+          v-for="(item, index) in reservationDetails"
           :reservationInfo="item"
           :key="item.createTime"
+          :id="index"
         />
-        <span @click="addAnotherRoom">Add Room</span>
+        <span @click="addAnotherRoom" class="span-add">Add Room</span>
       </div>
       <sidebar-total :totalAmount="totalAmount"/>
-    </div>
-    <div class="side__button">
-      <button v-if="currentStep === 4" @click="onSubmit">COMPLETE BOOKING</button>
     </div>
   </aside>
 </template>
@@ -22,7 +20,6 @@
 import SidebarRoom from '@/components/checkout/SidebarRoom/SidebarRoom'
 import SidebarTotal from '@/components/checkout/SidebarTotal/SidebarTotal'
 import { mapState } from 'vuex'
-import router from '@/router'
 export default {
   name: 'sidebar',
   components: {
@@ -36,12 +33,6 @@ export default {
   methods: {
     addAnotherRoom () {
       this.$store.dispatch('addAnotherRoom')
-    },
-    async onSubmit () {
-      await this.$store.dispatch('submitReservation')
-      await router.push('/reservation')
-      await window.sessionStorage.clear()
-      router.go(0)
     }
   },
   computed: {

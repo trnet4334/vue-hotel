@@ -26,7 +26,7 @@
       font-weight: 600;
       padding: 5px 15px;
       text-align: center;
-      width: 200px;
+      width: 250px;
       outline: none;
     }
   }
@@ -44,13 +44,16 @@
       outline: none;
       &:hover {
         cursor: pointer;
+        border: 2px solid #202c39;
+        background-color: transparent;
+        color: #202c39;
       }
     }
   }
   &-items-wrapper {
     height: 50vh;
     overflow: scroll;
-    padding: 0 5%;
+    padding: 10px 3%;
     ul {
       list-style: none;
       padding: 10px 0 10px 0;

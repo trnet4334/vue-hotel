@@ -61,3 +61,24 @@
 /deep/ .el-divider--horizontal {
   margin: 10px 0;
 }
+
+.btn-confirm {
+  & button {
+    margin: 20px auto;
+    padding: 12px 12px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #283845;
+    color: #ffffff;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:disabled {
+      background-color: rgba(105, 105, 105, 0.6);
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

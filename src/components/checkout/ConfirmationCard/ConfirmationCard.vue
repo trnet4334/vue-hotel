@@ -2,19 +2,19 @@
   <div class="flex--column">
     <div class="flex--row row">
       <span><u>Guest Name</u></span>
-      <p>{{customer.contactDetail.firstName + ' ' + customer.contactDetail.lastName}}</p>
+      <p>{{customer.fullName}}</p>
     </div>
     <div class="flex--row row">
       <span><u>Email Address</u></span>
-      <p>{{customer.contactDetail.email}}</p>
+      <p>{{customer.email}}</p>
     </div>
     <div class="flex--row row">
       <span><u>Phone Number</u></span>
-      <p>{{customer.contactDetail.phoneNum}}</p>
+      <p>{{customer.phoneNum}}</p>
     </div>
     <div class="flex--row row">
       <span><u>Address</u></span>
-      <p>{{address}}</p>
+      <p>{{customer.address}}</p>
     </div>
     <div class="flex--row row">
       <span><u>Payment Method</u></span>
@@ -36,15 +36,16 @@ export default {
   },
   data () {
     return {
-      customer: this.info
-    }
-  },
-  computed: {
-    address () {
-      return this.customer.addressDetail.address + ', ' +
-        this.customer.addressDetail.city + ', ' +
-        this.customer.addressDetail.country + ' ' +
-        this.customer.addressDetail.zipCode
+      customer: {
+        fullName: this.$_.isEmpty(this.info) ? '' : this.info.contactDetail.firstName + ' ' + this.info.contactDetail.lastName,
+        email: this.$_.isEmpty(this.info) ? '' : this.info.contactDetail.email,
+        phoneNum: this.$_.isEmpty(this.info) ? '' : this.info.contactDetail.phoneNum,
+        address: this.$_.isEmpty(this.info) ? '' : this.info.addressDetail.address + ', ' +
+          this.info.addressDetail.city + ', ' +
+          this.info.addressDetail.country + ' ' +
+          this.info.addressDetail.zipCode,
+        note: this.$_.isEmpty(this.info) ? '' : this.info.note
+      }
     }
   }
 }

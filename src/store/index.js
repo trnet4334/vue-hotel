@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import createLogger from 'vuex/dist/logger'
 import reservation from './modules/resevation'
+import booking from './modules/booking'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    reservation
+    reservation,
+    booking
   },
   plugins: debug ? [createLogger(), createPersisted] : [createPersisted]
 })

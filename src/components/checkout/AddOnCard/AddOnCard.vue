@@ -16,12 +16,14 @@
         </div>
       </div>
       <div class="flex--row content--button">
-        <button @click="selectAddOn" :disabled="isSelected">ADD TO MY STAY</button>
+        <button @click="selectAddOn" v-if="!includedAddon">ADD TO MY STAY</button>
+        <button @click="selectAddOn" v-if="includedAddon" class="btn-remove">REMOVE</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     addOn: {
@@ -40,8 +42,38 @@ export default {
         name: this.addOn.name,
         price: this.addOn.price
       }
-      this.$store.dispatch('addAddonsToSelection', selection)
-      this.isSelected = true
+      if (this.isSelected === false) {
+        if (this.includedAddon === true) {
+          this.$store.dispatch('removeAddonsFromSelection', this.addOn.name)
+          this.isSelected = false
+        } else if (this.includedAddon === false) {
+          this.$store.dispatch('addAddonsToSelection', selection)
+          this.isSelected = true
+        }
+      } else if (this.isSelected === true) {
+        if (this.includedAddon === true) {
+          this.$store.dispatch('removeAddonsFromSelection', this.addOn.name)
+          this.isSelected = false
+        } else if (this.includedAddon === false) {
+          this.isSelected = false
+        }
+      }
+    }
+  },
+  computed: {
+    ...mapState({
+      selectedAddons: state => state.reservation.onSearchRoom.addOns
+    }),
+    includedAddon () {
+      const _temp = []
+      if (this.selectedAddons.length === 0) {
+        return this.isSelected === true
+      } else {
+        this.selectedAddons.forEach(element => {
+          _temp.push(element.addOnName)
+        })
+        return _temp.includes(this.addOn.name)
+      }
     }
   }
 }

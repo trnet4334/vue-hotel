@@ -1,7 +1,8 @@
+@import '../../../styles/app';
 .activity-item {
   align-items: center;
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 30px;
+  box-shadow: 15px 7.5px 10px 1px rgba(0, 0, 0, 0.15);
   padding: 10px;
   margin: 20px auto;
   svg {
@@ -13,6 +14,8 @@
 
 .date-items {
   align-items: center;
+  width: 225px;
+  justify-content: space-around;
 }
 .date-item-1, .date-item-2 {
   align-items: center;
@@ -29,7 +32,7 @@
   line-height: 2.6rem;
 }
 .date-2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.3rem;
 }
@@ -41,11 +44,14 @@
 
 .detail {
   flex-grow: 1;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 0 20px;
   align-items: center;
 }
 .type {
-  align-items: center;
+  align-items: flex-start;
+  flex-basis: 35%;
+  margin-left: 20px;
   span {
     font-size: 1.5rem;
     font-weight: 600;
@@ -56,20 +62,27 @@
     padding-left: 0;
     padding-top: 5px;
     font-size: 1.2rem;
-    margin-left: 20px;
+    li {
+      text-align: start;
+    }
   }
 }
 
-.status span {
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-style: italic;
+.status {
+  flex-basis: 20%;
+  span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: italic;
+  }
 }
 
 .option {
+  flex-basis: 25%;
   &-item {
     align-items: center;
     margin: 5px 0;
+    flex-basis: 40%;
     svg {
       width: 20px;
       height: 20px;
@@ -91,8 +104,23 @@
     }
   }
 }
+.divider-ver {
+  display: block;
+}
+.divider-hor {
+  display: none;
+}
 
 /deep/ .el-divider--vertical {
   width: 2px;
   height: 3.2rem;
+}
+
+@include respond-below(tablet) {
+  .divider-ver {
+    display: none;
+  }
+  .divider-hor {
+    display: block;
+  }
 }
