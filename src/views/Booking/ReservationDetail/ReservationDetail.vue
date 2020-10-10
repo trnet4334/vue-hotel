@@ -5,20 +5,22 @@
       <h1>Latest Activity</h1>
       <div>
         <div class="flex--row activity-content">
-          <div class="flex--row" style="align-items: center">
+          <div class="flex--row filter">
             <label for="types">Filters:</label>
-            <select name="types" id="types" v-model="type">
-              <option value="All">All Types</option>
-              <option value="Upcoming">Upcoming Activities</option>
-              <option value="Canceled">Canceled Activities</option>
-              <option value="Other">Other Activities</option>
-            </select>
-            <select name="time range" id="range" v-model="dateRange">
-              <option value="three">Three Months</option>
-              <option value="six">Six Months</option>
-              <option value="nine">Nine Months</option>
-              <option value="twelve">Twelve Months</option>
-            </select>
+            <div class="flex--row filter-select">
+              <select name="types" id="types" v-model="type">
+                <option value="All">All Types</option>
+                <option value="Upcoming">Upcoming Activities</option>
+                <option value="Canceled">Canceled Activities</option>
+                <option value="Other">Other Activities</option>
+              </select>
+              <select name="time range" id="range" v-model="dateRange">
+                <option value="three">Three Months</option>
+                <option value="six">Six Months</option>
+                <option value="nine">Nine Months</option>
+                <option value="twelve">Twelve Months</option>
+              </select>
+            </div>
           </div>
           <div class="flex--row buttons">
             <button @click="resetFilter">RESET</button>

@@ -2,15 +2,7 @@ const reservation = [
   {
     path: '/reservation/:tempId',
     name: 'Reservation',
-    component: () => import('@/views/Reservation/Reservation.vue'),
-    beforeEach: (to, from, next) => {},
-    children: [
-      {
-        path: 'addons',
-        name: 'Addons',
-        component: () => import('@/views/Reservation/components/AddOns/AddOns.vue')
-      }
-    ]
+    component: () => import('@/views/Reservation/Reservation.vue')
   },
   {
     path: '/reservation/completion/:tempId',

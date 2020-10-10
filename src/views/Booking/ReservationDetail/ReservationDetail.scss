@@ -1,3 +1,5 @@
+@import "src/styles/app";
+
 .activity {
   position: relative;
   width: 100%;
@@ -12,11 +14,26 @@
   &-content {
     align-items: center;
     justify-content: space-between;
-    label {
-      font-size: 1.3rem;
-      line-height: 1.8rem;
-      text-align: start;
+  }
+  &-items-wrapper {
+    height: 50vh;
+    overflow: scroll;
+    padding: 10px 3%;
+    ul {
+      list-style: none;
+      padding: 10px 0 10px 0;
     }
+  }
+}
+.filter {
+  align-items: center;
+  label {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    text-align: start;
+  }
+  &-select {
+    align-items: center;
     select {
       border: none;
       border-bottom: 1px solid #202c39;
@@ -30,37 +47,100 @@
       outline: none;
     }
   }
-  .buttons {
-    button {
-      margin: 0 10px;
-      border: none;
-      background-color: #202c39;
-      color: #ffffff;
-      font-size: 1.3rem;
-      font-weight: 600;
-      padding: 7px 20px;
-      border-radius: 10px;
-      width: 125px;
-      outline: none;
-      &:hover {
-        cursor: pointer;
-        border: 2px solid #202c39;
-        background-color: transparent;
-        color: #202c39;
-      }
-    }
-  }
-  &-items-wrapper {
-    height: 50vh;
-    overflow: scroll;
-    padding: 10px 3%;
-    ul {
-      list-style: none;
-      padding: 10px 0 10px 0;
+}
+.buttons {
+  button {
+    margin: 0 10px;
+    border: none;
+    background-color: #202c39;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 7px 20px;
+    border-radius: 10px;
+    width: 125px;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #202c39;
+      background-color: transparent;
+      color: #202c39;
     }
   }
 }
 
 /deep/ .el-divider--horizontal {
   margin: 7.5px 0;
+}
+
+@include respond-below(phone) {
+  .filter {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    flex-basis: 100%;
+    justify-content: center;
+    &-select {
+      flex-direction: column;
+      select {
+        width: 200px;
+      }
+    }
+  }
+  .buttons {
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    button {
+      font-size: 1.1rem;
+      width: 115px;
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .activity {
+    &-content {
+      justify-content: flex-start;
+    }
+  }
+  .filter {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    &-select {
+      flex-direction: column;
+      select {
+        width: 200px;
+      }
+    }
+  }
+  .buttons {
+    flex-direction: column;
+    margin-left: 15px;
+    button {
+      font-size: 1.1rem;
+      width: 115px;
+      margin: 2.5px 0;
+    }
+  }
+}
+
+@include respond-between(tablet, tablet-lg) {
+  .activity {
+    &-content {
+      justify-content: flex-start;
+    }
+  }
+  .filter {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    &-select {
+      flex-direction: column;
+    }
+  }
+  .buttons {
+    flex-direction: column;
+    margin-left: 15px;
+    button {
+      margin: 2.5px 0;
+    }
+  }
 }

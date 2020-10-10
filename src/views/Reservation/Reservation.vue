@@ -200,6 +200,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
+      // this.$store.dispatch('switchStep', to.query.currentStep)
       console.log(to)
       console.log(from)
     }

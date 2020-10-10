@@ -25,7 +25,7 @@ const routes = [
   ...reservation,
   ...booking,
   {
-    path: '/jobs',
+    path: '/careers/jobs',
     name: 'Jobs',
     component: () => import('@/views/Information/section/Jobs/Jobs.vue')
   },

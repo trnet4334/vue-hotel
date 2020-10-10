@@ -107,6 +107,7 @@ const mutations = {
     }
   },
   'SWITCH_STEP' (state, step) {
+    state.previousStep = state.currentStep
     state.currentStep = step
   },
   'GENERATE_ID' (state, id) {
@@ -314,8 +315,8 @@ const actions = {
   },
   // TODO: Finish this action
   async switchStep ({ commit }, order) {
-    await router.push(`/reservation/s${order}`)
-    commit('SWITCH_STEP', order)
+    const step = order === 's1' ? 1 : (order === 's2') ? 2 : (order === 's3') ? 3 : (order === 's4') ? 4 : 4
+    commit('SWITCH_STEP', step)
   },
   initRoom ({ commit }) {
     commit('SET_ROOMS', roomsIntro)

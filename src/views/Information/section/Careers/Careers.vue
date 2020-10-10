@@ -11,7 +11,7 @@
             guests a full-service luxury and exceptional experiences. Join our team today and see what
             makes here to be an incredible place to work for.</p>
           <br>
-          <router-link to="/jobs" target="_blank" rel="noopener noreferrer">
+          <router-link to="/careers/jobs" target="_blank" rel="noopener noreferrer">
             VIEW OPEN POSITIONS
           </router-link>
         </div>
@@ -62,7 +62,7 @@
                 are also great ways to explore nature.</p>
             </div>
             <br><br>
-            <router-link to="/jobs" target="_blank" rel="noopener noreferrer">
+            <router-link to="/careers/jobs" target="_blank" rel="noopener noreferrer">
               VIEW OPEN POSITIONS
             </router-link>
           </div>
