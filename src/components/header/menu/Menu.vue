@@ -42,7 +42,12 @@
 </template>
 <script>
 export default {
-  props: ['isOpen'],
+  props: {
+    isOpen: {
+      type: Boolean,
+      required: true
+    }
+  },
   data () {
     return {
       displayMenu: this.isOpen

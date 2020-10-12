@@ -18,7 +18,8 @@
   &-items-wrapper {
     height: 50vh;
     overflow: scroll;
-    padding: 10px 3%;
+    padding: 0 3%;
+    margin-top: 10px;
     ul {
       list-style: none;
       padding: 10px 0 10px 0;
@@ -74,6 +75,11 @@
 }
 
 @include respond-below(phone) {
+  .activity {
+    &-items-wrapper {
+      height: 100vh;
+    }
+  }
   .filter {
     margin-bottom: 20px;
     margin-top: 10px;
@@ -101,6 +107,9 @@
     &-content {
       justify-content: flex-start;
     }
+    &-items-wrapper {
+      height: 75vh;
+    }
   }
   .filter {
     margin-bottom: 20px;
@@ -127,6 +136,9 @@
   .activity {
     &-content {
       justify-content: flex-start;
+    }
+    &-items-wrapper {
+      height: 75vh;
     }
   }
   .filter {

@@ -17,8 +17,8 @@
   </aside>
 </template>
 <script>
-import SidebarRoom from '@/components/checkout/SidebarRoom/SidebarRoom'
-import SidebarTotal from '@/components/checkout/SidebarTotal/SidebarTotal'
+import SidebarRoom from '@/components/checkout/Sidebar/SidebarRoom/SidebarRoom'
+import SidebarTotal from '@/components/checkout/Sidebar/SidebarTotal/SidebarTotal'
 import { mapState } from 'vuex'
 export default {
   name: 'sidebar',

@@ -72,9 +72,6 @@ export default {
     disabled () {
       return this.loading || this.noMore
     }
-    // ,
-    // Sort the date of filter result from latest to last
-    // sortResultDate () {}
   },
   methods: {
     // Lazy loading infinite scroll
@@ -93,18 +90,11 @@ export default {
       }
       this.$store.dispatch('submitFilterChoice', select)
     },
-    // Filter search result with booking type
-    filterType () {},
-    // Filter search result with month range
-    filterMonthRange () {},
-    // Reset filter setting
     resetFilter () {
       this.$store.dispatch('resetFilterChoice')
       this.type = 'All'
       this.dateRange = 'six'
-    },
-    // Update filter setting
-    updateFilter () {}
+    }
   },
   destroyed () {
     // this.$store.dispatch('leaveSearchResult')

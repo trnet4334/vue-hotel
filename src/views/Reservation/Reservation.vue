@@ -1,6 +1,22 @@
 <template>
   <div>
     <checkout-navbar/>
+    <div class="sidebar--mobile">
+      <div class="container flex--row">
+        <div class="block-1 flex--column">
+          <p><b>Your stay: </b>{{ stayDate.start }} ~ {{ stayDate.end }}</p>
+          <p><b>Guests: </b>{{ stayGuest.adults }} Adult, {{ stayGuest.children }} Children</p>
+        </div>
+        <div class="block-2 flex--row" :class="displayBorder" @click="displayMobileSidebar">
+          <p :key="currentStep" v-show="total !== ''">$ {{ total }}</p>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+               viewBox="0 0 24 24" xml:space="preserve">
+          <path d="M12,0.5C5.659,0.5,0.5,5.659,0.5,12S5.659,23.5,12,23.5S23.5,18.341,23.5,12S18.341,0.5,12,0.5z M18.604,14.104l-5.543,5.543c-0.292,0.292-0.677,0.438-1.061,0.438s-0.769-0.146-1.061-0.438l-5.543-5.543c-0.429-0.428-0.664-0.998-0.664-1.604s0.235-1.175,0.664-1.604c0.857-0.856,2.35-0.856,3.207,0L9.5,11.793V6c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5v5.793l0.896-0.896c0.857-0.856,2.35-0.856,3.207,0c0.429,0.428,0.664,0.998,0.664,1.604S19.032,13.675,18.604,14.104z"/>
+        </svg>
+        </div>
+      </div>
+    </div>
+    <sidebar-mobile/>
     <div class="header">
       <img src="../../assets/images/checkout/background-img.jpg" alt="" class="header__image"/>
       <div style="position: absolute; bottom: 0;">
@@ -62,7 +78,7 @@
                     <el-divider/>
                     <div class="flex--row dropdown__item">
                       <span>Adults</span>
-                      <el-input-number size="small" :min="1" :max="8" v-model="bookingDetails.guests.numOfAdultGuest"></el-input-number>
+                      <el-input-number size="small" :min="1" :max="8" v-model="bookingDetails.guests.numOfAdultGuests"></el-input-number>
                     </div>
                     <div class="flex--row dropdown__item">
                       <span>Children</span>
@@ -79,7 +95,7 @@
                       <p>Adults: {{bookingDetails.guests.numOfAdultGuests}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
                     </div>
                   </div>
-                </el-popover>
+              </el-popover>
               <div class="flex--row search--col col-2 search--item">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                      viewBox="0 0 24 24" xml:space="preserve">
@@ -134,9 +150,6 @@
               </div>
             </div>
           </div>
-          <!--          This div is search bar for mobile device only  -->
-          <div class="reservation__search-bar--mobile"></div>
-          <!--          -->
           <div class="reservation__body">
             <div class="reservation__content">
               <room-select v-show="currentStep === 1"/>
@@ -152,12 +165,16 @@
       </div>
     </section>
     <checkout-footer/>
+    <div class="button-banner--mobile" v-show="currentStep >= 3">
+      <button @click="addAnotherRoom">ADD ROOM</button>
+    </div>
   </div>
 </template>
 <script>
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
-import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
+import Sidebar from '@/components/checkout/Sidebar/Sidebar.vue'
+import SidebarMobile from '@/components/checkout/Sidebar/SidebarMobile/SidebarMobile.vue'
 import RoomSelect from '@/views/Reservation/components/RoomSelect/RoomSelect'
 import AddOns from '@/views/Reservation/components/AddOns/AddOns'
 import GuestDetails from '@/views/Reservation/components/GuestDetails/GuestDetails'
@@ -173,6 +190,7 @@ export default {
     CheckoutNavbar,
     CheckoutFooter,
     Sidebar,
+    SidebarMobile,
     RoomSelect,
     AddOns,
     GuestDetails,
@@ -195,7 +213,16 @@ export default {
           numOfAdultGuests: 1,
           numOfChildrenGuest: 0
         }
-      }
+      },
+      stayDate: {
+        start: '',
+        end: ''
+      },
+      stayGuest: {
+        adults: '',
+        children: ''
+      },
+      total: ''
     }
   },
   watch: {
@@ -218,6 +245,12 @@ export default {
         }
         this.$store.dispatch('searchRoomType', selection)
       }
+    },
+    addAnotherRoom () {
+      this.$store.dispatch('addAnotherRoom')
+    },
+    displayMobileSidebar () {
+      this.$store.dispatch('displayMobileSidebar')
     }
     // ,
     // switchStep (step) {
@@ -229,21 +262,38 @@ export default {
   computed: {
     ...mapState({
       currentStep: state => state.reservation.currentStep,
-      dateStart: state => state.reservation.onSearchRoom.date.start,
-      dateEnd: state => state.reservation.onSearchRoom.date.end,
-      adultGuest: state => state.reservation.onSearchRoom.guests.numOfAdultGuests,
-      childrenGuest: state => state.reservation.onSearchRoom.guests.numOfChildrenGuest
+      onSearchDate: state => state.reservation.onSearchRoom.date,
+      onSearchGuests: state => state.reservation.onSearchRoom.guests,
+      selectedInfo: state => state.reservation.reservationDetails.roomSelections,
+      totalAmount: state => state.reservation.reservationDetails.totalAmount
     }),
     displaySidebar () {
       return this.currentStep >= 3
+    },
+    displayStayDate () {
+      return this.selectedInfo.length === 0 ? this.onSearchDate : this.selectedInfo[0].date
+    },
+    displayStayGuests () {
+      return this.selectedInfo.length === 0 ? this.onSearchGuests : this.selectedInfo[0].guests
+    },
+    displayBorder () {
+      return this.total !== '' ? 'display-border' : ''
     }
   },
   created () {
     this.$store.dispatch('initRoom')
-    this.bookingDetails.date.start = this.dateStart
-    this.bookingDetails.date.end = this.dateEnd
-    this.bookingDetails.guests.numOfAdultGuests = this.adultGuest
-    this.bookingDetails.guests.numOfChildrenGuest = this.childrenGuest
+    this.$store.dispatch('resetSidebarState')
+    this.bookingDetails.date.start = this.onSearchDate.start
+    this.bookingDetails.date.end = this.onSearchDate.end
+    this.bookingDetails.guests.numOfAdultGuests = this.onSearchGuests.numOfAdultGuests
+    this.bookingDetails.guests.numOfChildrenGuest = this.onSearchGuests.numOfChildrenGuest
+    this.stayDate.start = dayjs(this.displayStayDate.start).format('MMM-DD')
+    this.stayDate.end = dayjs(this.displayStayDate.end).format('MMM-DD-YYYY')
+    this.stayGuest.adults = this.displayStayGuests.numOfAdultGuests
+    this.stayGuest.children = this.displayStayGuests.numOfChildrenGuest
+  },
+  beforeUpdate () {
+    this.total = this.totalAmount
   }
 }
 </script>

@@ -483,53 +483,6 @@
       },
       "totalAmount": 803.52,
       "id": 10
-    },
-    {
-      "createTime": "2020-10-10T16:24:15.588Z",
-      "lastUpdateTime": "2020-10-10T16:24:15.588Z",
-      "confirmationNum": "FRXw1EO3-2428",
-      "roomSelections": [
-        {
-          "createTime": "2020-10-10T16:24:15.588Z",
-          "totalNight": 8,
-          "date": {
-            "start": "2020-12-15T16:00:00.000Z",
-            "end": "2020-12-23T16:00:00.000Z"
-          },
-          "guests": {
-            "numOfAdultGuests": 6,
-            "numOfChildrenGuest": 0
-          },
-          "roomSelect": {
-            "roomType": "Luxury Suite",
-            "packageName": "Best Available Rate",
-            "rate": 800
-          },
-          "addOns": [
-            {
-              "addOnName": "Adventure Essential Basket",
-              "addOnPrice": 110
-            }
-          ]
-        }
-      ],
-      "customerInfo": {
-        "contactDetail": {
-          "firstName": "TEST",
-          "lastName": "LU",
-          "phoneNum": "+3584806666666",
-          "email": "TEST@TEST.US"
-        },
-        "addressDetail": {
-          "country": "Åland Islands",
-          "city": "test",
-          "address": "123test dsfgsr rd",
-          "zipCode": "77777"
-        },
-        "note": ""
-      },
-      "totalAmount": 7030.8,
-      "id": 11
     }
   ],
   "eventsRequestList": [

@@ -14,10 +14,27 @@ const createPersisted = createPersistedState({
 
 export default new Vuex.Store({
   state: {
+    isMobileSidebarDisplay: false
   },
   mutations: {
+    // Reset sidebar state
+    'RESET_SIDEBAR_STATE' (state) {
+      state.isMobileSidebarDisplay = false
+    },
+    // Request for display mobile sidebar
+    'DISPLAY_MOBILE_SIDEBAR' (state) {
+      state.isMobileSidebarDisplay = !state.isMobileSidebarDisplay
+    }
   },
   actions: {
+    // Reset sidebar state
+    resetSidebarState ({ commit }) {
+      commit('RESET_SIDEBAR_STATE')
+    },
+    // Request for display mobile sidebar
+    displayMobileSidebar ({ commit }) {
+      commit('DISPLAY_MOBILE_SIDEBAR')
+    }
   },
   modules: {
     reservation,

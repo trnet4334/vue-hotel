@@ -124,3 +124,111 @@
     display: block;
   }
 }
+
+@include respond-below(phone) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    flex-basis: 100%;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+    &-item {
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .date-1 {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+  .date-2 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+  .date-3 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    flex-basis: 100%;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+    &-item {
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .date-1 {
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+  }
+  .date-2 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+  .date-3 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+}
+
+@include respond-between(tablet, desktop) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+  }
+}

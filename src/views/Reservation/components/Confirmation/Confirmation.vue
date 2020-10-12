@@ -43,19 +43,23 @@
         <div class="content--consent flex--column page-content--header">
           <h4>Acknowledgement</h4>
           <el-divider/>
-          <ValidationProvider>
-            <label for="subscription">
+          <ValidationProvider style="width: 100%;">
+            <label for="subscription" class="flex--row">
               <input type="checkbox" id="subscription">
-              Please email me promotions and latest news.
+              <span>
+                Please email me promotions and latest news.
+              </span>
             </label>
           </ValidationProvider>
           <ValidationProvider>
-            <label for="consent">
+            <label for="consent" class="flex--row">
               <input type="checkbox" id="consent" @click="checked = !checked" required>
-              By checking the box, you agree to our Privacy Policy and T&C for use of this website, along with
+              <span>
+                By checking the box, you agree to our Privacy Policy and T&C for use of this website, along with
               the charges accompanied with the rate you have selected. Please read our Privacy Policy for information
               on our data collection and usage practices.
               <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">View Privacy Policy</router-link>
+              </span>
             </label>
           </ValidationProvider>
         </div>

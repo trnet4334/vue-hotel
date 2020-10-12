@@ -48,6 +48,15 @@
           font-size: 1.3rem;
           text-align: start;
           margin-bottom: 10px;
+          align-items: flex-start;
+          justify-content: space-between;
+          input {
+            flex-basis: 3%;
+            margin-top: 7.5px;
+          }
+          span {
+            flex-basis: 95%;
+          }
         }
         a {
           &:visited {

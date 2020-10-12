@@ -1,3 +1,4 @@
+@import "src/styles/app";
 .room__content {
   padding: 10px;
   &--row {
@@ -50,4 +51,15 @@
 }
 /deep/ .el-message-box__content {
   font-size: 1.1rem;
+}
+
+@include respond-below(tablet-lg) {
+  .room__content {
+    color: #ffffff;
+    padding: 5px 0;
+  }
+  .selected-class {
+    border-left: none;
+    background-color: transparent;
+  }
 }
