@@ -51,6 +51,7 @@
 <script>
 import faq from '@/assets/data/faq'
 import Collapse from '@/components/collapse/Collapse'
+import lozad from 'lozad'
 export default {
   name: 'FAQ',
   components: {
@@ -63,6 +64,15 @@ export default {
       reservation: faq.slice(10, 13),
       accounting: faq.slice(13, 15)
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

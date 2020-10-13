@@ -39,7 +39,12 @@
     </section>
     <section class="room flex--row">
       <div class="room--image">
-        <img src="@/assets/images/homepage/room-img.jpg" alt="Room">
+        <img
+          src="@/assets/images/homepage/room-img.jpg"
+          :data-src="require('@/assets/images/homepage/room-img.jpg')"
+          alt="Room"
+          class="lazod"
+        >
       </div>
       <div class="room--type flex--column page-content--header">
         <h1>Stay with us</h1>
@@ -187,6 +192,7 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import Header from '@/components/header/Header.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
+import lozad from 'lozad'
 import {
   VueFlux,
   FluxControls,
@@ -237,6 +243,18 @@ export default {
         'wave'
       ]
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true,
+      load: function () {
+        console.log('load')
+      }
+    })
+    observer.observe()
   }
 }
 </script>

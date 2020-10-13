@@ -68,6 +68,7 @@ import Footer from '@/components/footer/Footer.vue'
 import RoomCard from '@/components/productCard/roomCard/RoomCard'
 import rooms from '@/assets/data/rooms'
 import roomType from '@/assets/data/checkout/roomType'
+import lozad from 'lozad'
 import {
   VueFlux,
   FluxControls,
@@ -116,6 +117,15 @@ export default {
         'wave'
       ]
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

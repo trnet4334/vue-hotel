@@ -3,7 +3,6 @@
     <router-view/>
   </main>
 </template>
-
 <style lang="scss">
   @import 'styles/app';
   #app {

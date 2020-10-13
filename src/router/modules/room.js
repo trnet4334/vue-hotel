@@ -39,12 +39,6 @@ const room = [
     name: 'Pet Friendly Form',
     component: () => import('@/views/Room/RoomType/PetFriendly/PetFriendlyForm.vue')
   }
-  // ,
-  // {
-  //   path: '/rooms/:roomType',
-  //   name: 'Room Type',
-  //   component: () => import('@/views/Room/RoomType/RoomType.vue')
-  // }
 ]
 
 export default room

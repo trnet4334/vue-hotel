@@ -19,6 +19,7 @@
 </template>
 <script>
 import RoomPackage from '@/components/checkout/Room/roomPackage/RoomPackage'
+import lozad from 'lozad'
 export default {
   props: {
     room: {
@@ -32,7 +33,16 @@ export default {
   data () {
     return {}
   },
-  methods: {}
+  methods: {},
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
+  }
 }
 </script>
 <style src="./Room.scss" lang="scss" scoped/>

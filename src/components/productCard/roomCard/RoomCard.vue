@@ -25,6 +25,7 @@
         <router-link :to="{ name: `${room.routeName}` }">
           ROOM DETAILS
         </router-link>
+<!--        TODO: Change reservation route-->
         <router-link to="/reservation" target="_blank" rel="noreferrer noopener">
           RESERVE NOW
         </router-link>

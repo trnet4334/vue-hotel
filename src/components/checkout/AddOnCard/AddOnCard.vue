@@ -24,6 +24,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import lozad from 'lozad'
 export default {
   props: {
     addOn: {
@@ -75,6 +76,15 @@ export default {
         return _temp.includes(this.addOn.name)
       }
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

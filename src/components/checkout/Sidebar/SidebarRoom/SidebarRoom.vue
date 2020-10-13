@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="room__content" :class="onSelectClass">
+    <div class="room__content" :class="onSelectClass" v-show="info.roomSelect.packageName !== ''">
       <div class="flex--column">
         <div class="flex--row room__content--row">
           <span><u><i>{{ info.roomSelect.roomType }}</i></u></span>

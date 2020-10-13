@@ -114,11 +114,21 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
+import lozad from 'lozad'
 export default {
   components: {
     Navbar,
     SignupBanner,
     Footer
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

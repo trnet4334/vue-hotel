@@ -12,12 +12,22 @@
   </div>
 </template>
 <script>
+import lozad from 'lozad'
 export default {
   props: {
     offer: {
       type: Object,
       required: true
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

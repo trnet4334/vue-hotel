@@ -72,6 +72,7 @@
   </section>
 </template>
 <script>
+import lozad from 'lozad'
 export default {
   data () {
     return {
@@ -79,6 +80,15 @@ export default {
       image2: '@/assets/images/information/careers-img-2.jpg',
       fit: 'contain'
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>
