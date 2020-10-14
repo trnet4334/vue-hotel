@@ -67,8 +67,48 @@ const mutations = {
   'SET_ROOMS' (state, roomsIntro) {
     state.roomsIntro = roomsIntro
   },
-  'RESET_RESERVATION' (state) {
-    state.reservationDetails = {}
+  'RESET_ALL_RESERVATION' (state) {
+    state.roomsIntro = roomsIntro
+    state.tempId = ''
+    state.currentStep = 1
+    state.previousStep = 1
+    state.isOnBooking = undefined
+    state.isEditingRoom = false
+    state.isCompleteCustomerInfo = false
+    state.reservationDetails = {
+      createTime: '',
+      lastUpdateTime: '',
+      confirmationNum: '',
+      type: 'Stay',
+      status: 'Upcoming',
+      roomSelections: [],
+      customerInfo: {},
+      totalAmount: undefined
+    }
+    state.onSearchRoom = {
+      createTime: '',
+      totalNight: undefined,
+      date: {
+        start: null,
+        end: null
+      },
+      guests: {
+        numOfAdultGuests: undefined,
+        numOfChildrenGuest: undefined
+      },
+      roomSelect: {
+        roomType: '',
+        packageName: '',
+        rate: undefined
+      },
+      addOns: []
+    }
+    state.onEditCustomerInfo = {
+      contactDetail: {},
+      addressDetail: {},
+      note: ''
+    }
+    state.currentSelectedRoomIdx = 0
   },
   'RESET_ONSEARCHROOM' (state) {
     state.onSearchRoom = {
@@ -309,6 +349,9 @@ const mutations = {
 const actions = {
   goNextStep ({ commit }) {
     commit('GO_NEXT_STEP')
+  },
+  resetAllReservation ({ commit }) {
+    commit('RESET_ALL_RESERVATION')
   },
   backPreviousStep ({ commit }) {
     commit('BACK_PREVIOUS_STEP')

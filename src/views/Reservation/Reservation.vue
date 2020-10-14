@@ -181,7 +181,6 @@ import GuestDetails from '@/views/Reservation/components/GuestDetails/GuestDetai
 import Confirmation from '@/views/Reservation/components/Confirmation/Confirmation'
 import { mapState } from 'vuex'
 import dayjs from 'dayjs'
-// import router from '@/router'
 const toObject = require('dayjs/plugin/toObject')
 dayjs.extend(toObject)
 export default {

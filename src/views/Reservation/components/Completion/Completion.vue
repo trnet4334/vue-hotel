@@ -113,7 +113,7 @@ export default {
   },
   destroyed () {
     window.removeEventListener('popstate', this.back, false)
-    // window.sessionStorage.clear()
+    window.sessionStorage.clear()
   },
   methods: {
     // Prevent user use the back button to go back to previous page

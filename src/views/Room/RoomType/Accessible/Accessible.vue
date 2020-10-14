@@ -15,7 +15,7 @@
                 All details will be provided below, and you call book online or call our Reservation Specialist if
                 you'd like to make a reservation or have any questions. We are really happy to help you everything as
                 you request for.</p>
-              <button>RESERVATION NOW</button>
+              <button :disabled="true">RESERVE NOW</button>
             </div>
           </div>
           <div class="accessible-room__body--second flex--row">

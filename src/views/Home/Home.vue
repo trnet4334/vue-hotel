@@ -249,10 +249,7 @@ export default {
     const observer = lozad(el, {
       rootMargin: '10px',
       threshold: 0.1,
-      enableAutoReload: true,
-      load: function () {
-        console.log('load')
-      }
+      enableAutoReload: true
     })
     observer.observe()
   }
