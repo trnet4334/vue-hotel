@@ -46,7 +46,7 @@
                     <span class="alert-message">{{errors[0]}}</span>
                   </ValidationProvider>
                   <ValidationProvider
-                    rules="required|alpha"
+                    rules="required|alpha_spaces"
                     name="Your last name"
                     v-slot="{ errors }"
                     class="flex--column"
@@ -239,9 +239,6 @@ export default {
       this.requestWeddingInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
       this.requestWeddingInfo.createTime = dayjs().format()
       this.requestWeddingInfo.lastUpdateTime = dayjs().format()
-      this.requestWeddingInfo.firstName = this.requestWeddingInfo.firstName.toUpperCase()
-      this.requestWeddingInfo.lastName = this.requestWeddingInfo.lastName.toUpperCase()
-      this.requestWeddingInfo.email = this.requestWeddingInfo.email.toUpperCase()
       // Alert message for inquiry confirmation
       this.$confirm('Ready to submit?',
         'Confirmation',

@@ -147,8 +147,14 @@ const mutations = {
     }
   },
   'SWITCH_STEP' (state, step) {
-    state.previousStep = state.currentStep
-    state.currentStep = step
+    const checkStep = function (el) {
+      if (el === 's1') return 1
+      else if (el === 's2') return 2
+      else if (el === 's3') return 3
+      else if (el === 's4') return 4
+    }
+    state.previousStep = checkStep(step.prev)
+    state.currentStep = checkStep(step.current)
   },
   'GENERATE_ID' (state, id) {
     if (state.tempId === id) {
@@ -239,7 +245,6 @@ const mutations = {
       (element) => {
         return element.createTime
       }).indexOf(selection)
-    // TODO: Re-design the logic
     if (state.reservationDetails.roomSelections.length > 1) {
       state.reservationDetails.roomSelections.splice(record, 1)
     } else {
@@ -303,6 +308,7 @@ const mutations = {
   'DISCARD_CHANGES' (state) {
     state.isEditingRoom = false
     state.currentStep = state.previousStep
+    state.previousStep = 1
   },
   'SUBMIT_RESERVATION' (state) {
     state.tempId = ''
@@ -356,10 +362,9 @@ const actions = {
   backPreviousStep ({ commit }) {
     commit('BACK_PREVIOUS_STEP')
   },
-  // TODO: Finish this action
+  // Switch components between different routes
   async switchStep ({ commit }, order) {
-    const step = order === 's1' ? 1 : (order === 's2') ? 2 : (order === 's3') ? 3 : (order === 's4') ? 4 : 4
-    commit('SWITCH_STEP', step)
+    commit('SWITCH_STEP', order)
   },
   initRoom ({ commit }) {
     commit('SET_ROOMS', roomsIntro)
@@ -377,7 +382,7 @@ const actions = {
       query: {
         createdTime: dayjs(state.reservationDetails.createTime).format('YYYY-MM-DD'),
         currentStep: 's1',
-        prevStep: 's3'
+        prevStep: `s${state.currentStep}`
       }
     })
     commit('ADD_ANOTHER_ROOM')
@@ -399,7 +404,7 @@ const actions = {
         query: {
           createdTime: dayjs(state.reservationDetails.createTime).format('YYYY-MM-DD'),
           currentStep: 's1',
-          prevStep: 's3'
+          prevStep: `s${state.currentStep}`
         }
       })
       commit('REMOVE_ROOM_FROM_SELECTION', selection)
@@ -407,8 +412,17 @@ const actions = {
       commit('REMOVE_ROOM_FROM_SELECTION', selection)
     }
   },
-  async editRoomFromSelection ({ commit }, selection) {
+  async editRoomFromSelection ({ state, commit }, selection) {
     commit('EDIT_ROOM_FROM_SELECTION', selection)
+    await router.push({
+      name: 'Reservation',
+      params: { tempId: state.tempId },
+      query: {
+        createdTime: dayjs(state.reservationDetails.createTime).format('YYYY-MM-DD'),
+        currentStep: 's1',
+        prevStep: `s${state.previousStep}`
+      }
+    })
   },
   async addAddonsToSelection ({ commit }, selection) {
     commit('ADD_ADDONS', selection)
@@ -435,7 +449,7 @@ const actions = {
         prevStep: 's2'
       }
     })
-    commit('GO_NEXT_STEP')
+    // commit('GO_NEXT_STEP')
   },
 
   // Manipulation of customer details
@@ -458,7 +472,7 @@ const actions = {
       }
     })
     // await router.go(0)
-    commit('GO_NEXT_STEP')
+    // commit('GO_NEXT_STEP')
   },
 
   //
@@ -477,9 +491,17 @@ const actions = {
   async resetReservedInfo ({ commit }) {
     commit('RESET_RESERVED_INFO')
   },
-  async discardChanges ({ commit, dispatch }) {
+  async discardChanges ({ state, commit, dispatch }) {
     await dispatch('initOnSearchRoom')
-    await router.go(-1)
+    await router.push({
+      name: 'Reservation',
+      params: { tempId: state.tempId },
+      query: {
+        createdTime: dayjs(state.reservationDetails.createTime).format('YYYY-MM-DD'),
+        currentStep: `s${state.previousStep}`,
+        prevStep: 's1'
+      }
+    })
     commit('DISCARD_CHANGES')
   }
 }

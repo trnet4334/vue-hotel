@@ -110,15 +110,6 @@ export default {
     },
     editRoom () {
       this.$store.dispatch('editRoomFromSelection', this.info.createTime)
-      this.$router.push({
-        name: 'Reservation',
-        params: { tempId: this.tempId },
-        query: {
-          createdTime: dayjs(this.time).format('YYYY-MM-DD'),
-          currentStep: 's1',
-          prevStep: 's3'
-        }
-      })
     }
   }
 }

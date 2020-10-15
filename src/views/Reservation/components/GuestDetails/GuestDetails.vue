@@ -233,9 +233,6 @@ export default {
   },
   methods: {
     async onSubmit () {
-      this.customerInfo.contactDetail.firstName = this.customerInfo.contactDetail.firstName.toUpperCase()
-      this.customerInfo.contactDetail.lastName = this.customerInfo.contactDetail.lastName.toUpperCase()
-      this.customerInfo.contactDetail.email = this.customerInfo.contactDetail.email.toUpperCase()
       this.$refs.form.validate().then(success => {
         if (success) {
           const information = {

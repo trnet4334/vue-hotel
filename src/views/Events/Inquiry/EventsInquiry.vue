@@ -407,9 +407,6 @@ export default {
       this.requestInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
       this.requestInfo.createTime = dayjs().format()
       this.requestInfo.lastUpdateTime = dayjs().format()
-      this.requestInfo.firstName = this.requestInfo.firstName.toUpperCase()
-      this.requestInfo.lastName = this.requestInfo.lastName.toUpperCase()
-      this.requestInfo.email = this.requestInfo.email.toUpperCase()
       // Alert message for inquiry confirmation
       this.$confirm('Ready to submit?',
         'Confirmation',

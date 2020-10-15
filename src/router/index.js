@@ -44,15 +44,19 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (from.name === 'Reservation' && to.name !== 'Completion') {
-    const answer = window.confirm('You might lose all the data you typed. Do you really want to leave this page?')
-    if (answer) {
-      store.dispatch('resetAllReservation').then(() => {
-        window.sessionStorage.clear()
-        next()
-      })
+  if (from.name === 'Reservation') {
+    if (to.name !== 'Completion' && to.name !== 'Reservation') {
+      const answer = window.confirm('You might lose all the data you typed. Do you really want to leave this page?')
+      if (answer) {
+        store.dispatch('resetAllReservation').then(() => {
+          window.sessionStorage.clear()
+          next()
+        })
+      } else {
+        next(false)
+      }
     } else {
-      next(false)
+      next()
     }
   } else {
     next()

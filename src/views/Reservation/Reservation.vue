@@ -226,9 +226,15 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      // this.$store.dispatch('switchStep', to.query.currentStep)
       console.log(to)
       console.log(from)
+      if (to.name === 'Reservation') {
+        const step = {
+          current: to.query.currentStep,
+          prev: to.query.prevStep
+        }
+        this.$store.dispatch('switchStep', step)
+      }
     }
   },
   methods: {

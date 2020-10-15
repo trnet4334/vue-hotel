@@ -158,18 +158,18 @@ const mutations = {
 const actions = {
   // Fetch all booking data from api
   async getBookingResult ({ commit }, selection) {
-    const emailUpperCase = selection.email.toUpperCase()
-    const lastNameUpperCase = selection.lastName.toUpperCase()
+    const email = selection.email
+    const lastName = selection.lastName
     const _temp = []
     await axios.all([
       apiService.getData(
-        `/reservationList?customerInfo.contactDetail.lastName=${lastNameUpperCase}&customerInfo.contactDetail.email=${emailUpperCase}`
+        `/reservationList?customerInfo.contactDetail.lastName=${lastName}&customerInfo.contactDetail.email=${email}`
       ),
       apiService.getData(
-        `/eventsRequestList?lastName=${lastNameUpperCase}&email=${emailUpperCase}`
+        `/eventsRequestList?lastName=${lastName}&email=${email}`
       ),
       apiService.getData(
-        `/weddingRequestList?lastName=${lastNameUpperCase}&email=${emailUpperCase}`
+        `/weddingRequestList?lastName=${lastName}&email=${email}`
       )
     ]).then(
       axios.spread((reservRes, eventsRes, weddingRes) => {
