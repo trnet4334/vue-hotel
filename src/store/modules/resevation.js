@@ -165,11 +165,13 @@ const mutations = {
     }
   },
   'SET_SEARCH_SELECTION' (state, { date, guests, time }) {
-    state.reservationDetails.createTime = time
+    if (state.reservationDetails.createTime === '') {
+      state.reservationDetails.createTime = time
+      state.reservationDetails.lastUpdateTime = state.reservationDetails.createTime
+    }
     if (state.reservationDetails.roomSelections.length === 0) {
       state.onSearchRoom.createTime = time
     }
-    state.reservationDetails.lastUpdateTime = state.reservationDetails.createTime
     state.onSearchRoom.date.start = date.start
     state.onSearchRoom.date.end = date.end
     state.onSearchRoom.totalNight = dayjs(date.end).diff(date.start, 'day')
