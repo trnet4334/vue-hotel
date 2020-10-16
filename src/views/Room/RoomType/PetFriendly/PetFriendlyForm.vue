@@ -264,7 +264,7 @@ export default {
     onSubmit () {
       const _temp = []
       apiService.getData(
-        `/reservationList?customerInfo.contactDetail.lastName=${this.petFriendlyForm.guestLastName}&customerInfo.contactDetail.email=${this.petFriendlyForm.guestEmail}`
+        `/reservationList?customerInfo.contactDetail.lastName=${this.petFriendlyForm.guestLastName}&customerInfo.contactDetail.email=${this.petFriendlyForm.guestEmail}&confirmationNum=${this.petFriendlyForm.reservationNum}`
       ).then((res) => {
         res.data.forEach((item) => {
           _temp.push(item)

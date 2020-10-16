@@ -152,6 +152,7 @@ const mutations = {
       else if (el === 's2') return 2
       else if (el === 's3') return 3
       else if (el === 's4') return 4
+      else if (el === 's0') return 0
     }
     state.previousStep = checkStep(step.prev)
     state.currentStep = checkStep(step.current)
@@ -165,7 +166,9 @@ const mutations = {
   },
   'SET_SEARCH_SELECTION' (state, { date, guests, time }) {
     state.reservationDetails.createTime = time
-    state.onSearchRoom.createTime = time
+    if (state.reservationDetails.roomSelections.length === 0) {
+      state.onSearchRoom.createTime = time
+    }
     state.reservationDetails.lastUpdateTime = state.reservationDetails.createTime
     state.onSearchRoom.date.start = date.start
     state.onSearchRoom.date.end = date.end
@@ -285,14 +288,14 @@ const mutations = {
   'ADD_ANOTHER_ROOM' (state) {
     state.currentStep = 0
     state.onSearchRoom = {
-      createTime: '',
+      createTime: dayjs().toISOString(),
       date: {
-        start: null,
-        end: null
+        start: new Date(new Date().setDate(new Date().getDate() + 2)),
+        end: new Date(new Date().setDate(new Date().getDate() + 2))
       },
       guests: {
-        numOfAdultGuests: undefined,
-        numOfChildrenGuest: undefined
+        numOfAdultGuests: 1,
+        numOfChildrenGuest: 0
       },
       roomSelect: {
         roomType: '',
@@ -376,16 +379,16 @@ const actions = {
     commit('RESET_ONSEARCHROOM')
   },
   async addAnotherRoom ({ state, commit }) {
+    await commit('ADD_ANOTHER_ROOM')
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
       query: {
         createdTime: dayjs(state.reservationDetails.createTime).format('YYYY-MM-DD'),
-        currentStep: 's1',
+        currentStep: 's0',
         prevStep: `s${state.currentStep}`
       }
     })
-    commit('ADD_ANOTHER_ROOM')
   },
   async generateId ({ commit }, payload) {
     commit('GENERATE_ID', payload)
