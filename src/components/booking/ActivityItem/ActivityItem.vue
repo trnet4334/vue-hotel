@@ -42,7 +42,7 @@
             </svg>
             <span @click="submitBookingRequest">BOOK AGAIN</span>
           </div>
-          <div class="flex--row option-item" v-if="bookingItem.status === 'Upcoming'">
+          <div class="flex--row option-item" v-if="bookingItem.status === 'Upcoming' && !(checkStatus === 'Completed') && !(checkStatus === 'Pending')">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" xml:space="preserve">
               <path d="M11.5,0C5.159,0,0,5.159,0,11.5S5.159,23,11.5,23S23,17.841,23,11.5S17.841,0,11.5,0z M17.5,12h-12C5.224,12,5,11.776,5,11.5S5.224,11,5.5,11h12c0.276,0,0.5,0.224,0.5,0.5S17.776,12,17.5,12z"/>
@@ -100,6 +100,7 @@ export default {
         {
           confirmButtonText: 'YES',
           cancelButtonText: 'CANCEL',
+          customClass: 'notification-class',
           center: true,
           type: 'warning'
         }).then(() => {
@@ -108,18 +109,22 @@ export default {
           type: this.bookingItem.type
         })
         setTimeout(() => {
-          this.$message({
+          this.$notify({
             type: 'success',
-            message: 'Successfully submitted your request'
+            message: 'Successfully submitted your cancellation request',
+            customClass: 'notification-class'
           })
         }, 3000)
+        this.isRequestSubmitted = true
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Remove cancellation request'
-        })
+        setTimeout(() => {
+          this.$notify({
+            type: 'info',
+            message: 'Remove cancellation request',
+            customClass: 'notification-class'
+          })
+        }, 500)
       })
-      this.isRequestSubmitted = true
     },
     async submitBookingRequest () {
       if (this.bookingItem.type === 'Stay') {

@@ -20,6 +20,11 @@
     overflow: scroll;
     padding: 0 3%;
     margin-top: 10px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     ul {
       list-style: none;
       padding: 10px 0 10px 0;

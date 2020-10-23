@@ -247,10 +247,10 @@
     },
     {
       "createTime": "2020-10-06T09:57:33.363Z",
-      "lastUpdateTime": "2020-10-06T09:57:33.363Z",
+      "lastUpdateTime": "2020-10-23T07:16:56.665Z",
       "confirmationNum": "3PYDnKwn_5757",
       "type": "Stay",
-      "status": "Upcoming",
+      "status": "Canceled",
       "roomSelections": [
         {
           "createTime": "2020-10-06T09:57:33.363Z",
@@ -291,10 +291,10 @@
     },
     {
       "createTime": "2020-10-06T13:48:17.039Z",
-      "lastUpdateTime": "2020-10-06T13:48:17.039Z",
+      "lastUpdateTime": "2020-10-23T07:45:38.333Z",
       "confirmationNum": "TEBggi6Rd4843",
       "type": "Stay",
-      "status": "Upcoming",
+      "status": "Canceled",
       "roomSelections": [
         {
           "createTime": "2020-10-06T13:48:17.039Z",
