@@ -241,15 +241,16 @@ export default {
       this.requestWeddingInfo.lastUpdateTime = dayjs().format()
       // Alert message for inquiry confirmation
       this.$confirm('Ready to submit?',
-        'Confirmation',
         {
           confirmButtonText: 'YES',
           cancelButtonText: 'CANCEL',
+          customClass: 'notification-class',
           type: 'warning'
         }).then(() => {
         apiService.postData('/weddingRequestList', this.requestWeddingInfo)
-        this.$message({
+        this.$notify({
           type: 'success',
+          customClass: 'notification-class',
           message: 'Your request has been submitted successfully.'
         })
         // Reload current page to reset all data
@@ -257,10 +258,13 @@ export default {
           this.$router.push('/wedding')
         }, 2000)
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Request canceled'
-        })
+        setTimeout(() => {
+          this.$notify({
+            type: 'info',
+            customClass: 'notification-class',
+            message: 'Request canceled'
+          })
+        }, 500)
       })
     }
   }

@@ -238,6 +238,7 @@ export default {
     }
   },
   methods: {
+    // Dispatch room search choice action through search block
     setSearchChoice () {
       if (dayjs(this.bookingDetails.date.start).diff(dayjs(this.bookingDetails.date.end)) === 0 ||
         this.bookingDetails.date.start === null ||
@@ -251,18 +252,13 @@ export default {
         this.$store.dispatch('searchRoomType', selection)
       }
     },
+    // Dispatch adding one more room request
     addAnotherRoom () {
       this.$store.dispatch('addAnotherRoom')
     },
     displayMobileSidebar () {
       this.$store.dispatch('displayMobileSidebar')
     }
-    // ,
-    // switchStep (step) {
-    //   if (this.$store.getters.reservationSelection.length !== 0) {
-    //     this.$store.dispatch('switchStep', step)
-    //   }
-    // }
   },
   computed: {
     ...mapState({
