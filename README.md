@@ -45,6 +45,13 @@ npm run mock
 ##### It will run application on http://localhost:8080 or whatever and run json-server on http://localhost:3000.
 ##### Please make sure port 3000 will not be occupied by any other application.
 
+## TODO
+- Refactor vuex structure
+- Build booking management system (maybe)
+- Add few more features page
+- Refactor style folder, decrease css code line
+- etc.
+
 ## Contribute
 Contributions are always welcome!
 
