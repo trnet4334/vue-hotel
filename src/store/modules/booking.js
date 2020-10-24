@@ -52,6 +52,11 @@ const mutations = {
     state.result = data
     state.isAuth = true
   },
+  // Cancel fetching request submission
+  'CANCEL_CHECKING_REQUEST' (state) {
+    state.result = []
+    state.isAuth = false
+  },
   // Submit search request
   'SUBMIT_CHECKING_REQUEST' (state, { email, lastName }) {
     state.tempSearchInput.lastName = lastName
@@ -157,7 +162,7 @@ const mutations = {
 }
 const actions = {
   // Fetch all booking data from api
-  async getBookingResult ({ commit }, selection) {
+  async getBookingResult ({ commit, dispatch }, selection) {
     const email = selection.email
     const lastName = selection.lastName
     const _temp = []
@@ -183,12 +188,19 @@ const actions = {
           _temp.push(item)
         })
       })
-    )
+    ).catch(err => {
+      console.log(err)
+    })
     if (_temp.length === 0) {
+      dispatch('cancelCheckingRequest')
       alert('There is no booking data! Please make sure your email address and last name are correct.')
     } else {
       commit('GET_BOOKING_RESULT', _temp)
     }
+  },
+  // Cancel fetching data request submission
+  async cancelCheckingRequest ({ commit }) {
+    commit('CANCEL_CHECKING_REQUEST')
   },
   // Submit search request
   async submitCheckingRequest ({ commit, dispatch, state }, selection) {
@@ -203,6 +215,8 @@ const actions = {
         }
       })
       commit('SUBMIT_CHECKING_REQUEST', selection)
+    } else {
+      return -1
     }
   },
   // Change booking status from upcoming to canceled

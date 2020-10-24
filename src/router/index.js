@@ -61,6 +61,14 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+  if (from.name === 'Activity' && to.name !== 'Activity') {
+    store.dispatch('leaveSearchResult').then(() => {
+      window.sessionStorage.clear()
+      next()
+    })
+  } else {
+    next()
+  }
 })
 
 export default router

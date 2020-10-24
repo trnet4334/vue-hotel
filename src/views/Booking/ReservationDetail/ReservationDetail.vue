@@ -95,10 +95,6 @@ export default {
       this.type = 'All'
       this.dateRange = 'six'
     }
-  },
-  destroyed () {
-    // this.$store.dispatch('leaveSearchResult')
-    // window.sessionStorage.clear()
   }
 }
 </script>
