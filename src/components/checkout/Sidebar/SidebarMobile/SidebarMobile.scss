@@ -1,0 +1,87 @@
+@import "src/styles/app";
+
+.overlay {
+  width: 0;
+  height: 0;
+  z-index: 106;
+  background-color: #2c3e50;
+  position: fixed;
+  top: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  &__wrapper {
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px 15px;
+  }
+  &__body {
+    .header {
+      color: #ffffff;
+      h2 {
+        text-align: start;
+      }
+      svg {
+        fill: #ffffff;
+        height: 24px;
+        width: 24px;
+      }
+      div:first-of-type {
+        justify-content: space-between;
+      }
+    }
+    .content {
+      flex-basis: 75%;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: #ffffff;
+      }
+    }
+    .tag-add {
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      span {
+        color: #ffffff;
+        font-size: 1.2rem;
+        margin-left: 5px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &__footer {
+    padding: 5px 20px;
+    width: 100%;
+    color: #ffffff;
+    bottom: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    justify-content: space-between;
+    box-shadow: 0 -5px 14px -12px #000000;
+    //transition: ease-in-out 3s;
+  }
+}
+
+.display-overlay {
+  width: 100vw;
+  height: 100%;
+}
+
+/deep/ .el-divider--horizontal {
+  margin: 10px 0;
+  opacity: 0.6;
+}
+
+@include respond-above(tablet-lg) {
+  .overlay {
+    display: none;
+  }
+}

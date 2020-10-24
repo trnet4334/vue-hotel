@@ -1,0 +1,65 @@
+@import "src/styles/app";
+.room__content {
+  padding: 10px;
+  &--row {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    & span {
+      font-weight: 600;
+      line-height: 1.4rem;
+    }
+    & p {
+      font-size: 1.1rem;
+    }
+    & h5 {
+      font-weight: 600;
+      line-height: 1.3rem;
+    }
+  }
+  &--action {
+    text-decoration: underline;
+    padding-top: 10px;
+    & span {
+      margin: 0 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.list-items {
+  list-style-type: none;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.list-item {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+}
+.selected-class {
+  border-left: 5px solid #202c39;
+  background-color: rgba(105, 105, 105, 0.2);
+}
+/deep/ .el-divider--horizontal {
+  width: 95%;
+  margin: 7.5px auto;
+}
+/deep/ .el-message-box__content {
+  font-size: 1.1rem;
+}
+
+@include respond-below(tablet-lg) {
+  .room__content {
+    color: #ffffff;
+    padding: 5px 0;
+  }
+  .selected-class {
+    border-left: none;
+    background-color: transparent;
+  }
+}

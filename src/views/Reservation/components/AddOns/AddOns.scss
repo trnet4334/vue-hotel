@@ -1,0 +1,31 @@
+@import "../../../../styles/app";
+.add-ons {
+  padding-top: 5vh;
+}
+.buttons {
+  justify-content: center;
+  margin-top: 30px;
+  button {
+    width: 150px;
+    margin: 0 30px;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #283845;
+    color: #ffffff;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@include respond-below(phone) {
+  .buttons {
+    button {
+      width: 115px;
+      padding: 5px;
+      margin: 0 5px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../../styles/app';
+
+.sidebar {
+  width: 30%;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  margin: 0 auto;
+  & a {
+    &:visited {
+      color: #3d405b;
+    }
+  }
+  .side__body {
+    height: 85%;
+    background-color: #ffffff;
+    justify-content: space-between;
+    h4 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-align: start;
+      padding-top: 10px;
+      padding-left: 15px;
+    }
+    a {
+      &:visited {
+        color: #3d405b;
+      }
+    }
+  }
+}
+
+.span-add {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  &:hover {
+    font-weight: 700;
+    font-style: oblique;
+    cursor: pointer;
+  }
+}
+
+/deep/ .el-divider--horizontal {
+  margin: 7.5px auto;
+  width: 95%;
+}
+
+@include respond-below(tablet-lg) {
+  .sidebar {
+    display: none;
+  }
+}

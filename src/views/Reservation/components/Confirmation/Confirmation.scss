@@ -1,0 +1,93 @@
+@import "src/styles/app";
+.confirmation {
+  width: 100%;
+  position: relative;
+  &__container {
+    width: 100%;
+    .content {
+      &--info, &--policies, &--consent {
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #3d405b;
+        background-color: #ffffff;
+        margin: 10px 0;
+        padding: 15px 20px;
+      }
+      &--info {
+        span {
+          font-size: 1.3rem;
+          font-weight: 600;
+        }
+        .row {
+          padding: 5px 0;
+          align-items: center;
+          span {
+            flex-basis: 25%;
+            text-align: start;
+          }
+          p {
+            flex-basis: 70%;
+          }
+        }
+      }
+      &--policies {
+        span {
+          font-size: 1.3rem;
+          font-weight: 700;
+        }
+        .col {
+          margin-right: 20px;
+        }
+        .row {
+          margin-top: 20px;
+        }
+      }
+      &--consent {
+        align-items: flex-start;
+        label {
+          font-size: 1.3rem;
+          text-align: start;
+          margin-bottom: 10px;
+          align-items: flex-start;
+          justify-content: space-between;
+          input {
+            flex-basis: 3%;
+            margin-top: 7.5px;
+          }
+          span {
+            flex-basis: 95%;
+          }
+        }
+        a {
+          &:visited {
+            color: #3d405b;
+          }
+        }
+      }
+    }
+  }
+}
+/deep/ .el-divider--horizontal {
+  margin: 10px 0;
+}
+
+.btn-confirm {
+  & button {
+    margin: 20px auto;
+    padding: 12px 12px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #283845;
+    color: #ffffff;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:disabled {
+      background-color: rgba(105, 105, 105, 0.6);
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

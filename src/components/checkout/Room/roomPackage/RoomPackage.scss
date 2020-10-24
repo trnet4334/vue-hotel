@@ -1,0 +1,70 @@
+@import "../../../../styles/app";
+
+.package-rate {
+  justify-content: space-between;
+  div:nth-of-type(1) {
+    text-align: start;
+    flex-basis: 70%;
+    span {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+  }
+  div:nth-of-type(2) {
+    text-align: right;
+    flex-basis: 30%;
+    span {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+    button {
+      margin-top: 12px;
+      padding: 7px 10px;
+      font-size: 1.1rem;
+      border: none;
+      background-color: #283845;
+      color: #ffffff;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:disabled {
+        background-color: rgba(105, 105, 105, 0.6);
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+@include respond-below(tablet) {
+  .package-rate {
+    div:nth-of-type(1) {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
+    div:nth-of-type(2) {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      button {
+        padding: 5px;
+        font-size: 1rem;
+      }
+    }
+  }
+}

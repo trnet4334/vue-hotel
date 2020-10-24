@@ -1,0 +1,67 @@
+@import "../../../styles/app";
+
+.alert--modification {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 25px;
+  background-color: #ffffff;
+  border: 1px solid #3d405b;
+  border-radius: 5px;
+  padding: 20px 10px;
+  button {
+    margin-left: 30px;
+    padding: 12px 12px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: #283845;
+    color: #ffffff;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  svg {
+    width: 45px;
+    height:45px;
+    margin-right: 20px;
+  }
+}
+.alert__content {
+  align-items: flex-start;
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  p {
+    font-size: 1.1rem;
+    overflow-wrap: break-word;
+  }
+}
+
+@include respond-below(tablet) {
+  .alert--modification {
+    svg {
+      flex-basis: 10%;
+      width: 36px;
+      height: 36px;
+    }
+    button {
+      margin-left: 0;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      background-color: #283845;
+      color: #ffffff;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .alert__content {
+    flex-basis: 77.5%;
+    text-align: start;
+    margin-bottom: 20px;
+  }
+}

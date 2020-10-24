@@ -1,0 +1,234 @@
+@import '../../../styles/app';
+.activity-item {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 15px 7.5px 10px 1px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  margin: 20px auto;
+  svg {
+    fill: #e07a5f;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.date-items {
+  align-items: center;
+  width: 225px;
+  justify-content: space-around;
+}
+.date-item-1, .date-item-2 {
+  align-items: center;
+  margin: 0 7px;
+  div:nth-of-type(1) {
+    text-align: start;
+    margin-left: 2px;
+  }
+}
+
+.date-1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 2.6rem;
+}
+.date-2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3rem;
+}
+.date-3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3rem;
+}
+
+.detail {
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+.type {
+  align-items: flex-start;
+  flex-basis: 35%;
+  margin-left: 20px;
+  span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 5px;
+    font-size: 1.2rem;
+    li {
+      text-align: start;
+    }
+  }
+}
+
+.status {
+  flex-basis: 20%;
+  span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+}
+
+.option {
+  flex-basis: 25%;
+  &-item {
+    align-items: center;
+    margin: 5px 0;
+    flex-basis: 40%;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    span {
+      font-size: 1.3rem;
+      margin-left: 5px;
+      font-weight: 600;
+    }
+    &:hover {
+      cursor: pointer;
+      span {
+        font-style: italic;
+      }
+      svg {
+        transform: rotate(180deg);
+        transition: 1.5s ease-out;
+      }
+    }
+  }
+}
+.divider-ver {
+  display: block;
+}
+.divider-hor {
+  display: none;
+}
+
+/deep/ .el-divider--vertical {
+  width: 2px;
+  height: 3.2rem;
+}
+
+@include respond-below(tablet) {
+  .divider-ver {
+    display: none;
+  }
+  .divider-hor {
+    display: block;
+  }
+}
+
+@include respond-below(phone) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    flex-basis: 100%;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+    &-item {
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .date-1 {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+  .date-2 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+  .date-3 {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+}
+
+@include respond-between(phone, tablet) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    flex-basis: 100%;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+    &-item {
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .date-1 {
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+  }
+  .date-2 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+  .date-3 {
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+  }
+}
+
+@include respond-between(tablet, desktop) {
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+  .type {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+  .status {
+    margin-bottom: 15px;
+  }
+  .option {
+    margin-bottom: 15px;
+  }
+}

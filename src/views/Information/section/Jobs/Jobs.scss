@@ -1,0 +1,88 @@
+@import "src/styles/app";
+header {
+  width: 100%;
+  height: 70px;
+  background-color: #ffffff;
+  figure {
+    align-items: center;
+    .icon-color {
+      fill: #202c39;
+    }
+  }
+}
+
+.slogan {
+  width: 100%;
+  height: 70vh;
+  background-image: url("../../../../assets/images/background/Home/background-2.jpg");
+  span {
+    font-size: 4rem;
+    color: #ffffff;
+  }
+}
+
+.job-list {
+  padding: 30px;
+  width: 100%;
+  &-items {
+    width: 60%;
+    align-items: flex-start;
+    background-color: rgba(214, 209, 209, 0.6);
+    padding: 20px 50px;
+    span {
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+    ul {
+      width: 100%;
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        text-align: start;
+        padding: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 15px 7.5px 10px 1px rgba(0, 0, 0, 0.4);
+        &:hover {
+          background-color: #202c39;
+          color: #ffffff;
+          cursor: pointer;
+          transform: translate3d(-15px, -5px, 0);
+        }
+      }
+    }
+  }
+}
+
+@include respond-below(tablet) {
+  .slogan {
+    background-image: none;
+    height: fit-content;
+    padding: 30px;
+    span {
+      color: #202c39;
+      font-size: 2.4rem;
+    }
+  }
+  .job-list {
+    &-items {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+}
+
+@include respond-between(tablet, desktop) {
+  .slogan {
+    span {
+      font-size: 3.4rem;
+    }
+  }
+  .job-list {
+    &-items {
+      width: 75%;
+    }
+  }
+}
