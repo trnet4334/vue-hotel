@@ -430,6 +430,50 @@
       },
       "totalAmount": 2138.4,
       "id": 9
+    },
+    {
+      "createTime": "2020-10-24T13:09:26.535Z",
+      "lastUpdateTime": "2020-10-24T13:09:26.535Z",
+      "confirmationNum": "iQNHGd2_o0939",
+      "type": "Stay",
+      "status": "Upcoming",
+      "roomSelections": [
+        {
+          "createTime": "2020-10-24T13:09:26.535Z",
+          "totalNight": 2,
+          "date": {
+            "start": "2020-10-28T16:00:00.000Z",
+            "end": "2020-10-30T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 3,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "Classic Guestroom",
+            "packageName": "Best Available Rate",
+            "rate": 300
+          },
+          "addOns": []
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 648,
+      "id": 10
     }
   ],
   "eventsRequestList": [],
