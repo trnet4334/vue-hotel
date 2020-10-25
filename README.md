@@ -10,6 +10,7 @@ Comments and contributions will be appreciated. I am doing this for practicing d
 
 ## Demo
 [Click here for a demo](https://trnet4334.github.io/vue-hotel/)
+##### * Only UI part works, booking system should be worked on json-server
 
 ## Features
 - Vue 2
@@ -50,6 +51,7 @@ npm run mock
 - Build booking management system (maybe)
 - Add few more features page
 - Refactor style folder, decrease css code line
+- Image animation, loading animation
 - etc.
 
 ## Contribute

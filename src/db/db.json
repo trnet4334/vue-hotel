@@ -474,6 +474,55 @@
       },
       "totalAmount": 648,
       "id": 10
+    },
+    {
+      "createTime": "2020-10-25T16:04:49.262Z",
+      "lastUpdateTime": "2020-10-25T16:04:49.262Z",
+      "confirmationNum": "_SY7Bgwv_0503",
+      "type": "Stay",
+      "status": "Upcoming",
+      "roomSelections": [
+        {
+          "createTime": "2020-10-25T16:04:49.262Z",
+          "totalNight": 3,
+          "date": {
+            "start": "2020-10-27T16:00:00.000Z",
+            "end": "2020-10-30T16:00:00.000Z"
+          },
+          "guests": {
+            "numOfAdultGuests": 1,
+            "numOfChildrenGuest": 0
+          },
+          "roomSelect": {
+            "roomType": "Classic Guestroom",
+            "packageName": "Best Available Rate",
+            "rate": 300
+          },
+          "addOns": [
+            {
+              "addOnName": "Roses by the dozen",
+              "addOnPrice": 99
+            }
+          ]
+        }
+      ],
+      "customerInfo": {
+        "contactDetail": {
+          "firstName": "test",
+          "lastName": "lu",
+          "phoneNum": "+3584806666666",
+          "email": "test@test.us"
+        },
+        "addressDetail": {
+          "country": "Åland Islands",
+          "city": "test",
+          "address": "123test dsfgsr rd",
+          "zipCode": "77777"
+        },
+        "note": ""
+      },
+      "totalAmount": 1078.92,
+      "id": 11
     }
   ],
   "eventsRequestList": [],
