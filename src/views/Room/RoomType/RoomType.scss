@@ -39,6 +39,7 @@
         font-size: 1rem;
         letter-spacing: 3px;
         color: #3d405b;
+        outline: none;
         & a {
           text-decoration: none;
           &:visited {
@@ -64,7 +65,7 @@
         columns: 3;
         text-align: start;
         padding: 0 10px;
-        list-style-image: url("../../../assets/images/icons/Right-5.svg");
+        list-style-type: square;
         & li {
           font-size: 1.3rem;
           line-height: 2.5rem;
@@ -103,6 +104,80 @@
   }
 }
 
+/deep/ .el-dialog__body {
+  display: flex;
+  justify-content: space-around;
+}
+/deep/ .el-dialog {
+  width: 70%;
+}
+
+.dialog-content {
+  padding-bottom: 30px;
+  &.block-1 {
+    flex-basis: 45%;
+    h2 {
+      font-size: 3rem !important;
+    }
+    h4 {
+      font-size: 1.6rem !important;
+    }
+    p {
+      font-size: 1.2rem !important;
+      line-height: 2.4rem !important;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0 !important;
+      font-size: 1.2rem !important;
+      li span{
+        color: #e07a5f !important;
+      }
+    }
+  }
+  &.block-2 {
+    flex-basis: 30%;
+    label {
+      font-size: 1.2rem !important;
+      line-height: 2.8rem !important;
+      font-weight: 700;
+    }
+    button {
+      padding: 12px 12px;
+      font-size: 1.3rem;
+      margin-top: 10px;
+      border: none;
+      background-color: #283845;
+      color: #ffffff;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    span {
+      font-size: 1.2rem;
+    }
+    /deep/ .date-picker-input {
+      font-family: inherit;
+      background-color: transparent;
+      border: 1px solid #202c39;
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      padding-left: 10px;
+      text-align: start;
+      outline: none;
+      width: 100%;
+      color: #3d405b;
+    }
+    .guest-content {
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+    /deep/ .el-input__inner {
+      font-size: 1.2rem;
+    }
+  }
+}
 
 @include respond-below(phone) {
   .room-details {
@@ -240,3 +315,73 @@
     width: 50%;
   }
 }
+
+@include respond-below(phone) {
+  /deep/ .el-dialog {
+    width: 95%;
+  }
+  /deep/ .el-dialog__body {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  /deep/ .el-divider--horizontal {
+    margin: 7.5px 0;
+  }
+  .dialog-content {
+    padding-bottom: 5px;
+    &.block-1 {
+      .info {
+        display: none;
+      }
+    }
+    &.block-2 {
+      .guest-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+@include respond-between(phone, tablet) {
+  /deep/ .el-dialog {
+    width: 80%;
+  }
+  /deep/ .el-dialog__body {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  /deep/ .el-divider--horizontal {
+    margin: 7.5px 0;
+  }
+  .dialog-content {
+    padding-bottom: 5px;
+    &.block-1 {
+      .info {
+        display: none;
+      }
+    }
+    &.block-2 {
+      /deep/ .date-picker-input {
+        width: 250px;
+      }
+      div:first-of-type {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@include respond-between(tablet, tablet-lg) {
+  /deep/ .el-dialog {
+    width: 90%;
+  }
+}
+
+@include respond-between(tablet-lg, desktop) {
+  /deep/ .el-dialog {
+    width: 85%;
+  }
+}
+

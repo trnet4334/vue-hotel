@@ -1,8 +1,13 @@
 const booking = [
   {
     path: '/manage-booking',
-    name: 'booking',
-    component: () => import('@/views/Booking/Booking.vue')
+    name: 'Booking',
+    component: () => import('@/views/Booking/Booking/Booking.vue')
+  },
+  {
+    path: '/manage-booking/activity/:tempId',
+    name: 'Activity',
+    component: () => import('@/views/Booking/ReservationDetail/ReservationDetail.vue')
   }
 ]
 

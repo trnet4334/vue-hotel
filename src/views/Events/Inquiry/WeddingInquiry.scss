@@ -3,14 +3,14 @@
 form {
   width: 100%;
   align-items: flex-start;
-  & label {
+  label {
     font-size: 1.3rem;
     font-weight: 600;
     text-align: start;
     padding: 5px 15px 5px 0;
     margin-top: 10px;
   }
-  & input[type="text"], select {
+  input[type="text"], select {
     width: 225px;
     margin-right: 15px;
     font-size: 1.2rem;
@@ -34,13 +34,13 @@ form {
       text-align: center;
     }
   }
-  & input[id="phoneNum"], input[id="email"], input[id="numberOfGuest"] {
+  input[id="phoneNum"], input[id="email"], input[id="numberOfGuest"] {
     width: 300px;
   }
-  & a:visited {
+  a:visited {
     color: #3d405b;
   }
-  & button {
+  button {
     margin: 25px auto;
     padding: 10px 80px;
     background-color: transparent;
@@ -56,11 +56,19 @@ form {
       cursor: pointer;
       color: #ffffff;
     }
+    &:disabled {
+      border: none;
+      color: #ffffff;
+      background-color: rgba(105, 105, 105, 0.6);
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 }
 .header {
   padding-bottom: 25px;
-  & p {
+  p {
     width: 70%;
   }
 }
@@ -71,16 +79,23 @@ form {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+.alert-message {
+  flex-basis: 100%;
+  text-align: start;
+  color: darkred;
+  margin-top: 5px;
+  font-size: 1.1rem;
+}
 
 @include respond-below(phone) {
   .header p {
     width: 100%;
   }
-  & form {
-    & input[type="text"], select {
+  form {
+    input[type="text"], select {
       width: 200px;
     }
-    & input[id="phoneNum"], input[id="email"], input[id="numberOfGuest"] {
+    input[id="phoneNum"], input[id="email"], input[id="numberOfGuest"] {
       width: 275px;
     }
   }

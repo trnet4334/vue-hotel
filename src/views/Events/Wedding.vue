@@ -118,6 +118,7 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
+import lozad from 'lozad'
 import {
   VueFlux,
   FluxControls,
@@ -160,6 +161,15 @@ export default {
         'swipe'
       ]
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

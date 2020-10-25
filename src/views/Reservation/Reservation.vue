@@ -1,6 +1,22 @@
 <template>
   <div>
     <checkout-navbar/>
+    <div class="sidebar--mobile">
+      <div class="container flex--row">
+        <div class="block-1 flex--column">
+          <p><b>Your stay: </b>{{ stayDate.start }} ~ {{ stayDate.end }}</p>
+          <p><b>Guests: </b>{{ stayGuest.adults }} Adult, {{ stayGuest.children }} Children</p>
+        </div>
+        <div class="block-2 flex--row" :class="displayBorder" @click="displayMobileSidebar">
+          <p :key="currentStep" v-show="total !== ''">$ {{ total }}</p>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+               viewBox="0 0 24 24" xml:space="preserve">
+          <path d="M12,0.5C5.659,0.5,0.5,5.659,0.5,12S5.659,23.5,12,23.5S23.5,18.341,23.5,12S18.341,0.5,12,0.5z M18.604,14.104l-5.543,5.543c-0.292,0.292-0.677,0.438-1.061,0.438s-0.769-0.146-1.061-0.438l-5.543-5.543c-0.429-0.428-0.664-0.998-0.664-1.604s0.235-1.175,0.664-1.604c0.857-0.856,2.35-0.856,3.207,0L9.5,11.793V6c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5v5.793l0.896-0.896c0.857-0.856,2.35-0.856,3.207,0c0.429,0.428,0.664,0.998,0.664,1.604S19.032,13.675,18.604,14.104z"/>
+        </svg>
+        </div>
+      </div>
+    </div>
+    <sidebar-mobile/>
     <div class="header">
       <img src="../../assets/images/checkout/background-img.jpg" alt="" class="header__image"/>
       <div style="position: absolute; bottom: 0;">
@@ -41,7 +57,7 @@
       <div class="reservation__container flex--row">
         <div class="reservation__main flex--column flex--center">
           <div class="reservation__header">
-            <div class="reservation--alert flex--row" v-if="currentStep === 1">
+            <div class="reservation--alert flex--row" v-if="currentStep <= 1">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                    viewBox="0 0 24 24" xml:space="preserve">
                 <path d="M12,0C5.383,0,0,5.383,0,12c0,6.617,5.383,12,12,12c6.617,0,12-5.383,12-12C24,5.383,18.617,0,12,0z M12,4c1.654,0,3,1.346,3,3s-1.346,3-3,3S9,8.654,9,7S10.346,4,12,4z M15.5,20h-6C8.673,20,8,19.327,8,18.5S8.673,17,9.5,17H10v-3H9.5C8.673,14,8,13.327,8,12.5S8.673,11,9.5,11h4c0.827,0,1.5,0.673,1.5,1.5V17h0.5c0.827,0,1.5,0.673,1.5,1.5S16.327,20,15.5,20z"/>
@@ -50,68 +66,74 @@
                 If the dates or accommodations do not match what your needs, please call our reservations specialists for additional availability through 480.001.0002.
               </span>
             </div>
-            <div class="reservation__header--search flex--row" v-if="currentStep === 1">
-              <div class=" search--col col-1 dropdown">
-                <div class="flex--row" @click="isGuestSelected = !isGuestSelected">
-                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                       viewBox="0 0 24 24" style="width: 32px; height: 32px; margin-right: 10px;" xml:space="preserve">
-                    <path d="M20.755,16.342l-2.756-0.688l-0.203-0.817c0.729-0.746,1.233-1.746,1.401-2.778c0.431-0.153,0.756-0.539,0.814-1.014l0.185-1.478C20.24,9.217,20.132,8.865,19.9,8.6c-0.113-0.13-0.252-0.234-0.405-0.306l0.061-1.25L19.799,6.8c0.448-0.478,0.822-1.292,0.055-2.464c-0.58-0.886-1.559-1.335-2.909-1.335c-0.539,0-1.801,0-2.963,0.825c-0.199,0.142-0.267,0.409-0.158,0.628c0.492,1,0.742,2.42,0.742,4.221c0,2.459,0.591,3.55,0.846,3.905c0.041,0.058,0.095,0.106,0.156,0.142c0.402,0.233,0.597,0.606,0.611,1.174c0.011,0.415-0.247,0.742-0.465,0.943c-0.124,0.115-0.182,0.284-0.154,0.45c0.027,0.167,0.138,0.308,0.292,0.375C17.764,16.506,19,18.404,19,20.5c0,0.276,0.224,0.5,0.5,0.5h4c0.276,0,0.5-0.226,0.5-0.502C24,18.529,22.666,16.819,20.755,16.342z M14.755,16.342l-2.756-0.688l-0.11-0.443c1.887-0.337,2.865-0.906,2.91-0.933c0.141-0.083,0.229-0.233,0.24-0.396c0.012-0.164-0.061-0.325-0.188-0.428c-0.013-0.01-1.285-1.083-1.285-4.779c0-3.274-0.79-4.935-2.348-4.935h-0.166C10.523,3.238,10.085,3,9,3C7.569,3,4.435,4.429,4.435,8.674c0,3.697-1.272,4.769-1.278,4.774c-0.133,0.1-0.208,0.259-0.199,0.425c0.008,0.167,0.099,0.317,0.241,0.403c0.044,0.026,1.014,0.599,2.913,0.937l-0.11,0.44l-2.756,0.689C1.334,16.819,0,18.529,0,20.5C0,20.776,0.224,21,0.5,21h17c0.276,0,0.5-0.226,0.5-0.502C18,18.529,16.666,16.819,14.755,16.342z"/>
-                  </svg>
-                  <div class="flex--column flex--center">
-                    <span>Guests</span>
-                    <p>Adults: {{bookingDetails.guests.numOfAdultGuests}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
+            <div class="reservation__header--search flex--row" v-if="currentStep <= 1">
+              <el-popover
+                  placement="bottom"
+                  width="320"
+                  trigger="hover"
+                  class="search--col col-1"
+                >
+                  <div class="dropdown">
+                    <h4>Select Guests</h4>
+                    <el-divider/>
+                    <div class="flex--row dropdown__item">
+                      <span>Adults</span>
+                      <el-input-number size="small" :min="1" :max="8" v-model="bookingDetails.guests.numOfAdultGuests"></el-input-number>
+                    </div>
+                    <div class="flex--row dropdown__item">
+                      <span>Children</span>
+                      <el-input-number size="small" :min="0" :max="6" v-model="bookingDetails.guests.numOfChildrenGuest"></el-input-number>
+                    </div>
                   </div>
-                </div>
-                <div class="dropdown__content flex--column" :class="dropdownClass">
-                  <h4>Select Guests</h4>
-                  <el-divider/>
-                  <div class="flex--row dropdown__item">
-                    <span>Adults</span>
-                    <el-input-number size="small" :min="0" :max="4" v-model="bookingDetails.guests.numOfAdultGuests"></el-input-number>
+                  <div class="flex--row search--item" slot="reference">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         viewBox="0 0 24 24" xml:space="preserve">
+                      <path d="M20.755,16.342l-2.756-0.688l-0.203-0.817c0.729-0.746,1.233-1.746,1.401-2.778c0.431-0.153,0.756-0.539,0.814-1.014l0.185-1.478C20.24,9.217,20.132,8.865,19.9,8.6c-0.113-0.13-0.252-0.234-0.405-0.306l0.061-1.25L19.799,6.8c0.448-0.478,0.822-1.292,0.055-2.464c-0.58-0.886-1.559-1.335-2.909-1.335c-0.539,0-1.801,0-2.963,0.825c-0.199,0.142-0.267,0.409-0.158,0.628c0.492,1,0.742,2.42,0.742,4.221c0,2.459,0.591,3.55,0.846,3.905c0.041,0.058,0.095,0.106,0.156,0.142c0.402,0.233,0.597,0.606,0.611,1.174c0.011,0.415-0.247,0.742-0.465,0.943c-0.124,0.115-0.182,0.284-0.154,0.45c0.027,0.167,0.138,0.308,0.292,0.375C17.764,16.506,19,18.404,19,20.5c0,0.276,0.224,0.5,0.5,0.5h4c0.276,0,0.5-0.226,0.5-0.502C24,18.529,22.666,16.819,20.755,16.342z M14.755,16.342l-2.756-0.688l-0.11-0.443c1.887-0.337,2.865-0.906,2.91-0.933c0.141-0.083,0.229-0.233,0.24-0.396c0.012-0.164-0.061-0.325-0.188-0.428c-0.013-0.01-1.285-1.083-1.285-4.779c0-3.274-0.79-4.935-2.348-4.935h-0.166C10.523,3.238,10.085,3,9,3C7.569,3,4.435,4.429,4.435,8.674c0,3.697-1.272,4.769-1.278,4.774c-0.133,0.1-0.208,0.259-0.199,0.425c0.008,0.167,0.099,0.317,0.241,0.403c0.044,0.026,1.014,0.599,2.913,0.937l-0.11,0.44l-2.756,0.689C1.334,16.819,0,18.529,0,20.5C0,20.776,0.224,21,0.5,21h17c0.276,0,0.5-0.226,0.5-0.502C18,18.529,16.666,16.819,14.755,16.342z"/>
+                    </svg>
+                    <div class="flex--column flex--center">
+                      <span>Guests</span>
+                      <p>Adults: {{bookingDetails.guests.numOfAdultGuests}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
+                    </div>
                   </div>
-                  <div class="flex--row dropdown__item">
-                    <span>Children</span>
-                    <el-input-number size="small" :min="0" :max="4" v-model="bookingDetails.guests.numOfChildrenGuest"></el-input-number>
-                  </div>
-                </div>
-              </div>
-              <div class="flex--row flex--center search--col col-2">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="0 0 24 24" style="width: 32px; height: 32px; margin-right: 10px;" xml:space="preserve">
-                    <path d="M5.5,5C5.224,5,5,4.776,5,4.5v-4C5,0.224,5.224,0,5.5,0S6,0.224,6,0.5v4C6,4.776,5.776,5,5.5,5z"/>
+              </el-popover>
+              <div class="flex--row search--col col-2 search--item">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                     viewBox="0 0 24 24" xml:space="preserve">
+                  <path d="M5.5,5C5.224,5,5,4.776,5,4.5v-4C5,0.224,5.224,0,5.5,0S6,0.224,6,0.5v4C6,4.776,5.776,5,5.5,5z"/>
                   <path d="M18.5,5C18.224,5,18,4.776,18,4.5v-4C18,0.224,18.224,0,18.5,0S19,0.224,19,0.5v4C19,4.776,18.776,5,18.5,5z"/>
                   <path d="M24,8V5.5C24,3.57,22.43,2,20.5,2H20v2.5C20,5.327,19.327,6,18.5,6S17,5.327,17,4.5V2H7v2.5C7,5.327,6.327,6,5.5,6S4,5.327,4,4.5V2H3.5C1.57,2,0,3.57,0,5.5V8H24z"/>
                   <path d="M0,9v11.5C0,22.43,1.57,24,3.5,24h17c1.93,0,3.5-1.57,3.5-3.5V9H0z M12,19c0,1.654-1.346,3-3,3s-3-1.346-3-3c0-0.276,0.224-0.5,0.5-0.5S7,18.724,7,19c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2H7.5C7.224,17,7,16.776,7,16.5S7.224,16,7.5,16H9c1.103,0,2-0.897,2-2s-0.897-2-2-2s-2,0.897-2,2c0,0.276-0.224,0.5-0.5,0.5S6,14.276,6,14c0-1.654,1.346-3,3-3s3,1.346,3,3c0,1.042-0.534,1.962-1.343,2.5C11.466,17.038,12,17.958,12,19z M17,21.5c0,0.276-0.224,0.5-0.5,0.5S16,21.776,16,21.5v-8.793l-1.146,1.146c-0.195,0.195-0.512,0.195-0.707,0s-0.195-0.512,0-0.707l2-2c0.144-0.143,0.357-0.186,0.545-0.108C16.878,11.115,17,11.298,17,11.5V21.5z"/>
-                  </svg>
+                </svg>
                 <div class="flex--column flex--center">
-                  <span>Check in - Check out</span>
+                  <span>Dates</span>
                   <v-date-picker
                     mode="range"
                     is-required
                     class="flex--row"
                     :input-props="{
-                        class: 'date-picker-input',
-                        readonly: true
+                        class: 'date-picker-input'
                     }"
                     v-model="bookingDetails.date"
                     :disabled-dates="[
                       {
-                        start: null,
-                        end: new Date()
+                        start: new Date(new Date().setFullYear(new Date().getFullYear() - 1000)),
+                        end: new Date( new Date().setDate( new Date().getDate() + 1 ))
                       },
                       {
                         start: new Date( new Date().setMonth(new Date().getMonth() + 6)),
-                        end: null
+                        end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
                       }
                     ]"
                   />
                 </div>
               </div>
               <div class="col-3">
-                <button>SEARCH</button>
+                <button @click="setSearchChoice">
+                  SEARCH
+                </button>
               </div>
             </div>
-            <div class="reservation__header--breadcrumb flex--column" v-show="currentStep === 0">
+            <div class="reservation__header--breadcrumb flex--column" v-show="currentStep >= 1">
               <h1>{{steps[currentStep - 1]}}</h1>
               <div>
                 <el-steps
@@ -128,57 +150,53 @@
               </div>
             </div>
           </div>
-          <!--          This div is search bar for mobile device only  -->
-          <div class="reservation__search-bar--mobile"></div>
-          <!--          -->
           <div class="reservation__body">
             <div class="reservation__content">
-              <keep-alive>
-                <router-view name="RoomSelect" v-if="currentStep === 1"></router-view>
-                <router-view name="AddOns" v-if="currentStep === 2"></router-view>
-                <router-view name="GuestDetails" v-if="currentStep === 3"></router-view>
-                <router-view name="Confirmation" v-if="currentStep === 4"></router-view>
-<!--                <room-select v-if="currentStep === 1"/>-->
-<!--                <add-ons v-if="currentStep === 2"/>-->
-<!--                <guest-details v-if="currentStep === 3"/>-->
-<!--                <confirmation v-if="currentStep === 4"/>-->
-              </keep-alive>
+              <room-select v-show="currentStep === 1"/>
+              <add-ons v-show="currentStep === 2"/>
+              <guest-details v-show="currentStep === 3"/>
+              <confirmation v-show="currentStep === 4"/>
             </div>
           </div>
         </div>
         <sidebar
-          :bookingDetails="bookingDetails"
-          :isRoomSelected="isRoomSelected"
-          v-if="!isBookingCompleted"
+          v-show="displaySidebar"
         />
       </div>
     </section>
     <checkout-footer/>
+    <div class="button-banner--mobile" v-show="currentStep >= 3">
+      <button @click="addAnotherRoom">ADD ROOM</button>
+    </div>
   </div>
 </template>
 <script>
 import CheckoutNavbar from '@/components/header/navbar/CheckoutNavbar.vue'
 import CheckoutFooter from '@/components/footer/CheckoutFooter.vue'
-import Sidebar from '@/views/Reservation/components/Sidebar/Sidebar.vue'
-// import RoomSelect from '@/views/Reservation/components/RoomSelect.vue'
-// import AddOns from '@/views/Reservation/components/AddOns.vue'
-// import GuestDetails from '@/views/Reservation/components/GuestDetails.vue'
-// import Confirmation from '@/views/Reservation/components/Confirmation.vue'
+import Sidebar from '@/components/checkout/Sidebar/Sidebar.vue'
+import SidebarMobile from '@/components/checkout/Sidebar/SidebarMobile/SidebarMobile.vue'
+import RoomSelect from '@/views/Reservation/components/RoomSelect/RoomSelect'
+import AddOns from '@/views/Reservation/components/AddOns/AddOns'
+import GuestDetails from '@/views/Reservation/components/GuestDetails/GuestDetails'
+import Confirmation from '@/views/Reservation/components/Confirmation/Confirmation'
+import { mapState } from 'vuex'
+import dayjs from 'dayjs'
+const toObject = require('dayjs/plugin/toObject')
+dayjs.extend(toObject)
 export default {
+  name: 'reservation',
   components: {
     CheckoutNavbar,
     CheckoutFooter,
-    Sidebar
-    // RoomSelect,
-    // AddOns,
-    // GuestDetails,
-    // Confirmation
+    Sidebar,
+    SidebarMobile,
+    RoomSelect,
+    AddOns,
+    GuestDetails,
+    Confirmation
   },
   data () {
     return {
-      isRoomSelected: false,
-      isGuestSelected: false,
-      isBookingCompleted: false,
       steps: [
         'Select a Room',
         'Choose your favorite Add-ons',
@@ -187,31 +205,96 @@ export default {
       ],
       bookingDetails: {
         date: {
-          start: undefined,
-          end: undefined
+          start: new Date(),
+          end: new Date()
         },
         guests: {
-          numOfAdultGuests: 0,
+          numOfAdultGuests: 1,
           numOfChildrenGuest: 0
-        },
-        nightsOfStay: 5,
-        roomFee: 500,
-        addOns: 200,
-        packageFee: 300,
-        tax: 400
+        }
+      },
+      stayDate: {
+        start: '',
+        end: ''
+      },
+      stayGuest: {
+        adults: '',
+        children: ''
+      },
+      total: ''
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      console.log(to)
+      console.log(from)
+      if (to.name === 'Reservation') {
+        const step = {
+          current: to.query.currentStep,
+          prev: to.query.prevStep
+        }
+        this.$store.dispatch('switchStep', step)
       }
     }
   },
-  methods: {},
-  computed: {
-    currentStep () {
-      return this.$store.getters.currentStep
-    },
-    dropdownClass () {
-      return {
-        'display-dropdown': this.isGuestSelected
+  methods: {
+    // Dispatch room search choice action through search block
+    setSearchChoice () {
+      if (dayjs(this.bookingDetails.date.start).diff(dayjs(this.bookingDetails.date.end)) === 0 ||
+        this.bookingDetails.date.start === null ||
+        this.bookingDetails.date.end === null) {
+        alert('Please select a different date.')
+      } else {
+        const selection = {
+          date: this.bookingDetails.date,
+          guests: this.bookingDetails.guests
+        }
+        this.$store.dispatch('searchRoomType', selection)
       }
+    },
+    // Dispatch adding one more room request
+    addAnotherRoom () {
+      this.$store.dispatch('addAnotherRoom')
+    },
+    displayMobileSidebar () {
+      this.$store.dispatch('displayMobileSidebar')
     }
+  },
+  computed: {
+    ...mapState({
+      currentStep: state => state.reservation.currentStep,
+      onSearchDate: state => state.reservation.onSearchRoom.date,
+      onSearchGuests: state => state.reservation.onSearchRoom.guests,
+      selectedInfo: state => state.reservation.reservationDetails.roomSelections,
+      totalAmount: state => state.reservation.reservationDetails.totalAmount
+    }),
+    displaySidebar () {
+      return this.currentStep >= 3
+    },
+    displayStayDate () {
+      return this.selectedInfo.length === 0 ? this.onSearchDate : this.selectedInfo[0].date
+    },
+    displayStayGuests () {
+      return this.selectedInfo.length === 0 ? this.onSearchGuests : this.selectedInfo[0].guests
+    },
+    displayBorder () {
+      return this.total !== '' ? 'display-border' : ''
+    }
+  },
+  created () {
+    this.$store.dispatch('initRoom')
+    this.$store.dispatch('resetSidebarState')
+    this.bookingDetails.date.start = this.onSearchDate.start
+    this.bookingDetails.date.end = this.onSearchDate.end
+    this.bookingDetails.guests.numOfAdultGuests = this.onSearchGuests.numOfAdultGuests
+    this.bookingDetails.guests.numOfChildrenGuest = this.onSearchGuests.numOfChildrenGuest
+    this.stayDate.start = dayjs(this.displayStayDate.start).format('MMM-DD')
+    this.stayDate.end = dayjs(this.displayStayDate.end).format('MMM-DD-YYYY')
+    this.stayGuest.adults = this.displayStayGuests.numOfAdultGuests
+    this.stayGuest.children = this.displayStayGuests.numOfChildrenGuest
+  },
+  beforeUpdate () {
+    this.total = this.totalAmount
   }
 }
 </script>

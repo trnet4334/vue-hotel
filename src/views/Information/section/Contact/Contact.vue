@@ -46,69 +46,173 @@
         <br>
         <el-divider/>
         <br>
-        <div class="contact__form flex--column">
+        <ValidationObserver
+          ref="form"
+          v-slot="{ handleSubmit }"
+          class="contact__form flex--column"
+        >
           <div class="contact__form--title">
             <h1>Contact Us, We're Happy to Hear from You.</h1>
           </div>
-          <form class="flex--column">
-            <div class="flex--row">
+          <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
+            <ValidationProvider
+              rules="required|alpha_spaces"
+              name="Your last name"
+              v-slot="{ errors }"
+              class="flex--row"
+            >
               <label for="fullName">Full Name*</label>
               <input type="text" id="fullName" v-model="contactForm.name" required>
-            </div>
-            <div class="flex--row">
+              <span class="alert-message">{{errors[0]}}</span>
+            </ValidationProvider>
+            <ValidationProvider
+              rules="required|regexEmail"
+              name="Your email address"
+              v-slot="{ errors }"
+              class="flex--row"
+            >
               <label for="email">Email Address*</label>
               <input type="email" id="email" v-model="contactForm.email" required>
-            </div>
-            <div class="flex--row">
+              <span class="alert-message">{{errors[0]}}</span>
+            </ValidationProvider>
+            <ValidationProvider
+              rules="required|regexPhoneNum"
+              name="Your phone number"
+              v-slot="{ errors }"
+              class="flex--row"
+            >
               <label for="phone">Phone Number*</label>
               <input type="text" id="phone" v-model="contactForm.phoneNum" required>
-            </div>
+              <span class="alert-message">{{errors[0]}}</span>
+            </ValidationProvider>
             <div class="flex--row">
               <label for="purpose">Purpose*</label>
               <select name="purpose" v-model="contactForm.purpose" id="purpose">
                 <option value="">----</option>
-                <option value="dinning">Dinning reservation</option>
-                <option value="public">Public Relations</option>
-                <option value="activities">Hotel Activities</option>
-                <option value="rooms">Room Reservation</option>
-                <option value="sales">Sales</option>
-                <option value="donation">Donation Request</option>
+                <option value="Dinning">Dinning reservation</option>
+                <option value="Public">Public Relations</option>
+                <option value="Activities">Hotel Activities</option>
+                <option value="Stay">Room Reservation</option>
+                <option value="Sales">Sales</option>
+                <option value="Donation">Donation Request</option>
               </select>
             </div>
-            <label for="comments">Comments</label>
-            <textarea
-              name="comments"
-              id="comments"
-              v-model="contactForm.comments"
-              placeholder="Let us know what we can help you"
-              rows="8"
-            />
+            <ValidationProvider
+              rules="required"
+              name="Your description"
+              v-slot="{ errors }"
+              class="flex--column"
+            >
+              <label for="comments">Comments</label>
+              <textarea
+                name="comments"
+                id="comments"
+                v-model="contactForm.comments"
+                placeholder="Let us know what we can help you"
+                rows="8"
+              />
+              <span class="alert-message">{{errors[0]}}</span>
+            </ValidationProvider>
             <label for="consent">
-              <input type="checkbox" id="consent" name="contact-consent" v-model="contactForm.consent" required>
+              <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked" required>
               <span>I understand that this form collects my name, email and phone number, so I
-            can be contacted. For more information, please check our
-            <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener">privacy policy</router-link>.</span>
+                can be contacted. For more information, please check our
+                <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener">privacy policy</router-link>.
+              </span>
             </label>
-            <button>SEND</button>
+            <button type="submit" :disabled="!checked">SEND</button>
           </form>
-        </div>
+        </ValidationObserver>
       </div>
     </div>
   </section>
 </template>
 <script>
+import lozad from 'lozad'
+import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
+import apiService from '@/common/api'
+// import apiService from '@/common/api'
+extend('required', {
+  validate (value) {
+    return {
+      required: true,
+      valid: ['', null, undefined].indexOf(value) === -1
+    }
+  },
+  computesRequired: true
+})
+extend('regexPhoneNum', {
+  validate (value) {
+    const regex = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-s.]?[(]?[0-9]{1,3}[)]?([-s.]?[0-9]{3})([-s.]?[0-9]{3,4})/g
+    return {
+      required: true,
+      valid: regex.test(value)
+    }
+  }
+})
+extend('regexEmail', {
+  validate (value) {
+    // eslint-disable-next-line no-control-regex
+    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
+    return {
+      required: true,
+      valid: regex.test(value)
+    }
+  }
+})
 export default {
+  components: {
+    ValidationObserver,
+    ValidationProvider
+  },
   data () {
     return {
+      checked: false,
       contactForm: {
+        id: '',
         name: '',
         email: '',
         phoneNum: '',
         purpose: '',
-        comments: '',
-        consent: false
+        comments: ''
       }
     }
+  },
+  methods: {
+    onSubmit () {
+      // Alert message for inquiry confirmation
+      this.$confirm('Ready to submit?',
+        'Confirmation',
+        {
+          confirmButtonText: 'YES',
+          cancelButtonText: 'CANCEL',
+          type: 'warning'
+        }).then(() => {
+        apiService.postData('/customerServiceRequest', this.contactForm)
+        this.$message({
+          type: 'success',
+          message: 'Your request has been submitted successfully.'
+        })
+        // Reload current page to reset all data
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 2000)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Request canceled'
+        })
+      })
+    }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

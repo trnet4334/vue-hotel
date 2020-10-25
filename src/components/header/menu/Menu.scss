@@ -72,7 +72,7 @@
       width: 100%;
       position: relative;
       & ul {
-        list-style-image: url("../../../assets/images/icons/Cactus.svg");
+        list-style-type: none;
         & li {
           color: #ffffff;
           font-size: 2rem;
@@ -84,6 +84,12 @@
             &:visited {
               color: #ffffff;
             }
+          }
+          svg {
+            fill: #ffffff;
+            width: 20px;
+            height: 20px;
+            margin-right: 7.5px;
           }
         }
       }

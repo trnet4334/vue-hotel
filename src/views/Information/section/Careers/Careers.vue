@@ -11,7 +11,7 @@
             guests a full-service luxury and exceptional experiences. Join our team today and see what
             makes here to be an incredible place to work for.</p>
           <br>
-          <router-link to="/jobs" target="_blank" rel="noopener noreferrer">
+          <router-link to="/careers/jobs" target="_blank" rel="noopener noreferrer">
             VIEW OPEN POSITIONS
           </router-link>
         </div>
@@ -62,7 +62,7 @@
                 are also great ways to explore nature.</p>
             </div>
             <br><br>
-            <router-link to="/jobs" target="_blank" rel="noopener noreferrer">
+            <router-link to="/careers/jobs" target="_blank" rel="noopener noreferrer">
               VIEW OPEN POSITIONS
             </router-link>
           </div>
@@ -72,6 +72,7 @@
   </section>
 </template>
 <script>
+import lozad from 'lozad'
 export default {
   data () {
     return {
@@ -79,6 +80,15 @@ export default {
       image2: '@/assets/images/information/careers-img-2.jpg',
       fit: 'contain'
     }
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>

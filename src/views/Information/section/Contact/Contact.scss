@@ -67,7 +67,7 @@
         width: 100%;
       }
       & input[type=checkbox] {
-        width: 30px;
+        width: 20px;
         margin: 0 auto;
       }
       & button {
@@ -86,6 +86,14 @@
           cursor: pointer;
           color: #ffffff;
         }
+        &:disabled {
+          border: none;
+          color: #ffffff;
+          background-color: rgba(105, 105, 105, 0.6);
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
       }
     }
   }
@@ -102,6 +110,13 @@
   background:none!important;
   height:100%;
   width:100%;
+}
+.alert-message {
+  flex-basis: 100%;
+  text-align: start;
+  color: darkred;
+  margin-top: 5px;
+  font-size: 1.1rem;
 }
 
 @include respond-below(phone) {

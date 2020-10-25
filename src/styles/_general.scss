@@ -36,7 +36,7 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: start;
-    text-wrap: normal;
+    word-wrap: anywhere;
   }
 }
 
@@ -68,7 +68,7 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: start;
-    text-wrap: normal;
+    word-wrap: anywhere;
   }
 }
 
@@ -81,5 +81,37 @@
       font-size: 1.2rem;
       line-height: 1.6rem;
     }
+  }
+}
+// Custom class for notification box
+.notification-class {
+  .el-message-box__title {
+    font-size: 1.4rem;
+  }
+  .el-message-box__message {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: start;
+    word-break: break-all;
+  }
+  .el-message-box__container {
+    display: flex;
+    align-items: center;
+  }
+  .el-button {
+    font-size: 1rem;
+  }
+  .el-notification {
+    display: flex;
+    align-items: center;
+  }
+  .el-notification__title {
+    font-size: 1.4rem;
+  }
+  .el-notification__content {
+    font-size: 1.3rem;
+    text-align: start;
+    word-break: break-all;
+    margin: 0;
   }
 }

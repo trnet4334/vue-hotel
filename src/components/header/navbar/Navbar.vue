@@ -5,7 +5,7 @@
         <div class="logo">
           <router-link to="/">
             <figure class="flex--row">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                    viewBox="0 0 24 24" style="width: 48px; height: 48px; margin-right: 5px;" xml:space="preserve" class="icon-color">
                 <path d="M23.5,15h-23C0.224,15,0,15.224,0,15.5S0.224,16,0.5,16h23c0.276,0,0.5-0.224,0.5-0.5S23.776,15,23.5,15z"/>
                 <path d="M11,17.5c0-0.276-0.224-0.5-0.5-0.5h-4C6.224,17,6,17.224,6,17.5S6.224,18,6.5,18h4C10.776,18,11,17.776,11,17.5z"/>
@@ -46,8 +46,8 @@
           </router-link>
         </div>
         <div class="link flex--row">
-          <router-link to="/reservation" class="flex--row">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          <a @click="dialogVisible = true" class="flex--row">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
               <g>
                 <path d="M12,6.5c-4.136,0-7.5,3.364-7.5,7.5v1c0,0.276,0.224,0.5,0.5,0.5h14c0.276,0,0.5-0.224,0.5-0.5v-1C19.5,9.864,16.136,6.5,12,6.5z M12,9.5c-2.13,0-3.984,1.514-4.41,3.6c-0.048,0.237-0.256,0.4-0.489,0.4c-0.033,0-0.066-0.003-0.1-0.01c-0.271-0.055-0.445-0.319-0.39-0.589C7.13,10.351,9.396,8.5,12,8.5c0.276,0,0.5,0.224,0.5,0.5S12.276,9.5,12,9.5z"/>
@@ -58,16 +58,16 @@
               </g>
             </svg>
             <span>Reservation</span>
-          </router-link>
+          </a>
           <a href="javascript:;" class="flex--row">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
-            <g>
-              <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
-              <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
-              <path d="M20.181,12.473c-0.351-0.351-0.818-0.518-1.306-0.475c-0.519,0.047-0.992,0.33-1.298,0.775C16.662,14.105,14.421,15,12,15c-2.42,0-4.662-0.895-5.577-2.227c-0.306-0.446-0.779-0.729-1.298-0.776c-0.485-0.042-0.952,0.123-1.303,0.474l-2.792,2.792C0.308,15.985,0,16.604,0,17.328V19.5C0,20.879,1.122,22,2.5,22h19c1.379,0,2.5-1.121,2.5-2.5v-2.172c0-0.668-0.26-1.295-0.732-1.768L20.181,12.473z"/>
-            </g>
-          </svg>
+              <g>
+                <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
+                <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
+                <path d="M20.181,12.473c-0.351-0.351-0.818-0.518-1.306-0.475c-0.519,0.047-0.992,0.33-1.298,0.775C16.662,14.105,14.421,15,12,15c-2.42,0-4.662-0.895-5.577-2.227c-0.306-0.446-0.779-0.729-1.298-0.776c-0.485-0.042-0.952,0.123-1.303,0.474l-2.792,2.792C0.308,15.985,0,16.604,0,17.328V19.5C0,20.879,1.122,22,2.5,22h19c1.379,0,2.5-1.121,2.5-2.5v-2.172c0-0.668-0.26-1.295-0.732-1.768L20.181,12.473z"/>
+              </g>
+            </svg>
             <span>480.000.0000</span>
           </a>
           <div class="menuBtn" @click="isOpen = !isOpen" :class="menuButtonClass">
@@ -79,10 +79,71 @@
       </div>
     </nav>
     <Menu :isOpen="isOpen"/>
+    <el-dialog
+      :visible.sync="dialogVisible"
+      center
+    >
+      <div class="flex--column dialog-content block-1">
+        <div>
+          <h2>Reservation</h2>
+          <p>We look forward to welcoming you.</p>
+        </div>
+        <el-divider/>
+        <div class="info">
+          <h4>A Resort & Spa</h4>
+          <p>135 Bear Wallow Ln, Sedona, AZ 86336</p>
+          <ul>
+            <li><b>Direct:</b> <span>480-000-0101</span></li>
+            <li><b>Reservations:</b> <span>480-000-0001</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex--column dialog-content block-2">
+        <div class="flex--column">
+          <label>Dates</label>
+          <v-date-picker
+            mode="range"
+            is-required
+            class="flex--row"
+            :input-props="{
+              class: 'date-picker-input',
+              readonly: true
+            }"
+            v-model="date"
+            :disabled-dates="[
+              {
+                start: new Date(new Date().setFullYear(new Date().getFullYear() - 1000)),
+                end: new Date( new Date().setDate( new Date().getDate() + 1 ))
+              },
+              {
+                start: new Date( new Date().setMonth(new Date().getMonth() + 6)),
+                end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
+              }
+            ]"
+          />
+        </div>
+        <div class="flex--column">
+          <label>Guests</label>
+          <div>
+            <div class="flex--row guest-content">
+              <span>Adults: </span>
+              <el-input-number size="medium" :min="1" :max="8" v-model="guests.numOfAdultGuests"/>
+            </div>
+            <div class="flex--row guest-content">
+              <span>Children: </span>
+              <el-input-number size="medium" :min="0" :max="6" v-model="guests.numOfChildrenGuest"/>
+            </div>
+          </div>
+        </div>
+        <button @click.prevent="setSearchChoice">Reserve</button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
 import Menu from '@/components/header/menu/Menu.vue'
+import dayjs from 'dayjs'
+import shortid from 'shortid'
 export default {
   name: 'Navbar',
   components: {
@@ -94,7 +155,16 @@ export default {
       isHomepage: this.isOnHomepage,
       isOnTheTop: true,
       topPosition: 0,
-      isOpen: false
+      isOpen: false,
+      dialogVisible: false,
+      date: {
+        start: '',
+        end: ''
+      },
+      guests: {
+        numOfAdultGuests: 1,
+        numOfChildrenGuest: 0
+      }
     }
   },
   mounted () {
@@ -110,6 +180,32 @@ export default {
       const that = this
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       that.isOnTheTop = scrollTop === 0
+    },
+    // Submit search request for making reservation through dialog box
+    async setSearchChoice () {
+      const createTime = dayjs().toISOString()
+      if (dayjs(this.date.start).diff(dayjs(this.date.end)) === 0 ||
+        this.date.start === null ||
+        this.date.end === null) {
+        alert('Please select a different date.')
+      } else {
+        const id = shortid.generate()
+        const selection = {
+          date: this.date,
+          guests: this.guests,
+          time: createTime
+        }
+        await this.$store.dispatch('generateId', id)
+        await this.$store.dispatch('searchRoomType', selection)
+        await this.$router.push({
+          name: 'Reservation',
+          params: { tempId: id },
+          query: {
+            createdTime: dayjs(createTime).format('YYYY-MM-DD'),
+            currentStep: 's1'
+          }
+        })
+      }
     }
   },
   computed: {

@@ -10,14 +10,16 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
-    & span {
+    span {
       flex-basis: 90%;
       font-size: 1.3rem;
       font-weight: 600;
     }
-    & img {
+    svg {
       flex-basis: 10%;
       transition: .4s ease all;
+      width: 17px;
+      height: 17px;
     }
   }
   &__body {

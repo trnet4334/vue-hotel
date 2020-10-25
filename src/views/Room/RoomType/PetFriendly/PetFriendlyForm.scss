@@ -1,6 +1,9 @@
-@import '../../../../styles/app';
+@import 'src/styles/app';
 
 .pet-friendly-form {
+  input {
+    outline: none;
+  }
   width: 100%;
   position: relative;
   .page-wrapper {
@@ -51,21 +54,33 @@
       input[type=text] {
         margin-right: 10px;
       }
+      input[type=checkbox] {
+        width: 15px;
+      }
       button {
-        margin: 5px auto;
-        padding: 20px 100px;
+        margin: 25px auto;
+        padding: 15px 80px;
         background-color: transparent;
         border: 2px solid #3d405b;
         border-radius: 5px;
         font-family: inherit;
         font-weight: 700;
         font-size: 1rem;
+        outline: none;
         letter-spacing: 3px;
         color: #3d405b;
         &:hover {
           background-color: #3d405b;
           cursor: pointer;
           color: #ffffff;
+        }
+        &:disabled {
+          border: none;
+          color: #ffffff;
+          background-color: rgba(105, 105, 105, 0.6);
+          &:hover {
+            cursor: not-allowed;
+          }
         }
       }
     }
@@ -89,6 +104,13 @@
     font-size: 1.3rem;
     text-align: center;
   }
+}
+.alert-message {
+  flex-basis: 100%;
+  text-align: start;
+  color: darkred;
+  margin-top: 5px;
+  font-size: 1.1rem;
 }
 
 @include respond-below(phone) {

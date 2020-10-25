@@ -4,9 +4,9 @@
       <div class="nav__logo">
         <router-link to="/">
           <figure class="flex--row">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 48px; height: 48px; margin-right: 5px; fill: #283845;" xml:space="preserve" class="icon-color">
-                <path id="XMLID_270_" d="M23.5,15h-23C0.224,15,0,15.224,0,15.5S0.224,16,0.5,16h23c0.276,0,0.5-0.224,0.5-0.5S23.776,15,23.5,15z"/>
+              <path id="XMLID_270_" d="M23.5,15h-23C0.224,15,0,15.224,0,15.5S0.224,16,0.5,16h23c0.276,0,0.5-0.224,0.5-0.5S23.776,15,23.5,15z"/>
               <path id="XMLID_379_" d="M11,17.5c0-0.276-0.224-0.5-0.5-0.5h-4C6.224,17,6,17.224,6,17.5S6.224,18,6.5,18h4C10.776,18,11,17.776,11,17.5z"/>
               <path id="XMLID_380_" d="M18.5,18h-4c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h4c0.276,0,0.5-0.224,0.5-0.5S18.776,18,18.5,18z"/>
               <path id="XMLID_381_" d="M13,20.5c0-0.276-0.224-0.5-0.5-0.5h-3C9.224,20,9,20.224,9,20.5S9.224,21,9.5,21h3C12.776,21,13,20.776,13,20.5z"/>
@@ -29,7 +29,7 @@
               <path id="XMLID_417_" d="M14.25,4.737c0.079,0.045,0.165,0.067,0.25,0.067c0.172,0,0.341-0.089,0.433-0.25l1-1.732c0.139-0.239,0.057-0.545-0.183-0.683c-0.238-0.136-0.545-0.057-0.683,0.183l-1,1.732C13.929,4.293,14.011,4.599,14.25,4.737z"/>
               <circle id="XMLID_418_" cx="4.5" cy="17.5" r="0.5"/>
               </svg>
-            <div class="util__flex--column">
+            <div class="flex--column">
               <svg width="29.795" height="29.356" viewBox="0 0 29.795 29.356" xmlns="http://www.w3.org/2000/svg" style="margin: 6px 0 3px 0; fill: #283845;">
                 <g id="svgGroup" fill-rule="evenodd" font-size="9pt" class="icon-color">
                   <path d="M 15.996 0.22 L 25.225 23.247 A 58.035 58.035 0 0 0 25.884 24.928 A 45.37 45.37 0 0 0 26.543 26.455 Q 26.807 27.114 27.949 27.51 A 13.469 13.469 0 0 0 28.482 27.683 Q 28.969 27.829 29.306 27.879 A 2.156 2.156 0 0 0 29.619 27.905 Q 29.786 27.905 29.794 28.615 A 6.567 6.567 0 0 1 29.795 28.696 A 5.08 5.08 0 0 1 29.792 28.88 Q 29.781 29.168 29.736 29.296 A 0.274 0.274 0 0 1 29.707 29.356 A 3518.478 3518.478 0 0 0 28.467 29.294 Q 24.401 29.092 24.17 29.092 A 5.669 5.669 0 0 0 24.013 29.096 Q 23.306 29.121 19.741 29.293 A 3248.685 3248.685 0 0 0 18.457 29.356 A 0.406 0.406 0 0 1 18.374 29.225 Q 18.288 29.021 18.282 28.607 A 4.366 4.366 0 0 1 18.281 28.543 Q 18.281 28.094 18.369 27.961 A 0.105 0.105 0 0 1 18.457 27.905 A 2.945 2.945 0 0 0 18.82 27.88 Q 19.206 27.832 19.731 27.691 A 11.861 11.861 0 0 0 19.907 27.642 A 4.968 4.968 0 0 0 20.275 27.522 Q 20.836 27.313 20.99 27.056 A 0.456 0.456 0 0 0 21.006 27.026 A 1.26 1.26 0 0 0 21.138 26.455 Q 21.138 25.64 20.42 23.729 A 31.262 31.262 0 0 0 20.303 23.423 L 18.765 19.336 A 1.042 1.042 0 0 0 18.68 19.259 Q 18.556 19.16 18.457 19.16 Q 17.051 19.072 14.678 19.072 A 95.62 95.62 0 0 0 11.29 19.135 A 112.084 112.084 0 0 0 9.668 19.204 A 0.585 0.585 0 0 0 9.575 19.211 Q 9.412 19.237 9.405 19.367 A 0.222 0.222 0 0 0 9.404 19.38 L 7.734 23.467 A 48.019 48.019 0 0 0 7.451 24.264 Q 6.902 25.853 6.899 26.319 A 0.796 0.796 0 0 0 6.899 26.323 A 1.069 1.069 0 0 0 6.979 26.744 Q 7.081 26.985 7.314 27.155 A 1.295 1.295 0 0 0 7.383 27.202 A 1.841 1.841 0 0 0 7.65 27.346 Q 8.054 27.527 8.767 27.686 A 21.449 21.449 0 0 0 9.169 27.771 Q 9.716 27.882 9.999 27.901 A 1.598 1.598 0 0 0 10.107 27.905 A 0.11 0.11 0 0 1 10.165 27.96 Q 10.237 28.088 10.239 28.492 A 4.771 4.771 0 0 1 10.239 28.521 A 6.023 6.023 0 0 1 10.234 28.787 Q 10.217 29.158 10.151 29.356 A 2.236 2.236 0 0 1 10.071 29.353 Q 9.701 29.339 8.086 29.224 Q 6.435 29.106 5.346 29.093 A 21.793 21.793 0 0 0 5.098 29.092 A 28.976 28.976 0 0 0 4.182 29.107 Q 3.675 29.123 3.103 29.156 A 55.308 55.308 0 0 0 2.395 29.202 A 1582.062 1582.062 0 0 1 1.671 29.253 Q 0.776 29.315 0.286 29.348 A 174.955 174.955 0 0 1 0.176 29.356 A 0.469 0.469 0 0 1 0.078 29.203 Q 0.017 29.059 0.004 28.833 A 2.303 2.303 0 0 1 0 28.696 Q 0 27.905 0.088 27.905 A 2.283 2.283 0 0 0 0.391 27.882 Q 0.737 27.835 1.245 27.693 A 14.803 14.803 0 0 0 1.78 27.532 A 6.418 6.418 0 0 0 2.294 27.344 Q 3.019 27.041 3.252 26.675 Q 3.875 25.691 4.498 24.267 A 31.169 31.169 0 0 0 4.922 23.247 L 13.096 3.472 Q 13.923 1.313 14.486 0.568 A 1.666 1.666 0 0 1 14.722 0.308 A 1.371 1.371 0 0 1 15.009 0.111 A 1.014 1.014 0 0 1 15.469 0 A 0.718 0.718 0 0 1 15.989 0.213 A 0.881 0.881 0 0 1 15.996 0.22 Z M 17.49 16.567 L 17.578 16.392 L 14.238 7.603 L 10.635 16.392 A 0.528 0.528 0 0 0 10.638 16.45 Q 10.651 16.567 10.723 16.567 A 37.049 37.049 0 0 0 13.887 16.699 A 43.241 43.241 0 0 0 15.114 16.681 Q 15.657 16.665 16.251 16.637 A 77.246 77.246 0 0 0 17.49 16.567 Z"/>
@@ -46,9 +46,20 @@
       </div>
       <div class="nav__link">
         <ul class="flex--row list-items">
-          <li class="flex--row list-item">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 24px; height: 24px; margin-right: 5px;fill: #283845;" xml:space="preserve">
+          <li class="flex--row list-item" v-show="isOnReservation" @click="dialogVisible = true">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" xml:space="preserve">
+              <path d="M12,6.5c-4.136,0-7.5,3.364-7.5,7.5v1c0,0.276,0.224,0.5,0.5,0.5h14c0.276,0,0.5-0.224,0.5-0.5v-1C19.5,9.864,16.136,6.5,12,6.5z M12,9.5c-2.13,0-3.984,1.514-4.41,3.6c-0.048,0.237-0.256,0.4-0.489,0.4c-0.033,0-0.066-0.003-0.1-0.01c-0.271-0.055-0.445-0.319-0.39-0.589C7.13,10.351,9.396,8.5,12,8.5c0.276,0,0.5,0.224,0.5,0.5S12.276,9.5,12,9.5z"/>
+              <path d="M13,2.5h-2c-0.827,0-1.5,0.673-1.5,1.5s0.673,1.5,1.5,1.5h2c0.827,0,1.5-0.673,1.5-1.5S13.827,2.5,13,2.5z"/>
+              <path d="M22,18.5H2c-0.827,0-1.5,0.673-1.5,1.5v1c0,0.276,0.224,0.5,0.5,0.5h22c0.276,0,0.5-0.224,0.5-0.5v-1C23.5,19.173,22.827,18.5,22,18.5z"/>
+              <path d="M22,18.5c-2.322,0-3.5-0.841-3.5-2.5v-1c0-0.276-0.224-0.5-0.5-0.5H6c-0.276,0-0.5,0.224-0.5,0.5c0,1.93-1.57,3.5-3.5,3.5c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h20c0.276,0,0.5-0.224,0.5-0.5S22.276,18.5,22,18.5z M7.389,16.1c-0.161,0.792-0.504,1.552-0.992,2.201c-0.098,0.13-0.248,0.199-0.4,0.199c-0.104,0-0.21-0.033-0.3-0.101c-0.221-0.166-0.265-0.479-0.099-0.7c0.399-0.53,0.68-1.153,0.812-1.799c0.055-0.271,0.321-0.445,0.589-0.39C7.27,15.565,7.444,15.829,7.389,16.1z"/>
+              <path d="M13,4.5c-0.276,0-0.5,0.224-0.5,0.5h-1c0-0.276-0.224-0.5-0.5-0.5S10.5,4.724,10.5,5v2c0,0.276,0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5h1c0,0.276,0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5V5C13.5,4.724,13.276,4.5,13,4.5z"/>
+            </svg>
+            <span>Reservation</span>
+          </li>
+          <li class="flex--row list-item" v-show="isOnActivity">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" xml:space="preserve">
               <path d="M16,3.5C16,2.673,15.327,2,14.5,2h-5C8.673,2,8,2.673,8,3.5V5H7v17h10V5h-1V3.5z M9,3.5C9,3.224,9.224,3,9.5,3h5C14.775,3,15,3.224,15,3.5V5H9V3.5z"/>
               <rect x="5" y="5" width="1" height="17"/>
               <path d="M0,8.5v10C0,20.43,1.57,22,3.5,22H4V5H3.5C1.57,5,0,6.57,0,8.5z"/>
@@ -58,7 +69,7 @@
             <router-link to="/manage-booking">MY TRIPS</router-link>
           </li>
           <li class="flex--row list-item">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 24px; height: 24px; margin-right: 5px;fill: #283845;" xml:space="preserve">
               <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
               <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
@@ -67,8 +78,8 @@
             <span>+1.480.000.0000</span>
           </li>
           <li class="flex--row list-item">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 24px; height: 24px; margin-right: 5px;fill: #283845;" xml:space="preserve">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" xml:space="preserve">
               <path d="M14.584,14.594c0-0.966-0.86-1.774-2-1.96v3.919C13.724,16.367,14.584,15.56,14.584,14.594z"/>
               <path d="M9.584,9.594c0,0.966,0.86,1.774,2,1.96V7.634C10.445,7.82,9.584,8.628,9.584,9.594z"/>
               <path d="M12.084,0.594c-6.341,0-11.5,5.159-11.5,11.5s5.159,11.5,11.5,11.5s11.5-5.159,11.5-11.5S18.426,0.594,12.084,0.594zM15.584,14.594c0,1.508-1.308,2.747-3,2.957v0.543c0,0.276-0.224,0.5-0.5,0.5s-0.5-0.224-0.5-0.5V17.55c-1.692-0.21-3-1.449-3-2.957c0-0.276,0.224-0.5,0.5-0.5s0.5,0.224,0.5,0.5c0,0.966,0.86,1.774,2,1.96V12.55c-1.692-0.21-3-1.449-3-2.957s1.308-2.747,3-2.957V6.094c0-0.276,0.224-0.5,0.5-0.5s0.5,0.224,0.5,0.5v0.543c1.692,0.21,3,1.449,3,2.957c0,0.276-0.224,0.5-0.5,0.5s-0.5-0.224-0.5-0.5c0-0.966-0.86-1.774-2-1.96v4.003C14.276,11.847,15.584,13.086,15.584,14.594z"/>
@@ -78,7 +89,115 @@
         </ul>
       </div>
     </div>
+    <el-dialog
+      :visible.sync="dialogVisible"
+      center
+    >
+      <div class="flex--column dialog-content block-1">
+        <div>
+          <h2>Reservation</h2>
+          <p>We look forward to welcoming you.</p>
+        </div>
+        <el-divider/>
+        <div class="info">
+          <h4>A Resort & Spa</h4>
+          <p>135 Bear Wallow Ln, Sedona, AZ 86336</p>
+          <ul>
+            <li><b>Direct:</b> <span>480-000-0101</span></li>
+            <li><b>Reservations:</b> <span>480-000-0001</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex--column dialog-content block-2">
+        <div class="flex--column">
+          <label>Dates</label>
+          <v-date-picker
+            mode="range"
+            is-required
+            class="flex--row"
+            :input-props="{
+              class: 'date-picker-input',
+              readonly: true
+            }"
+            v-model="date"
+            :disabled-dates="[
+              {
+                start: new Date(new Date().setFullYear(new Date().getFullYear() - 1000)),
+                end: new Date( new Date().setDate( new Date().getDate() + 1 ))
+              },
+              {
+                start: new Date( new Date().setMonth(new Date().getMonth() + 6)),
+                end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
+              }
+            ]"
+          />
+        </div>
+        <div class="flex--column">
+          <label>Guests</label>
+          <div>
+            <div class="flex--row guest-content">
+              <span>Adults: </span>
+              <el-input-number size="medium" :min="1" :max="8" v-model="guests.numOfAdultGuests"/>
+            </div>
+            <div class="flex--row guest-content">
+              <span>Children: </span>
+              <el-input-number size="medium" :min="0" :max="6" v-model="guests.numOfChildrenGuest"/>
+            </div>
+          </div>
+        </div>
+        <button @click.prevent="setSearchChoice">Reserve</button>
+      </div>
+    </el-dialog>
   </nav>
 </template>
-<script></script>
+<script>
+import router from '@/router'
+import dayjs from 'dayjs'
+import shortid from 'shortid'
+export default {
+  data () {
+    return {
+      isOnReservation: router.currentRoute.name !== 'Reservation',
+      isOnActivity: router.currentRoute.name !== 'Activity' && router.currentRoute.name !== 'Booking',
+      dialogVisible: false,
+      date: {
+        start: '',
+        end: ''
+      },
+      guests: {
+        numOfAdultGuests: 1,
+        numOfChildrenGuest: 0
+      }
+    }
+  },
+  methods: {
+    async setSearchChoice () {
+      const createTime = dayjs().toISOString()
+      if (dayjs(this.date.start).diff(dayjs(this.date.end)) === 0 ||
+        this.date.start === null ||
+        this.date.end === null) {
+        alert('Please select a different date.')
+      } else {
+        const id = shortid.generate()
+        const selection = {
+          date: this.date,
+          guests: this.guests,
+          time: createTime
+        }
+        await this.$store.dispatch('generateId', id)
+        await this.$store.dispatch('searchRoomType', selection)
+        await this.$router.push({
+          name: 'Reservation',
+          params: { tempId: id },
+          query: {
+            createdTime: dayjs(createTime).format('YYYY-MM-DD'),
+            currentStep: 's1'
+          }
+        })
+        await this.$store.dispatch('leaveSearchResult')
+      }
+    }
+  }
+}
+</script>
 <style src="./CheckoutNavbar.scss" lang="scss" scoped/>

@@ -15,7 +15,7 @@
                 All details will be provided below, and you call book online or call our Reservation Specialist if
                 you'd like to make a reservation or have any questions. We are really happy to help you everything as
                 you request for.</p>
-              <button>RESERVATION NOW</button>
+              <button :disabled="true">RESERVE NOW</button>
             </div>
           </div>
           <div class="accessible-room__body--second flex--row">
@@ -55,11 +55,21 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
+import lozad from 'lozad'
 export default {
   components: {
     Navbar,
     SignupBanner,
     Footer
+  },
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
   }
 }
 </script>
