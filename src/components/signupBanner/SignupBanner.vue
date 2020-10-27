@@ -165,23 +165,24 @@ export default {
       const confirmation = window.confirm('Ready to submit?')
       if (confirmation) {
         apiService.postData('/subscriptionList', this.signupDetail)
-      }
-      this.signupSuccess = true
-      // Reset all data
-      this.signupDetail = {
-        id: '',
-        membershipNum: '',
-        createdTime: '',
-        name: '',
-        email: '',
-        address: '',
-        state: '',
-        country: '',
-        zipCode: ''
+        this.signupSuccess = true
+        // Reset all data
+        this.signupDetail = {
+          id: '',
+          membershipNum: '',
+          createdTime: '',
+          name: '',
+          email: '',
+          address: '',
+          state: '',
+          country: '',
+          zipCode: ''
+        }
+      } else {
+        return -1
       }
     }
-  },
-  computed: {}
+  }
 }
 </script>
 <style src="./SignupBanner.scss" lang="scss" scoped/>

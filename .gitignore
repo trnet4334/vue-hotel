@@ -21,9 +21,8 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-cloud-functions/.firebaserc
-cloud-functions/functions/serviceAccountKey.json
-cloud-functions/functions/package-lock.json
+.firebase/
+.firebaserc/
+src/common/config.js
 src/common/firebase.js
 package-lock.json
-cloud-functions/functions/mailing.js

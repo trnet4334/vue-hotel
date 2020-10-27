@@ -14,8 +14,6 @@
     z-index: -1;
     top: 0;
     left: 0;
-    //filter: blur(1.5px) opacity(0.9);
-    //filter: opacity(0.8);
   }
 }
 .body {
@@ -68,7 +66,8 @@
   top: 17.5vh;
   left: 22.5%;
   width: 60%;
-  & img {
+  height: 72%;
+  img {
     width: 100%;
     height: 100%;
     object-fit: cover;

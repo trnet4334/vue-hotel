@@ -1,8 +1,8 @@
-@import '../../styles/app';
+@import './src/styles/app';
 
 .signup-banner {
   width: 100%;
-  height: auto;
+  height: fit-content;
   background-color: #202c39;
   padding: 7.5vh 0;
   position: relative;
@@ -27,13 +27,13 @@
     width: 50px;
     height: 50px;
   }
-  & button {
+  button {
     margin: 20px auto;
     padding: 20px 80px;
     background-color: transparent;
     border: 2px solid #ffffff;
     border-radius: 5px;
-    & span {
+    span {
       font-family: inherit;
       font-weight: 700;
       font-size: 1.1rem;
@@ -44,19 +44,19 @@
     &:hover {
       background-color: #ffffff;
       cursor: pointer;
-      & span {
+      span {
         color: #3d405b;
       }
     }
     &:disabled {
       border: 2px solid rgba(255, 255, 255, 0.4);
-      & span {
+      span {
         color: rgba(255, 255, 255, 0.4);
       }
       &:hover {
         background-color: transparent;
         cursor: not-allowed;
-        & span {
+        span {
           color: rgba(255, 255, 255, 0.4);
         }
       }
@@ -64,11 +64,11 @@
   }
   &__sent {
     height: 100%;
-    & h2 {
+    h2 {
       font-size: 2.2rem;
       color: #ffffff;
     }
-    & h4 {
+    h4 {
       font-size: 1.8rem;
       color: #ffffff;
     }
@@ -78,11 +78,11 @@ form {
   width: 85%;
   height: 100%;
   padding: 40px 0 0 0;
-  & label {
+  label {
     color: #ffffff;
     font-size: 1.5rem;
   }
-  & input {
+  input {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #ffffff;
@@ -110,17 +110,18 @@ form {
 
 @include respond-below(phone) {
   .signup-banner {
-    height: auto;
     &__header {
+      padding-left: 20px;
+      padding-right: 20px;
       font-size: 1.7rem;
     }
-    & form {
+    form {
       .row {
         height: auto;
         .column {
           width: 80%;
           margin: 10px auto;
-          & label {
+          label {
             font-size: 1.3rem;
           }
         }
@@ -128,10 +129,10 @@ form {
     }
     &__sent {
       height: 40vh;
-      & h2 {
+      h2 {
         font-size: 1.7rem;
       }
-      & h4 {
+      h4 {
         font-size: 1.3rem;
       }
     }
@@ -139,7 +140,6 @@ form {
 }
 @include respond-between(phone, tablet-lg) {
   .signup-banner {
-    height: auto;
     &__header {
       font-size: 2rem;
     }

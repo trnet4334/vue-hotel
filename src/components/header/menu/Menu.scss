@@ -74,12 +74,12 @@
       & ul {
         list-style-type: none;
         & li {
-          color: #ffffff;
           font-size: 2rem;
           font-weight: 700;
           text-align: start;
           line-height: 3.5rem;
-          & a {
+          a {
+            color: #ffffff;
             text-decoration: none;
             &:visited {
               color: #ffffff;
@@ -102,16 +102,16 @@
     width: 100%;
     .content {
       align-items: flex-start;
-      & h5, p, a {
+      h5, p, a {
         color: #ffffff;
       }
-      & a:visited {
+      a:visited {
         color: #ffffff;
       }
-      & h5 {
+      h5 {
         font-size: 1rem;
       }
-      & p, a {
+      p, a {
         font-size: 1.1rem;
       }
     }
