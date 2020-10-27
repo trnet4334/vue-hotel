@@ -17,6 +17,12 @@ import addOns from './data/checkout/addOns'
 import countries from './data/checkout/countries'
 import dayjs from 'dayjs'
 
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+
 // Use element-ui component
 Vue.use(ElementUI, { locale })
 // Use v-calendar & v-date-picker components
@@ -37,9 +43,3 @@ Vue.prototype.$roomsInfo = roomType
 Vue.prototype.$offersInfo = offers
 Vue.prototype.$checkoutAddOns = addOns
 Vue.prototype.$countriesList = countries
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')

@@ -6,7 +6,6 @@
     "serve": "vue-cli-service serve",
     "mock": "json-server ./src/db/db.json & vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "vue-cli-service build & firebase deploy",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

@@ -5,7 +5,7 @@
       <div class="room-details__container">
         <div class="room-details__body--first flex--row">
           <div class="room-details__image">
-            <img src="@/assets/images/room/the-spa-suite-img.jpg" alt="#">
+            <img src="@/assets/images/room/the-spa-suite-img.jpg" alt="The Spa Suite">
           </div>
           <div class="room-details__content--first page-content--header">
             <h4>{{theSpaSuite.name}}</h4>
