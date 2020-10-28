@@ -205,6 +205,15 @@
     /deep/ .el-input__inner {
       font-size: 1.2rem;
     }
+    /deep/ .el-input-number__increase, /deep/ .el-input-number__decrease {
+      background-color: transparent;
+      height: 100%;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 

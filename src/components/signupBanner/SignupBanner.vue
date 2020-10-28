@@ -1,13 +1,15 @@
 <template>
   <section class="signup-banner">
-    <div v-if="!displaySignupCollapse && !signupSuccess" class="signup-banner__header flex--row" @click="toggleSignupForm">
-      <span>
-        Sign up for our latest news and promotions
-      </span>
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-           viewBox="0 0 24 24" style="fill: #ffffff; width: 24px; height: 24px; margin-left: 10px;" xml:space="preserve">
-        <path d="M12,0.5C5.659,0.5,0.5,5.659,0.5,12S5.659,23.5,12,23.5S23.5,18.341,23.5,12S18.341,0.5,12,0.5z M18.604,14.104l-5.543,5.543c-0.292,0.292-0.677,0.438-1.061,0.438s-0.769-0.146-1.061-0.438l-5.543-5.543c-0.429-0.428-0.664-0.998-0.664-1.604s0.235-1.175,0.664-1.604c0.857-0.856,2.35-0.856,3.207,0L9.5,11.793V6c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5v5.793l0.896-0.896c0.857-0.856,2.35-0.856,3.207,0c0.429,0.428,0.664,0.998,0.664,1.604S19.032,13.675,18.604,14.104z"/>
-      </svg>
+    <div class="flex--column flex--center">
+      <div v-if="!displaySignupCollapse && !signupSuccess" class="signup-banner__header flex--row" @click="toggleSignupForm">
+        <span>
+          Sign up for our latest news and promotions
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+             viewBox="0 0 24 24" style="fill: #ffffff; width: 24px; height: 24px; margin-left: 10px;" xml:space="preserve">
+          <path d="M12,0.5C5.659,0.5,0.5,5.659,0.5,12S5.659,23.5,12,23.5S23.5,18.341,23.5,12S18.341,0.5,12,0.5z M18.604,14.104l-5.543,5.543c-0.292,0.292-0.677,0.438-1.061,0.438s-0.769-0.146-1.061-0.438l-5.543-5.543c-0.429-0.428-0.664-0.998-0.664-1.604s0.235-1.175,0.664-1.604c0.857-0.856,2.35-0.856,3.207,0L9.5,11.793V6c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5v5.793l0.896-0.896c0.857-0.856,2.35-0.856,3.207,0c0.429,0.428,0.664,0.998,0.664,1.604S19.032,13.675,18.604,14.104z"/>
+        </svg>
+      </div>
     </div>
     <ValidationObserver
       ref="form"

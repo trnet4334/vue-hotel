@@ -3,6 +3,7 @@
 .signup-banner {
   width: 100%;
   height: fit-content;
+  overflow: visible;
   background-color: #202c39;
   padding: 7.5vh 0;
   position: relative;
@@ -115,12 +116,15 @@ form {
       padding-right: 20px;
       font-size: 1.7rem;
     }
+    button {
+      padding: 10px 30px;
+    }
     form {
       .row {
         height: auto;
         .column {
           width: 80%;
-          margin: 10px auto;
+          margin: 1px auto;
           label {
             font-size: 1.3rem;
           }
@@ -143,7 +147,7 @@ form {
     &__header {
       font-size: 2rem;
     }
-    & form {
+    form {
       .row {
         height: auto;
         .column {
