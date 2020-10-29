@@ -170,8 +170,7 @@ import Footer from '@/components/footer/Footer.vue'
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
 // eslint-disable-next-line camelcase
 import { alpha, alpha_spaces, min_value, numeric } from 'vee-validate/dist/rules'
-import apiService from '@/common/api'
-import shortid from 'shortid'
+import firebaseApi from '@/common/firebaseApi'
 import dayjs from 'dayjs'
 extend('alpha', alpha)
 extend('alpha_spaces', alpha_spaces)
@@ -217,7 +216,6 @@ export default {
     return {
       checked: false,
       requestWeddingInfo: {
-        id: '',
         type: 'Wedding Inquiry',
         status: 'Upcoming',
         confirmationNum: '',
@@ -236,7 +234,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.requestWeddingInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
+      this.requestWeddingInfo.confirmationNum = 'ARNSW' + dayjs().format('MMDDYYSSS')
       this.requestWeddingInfo.createTime = dayjs().format()
       this.requestWeddingInfo.lastUpdateTime = dayjs().format()
       // Alert message for inquiry confirmation
@@ -247,16 +245,20 @@ export default {
           customClass: 'notification-class',
           type: 'warning'
         }).then(() => {
-        apiService.postData('/weddingRequestList', this.requestWeddingInfo)
-        this.$notify({
-          type: 'success',
-          customClass: 'notification-class',
-          message: 'Your request has been submitted successfully.'
-        })
-        // Reload current page to reset all data
-        setTimeout(() => {
-          this.$router.push('/wedding')
-        }, 2000)
+        firebaseApi.postData('weddingRequestList', this.requestWeddingInfo)
+          .then(() => {
+            this.$notify({
+              type: 'success',
+              customClass: 'notification-class',
+              message: 'Your request has been submitted successfully.'
+            })
+          })
+          .then(() => {
+            // Reload current page to reset all data
+            setTimeout(() => {
+              this.$router.push('/wedding')
+            }, 2000)
+          })
       }).catch(() => {
         setTimeout(() => {
           this.$notify({
@@ -267,6 +269,9 @@ export default {
         }, 500)
       })
     }
+  },
+  beforeMount () {
+    this.requestWeddingInfo.weddingDate = new Date(new Date().setDate(new Date().getDate() + 15))
   }
 }
 </script>

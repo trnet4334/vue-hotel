@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "default-passive-events": "^2.0.0",
     "element-ui": "^2.3.6",
+    "firebase": "^8.0.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",

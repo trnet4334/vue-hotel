@@ -311,8 +311,7 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import dayjs from 'dayjs'
-import apiService from '@/common/api'
-import shortid from 'shortid'
+import firebaseApi from '@/common/firebaseApi'
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
 // eslint-disable-next-line camelcase
 import { alpha, alpha_spaces, min_value, numeric } from 'vee-validate/dist/rules'
@@ -369,7 +368,6 @@ export default {
     return {
       checked: false,
       requestInfo: {
-        id: '',
         confirmationNum: '',
         createTime: '',
         lastUpdateTime: '',
@@ -404,7 +402,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.requestInfo.confirmationNum = shortid.generate() + dayjs().format('MMDDHHmm')
+      this.requestInfo.confirmationNum = 'ARNSEM' + dayjs().format('MMDDYYSSS')
       this.requestInfo.createTime = dayjs().format()
       this.requestInfo.lastUpdateTime = dayjs().format()
       // Alert message for inquiry confirmation
@@ -415,16 +413,18 @@ export default {
           customClass: 'notification-class',
           type: 'warning'
         }).then(() => {
-        apiService.postData('/eventsRequestList', this.requestInfo)
-        this.$notify({
-          type: 'success',
-          customClass: 'notification-class',
-          message: 'Your request has been submitted successfully.'
+        firebaseApi.postData('eventsRequestList', this.requestInfo).then(() => {
+          this.$notify({
+            type: 'success',
+            customClass: 'notification-class',
+            message: 'Your request has been submitted successfully.'
+          })
+        }).then(() => {
+          // Reload current page to reset all data
+          setTimeout(() => {
+            this.$router.push('/events')
+          }, 2000)
         })
-        // Reload current page to reset all data
-        setTimeout(() => {
-          this.$router.push('/events')
-        }, 2000)
       }).catch(() => {
         setTimeout(() => {
           this.$notify({
@@ -436,7 +436,15 @@ export default {
       })
     }
   },
-  computed: {
+  beforeMount () {
+    this.requestInfo.scheduledDates = {
+      start: new Date(new Date().setDate(new Date().getDate() + 15)),
+      end: new Date(new Date().setDate(new Date().getDate() + 16))
+    }
+    this.requestInfo.alternateDates = {
+      start: new Date(new Date().setDate(new Date().getDate() + 17)),
+      end: new Date(new Date().setDate(new Date().getDate() + 18))
+    }
   }
 }
 </script>

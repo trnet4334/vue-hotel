@@ -2,8 +2,9 @@ import roomsIntro from '@/data/checkout/roomsIntro'
 import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
-import shortid from 'shortid'
-import apiService from '@/common/api'
+// import shortid from 'shortid'
+// import apiService from '@/common/api'
+import firebaseApi from '@/common/firebaseApi'
 
 const state = {
   roomsIntro: roomsIntro,
@@ -308,7 +309,7 @@ const mutations = {
     }
   },
   'SET_CONFIRMATION_NUM' (state) {
-    state.reservationDetails.confirmationNum = shortid.generate() + dayjs().format('mmss')
+    state.reservationDetails.confirmationNum = 'ARNSS' + dayjs().format('MMDDYYSSS')
   },
   'DISCARD_CHANGES' (state) {
     state.isEditingRoom = false
@@ -486,7 +487,8 @@ const actions = {
   },
   async submitReservation ({ commit, dispatch, state }) {
     await dispatch('setConfirmationNum')
-    await apiService.postData('/reservationList', state.reservationDetails)
+    // await apiService.postData('/reservationList', state.reservationDetails)
+    await firebaseApi.postData('reservationList', state.reservationDetails)
     await router.push({
       name: 'Completion',
       params: { tempId: state.tempId }
