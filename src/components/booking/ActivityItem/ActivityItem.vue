@@ -84,11 +84,11 @@ export default {
       if (this.isRequestSubmitted) {
         return 'Pending'
       } else if (this.bookingItem.status === 'Upcoming' && this.bookingItem.type === 'Stay') {
-        return today.diff(this.bookingItem.roomSelections[0].date.start, 'day') > 0 ? 'Completed' : 'Upcoming'
+        return today.diff(dayjs.unix(this.bookingItem.roomSelections[0].date.start.seconds), 'day') > 0 ? 'Completed' : 'Upcoming'
       } else if (this.bookingItem.status === 'Upcoming' && this.bookingItem.type === 'Event/Meeting Inquiry') {
-        return today.diff(this.bookingItem.scheduledDates.start, 'day') > 0 ? 'Completed' : 'Upcoming'
+        return today.diff(dayjs.unix(this.bookingItem.scheduledDates.start.seconds), 'day') > 0 ? 'Completed' : 'Upcoming'
       } else if (this.bookingItem.status === 'Upcoming' && this.bookingItem.type === 'Wedding Inquiry') {
-        return today.diff(this.bookingItem.weddingDate, 'day') > 0 ? 'Completed' : 'Upcoming'
+        return today.diff(dayjs.unix(this.bookingItem.weddingDate.seconds), 'day') > 0 ? 'Completed' : 'Upcoming'
       } else {
         return this.bookingItem.status
       }
@@ -133,7 +133,7 @@ export default {
         const selection = {
           date: {
             start: new Date(new Date().setDate(new Date().getDate() + 2)),
-            end: new Date(new Date().setDate(new Date().getDate() + 2))
+            end: new Date(new Date().setDate(new Date().getDate() + 3))
           },
           guests: {
             numOfAdultGuests: this.bookingItem.roomSelections[0].guests.numOfAdultGuests,
@@ -171,20 +171,20 @@ export default {
     },
     checkBookingDateStart (item) {
       if (item.type === 'Stay') {
-        return this.convertDateType(this.bookingItem.roomSelections[0].date.start)
+        return this.convertDateType(dayjs.unix(this.bookingItem.roomSelections[0].date.start.seconds))
       } else if (item.type === 'Wedding Inquiry') {
-        return this.convertDateType(this.bookingItem.weddingDate)
+        return this.convertDateType(dayjs.unix(this.bookingItem.weddingDate.seconds))
       } else if (item.type === 'Event/Meeting Inquiry') {
-        return this.convertDateType(this.bookingItem.scheduledDates.start)
+        return this.convertDateType(dayjs.unix(this.bookingItem.scheduledDates.start.seconds))
       }
     },
     checkBookingDateEnd (item) {
       if (item.type === 'Stay') {
-        return this.convertDateType(this.bookingItem.roomSelections[0].date.end)
+        return this.convertDateType(dayjs.unix(this.bookingItem.roomSelections[0].date.end.seconds))
       } else if (item.type === 'Wedding Inquiry') {
-        return this.convertDateType(this.bookingItem.weddingDate)
+        return this.convertDateType(dayjs.unix(this.bookingItem.weddingDate.seconds))
       } else if (item.type === 'Event/Meeting Inquiry') {
-        return this.convertDateType(this.bookingItem.scheduledDates.end)
+        return this.convertDateType(dayjs.unix(this.bookingItem.scheduledDates.end.seconds))
       }
     }
   }

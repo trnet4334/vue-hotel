@@ -1,8 +1,7 @@
-import apiService from '@/common/api'
 import router from '@/router'
 import dayjs from 'dayjs'
-import axios from 'axios'
 import shortid from 'shortid'
+import firebaseApi from '@/common/firebaseApi'
 
 const state = {
   result: [],
@@ -23,12 +22,14 @@ const getters = {
   sortedResult: state => {
     const sortResult = function (itemA, itemB) {
       const today = dayjs()
+      // Sorting rule for comparing two data
+      // Return the date which is latest
       const dateA = itemA.type === 'Stay'
-        ? today.diff(itemA.roomSelections[0].date.start, 'day') : (itemA.type === 'Wedding Inquiry')
-          ? today.diff(itemA.weddingDate, 'day') : today.diff(itemA.scheduledDates.start, 'day')
+        ? today.diff(dayjs.unix(itemA.roomSelections[0].date.start.seconds), 'day') : (itemA.type === 'Wedding Inquiry')
+          ? today.diff(dayjs.unix(itemA.weddingDate.seconds), 'day') : today.diff(dayjs.unix(itemA.scheduledDates.start.seconds), 'day')
       const dateB = itemB.type === 'Stay'
-        ? today.diff(itemB.roomSelections[0].date.start, 'day') : (itemB.type === 'Wedding Inquiry')
-          ? today.diff(itemB.weddingDate, 'day') : today.diff(itemB.scheduledDates.start, 'day')
+        ? today.diff(dayjs.unix(itemB.roomSelections[0].date.start.seconds), 'day') : (itemB.type === 'Wedding Inquiry')
+          ? today.diff(dayjs.unix(itemB.weddingDate.seconds), 'day') : today.diff(dayjs.unix(itemB.scheduledDates.start.seconds), 'day')
       let comparison = 0
       if (dateA > dateB) {
         comparison = 1
@@ -93,25 +94,25 @@ const mutations = {
         return activity.type === 'Event/Meeting Inquiry' || activity.type === 'Wedding Inquiry'
       }
     }
-    // Check whether activity data fit input range
+    // Check whether activity data fit input range (3, 6, 9, 12 months)
     const checkMonthRange = function (activity) {
       if (activity.type === 'Stay') {
-        if (range === 'three') return today.diff(activity.roomSelections[0].date.start, 'month') <= 3 && today.diff(activity.roomSelections[0].date.start, 'month') >= -3
-        else if (range === 'six') return today.diff(activity.roomSelections[0].date.start, 'month') <= 6 && today.diff(activity.roomSelections[0].date.start, 'month') >= -6
-        else if (range === 'nine') return today.diff(activity.roomSelections[0].date.start, 'month') <= 9 && today.diff(activity.roomSelections[0].date.start, 'month') >= -9
-        else if (range === 'twelve') return today.diff(activity.roomSelections[0].date.start, 'month') <= 12 && today.diff(activity.roomSelections[0].date.start, 'month') >= -12
+        if (range === 'three') return today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') <= 3 && today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') >= -3
+        else if (range === 'six') return today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') <= 6 && today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') >= -6
+        else if (range === 'nine') return today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') <= 9 && today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') >= -9
+        else if (range === 'twelve') return today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') <= 12 && today.diff(dayjs.unix(activity.roomSelections[0].date.start.seconds), 'month') >= -12
         else return false
       } else if (activity.type === 'Event/Meeting Inquiry') {
-        if (range === 'three') return today.diff(activity.scheduledDates.start, 'month') <= 3 && today.diff(activity.scheduledDates.start, 'month') >= -3
-        else if (range === 'six') return today.diff(activity.scheduledDates.start, 'month') <= 6 && today.diff(activity.scheduledDates.start, 'month') >= -6
-        else if (range === 'nine') return today.diff(activity.scheduledDates.start, 'month') <= 9 && today.diff(activity.scheduledDates.start, 'month') >= -9
-        else if (range === 'twelve') return today.diff(activity.scheduledDates.start, 'month') <= 12 && today.diff(activity.scheduledDates.start, 'month') >= -12
+        if (range === 'three') return today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') <= 3 && today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') >= -3
+        else if (range === 'six') return today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') <= 6 && today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') >= -6
+        else if (range === 'nine') return today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') <= 9 && today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') >= -9
+        else if (range === 'twelve') return today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') <= 12 && today.diff(dayjs.unix(activity.scheduledDates.start.seconds), 'month') >= -12
         else return false
       } else if (activity.type === 'Wedding Inquiry') {
-        if (range === 'three') return today.diff(activity.weddingDate, 'month') <= 3 && today.diff(activity.weddingDate, 'month') >= -3
-        else if (range === 'six') return today.diff(activity.weddingDate, 'month') <= 6 && today.diff(activity.weddingDate, 'month') >= -6
-        else if (range === 'nine') return today.diff(activity.weddingDate, 'month') <= 9 && today.diff(activity.weddingDate, 'month') >= -9
-        else if (range === 'twelve') return today.diff(activity.weddingDate, 'month') <= 12 && today.diff(activity.weddingDate, 'month') >= -12
+        if (range === 'three') return today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') <= 3 && today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') >= -3
+        else if (range === 'six') return today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') <= 6 && today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') >= -6
+        else if (range === 'nine') return today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') <= 9 && today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') >= -9
+        else if (range === 'twelve') return today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') <= 12 && today.diff(dayjs.unix(activity.weddingDate.seconds), 'month') >= -12
         else return false
       }
     }
@@ -129,15 +130,15 @@ const mutations = {
     const today = dayjs()
     state.result.forEach(element => {
       if (element.type === 'Stay') {
-        if (today.diff(element.roomSelections[0].date.start, 'month') <= 6 && today.diff(element.roomSelections[0].date.start, 'month') >= -6) {
+        if (today.diff(dayjs.unix(element.roomSelections[0].date.start.seconds), 'month') <= 6 && today.diff(dayjs.unix(element.roomSelections[0].date.start.seconds), 'month') >= -6) {
           _temp.push(element)
         }
       } else if (element.type === 'Event/Meeting Inquiry') {
-        if (today.diff(element.scheduledDates.start, 'month') <= 6 && today.diff(element.scheduledDates.start, 'month') >= -6) {
+        if (today.diff(dayjs.unix(element.scheduledDates.start.seconds), 'month') <= 6 && today.diff(dayjs.unix(element.scheduledDates.start.seconds), 'month') >= -6) {
           _temp.push(element)
         }
       } else if (element.type === 'Wedding Inquiry') {
-        if (today.diff(element.weddingDate, 'month') <= 6 && today.diff(element.weddingDate, 'month') >= -6) {
+        if (today.diff(dayjs.unix(element.weddingDate.seconds), 'month') <= 6 && today.diff(dayjs.unix(element.weddingDate.seconds), 'month') >= -6) {
           _temp.push(element)
         }
       }
@@ -163,33 +164,21 @@ const mutations = {
 const actions = {
   // Fetch all booking data from api
   async getBookingResult ({ commit, dispatch }, selection) {
-    const email = selection.email
-    const lastName = selection.lastName
     const _temp = []
-    await axios.all([
-      apiService.getData(
-        `/reservationList?customerInfo.contactDetail.lastName=${lastName}&customerInfo.contactDetail.email=${email}`
-      ),
-      apiService.getData(
-        `/eventsRequestList?lastName=${lastName}&email=${email}`
-      ),
-      apiService.getData(
-        `/weddingRequestList?lastName=${lastName}&email=${email}`
-      )
-    ]).then(
-      axios.spread((reservRes, eventsRes, weddingRes) => {
-        reservRes.data.forEach(item => {
-          _temp.push(item)
-        })
-        eventsRes.data.forEach(item => {
-          _temp.push(item)
-        })
-        weddingRes.data.forEach(item => {
-          _temp.push(item)
-        })
-      })
-    ).catch(err => {
-      console.log(err)
+    // Data from reservation list, wedding request and events/meeting request
+    const [stayRes, eventsRes, weddingRes] = await Promise.all([
+      firebaseApi.getData('reservationList', selection),
+      firebaseApi.getData('eventsRequestList', selection),
+      firebaseApi.getData('weddingRequestList', selection)
+    ])
+    await stayRes.forEach(item => {
+      _temp.push(item)
+    })
+    await eventsRes.forEach(item => {
+      _temp.push(item)
+    })
+    await weddingRes.forEach(item => {
+      _temp.push(item)
     })
     if (_temp.length === 0) {
       dispatch('cancelCheckingRequest')
@@ -222,14 +211,14 @@ const actions = {
   // Change booking status from upcoming to canceled
   async cancelBooking ({ commit, state, dispatch }, selection) {
     if (selection.type === 'Stay') {
-      commit('CANCEL_BOOKING')
-      await apiService.updateData(`/reservationList/${selection.id}`, state.onChangeStatus)
+      await commit('CANCEL_BOOKING')
+      await firebaseApi.updateData('reservationList', { id: selection.id, ...state.onChangeStatus })
     } else if (selection.type === 'Event/Meeting Inquiry') {
       commit('CANCEL_BOOKING')
-      await apiService.updateData(`/eventsRequestList/${selection.id}`, state.onChangeStatus)
+      await firebaseApi.updateData('eventsRequestList', { id: selection.id, ...state.onChangeStatus })
     } else if (selection.type === 'Wedding Inquiry') {
       commit('CANCEL_BOOKING')
-      await apiService.updateData(`/weddingRequestList/${selection.id}`, state.onChangeStatus)
+      await firebaseApi.updateData('weddingRequestList', { id: selection.id, ...state.onChangeStatus })
     }
     await dispatch('getBookingResult', state.tempSearchInput)
   },

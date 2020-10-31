@@ -19,6 +19,8 @@ const state = {
     createTime: '',
     lastUpdateTime: '',
     confirmationNum: '',
+    email: '',
+    lastName: '',
     type: 'Stay',
     status: 'Upcoming',
     roomSelections: [],
@@ -287,6 +289,8 @@ const mutations = {
   },
   'SAVE_CUSTOMER_INFO_TO_RESERVATION' (state) {
     state.reservationDetails.customerInfo = state.onEditCustomerInfo
+    state.reservationDetails.email = state.onEditCustomerInfo.contactDetail.email
+    state.reservationDetails.lastName = state.onEditCustomerInfo.contactDetail.lastName
   },
   'ADD_ANOTHER_ROOM' (state) {
     state.currentStep = 0
@@ -322,6 +326,8 @@ const mutations = {
     state.previousStep = 1
     state.isOnBooking = undefined
     state.isEditingRoom = ''
+    state.email = ''
+    state.lastName = ''
     state.onSearchRoom = {
       createTime: '',
       totalNight: undefined,
@@ -352,6 +358,8 @@ const mutations = {
       createTime: '',
       lastUpdateTime: '',
       confirmationNum: '',
+      type: 'Stay',
+      status: 'Upcoming',
       roomSelections: [],
       customerInfo: {},
       totalAmount: undefined
