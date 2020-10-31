@@ -162,6 +162,7 @@ export default {
       this.signupDetail.membershipNum = dayjs().format('DDYYYYmmssSSS')
       this.signupDetail.createdTime = dayjs().format()
       const isMemberExist = await firebaseApi.getMembersData('subscriptionList', this.signupDetail.email)
+
       // Alert message for inquiry confirmation
       if (isMemberExist) {
         await this.$alert('You have already been in our subscription list. Thank you very much.',
@@ -185,6 +186,10 @@ export default {
             country: '',
             zipCode: ''
           }
+        }).then(() => {
+          setTimeout(() => {
+            this.$router.go(0)
+          }, 3500)
         }).catch(err => {
           console.log(err)
         })

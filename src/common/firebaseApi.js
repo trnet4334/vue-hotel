@@ -1,17 +1,17 @@
 import { db } from './firebase'
-import * as _ from 'lodash'
+// import * as _ from 'lodash'
 
 const firebaseApi = {
   // Fetch all matched members data from api
   // resource: data category
   // category: child route from baseURL
   async getMembersData (resource, params) {
-    let _temp = true
+    let _temp = false
     const ref = db.collection(resource)
       .where('email', '==', params)
     await ref.get()
       .then(querySnapshot => {
-        _temp = !_.isEmpty(querySnapshot)
+        _temp = !querySnapshot.empty
       }).catch(err => {
         console.log(err)
       })
@@ -27,7 +27,7 @@ const firebaseApi = {
       .where('lastName', '==', params.lastName)
     await ref.get()
       .then((querySnapshot) => {
-        if (_.isEmpty(querySnapshot)) {
+        if (querySnapshot.empty) {
           // console.log('No data')
           return -1
         } else {
