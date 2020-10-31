@@ -98,9 +98,8 @@
 import { ValidationProvider, extend, ValidationObserver } from 'vee-validate'
 // eslint-disable-next-line camelcase
 import { alpha_spaces } from 'vee-validate/dist/rules'
-import shortid from 'shortid'
 import dayjs from 'dayjs'
-import apiService from '@/common/api'
+import firebaseApi from '@/common/firebaseApi'
 extend('alpha_spaces', alpha_spaces)
 extend('required', {
   validate (value) {
@@ -140,7 +139,6 @@ export default {
       displaySignupCollapse: false,
       signupSuccess: false,
       signupDetail: {
-        id: '',
         membershipNum: '',
         createdTime: '',
         name: '',
@@ -160,28 +158,36 @@ export default {
       this.displaySignupCollapse = !this.displaySignupCollapse
       this.signupSuccess = false
     },
-    onSubmit () {
-      this.signupDetail.membershipNum = shortid.generate() + dayjs().format('MMDD')
+    async onSubmit () {
+      this.signupDetail.membershipNum = dayjs().format('DDYYYYmmssSSS')
       this.signupDetail.createdTime = dayjs().format()
+      const isMemberExist = await firebaseApi.getMembersData('subscriptionList', this.signupDetail.email)
       // Alert message for inquiry confirmation
-      const confirmation = window.confirm('Ready to submit?')
-      if (confirmation) {
-        apiService.postData('/subscriptionList', this.signupDetail)
-        this.signupSuccess = true
-        // Reset all data
-        this.signupDetail = {
-          id: '',
-          membershipNum: '',
-          createdTime: '',
-          name: '',
-          email: '',
-          address: '',
-          state: '',
-          country: '',
-          zipCode: ''
-        }
+      if (isMemberExist) {
+        await this.$alert('You have already been in our subscription list. Thank you very much.',
+          {
+            confirmButtonClass: 'OK',
+            customClass: 'notification-class',
+            type: 'info'
+          })
       } else {
-        return -1
+        await firebaseApi.postData('subscriptionList', this.signupDetail).then(() => {
+          this.signupSuccess = true
+          // Reset all data
+          this.signupDetail = {
+            id: '',
+            membershipNum: '',
+            createdTime: '',
+            name: '',
+            email: '',
+            address: '',
+            state: '',
+            country: '',
+            zipCode: ''
+          }
+        }).catch(err => {
+          console.log(err)
+        })
       }
     }
   }

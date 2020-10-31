@@ -2,10 +2,25 @@ import { db } from './firebase'
 import * as _ from 'lodash'
 
 const firebaseApi = {
-  // Fetch data from api
+  // Fetch all matched members data from api
   // resource: data category
   // category: child route from baseURL
-  async getData (resource, params) {
+  async getMembersData (resource, params) {
+    let _temp = true
+    const ref = db.collection(resource)
+      .where('email', '==', params)
+    await ref.get()
+      .then(querySnapshot => {
+        _temp = !_.isEmpty(querySnapshot)
+      }).catch(err => {
+        console.log(err)
+      })
+    return _temp
+  },
+  // Fetch all matched reservation data from api
+  // resource: data category
+  // category: child route from baseURL
+  async getReservedData (resource, params) {
     const _temp = []
     const ref = db.collection(resource)
       .where('email', '==', params.email)
@@ -13,12 +28,11 @@ const firebaseApi = {
     await ref.get()
       .then((querySnapshot) => {
         if (_.isEmpty(querySnapshot)) {
-          console.log('No data')
+          // console.log('No data')
+          return -1
         } else {
           querySnapshot.forEach((doc) => {
-            const data = doc.data()
-            Object.assign(data, { id: doc.id })
-            _temp.push(data)
+            _temp.push({ id: doc.id, ...doc.data() })
           })
         }
       }).catch((err) => {
@@ -37,20 +51,15 @@ const firebaseApi = {
         console.log(e)
       })
   },
-  // Replace data from db
-  // resource: data category
-  // id: data id
-  async replaceData (resource, payload) {},
   // Update data from db
   // resource: data category
   async updateData (resource, payload) {
-    console.log(payload)
     const ref = db.collection(resource).doc(payload.id)
     await ref.update({
       status: payload.status,
       lastUpdateTime: payload.lastUpdateTime
     })
-      .then(() => { console.log('Successfully') })
+      .then(() => { console.log('') })
       .catch((err) => { console.log(err) })
   },
   // Delete data from db

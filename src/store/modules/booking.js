@@ -167,10 +167,11 @@ const actions = {
     const _temp = []
     // Data from reservation list, wedding request and events/meeting request
     const [stayRes, eventsRes, weddingRes] = await Promise.all([
-      firebaseApi.getData('reservationList', selection),
-      firebaseApi.getData('eventsRequestList', selection),
-      firebaseApi.getData('weddingRequestList', selection)
+      firebaseApi.getReservedData('reservationList', selection),
+      firebaseApi.getReservedData('eventsRequestList', selection),
+      firebaseApi.getReservedData('weddingRequestList', selection)
     ])
+    // TODO: Add conditional case when result is empty array
     await stayRes.forEach(item => {
       _temp.push(item)
     })

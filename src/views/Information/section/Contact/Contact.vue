@@ -63,7 +63,7 @@
             >
               <label for="fullName">Full Name*</label>
               <input type="text" id="fullName" v-model="contactForm.name" required>
-              <span class="alert-message">{{errors[0]}}</span>
+              <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
             <ValidationProvider
               rules="required|regexEmail"
@@ -73,7 +73,7 @@
             >
               <label for="email">Email Address*</label>
               <input type="email" id="email" v-model="contactForm.email" required>
-              <span class="alert-message">{{errors[0]}}</span>
+              <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
             <ValidationProvider
               rules="required|regexPhoneNum"
@@ -83,18 +83,18 @@
             >
               <label for="phone">Phone Number*</label>
               <input type="text" id="phone" v-model="contactForm.phoneNum" required>
-              <span class="alert-message">{{errors[0]}}</span>
+              <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
             <div class="flex--row">
               <label for="purpose">Purpose*</label>
               <select name="purpose" v-model="contactForm.purpose" id="purpose">
                 <option value="">----</option>
-                <option value="Dinning">Dinning reservation</option>
-                <option value="Public">Public Relations</option>
-                <option value="Activities">Hotel Activities</option>
-                <option value="Stay">Room Reservation</option>
+                <option value="Dinning Reservation">Dinning Reservation</option>
+                <option value="Public Relations">Public Relations</option>
+                <option value="Hotel Activities">Hotel Activities</option>
+                <option value="Room Reservation">Room Reservation</option>
                 <option value="Sales">Sales</option>
-                <option value="Donation">Donation Request</option>
+                <option value="Donation Request">Donation Request</option>
               </select>
             </div>
             <ValidationProvider
@@ -111,13 +111,12 @@
                 placeholder="Let us know what we can help you"
                 rows="8"
               />
-              <span class="alert-message">{{errors[0]}}</span>
+              <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
             <label for="consent">
               <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked" required>
-              <span>I understand that this form collects my name, email and phone number, so I
-                can be contacted. For more information, please check our
-                <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener">privacy policy</router-link>.
+              <span>
+                I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener">privacy policy</router-link>.
               </span>
             </label>
             <button type="submit" :disabled="!checked">SEND</button>
@@ -130,8 +129,7 @@
 <script>
 import lozad from 'lozad'
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
-import apiService from '@/common/api'
-// import apiService from '@/common/api'
+import firebaseApi from '@/common/firebaseApi'
 extend('required', {
   validate (value) {
     return {
@@ -169,7 +167,6 @@ export default {
     return {
       checked: false,
       contactForm: {
-        id: '',
         name: '',
         email: '',
         phoneNum: '',
@@ -182,26 +179,32 @@ export default {
     onSubmit () {
       // Alert message for inquiry confirmation
       this.$confirm('Ready to submit?',
-        'Confirmation',
         {
           confirmButtonText: 'YES',
           cancelButtonText: 'CANCEL',
+          customClass: 'notification-class',
           type: 'warning'
         }).then(() => {
-        apiService.postData('/customerServiceRequest', this.contactForm)
-        this.$message({
-          type: 'success',
-          message: 'Your request has been submitted successfully.'
+        firebaseApi.postData('customerServiceRequest', this.contactForm).then(() => {
+          this.$notify({
+            type: 'success',
+            customClass: 'notification-class',
+            message: 'Your request has been submitted successfully.'
+          })
+        }).then(() => {
+          // Reload current page to reset all data
+          setTimeout(() => {
+            this.$router.go(0)
+          }, 2000)
         })
-        // Reload current page to reset all data
-        setTimeout(() => {
-          this.$router.push('/')
-        }, 2000)
       }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Request canceled'
-        })
+        setTimeout(() => {
+          this.$notify({
+            type: 'info',
+            customClass: 'notification-class',
+            message: 'Request canceled'
+          })
+        }, 500)
       })
     }
   },
