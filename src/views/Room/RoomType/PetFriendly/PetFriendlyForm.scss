@@ -89,22 +89,6 @@
 .align-center {
   align-items: center;
 }
-.date {
-  align-items: center;
-  width: fit-content;
-  border-bottom: 1px solid #3d405b;
-  padding: 3px 0;
-  margin-top: 5px;
-  /deep/ .date-picker-input {
-    font-family: inherit;
-    width: 175px;
-    margin-right: 10px;
-    background-color: transparent;
-    border: none;
-    font-size: 1.3rem;
-    text-align: center;
-  }
-}
 .alert-message {
   flex-basis: 100%;
   text-align: start;

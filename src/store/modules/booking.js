@@ -171,16 +171,21 @@ const actions = {
       firebaseApi.getReservedData('eventsRequestList', selection),
       firebaseApi.getReservedData('weddingRequestList', selection)
     ])
-    // TODO: Add conditional case when result is empty array
-    await stayRes.forEach(item => {
-      _temp.push(item)
-    })
-    await eventsRes.forEach(item => {
-      _temp.push(item)
-    })
-    await weddingRes.forEach(item => {
-      _temp.push(item)
-    })
+    if (stayRes.length !== 0) {
+      await stayRes.forEach(item => {
+        _temp.push(item)
+      })
+    }
+    if (eventsRes.length !== 0) {
+      await eventsRes.forEach(item => {
+        _temp.push(item)
+      })
+    }
+    if (weddingRes.length !== 0) {
+      await weddingRes.forEach(item => {
+        _temp.push(item)
+      })
+    }
     if (_temp.length === 0) {
       dispatch('cancelCheckingRequest')
       alert('There is no booking data! Please make sure your email address and last name are correct.')

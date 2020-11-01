@@ -1,5 +1,4 @@
 import { db } from './firebase'
-// import * as _ from 'lodash'
 
 const firebaseApi = {
   // Fetch all matched members data from api
@@ -16,6 +15,46 @@ const firebaseApi = {
         console.log(err)
       })
     return _temp
+  },
+  // Fetch matched reserved stay data id from api
+  // resource: data category
+  // category: child route from baseURL
+  async getReservedStayData (resource, params) {
+    let isReserved, docId, isStayExist
+    const ref = await db.collection(resource)
+      .where('email', '==', params.email)
+      .where('confirmationNum', '==', params.reservationNum)
+      .where('lastName', '==', params.lastName)
+    // Check if the stay exists through email, confirmation number and last name
+    await ref.get()
+      .then((querySnapshot) => {
+        if (querySnapshot.empty) {
+          isStayExist = false
+        } else {
+          isStayExist = true
+          querySnapshot.forEach((doc) => {
+            docId = doc.id
+          })
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
+    // Check if pet has been registered when the stay exists.
+    if (isStayExist) {
+      await db.collection(resource).doc(docId).collection('petRegistration')
+        .get()
+        .then((querySnapshot) => {
+          isReserved = !querySnapshot.empty
+        })
+    }
+    // Return reserve condition and id of document
+    if (isReserved === true) {
+      return { id: docId, isRegistered: isReserved }
+    } else if (isReserved === false) {
+      return { id: docId, isRegistered: isReserved }
+    } else {
+      return {}
+    }
   },
   // Fetch all matched reservation data from api
   // resource: data category
@@ -45,6 +84,20 @@ const firebaseApi = {
   // data: new data which will be pushed into db
   async postData (resource, data) {
     await db.collection(resource).add(data)
+      .then(() => {
+        console.log('Successfully submit')
+      }).catch((e) => {
+        console.log(e)
+      })
+  },
+  // Push pet registration data into reservation doc
+  // resource: data category
+  // data: new data which will be pushed into db
+  async postPetRegistrationData (resource, data) {
+    await db.collection('reservationList')
+      .doc(data.id)
+      .collection(resource)
+      .add(data.form)
       .then(() => {
         console.log('Successfully submit')
       }).catch((e) => {
