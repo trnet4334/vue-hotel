@@ -2,7 +2,7 @@
   <nav>
     <div class="nav__container flex--row">
       <div class="nav__logo">
-        <router-link to="/">
+        <router-link to="/home">
           <figure class="flex--row">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; width: 48px; height: 48px; margin-right: 5px; fill: #283845;" xml:space="preserve" class="icon-color">

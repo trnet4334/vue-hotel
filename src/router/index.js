@@ -61,6 +61,9 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+  if (to.name === 'Completion' && from.name !== 'Reservation') {
+    next('/home')
+  }
   if (from.name === 'Activity' && to.name !== 'Activity') {
     store.dispatch('leaveSearchResult').then(() => {
       window.sessionStorage.clear()

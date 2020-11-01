@@ -9,7 +9,7 @@
         <div class="sitemap__content flex--column">
           <div>
             <ul>
-              <li><router-link to="/">Homepage</router-link></li>
+              <li><router-link to="/home">Homepage</router-link></li>
               <li><router-link to="/story">Story</router-link></li>
               <li>
                 <router-link to="/rooms">Rooms</router-link>

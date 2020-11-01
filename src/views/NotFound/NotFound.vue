@@ -38,7 +38,7 @@
           </div>
         </div>
         <button>
-          <router-link to="/">Return Home</router-link>
+          <router-link to="/home">Return Home</router-link>
         </button>
       </div>
     </div>

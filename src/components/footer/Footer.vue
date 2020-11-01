@@ -3,7 +3,7 @@
     <div class="footer__container flex--column">
       <div class="flex--row footer__header">
         <div class="logo">
-          <router-link to="/">
+          <router-link to="/home">
             <figure class="flex--row">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                    viewBox="0 0 24 24" style="width: 48px; height: 48px; margin-right: 5px;" xml:space="preserve" class="icon-color">
