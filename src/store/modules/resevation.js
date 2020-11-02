@@ -2,8 +2,9 @@ import roomsIntro from '@/data/checkout/roomsIntro'
 import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
-import shortid from 'shortid'
-import apiService from '@/common/api'
+// import shortid from 'shortid'
+// import apiService from '@/common/api'
+import firebaseApi from '@/common/firebaseApi'
 
 const state = {
   roomsIntro: roomsIntro,
@@ -18,6 +19,8 @@ const state = {
     createTime: '',
     lastUpdateTime: '',
     confirmationNum: '',
+    email: '',
+    lastName: '',
     type: 'Stay',
     status: 'Upcoming',
     roomSelections: [],
@@ -286,6 +289,8 @@ const mutations = {
   },
   'SAVE_CUSTOMER_INFO_TO_RESERVATION' (state) {
     state.reservationDetails.customerInfo = state.onEditCustomerInfo
+    state.reservationDetails.email = state.onEditCustomerInfo.contactDetail.email
+    state.reservationDetails.lastName = state.onEditCustomerInfo.contactDetail.lastName
   },
   'ADD_ANOTHER_ROOM' (state) {
     state.currentStep = 0
@@ -308,7 +313,7 @@ const mutations = {
     }
   },
   'SET_CONFIRMATION_NUM' (state) {
-    state.reservationDetails.confirmationNum = shortid.generate() + dayjs().format('mmss')
+    state.reservationDetails.confirmationNum = 'ARNSS' + dayjs().format('MMDDYYSSS')
   },
   'DISCARD_CHANGES' (state) {
     state.isEditingRoom = false
@@ -321,6 +326,8 @@ const mutations = {
     state.previousStep = 1
     state.isOnBooking = undefined
     state.isEditingRoom = ''
+    state.email = ''
+    state.lastName = ''
     state.onSearchRoom = {
       createTime: '',
       totalNight: undefined,
@@ -351,6 +358,8 @@ const mutations = {
       createTime: '',
       lastUpdateTime: '',
       confirmationNum: '',
+      type: 'Stay',
+      status: 'Upcoming',
       roomSelections: [],
       customerInfo: {},
       totalAmount: undefined
@@ -486,7 +495,8 @@ const actions = {
   },
   async submitReservation ({ commit, dispatch, state }) {
     await dispatch('setConfirmationNum')
-    await apiService.postData('/reservationList', state.reservationDetails)
+    // await apiService.postData('/reservationList', state.reservationDetails)
+    await firebaseApi.postData('reservationList', state.reservationDetails)
     await router.push({
       name: 'Completion',
       params: { tempId: state.tempId }

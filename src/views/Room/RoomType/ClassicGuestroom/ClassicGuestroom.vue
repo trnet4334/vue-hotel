@@ -6,7 +6,9 @@
         <div class="page-wrapper">
           <div class="room-details__body--first flex--row">
             <div class="room-details__image">
-              <img src="@/assets/images/room/classic-guestroom-img.jpg" alt="#">
+              <picture>
+                <img src="@/assets/images/room/classic-guestroom-img.jpg" alt="Classic Guestroom">
+              </picture>
             </div>
             <div class="room-details__content--first page-content--header">
               <h4>{{classicGuestroom.name}}</h4>

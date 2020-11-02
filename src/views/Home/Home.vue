@@ -41,9 +41,7 @@
       <div class="room--image">
         <img
           src="@/assets/images/homepage/room-img.jpg"
-          :data-src="require('@/assets/images/homepage/room-img.jpg')"
           alt="Room"
-          class="lazod"
         >
       </div>
       <div class="room--type flex--column page-content--header">

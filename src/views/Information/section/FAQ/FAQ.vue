@@ -42,7 +42,9 @@
           </div>
         </div>
         <div class="faq__image">
-          <img src="@/assets/images/information/faq-img.jpg" alt="information desk">
+          <picture>
+            <img src="@/assets/images/information/faq-img.jpg" alt="information desk">
+          </picture>
         </div>
       </div>
     </div>

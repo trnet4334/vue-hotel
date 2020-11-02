@@ -16,6 +16,7 @@ import roomType from './data/roomType'
 import addOns from './data/checkout/addOns'
 import countries from './data/checkout/countries'
 import dayjs from 'dayjs'
+import 'default-passive-events'
 
 // Use element-ui component
 Vue.use(ElementUI, { locale })

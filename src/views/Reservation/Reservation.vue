@@ -23,7 +23,7 @@
         <div class="header__content flex--column">
           <h2>A Resort & Spa</h2>
           <span class="flex--row" style="align-items: center;">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 10px;fill: #283845;" xml:space="preserve">
               <g>
                 <path d="M11.5,21c0.156,0,0.302-0.072,0.397-0.196C12.187,20.426,19,11.49,19,7.5C19,3.364,15.636,0,11.5,0S4,3.364,4,7.5c0,3.99,6.813,12.926,7.103,13.304C11.198,20.928,11.344,21,11.5,21z M8,7.5C8,5.57,9.57,4,11.5,4S15,5.57,15,7.5S13.43,11,11.5,11S8,9.43,8,7.5z"/>
@@ -33,7 +33,7 @@
             135 Bear Wallow Ln, Sedona, AZ 86336
           </span>
           <span class="flex--row" style="align-items: center;">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 10px;fill: #283845;" xml:space="preserve">
               <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
               <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
@@ -42,7 +42,7 @@
             480-000-0101 (Direct)
           </span>
           <span class="flex--row" style="align-items: center;">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-right: 10px;fill: #283845;" xml:space="preserve">
               <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
               <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
@@ -226,8 +226,6 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      console.log(to)
-      console.log(from)
       if (to.name === 'Reservation') {
         const step = {
           current: to.query.currentStep,

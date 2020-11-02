@@ -65,6 +65,7 @@
               </svg>
             </router-link>
           </div>
+          <p class="special-note">If you would like to bring your pet(s), please check out <router-link to="/pet-friendly/pet-friendly-form" target="_blank" rel="noreferrer noopener">here</router-link> to complete pet registration. Thank you.</p>
         </div>
       </div>
     </section>
