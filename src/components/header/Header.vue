@@ -10,7 +10,7 @@
       <button><a href="javascript:;">Watch Video</a></button>
     </div>
     <div class="image">
-      <img src="@/assets/images/homepage/header.jpg" alt="Resort Footage">
+      <img src="@/assets/images/homepage/header.gif" alt="Resort Footage">
     </div>
   </div>
 </template>

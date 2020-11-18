@@ -3,8 +3,8 @@
 /* Define screen width breakpoint to be used in the mixin */
 $breakpoints: (
         phone: 480px,
-        tablet: 769px,
-        tablet-lg: 1023px,
+        tablet: 768px,
+        tablet-lg: 1024px,
         desktop: 1224px,
         desktop-lg: 1824px
 );
@@ -15,7 +15,7 @@ $breakpoints: (
     // Get breakpoint value
     $breakpoint-value: map-get($breakpoints, $breakpoint);
     // Use the media query
-    @media only screen and (min-width: $breakpoint-value) {
+    @media only screen and (min-width: $breakpoint-value + 1) {
       @content;
     }
   } @else {
@@ -31,7 +31,7 @@ $breakpoints: (
     // Get breakpoint value
     $breakpoint-value: map-get($breakpoints, $breakpoint);
     // Use the media query
-    @media only screen and (max-width: ($breakpoint-value - 1)) {
+    @media only screen and (max-width: ($breakpoint-value)) {
       @content
     }
   } @else {
@@ -47,7 +47,7 @@ $breakpoints: (
     $lower-breakpoint-value: map-get($breakpoints, $lower-breakpoint);
     $upper-breakpoint-value: map-get($breakpoints, $upper-breakpoint);
     // Use the media query
-    @media only screen and (min-width: $lower-breakpoint-value) and (max-width: ($upper-breakpoint-value - 1)) {
+    @media only screen and (min-width: $lower-breakpoint-value + 1) and (max-width: ($upper-breakpoint-value)) {
       @content;
     }
   } @else {
