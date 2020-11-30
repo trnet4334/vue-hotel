@@ -4,6 +4,8 @@
       <img
         :src="require(`@/assets/images/${imageName[0]}`)"
         :alt="imageName[1]"
+        @load="onLoaded"
+        v-show="loaded"
       >
     </transition>
   </div>
@@ -17,7 +19,15 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      loaded: false
+    }
+  },
+  methods: {
+    onLoaded () {
+      this.loaded = true
+      console.log('test')
+    }
   }
 }
 </script>

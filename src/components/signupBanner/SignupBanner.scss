@@ -2,14 +2,12 @@
 
 .signup-banner {
   width: 100%;
-  height: fit-content;
   overflow: visible;
   background-color: #202c39;
-  padding: 7.5vh 0;
+  padding: 60px 0;
   position: relative;
   &__header {
     width: 100%;
-    height: 100%;
     align-items: center;
     justify-content: center;
     font-weight: bold;
@@ -18,7 +16,6 @@
   }
   &__form {
     width: 100%;
-    height: 100%;
     position: relative;
   }
   &--close-icon {
@@ -64,7 +61,7 @@
     }
   }
   &__sent {
-    height: 100%;
+    padding: 10px 15px;
     h2 {
       font-size: 2.2rem;
       color: #ffffff;
@@ -132,7 +129,6 @@ form {
       }
     }
     &__sent {
-      height: 40vh;
       h2 {
         font-size: 1.7rem;
       }

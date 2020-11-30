@@ -171,6 +171,11 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.onScroll)
   },
+  updated () {
+    this.$nextTick(function () {
+      window.addEventListener('scroll', this.onScroll)
+    })
+  },
   destroyed () {
     window.removeEventListener('scroll', this.onScroll)
   },

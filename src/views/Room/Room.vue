@@ -79,7 +79,6 @@ import RoomCard from '@/components/productCard/roomCard/RoomCard.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner'
 import ImageBox from '@/components/imageBox/ImageBox'
 import Footer from '@/components/footer/Footer.vue'
-import lozad from 'lozad'
 export default {
   components: {
     Navbar,
@@ -92,15 +91,6 @@ export default {
     return {
       rooms: rooms
     }
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
   }
 }
 </script>

@@ -1,18 +1,18 @@
 <template>
   <section class="booking flex--column">
     <checkout-navbar/>
-    <div class="booking__container flex--column page-content--header">
-      <h1>FIND YOUR RESERVATION</h1>
+    <div class="booking__container flex--column">
+      <h1 class="page__title">FIND YOUR RESERVATION</h1>
       <div class="booking__content flex--column">
-        <h4>With Personal Info</h4>
+        <h4 class="content__title">With Personal Info</h4>
         <div class="flex--column row-1">
           <input type="text" placeholder="Email Address" required v-model.trim="confirmationDetails.email">
           <input type="text" placeholder="Last Name" required v-model.trim="confirmationDetails.lastName">
         </div>
-        <button @click.prevent="submitSearchInput">FIND RESERVATION</button>
+        <button @click.prevent="submitSearchInput" class="btn-solid-md">FIND RESERVATION</button>
         <div class="flex--column row-2">
-          <h4>Forget which email address you used?</h4>
-          <p>Your email address was included in an email sent
+          <h4 class="content__title">Forget which email address you used?</h4>
+          <p class="content__description">Your email address was included in an email sent
           at the time of booking.</p>
         </div>
       </div>
