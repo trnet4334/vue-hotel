@@ -1,0 +1,55 @@
+[debug] [2020-11-18T15:42:13.637Z] ----------------------------------------------------------------------
+[debug] [2020-11-18T15:42:13.638Z] Command:       /Users/trnet433/.nvm/versions/node/v14.2.0/bin/node /Users/trnet433/.nvm/versions/node/v14.2.0/bin/firebase emulators:start
+[debug] [2020-11-18T15:42:13.638Z] CLI Version:   8.14.1
+[debug] [2020-11-18T15:42:13.638Z] Platform:      darwin
+[debug] [2020-11-18T15:42:13.638Z] Node Version:  v14.2.0
+[debug] [2020-11-18T15:42:13.639Z] Time:          Wed Nov 18 2020 23:42:13 GMT+0800 (Taipei Standard Time)
+[debug] [2020-11-18T15:42:13.639Z] ----------------------------------------------------------------------
+[debug] [2020-11-18T15:42:13.639Z] 
+[debug] [2020-11-18T15:42:13.643Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-18T15:42:13.644Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: firestore, hosting"}}
+[debug] [2020-11-18T15:42:13.657Z] [hub] writing locator at /var/folders/qz/psw6l0117vn9khpvjql3gtt80000gq/T/hub-vue-hotel-53dd5.json
+[debug] [2020-11-18T15:42:13.670Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2020-11-18T15:42:13.670Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2020-11-18T15:42:13.670Z] Starting Firestore Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/trnet433/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.9.jar","--host","localhost","--port",8080,"--rules","/Users/trnet433/Documents/Git_new/vue-hotel/firestore.rules"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/trnet433/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.9.jar\",\"--host\",\"localhost\",\"--port\",8080,\"--rules\",\"/Users/trnet433/Documents/Git_new/vue-hotel/firestore.rules\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2020-11-18T15:42:15.071Z] API endpoint: http://localhost:8080 {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://localhost:8080"}}
+[debug] [2020-11-18T15:42:15.071Z] 
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:8080\n\nDev App Server is now running.\n\n"}}
+[debug] [2020-11-18T15:42:15.211Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/vue-hotel-53dd5/webApps/-/config  
+ 
+[debug] [2020-11-18T15:42:16.399Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 18 Nov 2020 15:42:16 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  ui: downloading ui-v1.2.2.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.2.2.zip..."}}
+[info] i  ui: Removing outdated emulator files: ui-v1.1.1 {"metadata":{"emulator":{"name":"ui"},"message":"Removing outdated emulator files: ui-v1.1.1"}}
+[info] i  ui: Removing outdated emulator files: ui-v1.1.1.zip {"metadata":{"emulator":{"name":"ui"},"message":"Removing outdated emulator files: ui-v1.1.1.zip"}}
+[debug] [2020-11-18T15:42:16.921Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2020-11-18T15:42:16.922Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2020-11-18T15:42:16.922Z] Starting Emulator UI with command {"binary":"node","args":["/Users/trnet433/.cache/firebase/emulators/ui-v1.2.2/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/trnet433/.cache/firebase/emulators/ui-v1.2.2/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2020-11-18T15:42:16.990Z] Web / API server started at http://localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4000\n"}}
+[info] 
+┌───────────────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! View status and logs at http://localhost:4000 │
+└───────────────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Firestore │ localhost:8080 │ http://localhost:4000/firestore │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ localhost:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Other reserved ports: 4400, 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 

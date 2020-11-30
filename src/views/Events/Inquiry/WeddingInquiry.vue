@@ -8,15 +8,15 @@
         v-slot="{ handleSubmit }"
       >
         <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
-          <div class="header page-content--header">
-            <h4>Weddings</h4>
-            <h1>Request Proposal</h1>
+          <div class="header">
+            <h4 class="content__title">Weddings</h4>
+            <h1 class="page__title">Request Proposal</h1>
             <br>
-            <p>We offer a various range of possibilities for your wedding. Please take a moment
+            <p class="content__description">We offer a various range of possibilities for your wedding. Please take a moment
              to fill out your information in the form below in two weeks before your wedding date.
               Our team staff will contact you for more details as soon as possible.</p>
             <br>
-            <p>If you would like to contact us directly, please call 480.000.0008</p>
+            <p class="content__description">If you would like to contact us directly, please call 480.000.0008</p>
           </div>
           <div class="body">
             <div class="content flex--column">
@@ -155,7 +155,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" :disabled="!checked">SUBMIT</button>
+          <button type="submit" :disabled="!checked" class="btn-outline-md">SUBMIT</button>
         </form>
       </ValidationObserver>
     </section>

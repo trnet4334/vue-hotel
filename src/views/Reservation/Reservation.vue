@@ -58,7 +58,7 @@
         <div class="reservation__main flex--column flex--center">
           <div class="reservation__header">
             <div class="reservation--alert flex--row" v-if="currentStep <= 1">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                    viewBox="0 0 24 24" xml:space="preserve">
                 <path d="M12,0C5.383,0,0,5.383,0,12c0,6.617,5.383,12,12,12c6.617,0,12-5.383,12-12C24,5.383,18.617,0,12,0z M12,4c1.654,0,3,1.346,3,3s-1.346,3-3,3S9,8.654,9,7S10.346,4,12,4z M15.5,20h-6C8.673,20,8,19.327,8,18.5S8.673,17,9.5,17H10v-3H9.5C8.673,14,8,13.327,8,12.5S8.673,11,9.5,11h4c0.827,0,1.5,0.673,1.5,1.5V17h0.5c0.827,0,1.5,0.673,1.5,1.5S16.327,20,15.5,20z"/>
               </svg>
@@ -166,7 +166,7 @@
     </section>
     <checkout-footer/>
     <div class="button-banner--mobile" v-show="currentStep >= 3">
-      <button @click="addAnotherRoom">ADD ROOM</button>
+      <button @click="addAnotherRoom" class="btn-solid-lg">ADD ROOM</button>
     </div>
   </div>
 </template>

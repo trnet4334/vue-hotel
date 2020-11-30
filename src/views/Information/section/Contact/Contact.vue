@@ -3,26 +3,26 @@
     <div class="page-container">
       <div class="page-wrapper">
         <div class="flex--row">
-          <div class="contact__content page-content--header">
-            <h4>Contact Us</h4>
-            <h1>Get in touch</h1>
-            <p>We're always happy to help, but you may find what you'd like to know here
-              in the <router-link to="/information/faq">FAQ page</router-link>.</p>
+          <div class="contact__content list-group no-decoration">
+            <h4 class="content__title">Contact Us</h4>
+            <h1 class="page__title">Get in touch</h1>
+            <p class="content__description">We're always happy to help, but you may find what you'd like to know here
+              in the <router-link to="/information/faq" class="link">FAQ page</router-link>.</p>
             <br>
-            <h4>A Hotel</h4>
+            <h4 class="content__title">A Resort & Spa</h4>
             <br>
-            <p>135 Bear Wallow Ln, Sedona, AZ 86336</p>
+            <p class="content__description">135 Bear Wallow Ln, Sedona, AZ 86336</p>
             <br>
-            <h4>For Reservation:</h4>
+            <h4 class="content__title">For Reservation:</h4>
             <br>
-            <ul class="list-group">
+            <ul>
               <li>T. 480.000.0000</li>
               <li>T. 480.000.0001</li>
               <li>F. 480.000.0002</li>
             </ul>
           </div>
-          <div class="contact__image">
-            <img src="@/assets/images/information/contact-img.jpg"/>
+          <div class="image-fluid xl">
+            <image-box :imageName="['information/contact-img.jpg', 'Front desk']"/>
           </div>
         </div>
         <br>
@@ -51,9 +51,7 @@
           v-slot="{ handleSubmit }"
           class="contact__form flex--column"
         >
-          <div class="contact__form--title">
-            <h1>Contact Us, We're Happy to Hear from You.</h1>
-          </div>
+          <h2 class="page__subtitle">Contact Us, We're Happy to Hear from You.</h2>
           <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
             <ValidationProvider
               rules="required|alpha_spaces"
@@ -116,10 +114,10 @@
             <label for="consent">
               <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked" required>
               <span>
-                I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener">privacy policy</router-link>.
+                I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener" class="link">privacy policy</router-link>.
               </span>
             </label>
-            <button type="submit" :disabled="!checked">SEND</button>
+            <button type="submit" :disabled="!checked" class="btn-outline-md">SEND</button>
           </form>
         </ValidationObserver>
       </div>
@@ -127,7 +125,7 @@
   </section>
 </template>
 <script>
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
 import firebaseApi from '@/common/firebaseApi'
 extend('required', {
@@ -161,7 +159,8 @@ extend('regexEmail', {
 export default {
   components: {
     ValidationObserver,
-    ValidationProvider
+    ValidationProvider,
+    ImageBox
   },
   data () {
     return {
@@ -207,15 +206,6 @@ export default {
         }, 500)
       })
     }
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
   }
 }
 </script>

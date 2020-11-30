@@ -19,51 +19,11 @@ form {
     background-color: transparent;
     border-bottom: 1px solid #3d405b;
   }
-  .date {
-    align-items: center;
-    width: fit-content;
-    border-bottom: 1px solid #3d405b;
-    padding: 3px 0;
-    /deep/ .date-picker-input {
-      font-family: inherit;
-      width: 170px;
-      margin-right: 10px;
-      background-color: transparent;
-      border: none;
-      font-size: 1.3rem;
-      text-align: center;
-    }
-  }
   input[id="phoneNum"], input[id="email"], input[id="numberOfGuest"] {
     width: 300px;
   }
   a:visited {
     color: #3d405b;
-  }
-  button {
-    margin: 25px auto;
-    padding: 10px 80px;
-    background-color: transparent;
-    border: 2px solid #3d405b;
-    border-radius: 5px;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 3px;
-    color: #3d405b;
-    &:hover {
-      background-color: #3d405b;
-      cursor: pointer;
-      color: #ffffff;
-    }
-    &:disabled {
-      border: none;
-      color: #ffffff;
-      background-color: rgba(105, 105, 105, 0.6);
-      &:hover {
-        cursor: not-allowed;
-      }
-    }
   }
 }
 .header {

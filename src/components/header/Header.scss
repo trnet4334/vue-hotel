@@ -21,39 +21,14 @@
   position: absolute;
   top: 20vh;
   left: 15vw;
-  & button {
-    margin: 10px auto;
-    padding: 20px 60px;
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    & a {
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: 3px;
-      &:visited {
-        color: #ffffff;
-      }
-    }
-    &:hover {
-      background-color: #ffffff;
-      cursor: pointer;
-      & a {
-        color: #3d405b;
-      }
-    }
-  }
 }
-.slogan {
+.hero {
   color: #ffffff;
   width: 250px;
   height: 250px;
   font-size: 4.5rem;
   font-weight: bold;
-  & span {
+  span {
     display: block;
     height: 5rem;
     text-align: left;
@@ -86,18 +61,15 @@
     top: unset;
     bottom: 5vh;
     left: 5vw;
-    & button {
-      padding: 10px 40px;
-    }
   }
-  .slogan {
+  .hero {
     font-size: 2.3rem;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 0;
     width: auto;
     height: auto;
-    & span {
+    span {
       padding: 0 5px;
     }
   }
@@ -115,18 +87,15 @@
     top: unset;
     bottom: 5vh;
     left: 10vw;
-    & button {
-      padding: 10px 40px;
-    }
   }
-  .slogan {
+  .hero {
     font-size: 3rem;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 0;
     width: auto;
     height: auto;
-    & span {
+    span {
       padding: 0 5px;
     }
   }
@@ -139,14 +108,9 @@
 }
 
 @include respond-between(tablet, tablet-lg) {
-  .body {
-    & button {
-      padding: 15px 50px;
-    }
-  }
-  .slogan {
+  .hero {
     height: 200px;
-    & span{
+    span{
       font-size: 3.6rem;
     }
   }
@@ -157,11 +121,6 @@
 }
 
 @include respond-between(tablet-lg, desktop) {
-  .body {
-    & button {
-      padding: 15px 50px;
-    }
-  }
   .image {
     width: 70%;
     height: 70%;

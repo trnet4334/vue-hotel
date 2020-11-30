@@ -4,55 +4,15 @@
   .body {
     justify-content: space-evenly;
     margin-bottom: 20vh;
-    .image {
-      width: 40%;
-      height: 450px;
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
-    }
     .content {
       width: 40%;
-      & p {
+      p {
         line-height: 2rem;
-      }
-      & ul {
-        text-align: start;
-        font-size: 1.6rem;
-        line-height: 2.8rem;
-      }
-      & button {
-        margin: 10px auto;
-        padding: 20px 50px;
-        background-color: transparent;
-        border: 1px solid #3d405b;
-        border-radius: 5px;
-        & a {
-          font-family: inherit;
-          font-weight: 600;
-          font-size: 1rem;
-          color: #3d405b;
-          text-decoration: none;
-          letter-spacing: 1px;
-          &:visited {
-            color: #3d405b;
-          }
-        }
-        &:hover {
-          background-color: #3d405b;
-          cursor: pointer;
-          & a {
-            color: #ffffff;
-          }
-        }
       }
     }
   }
   .notice {
-    & h1 {
+    h2 {
       text-align: center;
     }
     .content {
@@ -65,17 +25,8 @@
 @include respond-below(phone) {
   .wellness {
     .body {
-      .image {
-        width: 100%;
-        height: 300px;
-        margin-bottom: 30px;
-      }
       .content {
         width: 100%;
-        & ul {
-          font-size: 1.4rem;
-          line-height: 2.2rem;
-        }
       }
     }
   }
@@ -84,11 +35,6 @@
 @include respond-between(phone, tablet-lg) {
   .wellness {
     .body {
-      .image {
-        width: 80%;
-        height: 350px;
-        margin-bottom: 30px;
-      }
       .content {
         width: 80%;
       }

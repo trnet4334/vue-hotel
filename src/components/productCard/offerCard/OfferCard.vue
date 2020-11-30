@@ -1,19 +1,23 @@
 <template>
-  <div class="content flex--column">
-    <div class="image">
-      <img :src="require(`@/assets/images/specials/${offer.imageUrl}.jpg`)" :alt="`${offer.imageAlt}`">
+  <div class="content flex--column flex--center">
+    <div class="image-fluid md">
+      <image-box :imageName="[`specials/${offer.imageUrl}.jpg`, `${offer.imageAlt}`]"/>
     </div>
-    <div class="flex--column context page-content--body">
-      <h4>{{offer.name}}</h4>
+    <div class="flex--column context">
+      <h5 class="image-label">{{offer.name}}</h5>
       <br>
-      <p>{{offer.description}}</p>
-      <a href="javascript:;">BOOK NOW</a>
+      <p class="image-description">{{offer.description}}</p>
+      <a class="link underline">BOOK NOW</a>
     </div>
   </div>
 </template>
 <script>
+import ImageBox from '@/components/imageBox/ImageBox'
 import lozad from 'lozad'
 export default {
+  components: {
+    ImageBox
+  },
   props: {
     offer: {
       type: Object,

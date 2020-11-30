@@ -6,7 +6,7 @@
   &__container {
     width: 100%;
     position: relative;
-    padding: 20vh 0 5vh 0;
+    padding: 110px 0 5vh 0;
   }
   &__body {
     &--first, &--second, &--fourth {
@@ -28,32 +28,6 @@
   &__content {
     &--first {
       width: 35%;
-      button {
-        margin: 55px auto;
-        padding: 10px 60px;
-        background-color: transparent;
-        border: 2px solid #3d405b;
-        border-radius: 3px;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: 3px;
-        color: #3d405b;
-        outline: none;
-        a {
-          text-decoration: none;
-          &:visited {
-            color: #3d405b;
-          }
-        }
-        &:hover {
-          background-color: #3d405b;
-          cursor: pointer;
-          a {
-            color: #ffffff;
-          }
-        }
-      }
     }
     &--second {
       width: 87.5%;
@@ -83,16 +57,6 @@
       align-items: center;
     }
   }
-  &__image {
-    width: 40%;
-    height: 425px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-position: 50% 50%;
-      object-fit: cover;
-    }
-  }
 }
 .room-cards {
   justify-content: space-evenly;
@@ -104,97 +68,8 @@
   }
 }
 
-/deep/ .el-dialog__body {
-  display: flex;
-  justify-content: space-around;
-}
-/deep/ .el-dialog {
-  width: 70%;
-}
-
-.dialog-content {
-  padding-bottom: 30px;
-  &.block-1 {
-    flex-basis: 45%;
-    h2 {
-      font-size: 3rem !important;
-    }
-    h4 {
-      font-size: 1.6rem !important;
-    }
-    p {
-      font-size: 1.2rem !important;
-      line-height: 2.4rem !important;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0 !important;
-      font-size: 1.2rem !important;
-      li span{
-        color: #e07a5f !important;
-      }
-    }
-  }
-  &.block-2 {
-    flex-basis: 30%;
-    label {
-      font-size: 1.2rem !important;
-      line-height: 2.8rem !important;
-      font-weight: 700;
-    }
-    button {
-      padding: 12px 12px;
-      font-size: 1.3rem;
-      margin-top: 10px;
-      border: none;
-      background-color: #283845;
-      color: #ffffff;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    span {
-      font-size: 1.2rem;
-    }
-    /deep/ .date-picker-input {
-      font-family: inherit;
-      background-color: transparent;
-      border: 1px solid #202c39;
-      font-size: 1.2rem;
-      line-height: 2.5rem;
-      padding-left: 10px;
-      text-align: start;
-      outline: none;
-      width: 100%;
-      color: #3d405b;
-    }
-    .guest-content {
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 5px;
-    }
-    /deep/ .el-input__inner {
-      font-size: 1.2rem;
-    }
-    /deep/ .el-input-number__increase, /deep/ .el-input-number__decrease {
-      background-color: transparent;
-      height: 100%;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
 @include respond-below(phone) {
   .room-details {
-    &__image {
-      width: 100%;
-      height: 225px;
-      margin-bottom: 30px;
-    }
     &__content {
       &--first {
         width: 90%;
@@ -228,11 +103,6 @@
 
 @include respond-between(phone, tablet) {
    .room-details {
-     &__image {
-       width: 90%;
-       height: 225px;
-       margin-bottom: 30px;
-     }
      &__content {
        &--first {
          width: 85%;
@@ -267,11 +137,6 @@
 
 @include respond-between(tablet, tablet-lg) {
   .room-details {
-    &__image {
-      width: 85%;
-      height: 325px;
-      margin-bottom: 30px;
-    }
     &__content {
       &--first {
         width: 80%;
@@ -300,9 +165,6 @@
 
 @include respond-between(tablet-lg, desktop) {
   .room-details {
-    &__image {
-      height: 375px;
-    }
     &__content--second {
       width: 80%;
       ul {
@@ -324,73 +186,3 @@
     width: 50%;
   }
 }
-
-@include respond-below(phone) {
-  /deep/ .el-dialog {
-    width: 95%;
-  }
-  /deep/ .el-dialog__body {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  /deep/ .el-divider--horizontal {
-    margin: 7.5px 0;
-  }
-  .dialog-content {
-    padding-bottom: 5px;
-    &.block-1 {
-      .info {
-        display: none;
-      }
-    }
-    &.block-2 {
-      .guest-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  }
-}
-
-@include respond-between(phone, tablet) {
-  /deep/ .el-dialog {
-    width: 80%;
-  }
-  /deep/ .el-dialog__body {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  /deep/ .el-divider--horizontal {
-    margin: 7.5px 0;
-  }
-  .dialog-content {
-    padding-bottom: 5px;
-    &.block-1 {
-      .info {
-        display: none;
-      }
-    }
-    &.block-2 {
-      /deep/ .date-picker-input {
-        width: 250px;
-      }
-      div:first-of-type {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-  }
-}
-
-@include respond-between(tablet, tablet-lg) {
-  /deep/ .el-dialog {
-    width: 90%;
-  }
-}
-
-@include respond-between(tablet-lg, desktop) {
-  /deep/ .el-dialog {
-    width: 85%;
-  }
-}
-

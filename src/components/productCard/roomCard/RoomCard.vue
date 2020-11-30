@@ -15,17 +15,17 @@
       </vue-flux>
     </div>
     <div class="card__body flex--column flex--center">
-      <div class="card__body--content page-content--body">
-        <h4>{{room.name}}</h4>
+      <div class="card__body--content">
+        <h5 class="image-label">{{room.name}}</h5>
         <br>
-        <p>{{room.description}}</p>
+        <p class="image-description">{{room.description}}</p>
       </div>
       <br>
-      <div class="card__body--link">
-        <router-link :to="{ name: `${room.routeName}` }">
+      <div class="card__body--link flex--row">
+        <router-link :to="{ name: `${room.routeName}` }" class="link colored no-underline">
           ROOM DETAILS
         </router-link>
-        <a @click="dialogVisible = true">
+        <a @click="dialogVisible = true" class="link colored no-underline">
           RESERVE NOW
         </a>
       </div>
@@ -121,7 +121,7 @@ export default {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
-        autoplay: false,
+        autoplay: true,
         bindKeys: false,
         delay: 3000,
         enableGestures: false,

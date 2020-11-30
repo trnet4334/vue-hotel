@@ -3,10 +3,10 @@
     <navbar/>
     <section class="page-container">
       <div class="page-wrapper">
-        <div class="header page-content--header">
-          <h4>Offers & Special Packages</h4>
-          <h1>Treat yourself</h1>
-          <p>It's here that you will have the opportunity to
+        <div class="header">
+          <h4 class="content__title">Offers & Special Packages</h4>
+          <h1 class="page__title">Treat yourself</h1>
+          <p class="content__description">It's here that you will have the opportunity to
             explore Sedona from a native point of view. To make your stay special, and even more memorable,
             we've created different packages designed to let you immerse in this nature beauty with us and
             experience the very best of our services.</p>

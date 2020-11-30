@@ -59,7 +59,7 @@
             </svg>
             <span>Reservation</span>
           </a>
-          <a href="javascript:;" class="flex--row">
+          <a class="flex--row">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
               <g>
@@ -81,6 +81,7 @@
     <Menu :isOpen="isOpen"/>
     <el-dialog
       :visible.sync="dialogVisible"
+      custom-class="dialog-class"
       center
     >
       <div class="flex--column dialog-content block-1">

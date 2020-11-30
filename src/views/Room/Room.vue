@@ -3,10 +3,10 @@
     <navbar/>
     <section class="rooms page-container">
       <div class="page--wrapper">
-        <div class="rooms__header flex--column page-content--header">
-          <h4>Rooms</h4>
-          <h1>A Place to Explore Within</h1>
-          <p>Cozy fireplaces, warm wooden furnishing and authentic
+        <div class="rooms__header flex--column">
+          <h4 class="content__title">Rooms</h4>
+          <h1 class="page__title">A Place to Explore Within</h1>
+          <p class="content__description">Cozy fireplaces, warm wooden furnishing and authentic
             nature view combine to create an inviting luxury experience to your stay.</p>
         </div>
         <div class="room__cards flex--row">
@@ -14,10 +14,9 @@
             <room-card :room="room"/>
           </div>
         </div>
-        <div class="rooms__slogan flex--column flex--center">
-          <div style="width: 80px; height: 80px;">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; fill: #3d405b;" xml:space="preserve">
+        <div class="slogan flex--column flex--center">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" xml:space="preserve">
               <path d="M23.5,15h-23C0.224,15,0,15.224,0,15.5S0.224,16,0.5,16h23c0.276,0,0.5-0.224,0.5-0.5S23.776,15,23.5,15z"/>
               <path d="M11,17.5c0-0.276-0.224-0.5-0.5-0.5h-4C6.224,17,6,17.224,6,17.5S6.224,18,6.5,18h4C10.776,18,11,17.776,11,17.5z"/>
               <path d="M18.5,18h-4c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h4c0.276,0,0.5-0.224,0.5-0.5S18.776,18,18.5,18z"/>
@@ -41,28 +40,29 @@
               <path d="M14.25,4.737c0.079,0.045,0.165,0.067,0.25,0.067c0.172,0,0.341-0.089,0.433-0.25l1-1.732c0.139-0.239,0.057-0.545-0.183-0.683c-0.238-0.136-0.545-0.057-0.683,0.183l-1,1.732C13.929,4.293,14.011,4.599,14.25,4.737z"/>
               <circle cx="4.5" cy="17.5" r="0.5"/>
           </svg>
-          </div>
           <span>"Be simple, be incredible. All the features here foster an intimate connection to
           every person through unforgettable experiences which rejuvenate spirits and enrich lives."</span>
         </div>
         <div class="rooms__accessible flex--row">
-          <div class="rooms__accessible--image">
-            <img src="@/assets/images/room/accessible-img.jpg" alt="accessible room">
+          <div class="image-fluid xl">
+            <image-box :image-name="['room/accessible-img.jpg', 'Accessible Room']"/>
           </div>
-          <div class="rooms__accessible--body flex--column page-content--title page-content--body">
+          <div class="rooms__accessible--body flex--column">
             <div>
-              <h2>Accessible Accommodations</h2>
-              <p><b>We also offers rooms to accommodate guests with disabilities.</b></p>
+              <h2 class="page__subtitle">Accessible Accommodations</h2>
+              <p class="content__description">
+                <b>We also offers rooms to accommodate guests with disabilities.</b>
+              </p>
             </div>
             <br>
             <div>
-              <p>If you have any question or wish to make a reservation, you can book online and leave a
+              <p class="content__description">If you have any question or wish to make a reservation, you can book online and leave a
                 special request in the comment section or call our Reservation Specialist at 480.000.0006.</p>
               <br>
-              <p>We are happy to make special arrangements for you, and some advanced notice will help us have everything
+              <p class="content__description">We are happy to make special arrangements for you, and some advanced notice will help us have everything
                 ready for your arrival.</p>
               <br>
-              <router-link to="/rooms/accessible-accommodation">VIEW ROOMS</router-link>
+              <router-link to="/rooms/accessible-accommodation" class="link no-underline colored">VIEW ROOMS</router-link>
             </div>
           </div>
         </div>
@@ -77,6 +77,7 @@ import rooms from '@/assets/data/rooms.js'
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import RoomCard from '@/components/productCard/roomCard/RoomCard.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner'
+import ImageBox from '@/components/imageBox/ImageBox'
 import Footer from '@/components/footer/Footer.vue'
 import lozad from 'lozad'
 export default {
@@ -84,7 +85,8 @@ export default {
     Navbar,
     RoomCard,
     SignupBanner,
-    Footer
+    Footer,
+    ImageBox
   },
   data () {
     return {

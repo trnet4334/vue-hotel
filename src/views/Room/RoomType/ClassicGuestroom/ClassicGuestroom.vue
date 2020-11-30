@@ -5,18 +5,16 @@
       <div class="room-details__container">
         <div class="page-wrapper">
           <div class="room-details__body--first flex--row">
-            <div class="room-details__image">
-              <picture>
-                <img src="@/assets/images/room/classic-guestroom-img.jpg" alt="Classic Guestroom">
-              </picture>
+            <div class="image-fluid xl">
+                <image-box :imageName="imageUrl"/>
             </div>
-            <div class="room-details__content--first page-content--header">
-              <h4>{{classicGuestroom.name}}</h4>
-              <h1>{{classicGuestroom.title}}</h1>
-              <p>{{classicGuestroom.description}}</p>
+            <div class="room-details__content--first">
+              <h4 class="content__title">{{classicGuestroom.name}}</h4>
+              <h1 class="page__title">{{classicGuestroom.title}}</h1>
+              <p class="content__description">{{classicGuestroom.description}}</p>
               <br>
-              <p>{{classicGuestroom.description2}}</p>
-              <button @click="dialogVisible = true">
+              <p class="content__description">{{classicGuestroom.description2}}</p>
+              <button @click="dialogVisible = true" class="btn-outline-md">
                 RESERVE NOW
               </button>
             </div>
@@ -46,7 +44,7 @@
           </div>
           <div class="room-details__body--fourth">
             <div class="room-details__content--fourth flex--column">
-              <h2 class="page-content--title">More rooms</h2>
+              <h2 class="page__subtitle">More rooms</h2>
               <div class="room__cards flex--row">
                 <div class="room__card" v-for="room in rooms" :key="room.id">
                   <room-card :room="room"/>
@@ -59,6 +57,7 @@
     </section>
     <el-dialog
       :visible.sync="dialogVisible"
+      custom-class="dialog-class"
       center
     >
       <div class="flex--column dialog-content block-1">
@@ -127,7 +126,7 @@ import Footer from '@/components/footer/Footer.vue'
 import RoomCard from '@/components/productCard/roomCard/RoomCard'
 import rooms from '@/assets/data/rooms'
 import roomType from '@/assets/data/checkout/roomType'
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 import {
   VueFlux,
   FluxControls,
@@ -141,6 +140,7 @@ export default {
     SignupBanner,
     Footer,
     RoomCard,
+    ImageBox,
     VueFlux,
     FluxControls,
     FluxPreloader
@@ -148,6 +148,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
+      imageUrl: ['room/classic-guestroom-img.jpg', 'Classic Guestroom'],
       date: {
         start: '',
         end: ''
@@ -162,7 +163,7 @@ export default {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
-        autoplay: false,
+        autoplay: true,
         bindKeys: false,
         delay: 3000,
         enableGestures: false,
@@ -187,15 +188,6 @@ export default {
         'wave'
       ]
     }
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
   },
   methods: {
     // Submit search request for making reservation through dialog box

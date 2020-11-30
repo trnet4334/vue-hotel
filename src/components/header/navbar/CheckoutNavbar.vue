@@ -91,6 +91,7 @@
     </div>
     <el-dialog
       :visible.sync="dialogVisible"
+      custom-class="dialog-class"
       center
     >
       <div class="flex--column dialog-content block-1">

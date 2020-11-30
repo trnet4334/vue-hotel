@@ -7,34 +7,17 @@
     margin: 0 auto;
     text-wrap: normal;
     text-align: start;
-    & ul {
-      padding-left: 0;
-      list-style-type: none;
-    }
-  }
-  &__image {
-    width: 50%;
-    height: auto;
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
   }
   &__form {
     align-items: flex-start;
     padding: 0 5vw;
-    &--title {
-      font-size: 1.5rem;
-    }
-    & form {
-      & label {
+    form {
+      label {
         font-size: 1.3rem;
         width: 200px;
-        text-align: start;
         padding: 10px 0;
       }
-      & input {
+      input {
         border: none;
         border-bottom: 1px solid rgba(61, 64, 91, 0.3);
         background-color: transparent;
@@ -42,7 +25,7 @@
         font-size: 1.2rem;
         margin: 5px 0;
       }
-      & select {
+      select {
         display: block;
         font-size: 1.2rem;
         font-weight: 600;
@@ -55,7 +38,7 @@
         border-bottom: 1px solid rgba(61, 64, 91, 0.3);
         background-color: transparent;
       }
-      & textarea {
+      textarea {
         border: none;
         border-bottom: 1px solid rgba(61, 64, 91, 0.3);
         resize: none;
@@ -63,37 +46,12 @@
         background-color: transparent;
         font-size: 1.2rem;
       }
-      & label[for="consent"] {
+      label[for="consent"] {
         width: 100%;
       }
-      & input[type=checkbox] {
+      input[type=checkbox] {
         width: 20px;
         margin: 0 auto;
-      }
-      & button {
-        margin: 5px auto;
-        padding: 10px 100px;
-        background-color: transparent;
-        border: 2px solid #3d405b;
-        border-radius: 5px;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: 3px;
-        color: #3d405b;
-        &:hover {
-          background-color: #3d405b;
-          cursor: pointer;
-          color: #ffffff;
-        }
-        &:disabled {
-          border: none;
-          color: #ffffff;
-          background-color: rgba(105, 105, 105, 0.6);
-          &:hover {
-            cursor: not-allowed;
-          }
-        }
       }
     }
   }
@@ -120,7 +78,7 @@
 }
 
 @include respond-below(phone) {
-  .contact__image {
+  .image-fluid {
     display: none
   }
   .contact__content {
@@ -130,21 +88,14 @@
     width: 100%;
     height: 320px;
   }
-  .contact__form--title {
-    font-size: 1.3rem;
-  }
   .contact__form form{
-    & input, textarea, select {
+    input, textarea, select {
       width: 100%;
     }
   }
 }
 
 @include respond-between(phone, tablet) {
-  .contact__image {
-    width: 85%;
-    margin: 0 auto;
-  }
   .contact__content {
     width: 85%;
     margin-bottom: 20px;
@@ -153,20 +104,14 @@
     width: 100%;
     height: 320px;
   }
-  .contact__form--title {
-    font-size: 1.3rem;
-  }
   .contact__form form{
-    & input, textarea, select {
+    input, textarea, select {
       width: 100%;
     }
   }
 }
 
 @include respond-between(tablet, tablet-lg) {
-  .contact__image {
-    width: 45%;
-  }
   .contact__content {
     width: 45%;
   }

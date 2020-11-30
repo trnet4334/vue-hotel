@@ -4,9 +4,16 @@
 $breakpoints: (
         phone: 480px,
         tablet: 768px,
+        tablet-md: 992px,
         tablet-lg: 1024px,
         desktop: 1224px,
-        desktop-lg: 1824px
+        desktop-lg: 1824px,
+        ipadpro-sm-w: 768px,
+        ipadpro-sm-h: 1024px,
+        ipadpro-md-w: 834px,
+        ipadpro-md-h: 1112px,
+        ipadpro-lg-w: 1024px,
+        ipadpro-lg-h: 1366px
 );
 
 // Respond Above
@@ -15,7 +22,7 @@ $breakpoints: (
     // Get breakpoint value
     $breakpoint-value: map-get($breakpoints, $breakpoint);
     // Use the media query
-    @media only screen and (min-width: $breakpoint-value + 1) {
+    @media only screen and (min-width: $breakpoint-value) {
       @content;
     }
   } @else {
@@ -59,3 +66,7 @@ $breakpoints: (
     }
   }
 }
+
+// Respond for iPad Pro - landscape
+
+// Respond for iPad Pro - portrait
