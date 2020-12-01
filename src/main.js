@@ -16,6 +16,8 @@ import roomType from './data/roomType'
 import addOns from './data/checkout/addOns'
 import countries from './data/checkout/countries'
 import dayjs from 'dayjs'
+// eslint-disable-next-line no-unused-vars
+import preventMultipleClick from './plugins/directives'
 import 'default-passive-events'
 
 // Use element-ui component

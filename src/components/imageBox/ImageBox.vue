@@ -26,7 +26,6 @@ export default {
   methods: {
     onLoaded () {
       this.loaded = true
-      console.log('test')
     }
   }
 }

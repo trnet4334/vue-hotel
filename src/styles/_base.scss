@@ -160,15 +160,19 @@
 // General page container to define padding, margin or width setting
 .page-container {
   width: 100%;
-  padding: 20vh 7.5vw;
+  //padding: 20vh 7.5vw;
+  padding: 0 7.5vw;
   @include respond-below(phone) {
-    padding: 110px 7.5vw;
+    //padding: 110px 7.5vw;
+    padding: 0 7.5vw;
   }
   @include respond-between(phone, tablet-md) {
-    padding: 110px 5vw;
+    //padding: 110px 5vw;
+    padding: 0 5vw;
   }
   @include respond-between(ipadpro-sm-w, ipadpro-lg-h) {
-    padding: 125px 5vw;
+    //padding: 125px 5vw;
+    padding: 0 5vw;
   }
 }
 

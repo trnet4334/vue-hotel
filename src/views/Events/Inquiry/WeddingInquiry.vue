@@ -155,7 +155,12 @@
               </div>
             </div>
           </div>
-          <button type="submit" :disabled="!checked" class="btn-outline-md">SUBMIT</button>
+          <button
+            type="submit"
+            :disabled="!checked"
+            class="btn-outline-md"
+            v-prevent-multiple-click="1500"
+          >SUBMIT</button>
         </form>
       </ValidationObserver>
     </section>

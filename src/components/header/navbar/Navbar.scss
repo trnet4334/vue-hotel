@@ -5,7 +5,7 @@
   justify-content: center;
   height: 85px;
   width: 100%;
-  position: fixed;
+  position: relative;
   z-index: 15;
   &__container {
     padding: 10px 2vw;
@@ -16,7 +16,7 @@
     .link {
       position: relative;
       align-items: center;
-      & a {
+      a {
         text-decoration: none;
         align-items: center;
         padding: 0 15px;
@@ -24,7 +24,7 @@
           color: inherit;
         }
       }
-      & span {
+      span {
         font-size: 1.3rem;
         font-weight: 600;
         padding: 0 5px;
@@ -42,7 +42,7 @@
       position: relative;
       transform: rotate(0deg);
       transition: .5s ease-in-out;
-      & span {
+      span {
         position: absolute;
         display: block;
         left: 0;
@@ -53,13 +53,13 @@
         transform: rotate(0deg);
         transition: .25s ease-in-out;
       }
-      & span:nth-of-type(1) {
+      span:nth-of-type(1) {
         top: 8px;
       }
-      & span:nth-of-type(2) {
+      span:nth-of-type(2) {
         top: 16px;
       }
-      & span:nth-of-type(3) {
+      span:nth-of-type(3) {
         top: 24px;
       }
     }
@@ -75,21 +75,40 @@
     .icon-color {
       fill: #3d405b;
     }
+    &.name {
+      a {
+        text-decoration: none;
+      }
+      span {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #3d405b;
+      }
+      span:nth-of-type(2) {
+        display: none;
+      }
+    }
+  }
+  &.mobile {
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    display: none;
   }
 }
 .navbar--scroll {
-  background-color: #ffffff;
   height: 60px;
-  & span {
-    color: #3d405b;
+  &.mobile {
+    display: block;
   }
 }
 .navbar--homepage {
-  & span {
+  position: fixed;
+  span {
     color: #ffffff;
   }
   .icon-color {
-    & path, circle {
+    path, circle {
       fill: #ffffff;
     }
   }
@@ -97,12 +116,18 @@
     background-color: #ffffff;
   }
 }
+.nav-mobile.navbar {
+  background-color: transparent;
+  .logo span {
+    color: #ffffff;
+  }
+}
 .menu-display {
-  & span {
+  span {
     color: #ffffff;
   }
   .icon-color {
-    & path, circle {
+    path, circle {
       fill: #ffffff;
     }
   }
@@ -114,15 +139,15 @@
   }
 }
 .menuBtn.button-open {
-  & span:nth-child(1) {
+  span:nth-child(1) {
     top: 16px;
     transform: rotate(-135deg);
   }
-  & span:nth-child(2) {
+  span:nth-child(2) {
     opacity: 0;
     left: -55px;
   }
-  & span:nth-child(3) {
+  span:nth-child(3) {
     top: 16px;
     transform: rotate(135deg);
   }
@@ -138,9 +163,9 @@
   .navbar {
     &__container {
       .link {
-        & a {
+        a {
           padding: 0 10px;
-          & span {
+          span {
             display: none;
             width: 0;
           }
@@ -151,6 +176,16 @@
         margin-right: 10px;
       }
     }
+    .logo.name {
+      span:nth-of-type(1) {
+        display: none;
+      }
+      span:nth-of-type(2) {
+        display: block;
+        font-size: 2.5rem;
+        padding-left: 20px;
+      }
+    }
   }
 }
 
@@ -158,9 +193,9 @@
   .navbar {
     &__container {
       .link {
-        & a {
+        a {
           padding: 0 10px;
-          & span {
+          span {
             display: none;
             width: 0;
           }
