@@ -270,7 +270,7 @@ export default {
     homepageColorClass: function () {
       return {
         'navbar--homepage': this.isOnTheTop && this.isHomepage,
-        'nav-mobile': this.displayMobileBar && this.isHomepage && this.isOpen
+        'nav-mobile': this.displayMobileBar && this.isOpen
       }
     },
     // To control the menu button from open icon to close icon
