@@ -24,7 +24,7 @@
               <div class="flex--column">
                 <ValidationProvider
                   rules="required"
-                  class="flex--column"
+                  class="flex--column input__select alert-message"
                   name="Selection"
                   v-slot="{ errors }"
                 >
@@ -40,21 +40,21 @@
                     rules="required|alpha_spaces"
                     name="Your first name"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="firstName">First Name*</label>
                     <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestInfo.firstName">
-                    <span class="alert-message">{{errors[0]}}</span>
+                    <span>{{errors[0]}}</span>
                   </ValidationProvider>
                   <ValidationProvider
                     rules="required|alpha"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                     name="Your last name"
                     v-slot="{ errors }"
                   >
                     <label for="lastName">Last Name*</label>
                     <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestInfo.lastName">
-                    <span class="alert-message">{{errors[0]}}</span>
+                    <span>{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                 rules="required|regexAddress"
                 name="Your address"
                 v-slot="{ errors }"
-                class="content--second flex--column"
+                class="content--second flex--column input__text lg alert-message"
               >
                 <label for="address">Address*</label>
                 <input type="text" id="address" placeholder="Address" v-model.trim="requestInfo.address" required>
@@ -72,7 +72,7 @@
                 <div class="flex--row">
                   <ValidationProvider
                     rules="required"
-                    class="flex--column"
+                    class="flex--column input__text md alert-message"
                     name="Your company name"
                     v-slot="{ errors }"
                   >
@@ -83,7 +83,7 @@
                   <ValidationProvider
                     rules="required|regexEmail"
                     name="Your email address"
-                    class="flex--column"
+                    class="flex--column input__text md alert-message"
                     v-slot="{ errors }"
                   >
                     <label for="email">Email*</label>
@@ -95,10 +95,10 @@
                   rules="required|regexPhoneNum"
                   name="Your phone number"
                   v-slot="{ errors }"
-                  class="flex--column"
+                  class="flex--column input__text md alert-message"
                 >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Phone Number" v-model.trim="requestInfo.phoneNum" required>
+                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" v-model.trim="requestInfo.phoneNum" required>
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
@@ -107,7 +107,7 @@
               <h2>Guestroom Information</h2>
               <ValidationProvider
                 rules="required"
-                class="flex--row radio-input-group"
+                class="flex--row radio-input-group input__radio"
                 name="Selection"
                 v-slot="{ errors }"
               >
@@ -122,7 +122,7 @@
               </ValidationProvider>
               <ValidationProvider
                 rules="numeric"
-                class="flex--column"
+                class="flex--column input__text lg alert-message"
                 name="Number"
                 v-slot="{ errors }"
               >
@@ -143,7 +143,7 @@
                 <ValidationProvider
                   rules="required"
                   name="Your meeting/event name"
-                  class="flex--column"
+                  class="flex--column input__text lg alert-message"
                   v-slot="{ errors }"
                 >
                   <label for="eventName">Meeting/Event Name*</label>
@@ -152,7 +152,7 @@
                 </ValidationProvider>
                 <ValidationProvider
                   rules="numeric|required"
-                  class="flex--column"
+                  class="flex--column input__text md alert-message"
                   name="Number"
                   v-slot="{ errors }"
                 >
@@ -165,7 +165,7 @@
                 rules="required"
                 name="Selection"
                 v-slot="{ errors }"
-                class="flex--row radio-input-group"
+                class="flex--row radio-input-group input__radio"
               >
                 <label>Food Service Requirements?*</label>
                 <div class="flex--row center">
@@ -179,7 +179,7 @@
               <ValidationProvider
                 rules="required"
                 name="Selection"
-                class="flex--row radio-input-group"
+                class="flex--row radio-input-group input__radio"
                 v-slot="{ errors }"
               >
                 <label>Any AV Requirements for the meeting/event?*</label>
@@ -195,12 +195,12 @@
                 rules="required|numeric"
                 name="Your budget number"
                 v-slot="{ errors }"
-                class="flex--column">
+                class="flex--column input__text md alert-message">
                 <label for="budget">Total Budget*</label>
                 <input type="text" id="budget" v-model.number="requestInfo.budget" placeholder="Number of budget" required>
                 <span class="alert-message">{{errors[0]}}</span>
               </ValidationProvider>
-              <div class="flex--column">
+              <div class="flex--column input__textarea">
                 <label for="comments">Comments</label>
                 <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Comments" v-model="requestInfo.comments"/>
               </div>
@@ -209,7 +209,7 @@
               <h2>Dates</h2>
               <div class="flex--column">
                 <ValidationProvider
-                  class="flex--column"
+                  class="flex--column input__text"
                 >
                   <label>Dates*</label>
                   <div class="flex--row date">
@@ -244,7 +244,7 @@
                     </svg>
                   </div>
                 </ValidationProvider>
-                <ValidationProvider class="flex--column">
+                <ValidationProvider class="flex--column input__text">
                   <label>Alternate Dates*</label>
                   <div class="flex--row date">
                     <v-date-picker
@@ -283,14 +283,14 @@
                 </ValidationProvider>
               </div>
             </div>
-            <div class="content--fifth flex--column">
+            <div class="content--fifth flex--column input__textarea">
               <h2>Additional Information</h2>
               <textarea name="additionInfo" placeholder="Program Agenda etc." cols="30" rows="10" v-model="requestInfo.additionalInfo"/>
             </div>
             <div
               class="content--sixth flex--column"
             >
-              <label for="consent">
+              <label for="consent" class="input__checkbox">
                 <input type="checkbox" id="consent" @click="checked = !checked" required>
                 I understand that this form collects my name, email and phone number so I can be contacted.
                 For more information, please check our

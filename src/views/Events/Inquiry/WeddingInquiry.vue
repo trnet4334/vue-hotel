@@ -24,7 +24,7 @@
                 <ValidationProvider
                   rules="required"
                   name="Your title"
-                  class="flex--column"
+                  class="flex--column input__select alert-message"
                   v-slot="{ errors }"
                 >
                   <label for="title">Title</label>
@@ -39,7 +39,7 @@
                     rules="required|alpha_spaces"
                     name="Your first name"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="firstName">First Name*</label>
                     <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestWeddingInfo.firstName">
@@ -49,7 +49,7 @@
                     rules="required|alpha_spaces"
                     name="Your last name"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="lastName">Last Name*</label>
                     <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestWeddingInfo.lastName">
@@ -60,7 +60,7 @@
                   rules="required|regexPhoneNum"
                   name="Your phone number"
                   v-slot="{ errors }"
-                  class="flex--column"
+                  class="flex--column input__text md alert-message"
                 >
                   <label for="phoneNum">Phone Number*</label>
                   <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-model.trim="requestWeddingInfo.phoneNum">
@@ -70,13 +70,13 @@
                   rules="required|regexEmail"
                   name="Your email address"
                   v-slot="{ errors }"
-                  class="flex--column"
+                  class="flex--column input__text md alert-message"
                 >
                   <label for="email">Email Address*</label>
                   <input type="text" id="email" placeholder="Email Address" required v-model.trim="requestWeddingInfo.email">
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
-                <div class="flex--column">
+                <div class="flex--column input__text">
                   <label>Wedding Date</label>
                   <div class="flex--row date">
                     <v-date-picker
@@ -109,7 +109,7 @@
                     </svg>
                   </div>
                 </div>
-                <div class="flex--column">
+                <div class="flex--column input__checkbox">
                   <label>Select all that apply</label>
                   <label for="ceremony">
                     <input type="checkbox" id="ceremony" value="Ceremony / Reception" v-model="requestWeddingInfo.serviceNeed">
@@ -140,18 +140,20 @@
                   rules="required|min_value:8|numeric"
                   name="Number of guests"
                   v-slot="{ errors }"
-                  class="flex--column"
+                  class="flex--column input__text sm alert-message"
                 >
                   <label for="numberOfGuest">Number of Guests*</label>
                   <input type="text" id="numberOfGuest" required v-model.number="requestWeddingInfo.numberOfGuest">
                   <span class="alert-message">{{errors[0]}}</span>
                 </ValidationProvider>
-                <label for="consent">
-                  <input type="checkbox" id="consent" @click="checked = !checked" required>
-                  I understand that this form collects my name, email and phone number so I can be contacted.
-                  For more information, please check our
-                  <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
-                </label>
+                <div class="input__checkbox">
+                  <label for="consent">
+                    <input type="checkbox" id="consent" @click="checked = !checked" required>
+                    I understand that this form collects my name, email and phone number so I can be contacted.
+                    For more information, please check our
+                    <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
+                  </label>
+                </div>
               </div>
             </div>
           </div>
