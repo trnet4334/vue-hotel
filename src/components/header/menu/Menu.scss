@@ -49,7 +49,7 @@
     .icon {
       width: 110px;
       height: 110px;
-      & figure {
+      figure {
         align-items: center;
       }
       &:hover {
@@ -71,9 +71,9 @@
       justify-content: center;
       width: 100%;
       position: relative;
-      & ul {
+      ul {
         list-style-type: none;
-        & li {
+        li {
           font-size: 2rem;
           font-weight: 700;
           text-align: start;
@@ -132,6 +132,8 @@
 .display-menu {
   width: 100%;
   height: 100%;
+  position: fixed;
+  touch-action: none;
 }
 
 @include respond-below(phone) {
@@ -140,13 +142,13 @@
     overflow: hidden;
   }
   .overlay__content--first {
-    height: 10vh;
+    height: 85px;
     flex-basis: unset;
   }
   .overlay__footer {
     align-items: center;
     margin-top: 30px;
-    & p {
+    p {
       text-align: start;
     }
   }
@@ -154,9 +156,9 @@
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    & ul li {
-      font-size: 1.5rem;
-      line-height: 2.1rem;
+    ul li {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
     }
   }
 }
@@ -167,24 +169,23 @@
     overflow: hidden;
   }
   .overlay__content--first {
-    height: 10vh;
+    height: 85px;
     flex-basis: unset;
   }
   .overlay__footer {
     align-items: center;
     margin-top: 30px;
-    & p {
+    p {
       text-align: start;
     }
   }
   .links .link {
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 15vw;
-    & ul li {
-      font-size: 1.7rem;
-      line-height: 2.3rem;
+    align-items: center;
+    justify-content: space-evenly;
+    ul li {
+      font-size: 1.3rem;
+      line-height: 1.6rem;
     }
   }
 }

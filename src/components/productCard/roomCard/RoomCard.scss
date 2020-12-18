@@ -20,8 +20,13 @@
 
 @include respond-below(phone) {
   .card {
+    padding: 0 0 35px 0;
     &__carousel {
       width: 100%;
+    }
+    &__body {
+      width: 90%;
+      margin: 0 auto;
     }
   }
 }
@@ -30,6 +35,7 @@
   .card {
     &__carousel {
       width: 100%;
+      overflow-x: hidden;
     }
     &__body {
       width: 100%;

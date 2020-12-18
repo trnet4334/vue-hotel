@@ -7,6 +7,9 @@
     p {
       width: 65%;
     }
+    .page__title {
+      text-align: center;
+    }
   }
   &__context {
     &--first, &--second {
@@ -31,6 +34,9 @@
     div:nth-of-type(2) {
       width: 100%;
     }
+    .page__subtitle {
+      text-align: center;
+    }
   }
   .careers__header {
     p {
@@ -42,7 +48,10 @@
 @include respond-between(phone, tablet) {
   .careers__context--first, .careers__context--second {
     div:nth-of-type(2) {
-      width: 100%;
+      width: 85%;
+    }
+    .page__subtitle {
+      text-align: center;
     }
   }
   .careers__header {
@@ -55,8 +64,11 @@
 @include respond-between(tablet, tablet-lg) {
   .careers__context--first, .careers__context--second {
     div:nth-of-type(2) {
-      width: 100%;
+      width: 90%;
       margin: 0 auto;
+    }
+    .page__subtitle {
+      text-align: center;
     }
   }
   .careers__header {

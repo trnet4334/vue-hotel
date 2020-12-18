@@ -24,22 +24,18 @@
     p {
       font-size: 0.9rem;
     }
-    button {
-      margin-top: 12px;
-      padding: 7px 10px;
-      font-size: 1.1rem;
-      border: none;
-      background-color: #283845;
-      color: #ffffff;
-      border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
-      &:disabled {
-        background-color: rgba(105, 105, 105, 0.6);
-        &:hover {
-          cursor: not-allowed;
-        }
+  }
+}
+
+@include respond-below(phone) {
+  .package-rate {
+    flex-direction: column;
+    div:nth-of-type(2) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        display: none;
       }
     }
   }
@@ -60,10 +56,6 @@
       }
       p {
         font-size: 0.9rem;
-      }
-      button {
-        padding: 5px;
-        font-size: 1rem;
       }
     }
   }

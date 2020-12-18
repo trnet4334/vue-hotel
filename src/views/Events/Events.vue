@@ -68,10 +68,6 @@
             <template v-slot:preloader>
               <flux-preloader />
             </template>
-
-            <template v-slot:controls>
-              <flux-controls />
-            </template>
           </vue-flux>
         </div>
         <div class="events__body--fifth flex--row">

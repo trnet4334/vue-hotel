@@ -7,21 +7,21 @@
     >
       <div class="page-container">
         <div class="page-wrapper">
-          <div class="pet-friendly-form__header flex--column page-content--header">
-            <h1>Pet Registration</h1>
-            <p>Please tell us some information about your pet(s) that we
+          <div class="pet-friendly-form__header flex--column">
+            <h1 class="page__title">Pet Registration</h1>
+            <p class="content__description">Please tell us some information about your pet(s) that we
               can make some adjustment for your pleasure in your stay.</p>
           </div>
           <div class="pet-friendly-form__body">
             <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
-              <h2>Guest Information</h2>
+              <h2 class="page__subtitle">Guest Information</h2>
               <div class="flex--row">
                 <div class="flex--column align-center">
                   <ValidationProvider
                     rules="required|alpha_spaces"
                     name="Your last name"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="guestName">Guest Last Name*</label>
                     <input type="text" id="guestName" v-model="petFriendlyForm.guestLastName" required/>
@@ -31,7 +31,7 @@
                     rules="required|regexEmail"
                     name="Your email address"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="guestEmail">Guest Email*</label>
                     <input type="text" id="guestEmail" v-model="petFriendlyForm.guestEmail" required/>
@@ -43,7 +43,7 @@
                     rules="required"
                     name="Your reservation number"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="reservationNum">Guest Reservation Number*</label>
                     <input type="text" id="reservationNum" v-model="petFriendlyForm.reservationNum" required/>
@@ -53,7 +53,7 @@
                     rules="required|regexPhoneNum"
                     name="Your phone number"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="guestPhoneNum">Guest Phone Number*</label>
                     <input type="text" id="guestPhoneNum" v-model="petFriendlyForm.guestPhoneNum" required/>
@@ -62,10 +62,10 @@
                 </div>
               </div>
               <br>
-              <h2>Pet Information</h2>
+              <h2 class="page__subtitle">Pet Information</h2>
               <div class="flex--row">
                 <div class="flex--column align-center">
-                  <div class="flex--column">
+                  <div class="flex--column input__text sm">
                     <label for="petName">Pet's Name</label>
                     <input type="text" id="petName" placeholder="Pet's Name" v-model="petFriendlyForm.petName"/>
                   </div>
@@ -73,7 +73,7 @@
                     rules="required|numeric"
                     name="Your pet's size"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="petSize">Pet's Size*</label>
                     <input type="text" id="petSize" placeholder="Pet's Weight" v-model="petFriendlyForm.petSize" required/>
@@ -85,7 +85,7 @@
                     rules="required"
                     name="Your type of pet"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="petType">Type of Pet*</label>
                     <input type="text" id="petType" placeholder="Type of Pet(dog, cat, etc.)" v-model="petFriendlyForm.petType" required/>
@@ -95,7 +95,7 @@
                     rules="required"
                     name="Your pet breed"
                     v-slot="{ errors }"
-                    class="flex--column"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="petBreed">Pet Breed*</label>
                     <input type="text" id="petBreed" placeholder="Pet Breed" v-model="petFriendlyForm.petBreed"/>
@@ -103,18 +103,23 @@
                   </ValidationProvider>
                 </div>
               </div>
-              <label for="comment">Comment</label>
-              <textarea
-                id="comment"
-                name="comment"
-                rows="7"
-                cols="5"
-                v-model="petFriendlyForm.comment"
-                placeholder="Notes (age, dietary need and so on)"
-              />
+              <div
+                style="width: 100%;"
+                class="input__textarea flex--column"
+              >
+                <label for="comment">Comment</label>
+                <textarea
+                  id="comment"
+                  name="comment"
+                  rows="7"
+                  cols="5"
+                  v-model="petFriendlyForm.comment"
+                  placeholder="Notes (age, dietary need and so on)"
+                />
+              </div>
               <br>
-              <h2>About Your Stay</h2>
-              <div class="flex--row align-center radio-input-group">
+              <h2 class="page__subtitle">About Your Stay</h2>
+              <div class="flex--row align-center radio-input-group input__radio">
                 <label>Need a pet sitter, day care or walker?*</label>
                 <div class="flex--row">
                   <div>
@@ -127,7 +132,7 @@
                   </div>
                 </div>
               </div>
-              <div class="flex--row align-center radio-input-group">
+              <div class="flex--row align-center radio-input-group input__radio">
                 <label>Need grooming services?*</label>
                 <div class="flex--row">
                   <div>
@@ -140,13 +145,13 @@
                   </div>
                 </div>
               </div>
-              <label for="consent">
+              <label for="consent" class="input__checkbox">
                 <input type="checkbox" id="consent" @click="checked = !checked" required>
                 I understand that this form collects my name, email and phone number so I can be contacted.
                 For more information, please check our
                 <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
               </label>
-              <button type="submit" :disabled="!checked">SUBMIT</button>
+              <button type="submit" :disabled="!checked" class="btn-outline-md">SUBMIT</button>
             </form>
           </div>
         </div>

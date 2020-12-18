@@ -2,7 +2,7 @@
 
 .wedding {
   position: relative;
-  padding: 20vh 0 0 0;
+  padding: 20px 0 50px 0;
   &__body {
     &--first, &--second, &--fourth, &--fifth, &--sixth {
       padding: 0 7.5vw 20vh 7.5vw;
@@ -32,6 +32,9 @@
       padding: 10vh 5vw 20vh 5vw;
       p {
         width: 80%;
+      }
+      .page__subtitle {
+        text-align: center;
       }
     }
   }
@@ -140,7 +143,7 @@
     width: 97.5%;
     padding: 5px;
     ul {
-      columns: 1;
+      columns: 2;
     }
   }
 }

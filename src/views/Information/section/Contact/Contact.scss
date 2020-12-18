@@ -11,49 +11,6 @@
   &__form {
     align-items: flex-start;
     padding: 0 5vw;
-    form {
-      label {
-        font-size: 1.3rem;
-        width: 200px;
-        padding: 10px 0;
-      }
-      input {
-        border: none;
-        border-bottom: 1px solid rgba(61, 64, 91, 0.3);
-        background-color: transparent;
-        width: 300px;
-        font-size: 1.2rem;
-        margin: 5px 0;
-      }
-      select {
-        display: block;
-        font-size: 1.2rem;
-        font-weight: 600;
-        line-height: 1.1;
-        width: 300px;
-        padding: 2px 15px;
-        max-width: 100%;
-        box-sizing: border-box;
-        border: none;
-        border-bottom: 1px solid rgba(61, 64, 91, 0.3);
-        background-color: transparent;
-      }
-      textarea {
-        border: none;
-        border-bottom: 1px solid rgba(61, 64, 91, 0.3);
-        resize: none;
-        width: 65%;
-        background-color: transparent;
-        font-size: 1.2rem;
-      }
-      label[for="consent"] {
-        width: 100%;
-      }
-      input[type=checkbox] {
-        width: 20px;
-        margin: 0 auto;
-      }
-    }
   }
 }
 .mapouter {
@@ -69,13 +26,6 @@
   height:100%;
   width:100%;
 }
-.alert-message {
-  flex-basis: 100%;
-  text-align: start;
-  color: darkred;
-  margin-top: 5px;
-  font-size: 1.1rem;
-}
 
 @include respond-below(phone) {
   .image-fluid {
@@ -88,11 +38,6 @@
     width: 100%;
     height: 320px;
   }
-  .contact__form form{
-    input, textarea, select {
-      width: 100%;
-    }
-  }
 }
 
 @include respond-between(phone, tablet) {
@@ -104,11 +49,6 @@
     width: 100%;
     height: 320px;
   }
-  .contact__form form{
-    input, textarea, select {
-      width: 100%;
-    }
-  }
 }
 
 @include respond-between(tablet, tablet-lg) {
@@ -118,5 +58,23 @@
   .mapouter {
     width: 100%;
     height: 320px;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-md-w, ipadpro-md-w) {
+  .contact__content {
+    width: 40%;
+  }
+  .image-fluid.xl {
+    width: 55%;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-lg-w, ipadpro-lg-w) {
+  .contact__content {
+    width: 40%;
+  }
+  .image-fluid.xl {
+    width: 55%;
   }
 }

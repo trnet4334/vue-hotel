@@ -68,5 +68,49 @@ $breakpoints: (
 }
 
 // Respond for iPad Pro - landscape
+@mixin ipad-pro-landscape($lower-breakpoint, $upper-breakpoint) {
+  @if map-has-key($breakpoints, $lower-breakpoint) and map-has-key($breakpoints, $upper-breakpoint) {
+    // Get the lower and upper breakpoint
+    $lower-breakpoint-value: map-get($breakpoints, $lower-breakpoint);
+    $upper-breakpoint-value: map-get($breakpoints, $upper-breakpoint);
+    // Use the media query
+    @media only screen
+    and (min-width: $lower-breakpoint-value)
+    and (max-width: $upper-breakpoint-value)
+    and (orientation: landscape)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($breakpoints, $lower-breakpoint) == false) {
+      @warn 'Lower breakpoint was invalid: #{$lower-breakpoint}.';
+    }
+    @if (map-has-key($breakpoints, $upper-breakpoint) == false) {
+      @warn 'Upper breakpoint was invalid: #{$upper-breakpoint}.';
+    }
+  }
+}
 
 // Respond for iPad Pro - portrait
+@mixin ipad-pro-portrait($lower-breakpoint, $upper-breakpoint) {
+  @if map-has-key($breakpoints, $lower-breakpoint) and map-has-key($breakpoints, $upper-breakpoint) {
+    // Get the lower and upper breakpoint
+    $lower-breakpoint-value: map-get($breakpoints, $lower-breakpoint);
+    $upper-breakpoint-value: map-get($breakpoints, $upper-breakpoint);
+    // Use the media query
+    @media only screen
+    and (min-width: $lower-breakpoint-value)
+    and (max-width: $upper-breakpoint-value)
+    and (orientation: portrait)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($breakpoints, $lower-breakpoint) == false) {
+      @warn 'Lower breakpoint was invalid: #{$lower-breakpoint}.';
+    }
+    @if (map-has-key($breakpoints, $upper-breakpoint) == false) {
+      @warn 'Upper breakpoint was invalid: #{$upper-breakpoint}.';
+    }
+  }
+}

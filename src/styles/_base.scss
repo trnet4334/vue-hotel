@@ -2,9 +2,37 @@
 /* Buttons */
 
 // Solid button style
-.btn-solid-sm {}
+.btn-solid-sm {
+  padding: 7px 10px;
+  margin-top: 12px;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  border: none;
+  background-color: #283845;
+  color: #ffffff;
+  border-radius: 5px;
+  align-self: flex-end;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &:disabled {
+    border: none;
+    color: #ffffff;
+    background-color: rgba(105, 105, 105, 0.6);
+    a {
+      color: #ffffff;
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+  @include respond-below(phone) {
+    padding: 5px;
+  }
+}
 .btn-solid-md {
-  padding: 10px 10px;
+  padding: 10px;
   margin-top: 15px;
   font-size: 1.1rem;
   font-family: 'Raleway', sans-serif;
@@ -16,6 +44,17 @@
   outline: none;
   &:hover {
     cursor: pointer;
+  }
+  &:disabled {
+    border: none;
+    color: #ffffff;
+    background-color: rgba(105, 105, 105, 0.6);
+    a {
+      color: #ffffff;
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 }
 .btn-solid-lg {
@@ -36,6 +75,17 @@
   &:hover {
     cursor: pointer;
   }
+  &:disabled {
+    border: none;
+    color: #ffffff;
+    background-color: rgba(105, 105, 105, 0.6);
+    a {
+      color: #ffffff;
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 }
 
 // Outline button style
@@ -53,6 +103,7 @@
   color: #3d405b;
   a {
     text-decoration: none;
+    color: #3d405b;
     &:visited {
       color: #3d405b;
     }
@@ -112,6 +163,12 @@
     &:hover {
       cursor: not-allowed;
     }
+  }
+  @include respond-below(phone) {
+    padding: 15px 45px;
+  }
+  @include respond-between(phone, tablet-md) {
+    padding: 15px 65px;
   }
 }
 
@@ -285,9 +342,6 @@
 .input__text {
   margin-top: 10px;
   label {
-    font-size: 1.15rem;
-    line-height: 1.4rem;
-    font-weight: 600;
     text-align: start;
     padding: 5px 15px 5px 0;
   }
@@ -299,21 +353,41 @@
     background-color: transparent;
     border-bottom: 1px solid #3d405b;
     outline: none;
+    &:disabled {
+      background-color: rgba(105, 105, 105, 0.4);
+      color: #ffffff;
+      border: none;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
   &.sm {
-    label {}
+    label {
+      font-size: 1.15rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+    }
     input {
       width: 225px;
     }
   }
   &.md {
-    label {}
+    label {
+      font-size: 1.15rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+    }
     input {
       width: 300px;
     }
   }
   &.lg {
-    label {}
+    label {
+      font-size: 1.15rem;
+      line-height: 1.4rem;
+      font-weight: 400;
+    }
     input {
       width: 500px;
     }
@@ -329,16 +403,28 @@
   }
   @include respond-below(phone) {
     &.sm {
+      label {
+        font-size: 1rem;
+        line-height: 1.1rem;
+      }
       input {
         width: 200px;
       }
     }
     &.md {
+      label {
+        font-size: 1rem;
+        line-height: 1.1rem;
+      }
       input {
         width: 275px;
       }
     }
     &.lg {
+      label {
+        font-size: 1rem;
+        line-height: 1.1rem;
+      }
       input {
         width: 100%;
       }
@@ -359,7 +445,7 @@
   label {
     font-size: 1.15rem;
     line-height: 1.4rem;
-    font-weight: 600;
+    font-weight: 400;
     text-align: start;
     padding: 5px 15px 5px 0;
   }
@@ -380,6 +466,12 @@
       color: darkred;
       margin-top: 5px;
       font-size: 1.1rem;
+    }
+  }
+  @include respond-below(phone) {
+    label {
+      font-size: 1rem;
+      line-height: 1.1rem;
     }
   }
 }
@@ -426,6 +518,11 @@
   }
   input[type="checkbox"] {
     margin: 0 5px;
+  }
+  @include respond-below(tablet-md) {
+    label:first-of-type {
+      line-height: 1.35rem;
+    }
   }
 }
 
@@ -524,7 +621,7 @@
 /* Slogan style */
 
 .slogan {
-  width: 100%;
+  width: 95%;
   height: 100vh;
   svg {
     width: 80px;
@@ -535,24 +632,35 @@
   span {
     width: 65%;
     word-wrap: normal;
-    font-size: 1.7rem;
+    font-size: 1.45rem;
+  }
+  .page__subtitle {
+    text-align: center;
   }
   @include respond-below(phone) {
+    svg {
+      width: 60px;
+      height: 60px;
+    }
     span {
       width: 100%;
-      font-size: 1.3rem;
+      padding: 0 5%;
+      font-size: 1.1rem;
+      word-break: break-all;
     }
   }
   @include respond-between(phone, tablet) {
     span {
       width: 100%;
-      font-size: 1.5rem;
+      padding: 0 10%;
+      font-size: 1.3rem;
+      word-break: break-all;
     }
   }
   @include respond-between(tablet, tablet-lg) {
     span {
       width: 100%;
-      font-size: 1.5rem;
+      padding: 0 15%;
     }
   }
   @include respond-between(tablet-lg, desktop) {

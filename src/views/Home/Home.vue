@@ -73,10 +73,6 @@
           <template v-slot:preloader>
             <flux-preloader />
           </template>
-
-          <template v-slot:controls>
-            <flux-controls />
-          </template>
         </vue-flux>
       </div>
     </section>
@@ -267,8 +263,6 @@ export default {
         'blinds3d',
         'blocks2',
         'book',
-        'cube',
-        'round2',
         'swipe',
         'warp',
         'wave'

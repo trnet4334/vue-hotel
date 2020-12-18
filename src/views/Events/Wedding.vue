@@ -51,10 +51,6 @@
             <template v-slot:preloader>
               <flux-preloader />
             </template>
-
-            <template v-slot:controls>
-              <flux-controls />
-            </template>
           </vue-flux>
         </div>
         <div class="wedding__body--fourth flex--column flex--center">
@@ -150,7 +146,7 @@ export default {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
-        autoplay: false,
+        autoplay: true,
         bindKeys: false,
         delay: 5000,
         enableGestures: false,

@@ -128,7 +128,7 @@
                 </div>
               </div>
               <div class="col-3">
-                <button @click="setSearchChoice">
+                <button @click="setSearchChoice" class="btn-solid-md">
                   SEARCH
                 </button>
               </div>
@@ -166,7 +166,7 @@
     </section>
     <checkout-footer/>
     <div class="button-banner--mobile" v-show="currentStep >= 3">
-      <button @click="addAnotherRoom" class="btn-solid-lg">ADD ROOM</button>
+      <button @click="addAnotherRoom" class="btn-solid-md">ADD ROOM</button>
     </div>
   </div>
 </template>

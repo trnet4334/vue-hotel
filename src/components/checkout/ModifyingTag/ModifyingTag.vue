@@ -8,7 +8,7 @@
       <span>You're modifying your reservation.</span>
       <p>Please select a different room and rate below, or update your stay details above.</p>
     </div>
-    <button @click.prevent="discardEdit">DISCARD EDITS</button>
+    <button @click.prevent="discardEdit" class="btn-solid-md">DISCARD EDITS</button>
   </div>
 </template>
 <script>

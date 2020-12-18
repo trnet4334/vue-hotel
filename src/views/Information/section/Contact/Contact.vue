@@ -57,7 +57,7 @@
               rules="required|alpha_spaces"
               name="Your last name"
               v-slot="{ errors }"
-              class="flex--row"
+              class="flex--column input__text lg alert-message"
             >
               <label for="fullName">Full Name*</label>
               <input type="text" id="fullName" v-model="contactForm.name" required>
@@ -67,7 +67,7 @@
               rules="required|regexEmail"
               name="Your email address"
               v-slot="{ errors }"
-              class="flex--row"
+              class="flex--column input__text lg alert-message"
             >
               <label for="email">Email Address*</label>
               <input type="email" id="email" v-model="contactForm.email" required>
@@ -77,13 +77,13 @@
               rules="required|regexPhoneNum"
               name="Your phone number"
               v-slot="{ errors }"
-              class="flex--row"
+              class="flex--column input__text lg alert-message"
             >
               <label for="phone">Phone Number*</label>
               <input type="text" id="phone" v-model="contactForm.phoneNum" required>
               <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
-            <div class="flex--row">
+            <div class="flex--column input__select">
               <label for="purpose">Purpose*</label>
               <select name="purpose" v-model="contactForm.purpose" id="purpose">
                 <option value="">----</option>
@@ -99,7 +99,7 @@
               rules="required"
               name="Your description"
               v-slot="{ errors }"
-              class="flex--column"
+              class="flex--column input__textarea"
             >
               <label for="comments">Comments</label>
               <textarea
@@ -111,7 +111,7 @@
               />
               <span class="alert-message">{{ errors[0] }}</span>
             </ValidationProvider>
-            <label for="consent">
+            <label for="consent" class="input__checkbox">
               <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked" required>
               <span>
                 I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener" class="link">privacy policy</router-link>.

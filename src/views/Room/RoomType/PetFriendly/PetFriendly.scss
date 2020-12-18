@@ -5,6 +5,9 @@
     width: 40%;
     height: auto;
     //margin: 0 50px;
+    .page__subtitle {
+      text-align: center;
+    }
   }
   &__body {
     &--first {
@@ -22,6 +25,9 @@
     &--third {
       width: 100%;
       align-items: center;
+      .page__subtitle {
+        text-align: center;
+      }
       ul {
         width: 80%;
         list-style-type: square;

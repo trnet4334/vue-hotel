@@ -270,7 +270,7 @@
     }
   }
   .carousel {
-    height: auto;
+    height: 45vh;
   }
   .spa {
     &__container {
@@ -314,6 +314,194 @@
   .room {
     &--type {
       width: 30%;
+    }
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-sm-w, ipadpro-sm-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    &--type {
+      margin: unset;
+      width: 40%;
+    }
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    &__content {
+      width: 40%;
+    }
+  }
+  .spa {
+    height: 57.5vh;
+    &__container {
+      &--slogan {
+        width: 40%;
+        h2 {
+          text-align: start;
+        }
+      }
+      &--content {
+        width: 55%;
+        height: auto;
+        p {
+          width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  .events {
+    &__header {
+      width: 80%;
+    }
+    &__content {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
+    }
+  }
+  .carousel {
+    display: block;
+    height: 45vh;
+  }
+}
+
+@include ipad-pro-landscape(ipadpro-sm-h, ipadpro-sm-h) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    &--type {
+      margin: unset;
+      width: 40%;
+    }
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    &__content {
+      width: 40%;
+    }
+  }
+  .spa {
+    height: 60vh;
+  }
+  .events {
+    &__header {
+      width: 80%;
+    }
+    &__content {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
+    }
+  }
+  .carousel {
+    display: block;
+    height: 80vh;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-md-w, ipadpro-md-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    &--type {
+      margin: unset;
+    }
+  }
+  .carousel {
+    height: 45vh;
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+  }
+  .spa {
+    height: 50vh;
+  }
+  .events {
+    &__content {
+      width: 50%;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-lg-w, ipadpro-lg-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    &--type {
+      margin: unset;
+    }
+  }
+  .carousel {
+    height: 45vh;
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+  }
+  .spa {
+    height: 50vh;
+  }
+  .events {
+    &__content {
+      width: 50%;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
     }
   }
 }

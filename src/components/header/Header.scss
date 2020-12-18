@@ -19,7 +19,7 @@
 .body {
   z-index: 5;
   position: absolute;
-  top: 20vh;
+  top: 120px;
   left: 15vw;
 }
 .hero {
@@ -59,13 +59,14 @@
   .body {
     width: 90%;
     top: unset;
-    bottom: 5vh;
+    bottom: 0;
     left: 5vw;
   }
   .hero {
-    font-size: 2.3rem;
+    font-size: 2rem;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
     margin-bottom: 0;
     width: auto;
     height: auto;
@@ -74,18 +75,18 @@
     }
   }
   .image {
-    top: 15vh;
-    width: 90%;
-    height: 50vh;
-    left: 5vw;
+    top: 100px;
+    width: 75vw;
+    height: 45vh;
+    left: 12.5vw;
   }
 }
 
-@include respond-between(phone, tablet) {
+@include respond-between(phone, tablet-md) {
   .body {
     width: 80%;
     top: unset;
-    bottom: 5vh;
+    bottom: 0;
     left: 10vw;
   }
   .hero {
@@ -100,14 +101,14 @@
     }
   }
   .image {
-    top: 15vh;
+    top: 100px;
     width: 80%;
-    height: 50vh;
+    height: 70vh;
     left: 10vw;
   }
 }
 
-@include respond-between(tablet, tablet-lg) {
+@include respond-between(tablet-md, tablet-lg) {
   .hero {
     height: 200px;
     span{
@@ -124,5 +125,73 @@
   .image {
     width: 70%;
     height: 70%;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-sm-w, ipadpro-sm-w) {
+  .image {
+    top: 175px;
+    width: 80%;
+    height: 40vh;
+    left: 10vw;
+  }
+  .body {
+    bottom: 20vh;
+  }
+}
+
+@include ipad-pro-landscape(ipadpro-sm-h, ipadpro-sm-h) {
+  .body {
+    top: 20vh;
+    left: 10vw;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-md-w, ipadpro-md-w) {
+  .image {
+    top: 175px;
+    width: 80%;
+    height: 40vh;
+    left: 10vw;
+  }
+  .body {
+    bottom: 20vh;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-lg-w, ipadpro-lg-w) {
+  .image {
+    top: 225px;
+    width: 80%;
+    height: 37.5vh;
+    left: 10vw;
+  }
+  .body {
+    width: 80%;
+    top: unset;
+    bottom: 25vh;
+    left: 10vw;
+  }
+  .hero {
+    font-size: 3rem;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    span {
+      padding: 0 5px;
+    }
+  }
+}
+
+@include ipad-pro-landscape(ipadpro-lg-h, ipadpro-lg-h) {
+  .image {
+    width: 70%;
+    height: 67.5%;
+  }
+  .body {
+    top: 22.5vh;
+    left: 12.5vw;
   }
 }
