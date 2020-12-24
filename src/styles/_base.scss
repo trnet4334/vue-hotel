@@ -394,7 +394,6 @@
   }
   &.alert-message {
     span {
-      flex-basis: 100%;
       text-align: start;
       color: darkred;
       margin-top: 5px;
@@ -461,7 +460,6 @@
   }
   &.alert-message {
     span {
-      flex-basis: 100%;
       text-align: start;
       color: darkred;
       margin-top: 5px;
@@ -490,6 +488,14 @@
     border: none;
     background-color: transparent;
     border-bottom: 1px solid #3d405b;
+  }
+  &.alert-message {
+    span {
+      text-align: start;
+      color: darkred;
+      margin-top: 5px;
+      font-size: 1.1rem;
+    }
   }
 }
 

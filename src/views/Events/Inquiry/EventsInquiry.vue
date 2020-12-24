@@ -294,7 +294,7 @@
                 <input type="checkbox" id="consent" @click="checked = !checked" required>
                 I understand that this form collects my name, email and phone number so I can be contacted.
                 For more information, please check our
-                <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</router-link>.
+                <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer" class="link">privacy policy</router-link>.
               </label>
             </div>
           </div>
