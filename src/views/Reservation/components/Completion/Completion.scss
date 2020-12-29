@@ -28,11 +28,10 @@
       padding: 15px 20px;
       text-align: start;
       height: 100%;
-      figure {
-        align-items: center;
-        .icon-color {
-          fill: #ffffff;
-        }
+      .logo {
+        width: 48px;
+        height: 48px;
+        fill: #ffffff;
       }
       .description {
         p, span {
@@ -88,16 +87,27 @@
         flex-basis: auto;
         padding: 20px;
         h2 {
-          font-size: 1.8rem;
-          line-height: 2.4rem;
+          font-size: 1.6rem;
+          line-height: 2rem;
         }
         h4 {
-          font-size: 1.4rem;
+          font-size: 1.1rem;
         }
       }
       .block-2 {
         flex-basis: auto;
         padding: 20px;
+        .logo {
+          width: 36px;
+          height: 36px;
+        }
+        .content {
+          p, span {
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.6rem;
+          }
+        }
       }
     }
   }
@@ -115,16 +125,23 @@
         flex-basis: auto;
         padding: 20px;
         h2 {
-          font-size: 2.2rem;
-          line-height: 3.2rem;
+          font-size: 1.8rem;
+          line-height: 2.5rem;
         }
         h4 {
-          font-size: 1.6rem;
+          font-size: 1.25rem;
         }
       }
       .block-2 {
         flex-basis: auto;
         padding: 20px;
+        .content {
+          p, span {
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.6rem;
+          }
+        }
       }
     }
   }

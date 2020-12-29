@@ -49,6 +49,7 @@
   height: auto;
   margin-bottom: 15vh;
   justify-content: space-evenly;
+  align-items: center;
   &__content {
     width: 37.5%;
   }
@@ -160,6 +161,7 @@
     &__container {
       &--slogan {
         width: 100%;
+        height: auto;
         h2 {
           font-size: 1.6rem;
           width: 95%;
@@ -222,6 +224,7 @@
     &__container {
       &--slogan {
         width: 100%;
+        height: auto;
         h2 {
           font-size: 1.9rem;
           width: 95%;

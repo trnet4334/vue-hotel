@@ -30,7 +30,8 @@
           </svg>
       <h2 class="page__subtitle">Let Your Soul Follow the Nature</h2>
       <span>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem cupiditate dolor eaque ex fuga inventore, ipsa molestiae perspiciatis sunt? A excepturi explicabo natus nisi nobis omnis, placeat quod ut.
+        <p>- John S.</p>
+        <p>Newport Beach, CA</p>
       </span>
     </section>
     <section class="room flex--row">
@@ -80,8 +81,12 @@
       <div class="dining__content flex--column">
         <h2 class="page__subtitle">Dine with stunning view</h2>
         <p class="content__description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!
+          We offer few types of food, including western style and eastern style.
+          Especially, we have a front-row seat outside our dining place surrounded by stunning nature.
+          Delight in a 360-degree view of the canyon with handcrafted cocktails and sophisticated light-fare.
         </p>
+        <br>
+        <p class="content__description">Reservations are recommended.</p>
         <button class="btn-outline-md">
           <router-link to="/dining">DINE WITH US</router-link>
         </button>
@@ -97,7 +102,9 @@
         </div>
         <div class="spa__container--content flex--column flex--center">
           <p class="content__description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!
+            As our honorable guest at A Resort & Spa, please enjoy the complimentary use of our resort pools, fitness center,
+             bathrobes, slippers, and different kinds of herbal teas. With five private treatment rooms, there are several
+            treatments you can choose as you wish. Our reserved spots are limited, please make reservations as soon as possible.
           </p>
           <br>
           <button class="btn-outline-lg">
@@ -110,7 +117,8 @@
       <div class="events__header flex--column">
         <h2 class="page__subtitle">Inspired Gatherings</h2>
         <p class="content__description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.
+          Combined with amazing view and fantastic cuisine, A Resort & Spa provide a
+          great place for o one-of-a-kind wedding or an unforgettable meeting.
         </p>
       </div>
       <div class="events__body flex--row">
@@ -122,7 +130,8 @@
             <h4 class="image-label">Meeting & Events</h4>
             <br>
             <p class="image-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eum explicabo quidem.
+              Need a place for grouping an event or celebrating party? Make them real by
+              make an appointment with us.
             </p>
             <br>
             <router-link to="/events" class="link">Learn more</router-link>
@@ -136,7 +145,8 @@
             <h4 class="image-label">Wedding</h4>
             <br>
             <p class="image-description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at dolorum exercitationem!
+              Preparing a unforgettable wedding with us. Have the wedding you envisioned
+              from the moment you imagined.
             </p>
             <br>
             <router-link to="/wedding" class="link">Learn more</router-link>

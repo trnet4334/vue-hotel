@@ -11,9 +11,7 @@
             <div class="content">
               <h4 class="content__title">Spa & Wellness</h4>
               <h1 class="page__title">Seeking Stillness</h1>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam dolor eligendi eos, expedita explicabo facilis ipsam iusto laborum laudantium mollitia, nemo nihil obcaecati omnis quia similique, vero voluptate voluptatibus.</p>
-              <br>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad assumenda cumque distinctio ducimus earum error esse, fuga itaque maxime minima minus molestiae nisi nostrum porro, quo quod rem, repellat sequi temporibus ut velit voluptate!</p>
+              <p class="content__description">As our honorable guest at A Resort & Spa, please enjoy the complimentary use of our resort pools, fitness center, bathrobes, slippers, and different kinds of herbal teas. With five private treatment rooms, there are several treatments you can choose as you wish. Our reserved spots are limited, please make reservations as soon as possible.</p>
             </div>
           </div>
           <div class="body flex--row">
