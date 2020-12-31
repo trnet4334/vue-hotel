@@ -46,7 +46,7 @@
     "normalize.css": "^8.0.1",
     "sass-loader": "^8.0.2",
     "shortid": "^2.2.16",
-    "v-calendar": "^1.0.8",
+    "v-calendar": "^2.1.5",
     "vee-validate": "^3.4.5",
     "vue-axios": "^2.1.5",
     "vue-cli-plugin-element-ui": "~1.1.4",

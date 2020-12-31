@@ -12,9 +12,16 @@
               <h4 class="content__title">About</h4>
               <h1 class="page__title">A Place of Possibility</h1>
               <br>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, amet consequuntur dolore eos et facere fugiat laborum minima molestias nemo odio pariatur praesentium quia quidem quisquam rerum veritatis vitae. Deserunt dolorem necessitatibus obcaecati qui sunt!</p>
+              <p class="content__description">
+                If you're looking for a place to escape from normal life, A Resort & Spa is
+                whispering your name. Sedona is a celebration of culture and nature. It makes an
+                intimate connection from oneself to each other that enrich lives and renew spirits.
+              </p>
               <br>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolore est minima non perspiciatis quia quis ratione saepe, sit vero.</p>
+              <p class="content__description">
+                A Resort & Spa is at the center of it all, motivated by this stunning place and its
+                power to create change. When you journey here, the possibilities are endless.
+              </p>
             </div>
           </div>
           <div class="body flex--row">
@@ -41,9 +48,16 @@
             <div class="content page-content--header">
               <h2 class="page__subtitle">A Destination Unlike Any Other</h2>
               <br>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam at autem beatae cupiditate debitis deserunt, dicta distinctio dolor ducimus ea eos esse ex harum inventore ipsam iste iure labore minus, necessitatibus nemo perferendis quisquam quo rem, saepe sequi tempora tempore totam velit vero voluptatum.</p>
+              <p class="content__description">
+                Located on 100 acres of wide natural terrain, A Resort & Spa in the spiritual heart of Sedona,
+                surrounded by the towering rock walls of canyon. Here we combine the amazing southwest landscape and
+                Native American culture.
+              </p>
               <br>
-              <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur dicta earum laboriosam possimus quam ut. Illum libero necessitatibus veritatis.</p>
+              <p class="content__description">
+                Featuring hundreds of guestrooms and suite, over a hundred unique activities,
+                and fresh healthy dining options, our resort is a place to naturally feel alive.
+              </p>
             </div>
           </div>
         </div>

@@ -80,7 +80,8 @@
             <div>
               <h5 class="image-label">Wedding Weekend</h5>
               <br>
-              <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur ducimus facilis molestiae necessitatibus quo?</p>
+              <p class="image-description">We take care of your pleasure journey from the rehearsal dinner to the
+               post wedding brunch. A Resort & Spa can host your wonderful wedding weekend.</p>
             </div>
           </div>
           <div class="flex--column flex--center content">
@@ -90,16 +91,23 @@
             <div>
               <h5 class="image-label">Group Rate for Wedding</h5>
               <br>
-              <p class="image-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto illum mollitia odit quia voluptatem. Deserunt.</p>
+              <p class="image-description">A Resort & Spa offers group rates of various guestrooms for your
+              wedding parties and guests.</p>
             </div>
           </div>
         </div>
         <div class="wedding__body--sixth flex--center flex--column">
           <h2 class="page__subtitle">Pre-planning Your Most Important Day</h2>
           <br>
-          <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, aut blanditiis, consectetur delectus dignissimos earum fugiat harum in inventore iste libero nemo numquam odit officia porro similique tempora ut? Voluptate.</p>
+          <p class="content__description">As you begin to plan the most important event in your life with us, it's imperative to note that
+          we require that you should fill out the wedding registration form and also send us wedding event plan. Your wedding
+          plan will help us manage the organization of each event, assisting with protocol, structuring schedules, wedding parties and so on, which we want to
+          make sure everything meet your wish.</p>
           <br>
-          <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda delectus dolorem ducimus error explicabo fugit in ipsa natus perferendis quam quas quasi, quibusdam, reiciendis sapiente voluptate. Adipisci illo neque quibusdam.</p>
+          <p class="content__description">
+            Your wedding specialist will contact you and work hand-in-hand with your wedding planner. Our team can help you schedule the plan and
+            recommend numbers of different vendors, including wedding planners, florists, wedding photographers and even music band.
+          </p>
           <br>
           <br>
           <div class="links flex--row">

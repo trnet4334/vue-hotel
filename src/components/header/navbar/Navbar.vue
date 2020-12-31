@@ -144,13 +144,8 @@
         <div class="flex--column">
           <label>Dates</label>
           <v-date-picker
-            mode="range"
+            is-range
             is-required
-            class="flex--row"
-            :input-props="{
-              class: 'date-picker-input',
-              readonly: true
-            }"
             v-model="date"
             :disabled-dates="[
               {
@@ -162,7 +157,26 @@
                 end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
               }
             ]"
-          />
+          >
+            <template v-slot="{ inputValue, inputEvents }">
+              <div class="date-picker flex--column">
+                <div class="flex--column">
+                  <span>Check-in</span>
+                  <input
+                    :value="inputValue.start"
+                    v-on="inputEvents.start"
+                  />
+                </div>
+                <div class="flex--column">
+                  <span>Check-out</span>
+                  <input
+                    :value="inputValue.end"
+                    v-on="inputEvents.end"
+                  >
+                </div>
+              </div>
+            </template>
+          </v-date-picker>
         </div>
         <div class="flex--column">
           <label>Guests</label>

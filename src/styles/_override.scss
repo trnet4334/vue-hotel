@@ -67,18 +67,6 @@
       span {
         font-size: 1.2rem;
       }
-      .date-picker-input {
-        font-family: inherit;
-        background-color: transparent;
-        border: 1px solid #202c39;
-        font-size: 1.2rem;
-        line-height: 2.5rem;
-        padding-left: 10px;
-        text-align: start;
-        outline: none;
-        width: 100%;
-        color: #3d405b;
-      }
       .guest-content {
         align-items: center;
         justify-content: space-between;
@@ -147,13 +135,6 @@
       }
       &.block-2 {
         flex-basis: unset;
-        /deep/ .date-picker-input {
-          width: 250px;
-        }
-        div:first-of-type {
-          flex-direction: row;
-          justify-content: space-between;
-        }
       }
     }
   }
@@ -213,22 +194,48 @@
 
 // Custom class for date picker
 .date {
-  align-items: center;
   width: fit-content;
+  align-items: center;
   border-bottom: 1px solid #3d405b;
-  padding: 3px 0;
-  .date-picker-input {
-    font-family: inherit;
-    width: 225px;
-    margin-right: 10px;
-    background-color: transparent;
+  input {
+    width: 130px;
+    margin: 3px 0;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    padding: 5px 10px;
     border: none;
-    font-size: 1.3rem;
-    text-align: center;
+    @include respond-below(phone) {
+      width: 115px;
+    }
   }
   svg {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     fill: #3d405b;
+  }
+}
+
+// Date picker used in dialog content
+.date-picker {
+  width: auto;
+  input {
+    width: 150px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1.5px solid #3d405b;
+    outline: none;
+    &:focus {
+      border: 2px solid #3d405b;
+    }
+  }
+  @include respond-between(phone, tablet) {
+    div {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }

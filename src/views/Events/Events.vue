@@ -7,9 +7,17 @@
           <div class="events__content events__header">
             <h4 class="content__title">Meeting & Events</h4>
             <h1 class="page__title">Gather in a Royal-Like Setting</h1>
-            <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam consequuntur distinctio eligendi est inventore nemo sint, soluta temporibus totam.</p>
+            <p class="content__description">
+              We provide a great spot for truly unforgettable, productive meetings and events.
+              From annual gatherings to corporate functions or even more, we provide several different
+              options for our guest. In our resort, you'll discover a wide range of spectacular facilities and
+               entertaining team-building activities.
+            </p>
             <br>
-            <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequuntur est iure, magni non quae. Consequuntur expedita, laudantium! Eius, repellendus!</p>
+            <p class="content__description">
+              Whatever your vision, we have enough space to make it a reality. Combined with numbers of outdoor event space and more
+              than 16,000 square feet of indoor meeting space. We can satisfy all kinds of need for your event.
+            </p>
             <button class="btn-outline-md">
               <router-link to="/events/inquiry">REQUEST PROPOSAL</router-link>
             </button>
@@ -23,11 +31,11 @@
             <h2 class="page__subtitle">The Essentials</h2>
             <br>
             <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, dolore.</li>
+              <li>Outdoor dining options for group guests</li>
+              <li>Unique, tasty and healthy food & beverage (Ingredients from local farmer)</li>
+              <li>Premiere location - Surrounded by authentic nature view</li>
+              <li>Ballrooms and meeting spaces with full of natural light</li>
+              <li>Exclusive meetings package - wonderful ideas to escape from the norm</li>
             </ul>
             <button class="btn-outline-md" disabled>
               <a>VIEW FLOOR PLANS</a>
@@ -40,7 +48,11 @@
         <div class="events__body--third flex--row">
           <div class="events__content list-group">
             <h2 class="page__subtitle">Spaces for all purposes</h2>
-            <p class="content__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dignissimos id ipsa iste iusto laboriosam nihil, odio, provident quia recusandae similique voluptate? Blanditiis dolore doloribus, eius error excepturi harum incidunt inventore ipsam laborum maiores modi nihil officia, perspiciatis quod recusandae sapiente tempore totam vero voluptate voluptates. Consectetur, et libero?</p>
+            <p class="content__description">From the ballroom to the boardroom, we've offered various options to
+            accommodate your need. Besides, A Resort & Spa can comfortably host
+            up to 400 guests for seated dinner or up to 750 guests for standing cocktail
+            reception. With these flexible selection of spaces and elevated dining options,
+            we can guarantee your party will pop and unforgettable.</p>
             <br>
             <ul>
               <li>Family Celebrations</li>
