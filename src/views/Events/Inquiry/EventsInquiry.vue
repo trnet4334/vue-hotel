@@ -250,7 +250,7 @@
                     </svg>
                       </div>
                     </template>
-                    </v-date-picker>
+                  </v-date-picker>
                 </ValidationProvider>
                 <ValidationProvider class="flex--column input__text">
                   <label>Alternate Dates*</label>

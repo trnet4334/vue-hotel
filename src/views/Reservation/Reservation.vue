@@ -108,12 +108,8 @@
                   <div class="flex--column flex--center">
                     <span>Dates</span>
                     <v-date-picker
-                      mode="range"
                       is-required
-                      class="flex--row"
-                      :input-props="{
-                        class: 'date-picker-input'
-                    }"
+                      is-range
                       v-model="bookingDetails.date"
                       :disabled-dates="[
                       {
@@ -125,7 +121,21 @@
                         end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
                       }
                     ]"
-                    />
+                    >
+                      <template v-slot="{ inputValue, inputEvents }">
+                        <div class="date flex--row">
+                          <input
+                            :value="inputValue.start"
+                            v-on="inputEvents.start"
+                          />
+                          <span> - </span>
+                          <input
+                            :value="inputValue.end"
+                            v-on="inputEvents.end"
+                          >
+                        </div>
+                      </template>
+                    </v-date-picker>
                   </div>
                 </div>
               </div>
