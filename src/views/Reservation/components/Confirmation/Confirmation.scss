@@ -36,33 +36,16 @@
           font-weight: 700;
         }
         .col {
-          margin-right: 20px;
+          flex-basis: 50%;
+          align-items: center;
         }
         .row {
           margin-top: 20px;
+          text-align: start;
         }
       }
       &--consent {
-        align-items: flex-start;
-        label {
-          font-size: 1.3rem;
-          text-align: start;
-          margin-bottom: 10px;
-          align-items: flex-start;
-          justify-content: space-between;
-          input {
-            flex-basis: 3%;
-            margin-top: 7.5px;
-          }
-          span {
-            flex-basis: 95%;
-          }
-        }
-        a {
-          &:visited {
-            color: #3d405b;
-          }
-        }
+        text-align: initial;
       }
     }
   }
@@ -72,7 +55,7 @@
 }
 
 .btn-confirm {
-  & button {
+  button {
     margin: 20px auto;
     padding: 12px 12px;
     font-size: 1.1rem;

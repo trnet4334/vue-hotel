@@ -3,81 +3,31 @@
 .accessible-room {
   &__body {
     &--first{
-      justify-content: space-evenly;
+      justify-content: space-around;
       padding-bottom: 20vh;
     }
     &--second {
-      justify-content: space-evenly;
-    }
-  }
-  &__image {
-    width: 40%;
-    height: 425px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 50%;
+      justify-content: space-around;
     }
   }
   &__content {
     &--first {
       width: 37.5%;
-      button {
-        margin: 40px auto;
-        padding: 10px 50px;
-        background-color: transparent;
-        border: 2px solid #3d405b;
-        border-radius: 5px;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: 2px;
-        color: #3d405b;
-
-        &:hover {
-          background-color: #3d405b;
-          cursor: pointer;
-          color: #ffffff;
-        }
-      }
     }
     &--second {
       width: 37.5%;
-      h4 {
-        text-align: start;
-      }
-      ul {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: start;
-        li {
-          font-size: 1.3rem;
-          line-height: 2.2rem;
-        }
-      }
     }
   }
 }
 
 @include respond-below(phone) {
   .accessible-room {
-    &__body {
-      &--second {
-        flex-direction: column-reverse;
-      }
-    }
-    &__image {
-      width: 100%;
-      height: 300px;
-      margin-bottom: 30px;
+    &__body--second {
+      flex-direction: column-reverse;
     }
     &__content {
       &--first, &--second {
         width: 100%;
-        ul li {
-          line-height: 1.7rem;
-        }
       }
     }
   }
@@ -93,17 +43,9 @@
         flex-direction: column-reverse;
       }
     }
-    &__image {
-      width: 90%;
-      height: 300px;
-      margin-bottom: 30px;
-    }
     &__content {
       &--first, &--second {
         width: 90%;
-        ul li {
-          line-height: 1.9rem;
-        }
       }
     }
   }
@@ -119,17 +61,9 @@
         flex-direction: column-reverse;
       }
     }
-    &__image {
-      width: 82.5%;
-      height: 350px;
-      margin-bottom: 30px;
-    }
     &__content {
       &--first, &--second {
         width: 80%;
-        ul li {
-          line-height: 2rem;
-        }
       }
     }
   }
@@ -137,15 +71,9 @@
 
 @include respond-between(tablet-lg, desktop) {
   .accessible-room {
-    &__image {
-      height: 350px;
-    }
     &__content {
       &--first, &--second {
         width: 50%;
-        ul li {
-          line-height: 2.1rem;
-        }
       }
     }
   }

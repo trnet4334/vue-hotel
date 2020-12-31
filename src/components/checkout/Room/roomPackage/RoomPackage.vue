@@ -10,9 +10,9 @@
         <span>${{packageRate.rate}}</span>
         <p>Per Night</p>
         <p>Excluding Taxes & Fees</p>
-        <button @click="selectRoom" v-if="!isEditingRoom">BOOK NOW</button>
-        <button v-if="isEditingRoom && isSelected" :disabled="true">SELECTED</button>
-        <button @click="selectRoom" v-if="isEditingRoom && !isSelected">UPDATE</button>
+        <button @click="selectRoom" v-if="!isEditingRoom" class="btn-solid-sm">BOOK NOW</button>
+        <button v-if="isEditingRoom && isSelected" :disabled="true" class="btn-solid-sm">SELECTED</button>
+        <button @click="selectRoom" v-if="isEditingRoom && !isSelected" class="btn-solid-sm">UPDATE</button>
       </div>
     </div>
   </div>

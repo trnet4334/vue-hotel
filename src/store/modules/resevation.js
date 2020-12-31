@@ -2,8 +2,6 @@ import roomsIntro from '@/data/checkout/roomsIntro'
 import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
-// import shortid from 'shortid'
-// import apiService from '@/common/api'
 import firebaseApi from '@/common/firebaseApi'
 
 const state = {
@@ -54,6 +52,7 @@ const state = {
 }
 
 const getters = {
+  // Return all rooms from your booking cart
   reservationSelection (state) {
     if (state.reservationDetails.roomSelections.length === 0) {
       return [state.onSearchRoom]
@@ -61,15 +60,18 @@ const getters = {
       return state.reservationDetails.roomSelections
     }
   },
+  // Return searching result from the initial step
   displayRoomSearchResult (state) {
     const totalGuests = state.onSearchRoom.guests.numOfAdultGuests + state.onSearchRoom.guests.numOfChildrenGuest
     return state.roomsIntro.filter(element => element.maxGuestAvailable >= totalGuests)
   }
 }
 const mutations = {
+  // Reset room info in the initial step
   'SET_ROOMS' (state, roomsIntro) {
     state.roomsIntro = roomsIntro
   },
+  // Reset all custom reservation data back to initial
   'RESET_ALL_RESERVATION' (state) {
     state.roomsIntro = roomsIntro
     state.tempId = ''
@@ -113,6 +115,7 @@ const mutations = {
     }
     state.currentSelectedRoomIdx = 0
   },
+  // Reset onsearch room data back to initial
   'RESET_ONSEARCHROOM' (state) {
     state.onSearchRoom = {
       createTime: '',
@@ -133,6 +136,7 @@ const mutations = {
       addOns: []
     }
   },
+  // Head to next step
   'GO_NEXT_STEP' (state) {
     if (state.currentStep > 4) {
       state.currentStep = 4
@@ -141,6 +145,7 @@ const mutations = {
       state.currentStep += 1
     }
   },
+  // Back to previous step
   'BACK_PREVIOUS_STEP' (state) {
     if (state.currentStep < 0) {
       state.currentStep = 0
@@ -149,6 +154,7 @@ const mutations = {
       state.currentStep -= 1
     }
   },
+  // Switch step between different step
   'SWITCH_STEP' (state, step) {
     const checkStep = function (el) {
       if (el === 's1') return 1
@@ -160,6 +166,7 @@ const mutations = {
     state.previousStep = checkStep(step.prev)
     state.currentStep = checkStep(step.current)
   },
+  // Generate unique id for each reservation data
   'GENERATE_ID' (state, id) {
     if (state.tempId === id) {
       return null
@@ -167,6 +174,7 @@ const mutations = {
       state.tempId = id
     }
   },
+  // Build room selection from room search (step 1) and move to next step
   'SET_SEARCH_SELECTION' (state, { date, guests, time }) {
     if (state.reservationDetails.createTime === '') {
       state.reservationDetails.createTime = time
@@ -183,23 +191,27 @@ const mutations = {
     state.currentStep === 0 ? state.currentStep += 1 : state.currentStep = 1
     state.isEditingRoom = false
   },
+  // Add selected room from step 1
   'ADD_ROOM' (state, { type, packageName, rate }) {
     state.onSearchRoom.roomSelect.roomType = type
     state.onSearchRoom.roomSelect.packageName = packageName
     state.onSearchRoom.roomSelect.rate = rate
     state.currentStep += 1
   },
+  // Add add-on(s) from the list
   'ADD_ADDONS' (state, { name, price }) {
     state.onSearchRoom.addOns.push({
       addOnName: name,
       addOnPrice: price
     })
   },
+  // Remove add-on(s) from the list
   'REMOVE_ADDONS' (state, name) {
     state.onSearchRoom.addOns = state.onSearchRoom.addOns.filter(
       element => element.addOnName !== name
     )
   },
+  // Calculate amount of price from all you room selection
   'CALCULATE_TOTAL_AMOUNT' (state) {
     const arr = []
     if (state.reservationDetails.roomSelections.length === 0 && state.reservationDetails.onSearchRoom.createTime !== '') {
@@ -234,6 +246,7 @@ const mutations = {
       return null
     }
   },
+  // Pass room selection data to the final selected data object
   'SAVE_ROOM_SELECTION_TO_RESERVATION' (state) {
     const record = state.reservationDetails.roomSelections.find(
       element => element.createTime === state.onSearchRoom.createTime
@@ -248,6 +261,7 @@ const mutations = {
     }
     state.isEditingRoom = false
   },
+  // Remove room selection data from the final selected data object
   'REMOVE_ROOM_FROM_SELECTION' (state, selection) {
     const record = state.reservationDetails.roomSelections.map(
       (element) => {
@@ -261,6 +275,7 @@ const mutations = {
       state.reservationDetails.roomSelections = []
     }
   },
+  // Edit room selection info from the final selected data object
   'EDIT_ROOM_FROM_SELECTION' (state, selection) {
     const recordIdx = state.reservationDetails.roomSelections.map(
       (element) => {
@@ -282,16 +297,19 @@ const mutations = {
     state.isEditingRoom = true
     state.currentSelectedRoomIdx = recordIdx
   },
+  // Add guest info into temp data object
   'ADD_CUSTOMER_DETAIL' (state, { contact, address, note }) {
     state.onEditCustomerInfo.contactDetail = contact
     state.onEditCustomerInfo.addressDetail = address
     state.onEditCustomerInfo.note = note
   },
+  // Save guest info into the final selected data object
   'SAVE_CUSTOMER_INFO_TO_RESERVATION' (state) {
     state.reservationDetails.customerInfo = state.onEditCustomerInfo
     state.reservationDetails.email = state.onEditCustomerInfo.contactDetail.email
     state.reservationDetails.lastName = state.onEditCustomerInfo.contactDetail.lastName
   },
+  // Add one more room selection after user finish first room selection
   'ADD_ANOTHER_ROOM' (state) {
     state.currentStep = 0
     state.onSearchRoom = {
@@ -312,14 +330,17 @@ const mutations = {
       addOns: []
     }
   },
+  // Generate confirmation number
   'SET_CONFIRMATION_NUM' (state) {
     state.reservationDetails.confirmationNum = 'ARNSS' + dayjs().format('MMDDYYSSS')
   },
+  // Abandon change from edited room selection
   'DISCARD_CHANGES' (state) {
     state.isEditingRoom = false
     state.currentStep = state.previousStep
     state.previousStep = 1
   },
+  // Submit reservation data to database and complete booking
   'SUBMIT_RESERVATION' (state) {
     state.tempId = ''
     state.currentStep = 1
@@ -353,6 +374,7 @@ const mutations = {
     }
     state.currentSelectedRoomIdx = 0
   },
+  // Reset reservation data back to initial
   'RESET_RESERVED_INFO' (state) {
     state.reservationDetails = {
       createTime: '',
@@ -485,8 +507,6 @@ const actions = {
         prevStep: 's3'
       }
     })
-    // await router.go(0)
-    // commit('GO_NEXT_STEP')
   },
 
   //
@@ -495,7 +515,6 @@ const actions = {
   },
   async submitReservation ({ commit, dispatch, state }) {
     await dispatch('setConfirmationNum')
-    // await apiService.postData('/reservationList', state.reservationDetails)
     await firebaseApi.postData('reservationList', state.reservationDetails)
     await router.push({
       name: 'Completion',

@@ -58,7 +58,7 @@
         <div class="reservation__main flex--column flex--center">
           <div class="reservation__header">
             <div class="reservation--alert flex--row" v-if="currentStep <= 1">
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                    viewBox="0 0 24 24" xml:space="preserve">
                 <path d="M12,0C5.383,0,0,5.383,0,12c0,6.617,5.383,12,12,12c6.617,0,12-5.383,12-12C24,5.383,18.617,0,12,0z M12,4c1.654,0,3,1.346,3,3s-1.346,3-3,3S9,8.654,9,7S10.346,4,12,4z M15.5,20h-6C8.673,20,8,19.327,8,18.5S8.673,17,9.5,17H10v-3H9.5C8.673,14,8,13.327,8,12.5S8.673,11,9.5,11h4c0.827,0,1.5,0.673,1.5,1.5V17h0.5c0.827,0,1.5,0.673,1.5,1.5S16.327,20,15.5,20z"/>
               </svg>
@@ -67,7 +67,8 @@
               </span>
             </div>
             <div class="reservation__header--search flex--row" v-if="currentStep <= 1">
-              <el-popover
+              <div style="width: 100%;" class="flex--row">
+                <el-popover
                   placement="bottom"
                   width="320"
                   trigger="hover"
@@ -95,26 +96,22 @@
                       <p>Adults: {{bookingDetails.guests.numOfAdultGuests}}, Children: {{bookingDetails.guests.numOfChildrenGuest}}</p>
                     </div>
                   </div>
-              </el-popover>
-              <div class="flex--row search--col col-2 search--item">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                     viewBox="0 0 24 24" xml:space="preserve">
+                </el-popover>
+                <div class="flex--row search--col col-2 search--item">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                       viewBox="0 0 24 24" xml:space="preserve">
                   <path d="M5.5,5C5.224,5,5,4.776,5,4.5v-4C5,0.224,5.224,0,5.5,0S6,0.224,6,0.5v4C6,4.776,5.776,5,5.5,5z"/>
-                  <path d="M18.5,5C18.224,5,18,4.776,18,4.5v-4C18,0.224,18.224,0,18.5,0S19,0.224,19,0.5v4C19,4.776,18.776,5,18.5,5z"/>
-                  <path d="M24,8V5.5C24,3.57,22.43,2,20.5,2H20v2.5C20,5.327,19.327,6,18.5,6S17,5.327,17,4.5V2H7v2.5C7,5.327,6.327,6,5.5,6S4,5.327,4,4.5V2H3.5C1.57,2,0,3.57,0,5.5V8H24z"/>
-                  <path d="M0,9v11.5C0,22.43,1.57,24,3.5,24h17c1.93,0,3.5-1.57,3.5-3.5V9H0z M12,19c0,1.654-1.346,3-3,3s-3-1.346-3-3c0-0.276,0.224-0.5,0.5-0.5S7,18.724,7,19c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2H7.5C7.224,17,7,16.776,7,16.5S7.224,16,7.5,16H9c1.103,0,2-0.897,2-2s-0.897-2-2-2s-2,0.897-2,2c0,0.276-0.224,0.5-0.5,0.5S6,14.276,6,14c0-1.654,1.346-3,3-3s3,1.346,3,3c0,1.042-0.534,1.962-1.343,2.5C11.466,17.038,12,17.958,12,19z M17,21.5c0,0.276-0.224,0.5-0.5,0.5S16,21.776,16,21.5v-8.793l-1.146,1.146c-0.195,0.195-0.512,0.195-0.707,0s-0.195-0.512,0-0.707l2-2c0.144-0.143,0.357-0.186,0.545-0.108C16.878,11.115,17,11.298,17,11.5V21.5z"/>
+                    <path d="M18.5,5C18.224,5,18,4.776,18,4.5v-4C18,0.224,18.224,0,18.5,0S19,0.224,19,0.5v4C19,4.776,18.776,5,18.5,5z"/>
+                    <path d="M24,8V5.5C24,3.57,22.43,2,20.5,2H20v2.5C20,5.327,19.327,6,18.5,6S17,5.327,17,4.5V2H7v2.5C7,5.327,6.327,6,5.5,6S4,5.327,4,4.5V2H3.5C1.57,2,0,3.57,0,5.5V8H24z"/>
+                    <path d="M0,9v11.5C0,22.43,1.57,24,3.5,24h17c1.93,0,3.5-1.57,3.5-3.5V9H0z M12,19c0,1.654-1.346,3-3,3s-3-1.346-3-3c0-0.276,0.224-0.5,0.5-0.5S7,18.724,7,19c0,1.103,0.897,2,2,2s2-0.897,2-2s-0.897-2-2-2H7.5C7.224,17,7,16.776,7,16.5S7.224,16,7.5,16H9c1.103,0,2-0.897,2-2s-0.897-2-2-2s-2,0.897-2,2c0,0.276-0.224,0.5-0.5,0.5S6,14.276,6,14c0-1.654,1.346-3,3-3s3,1.346,3,3c0,1.042-0.534,1.962-1.343,2.5C11.466,17.038,12,17.958,12,19z M17,21.5c0,0.276-0.224,0.5-0.5,0.5S16,21.776,16,21.5v-8.793l-1.146,1.146c-0.195,0.195-0.512,0.195-0.707,0s-0.195-0.512,0-0.707l2-2c0.144-0.143,0.357-0.186,0.545-0.108C16.878,11.115,17,11.298,17,11.5V21.5z"/>
                 </svg>
-                <div class="flex--column flex--center">
-                  <span>Dates</span>
-                  <v-date-picker
-                    mode="range"
-                    is-required
-                    class="flex--row"
-                    :input-props="{
-                        class: 'date-picker-input'
-                    }"
-                    v-model="bookingDetails.date"
-                    :disabled-dates="[
+                  <div class="flex--column flex--center">
+                    <span>Dates</span>
+                    <v-date-picker
+                      is-required
+                      is-range
+                      v-model="bookingDetails.date"
+                      :disabled-dates="[
                       {
                         start: new Date(new Date().setFullYear(new Date().getFullYear() - 1000)),
                         end: new Date( new Date().setDate( new Date().getDate() + 1 ))
@@ -124,13 +121,31 @@
                         end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
                       }
                     ]"
-                  />
+                    >
+                      <template v-slot="{ inputValue, inputEvents }">
+                        <div class="date flex--row">
+                          <input
+                            :value="inputValue.start"
+                            v-on="inputEvents.start"
+                          />
+                          <span> - </span>
+                          <input
+                            :value="inputValue.end"
+                            v-on="inputEvents.end"
+                          >
+                        </div>
+                      </template>
+                    </v-date-picker>
+                  </div>
                 </div>
               </div>
-              <div class="col-3">
-                <button @click="setSearchChoice">
-                  SEARCH
-                </button>
+              <el-divider></el-divider>
+              <div style="width: 100%; flex-direction: row-reverse;" class="flex--row">
+                <div class="col-3">
+                  <button @click="setSearchChoice" class="btn-solid-md">
+                    SEARCH
+                  </button>
+                </div>
               </div>
             </div>
             <div class="reservation__header--breadcrumb flex--column" v-show="currentStep >= 1">
@@ -166,7 +181,7 @@
     </section>
     <checkout-footer/>
     <div class="button-banner--mobile" v-show="currentStep >= 3">
-      <button @click="addAnotherRoom">ADD ROOM</button>
+      <button @click="addAnotherRoom" class="btn-solid-md">ADD ROOM</button>
     </div>
   </div>
 </template>

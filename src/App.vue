@@ -3,25 +3,33 @@
     <router-view/>
   </main>
 </template>
+<script>
+import lozad from 'lozad'
+export default {
+  mounted () {
+    const el = document.querySelectorAll('img')
+    const observer = lozad(el, {
+      rootMargin: '10px',
+      threshold: 0.1,
+      enableAutoReload: true
+    })
+    observer.observe()
+  }
+}
+</script>
 <style lang="scss">
   @import 'styles/app';
   #app {
-    /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-    font-family: 'Crimson Text', serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #3d405b;
   }
   * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
     margin: 0;
   }
-  body {
-    background-color: #f4f1de;
-    /*background-color: #b8b08d;*/
-  }
-  a {
-    color: #3d405b;
+  *::before, *::after {
+    box-sizing: border-box;
   }
 </style>

@@ -3,68 +3,68 @@
     <form @submit.prevent="handleSubmit(onSubmit)">
       <div class="guest-details__body">
         <div class="guest-details__content">
-          <div class="information--contact page-content--header">
-            <h4>Contact Information</h4>
-            <div class="flex--row">
+          <div class="information--contact">
+            <h4 class="content__title">Contact Information</h4>
+            <div class="flex--column">
               <ValidationProvider
                 rules="required|alpha_spaces"
                 vid="firstName"
                 name="First name"
                 v-slot="{ errors }"
-                class="form--col flex--row"
+                class="form--col flex--row input__text sm alert-message"
               >
                 <label for="firstName">First Name*</label>
                 <input type="text" id="firstName" v-model="customerInfo.contactDetail.firstName" required>
-                <span class="alert-message">{{errors[0]}}</span>
+                <span>{{errors[0]}}</span>
               </ValidationProvider>
               <ValidationProvider
                 rules="required|alpha"
                 v-slot="{ errors }"
                 vid="lastName"
                 name="Last name"
-                class="form--col flex--row"
+                class="form--col flex--row input__text sm alert-message"
               >
                 <label for="lastName">Last Name*</label>
                 <input type="text" id="lastName" v-model="customerInfo.contactDetail.lastName" required>
-                <span class="alert-message">{{errors[0]}}</span>
+                <span>{{errors[0]}}</span>
               </ValidationProvider>
               <ValidationProvider
                 rules="required|regexPhoneNum"
                 v-slot="{ errors }"
                 vid="phoneNum"
                 name="Phone number"
-                class="form--col flex--row"
+                class="form--col flex--row input__text sm alert-message"
               >
                 <label for="phoneNum">Phone Number*</label>
                 <input type="text" id="phoneNum" placeholder="Start from area code(+)" v-model="customerInfo.contactDetail.phoneNum">
-                <span class="alert-message">{{errors[0]}}</span>
+                <span>{{errors[0]}}</span>
               </ValidationProvider>
               <ValidationProvider
                 rules="required|regexEmail"
                 v-slot="{ errors }"
                 vid="email"
                 name="E-mail address"
-                class="form--col flex--row"
+                class="form--col flex--row input__text sm alert-message"
               >
                 <label for="email">Email Address*</label>
                 <input type="email" id="email" v-model="customerInfo.contactDetail.email" required>
-                <span class="alert-message">{{errors[0]}}</span>
+                <span>{{errors[0]}}</span>
               </ValidationProvider>
             </div>
           </div>
-          <div class="information--address page-content--header">
-            <h4>Address</h4>
-            <div class="flex--row">
+          <div class="information--address">
+            <h4 class="content__title">Address</h4>
+            <div class="flex--column">
               <ValidationProvider
                 rules="required|regexAddress"
                 v-slot="{errors}"
                 vid="address"
                 name="Address"
-                class="flex--row form--col"
+                class="flex--row form--col input__text lg alert-message"
               >
                 <label for="address">Address*</label>
                 <input type="text" id="address" v-model="customerInfo.addressDetail.address" required>
-                <span class="alert-message">{{errors[0]}}</span>
+                <span>{{errors[0]}}</span>
               </ValidationProvider>
               <div class="flex--row">
                 <ValidationProvider
@@ -72,26 +72,26 @@
                   v-slot="{errors}"
                   vid="city"
                   name="City"
-                  class="flex--row form--col-sub"
+                  class="flex--row form--col input__text sm alert-message"
                 >
                   <label for="city">City*</label>
                   <input type="text" id="city" v-model="customerInfo.addressDetail.city" required>
-                  <span class="alert-message">{{errors[0]}}</span>
+                  <span>{{errors[0]}}</span>
                 </ValidationProvider>
                 <ValidationProvider
                   rules="required"
                   v-slot="{errors}"
                   vid="country"
                   name="Country"
-                  class="flex--row form--col-sub"
+                  class="flex--row form--col input__select alert-message"
                 >
                   <label for="country">Country*</label>
                   <select v-model="customerInfo.addressDetail.country" id="country" required>
                     <option v-for="country in countries" :key="country.code" :value="country.name">{{country.name}}</option>
                   </select>
-                  <span class="alert-message">{{errors[0]}}</span>
+                  <span>{{errors[0]}}</span>
                 </ValidationProvider>
-                <div class="flex--row form--col-sub">
+                <div class="flex--row form--col input__text sm">
                   <label for="zipCode">Zip/Postal Code</label>
                   <input type="text" id="zipCode" v-model="customerInfo.addressDetail.zipCode">
                 </div>
@@ -99,8 +99,8 @@
             </div>
           </div>
           <el-divider/>
-          <div class="information--note page-content--header">
-            <h4>Additional Details and Special Requests</h4>
+          <div class="information--note input__textarea">
+            <h4 class="content__title">Additional Details and Special Requests</h4>
             <textarea
               name="comments"
               cols="30"
@@ -110,8 +110,8 @@
             />
           </div>
           <el-divider/>
-          <div class="information--payment page-content--header">
-            <h4>Payment Information (Future)</h4>
+          <div class="information--payment">
+            <h4 class="content__title">Payment Information (Future)</h4>
             <div class="flex--row">
               <img src="@/assets/images/checkout/credit-card/Visa.png" alt="Visa logo" width="45px" height="30px">
               <img src="@/assets/images/checkout/credit-card/Amex.png" alt="Amex logo" width="45px" height="30px">
@@ -120,19 +120,19 @@
               <img src="@/assets/images/checkout/credit-card/MasterCard.png" alt="MasterCard logo" width="45px" height="30px">
             </div>
             <div class="flex--row">
-              <div class="form--col flex--row">
+              <div class="flex--column input__text sm alert-message">
                 <label for="cardNum">Card Number*</label>
                 <input type="text" id="cardNum" disabled required>
               </div>
-              <div class="form--col flex--row">
+              <div class="flex--column input__text sm alert-message">
                 <label for="expirationDate">Expiration Date*</label>
                 <input type="text" id="expirationDate" placeholder="(MM/YY)" disabled required>
               </div>
-              <div class="form--col flex--row">
+              <div class="flex--column input__text sm alert-message">
                 <label for="cvv">CVV*</label>
                 <input type="text" id="cvv" disabled required>
               </div>
-              <div class="form--col flex--row">
+              <div class="flex--column input__text sm alert-message">
                 <label for="name">Name on Card*</label>
                 <input type="text" id="name" disabled required>
               </div>
@@ -146,8 +146,8 @@
           </div>
         </div>
       </div>
-      <div class="flex--row buttons">
-        <button type="submit">CONTINUE</button>
+      <div class="flex--row button">
+        <button type="submit" class="btn-solid-md">CONTINUE</button>
       </div>
     </form>
   </ValidationObserver>

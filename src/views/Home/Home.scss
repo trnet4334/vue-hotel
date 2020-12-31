@@ -1,63 +1,24 @@
 @import '../../styles/app';
 
-.home {
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  &__slogan {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    &--icon {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 50px;
-    }
-    &--content {
-      h1{
-        font-size: 2.3rem;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-      p{
-        font-size: 1.3rem;
-        text-wrap: normal;
-        width: 60%;
-        margin: 0 auto;
-      }
-    }
-  }
-}
 .room {
   width: 100%;
   height: auto;
   margin-bottom: 15vh;
   justify-content: space-evenly;
   align-items: center;
-  &--image {
-    width: 35%;
-    height: 450px;
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 50%;
-    }
-  }
   &--type {
     width: 35%;
     align-items: flex-start;
-    & ul {
+    ul {
       width: 250px;
       text-align: start;
       padding-left: 0;
       margin-bottom: 50px;
-      & li {
+      li {
         list-style-type: none;
         font-size: 1.6rem;
         padding: 0;
-        & a {
+        a {
           text-decoration: none;
           color: #3d405b;
           &:visited {
@@ -69,27 +30,6 @@
           padding-left: 15px;
           cursor: pointer;
         }
-      }
-    }
-    .room--link {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-right: 20px;
-      text-decoration: none;
-      position: relative;
-      color: #e07a5f;
-      &:visited {
-        color: #e07a5f;
-      }
-      &:hover:after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 3px;
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        background-color: #e07a5f;
       }
     }
   }
@@ -109,43 +49,9 @@
   height: auto;
   margin-bottom: 15vh;
   justify-content: space-evenly;
+  align-items: center;
   &__content {
     width: 37.5%;
-  }
-  &__image {
-    width: 35%;
-    height: 450px;
-    & img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 50%;
-    }
-  }
-  & button {
-    margin: 40px auto;
-    padding: 10px 30px;
-    background-color: transparent;
-    border: 2px solid #3d405b;
-    border-radius: 5px;
-    & a {
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #3d405b;
-      text-decoration: none;
-      letter-spacing: 3px;
-      &:visited {
-        color: #3d405b;
-      }
-    }
-    &:hover {
-      background-color: #3d405b;
-      cursor: pointer;
-      & a {
-        color: #ffffff;
-      }
-    }
   }
 }
 .spa {
@@ -164,57 +70,30 @@
     z-index: -1;
     top: 0;
     left: 0;
-    //filter: blur(1.5px) opacity(0.95);
   }
   &__container {
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: space-evenly;
+    color: #ffffff;
     &--slogan {
       width: 35%;
-      height: fit-content;
-      & h1 {
+      height: 100%;
+      h2 {
         font-size: 3.3rem;
         font-weight: bold;
         line-height: 3.5rem;
-        color: #ffffff;
         width: 35vw;
         padding: 0 2.5vw;
-        text-wrap: normal;
+        word-wrap: normal;
         text-align: start;
       }
     }
     &--content {
       width: 40%;
-      height: fit-content;
+      height: 100%;
       padding: 0 2.5vw;
-      color: #ffffff;
-      & button {
-        margin: 20px auto;
-        padding: 20px 80px;
-        background-color: transparent;
-        border: 2px solid #ffffff;
-        border-radius: 5px;
-        & a {
-          font-family: inherit;
-          font-weight: 600;
-          font-size: 1rem;
-          color: #ffffff;
-          text-decoration: none;
-          letter-spacing: 3px;
-          &:visited {
-            color: #ffffff;
-          }
-        }
-        &:hover {
-          background-color: #ffffff;
-          cursor: pointer;
-          & a {
-            color: #3d405b;
-          }
-        }
-      }
     }
   }
 }
@@ -223,33 +102,15 @@
   margin-bottom: 15vh;
   &__body {
     justify-content: space-evenly;
-    .image {
-      width: 95%;
-      height: 450px;
-      margin: 20px auto;
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
-    }
     .content {
       width: 90%;
       margin: 0 auto;
-      & a {
-        font-size: 1.3rem;
-        color: #3d405b;
-        &:visited {
-          color: #3d405b;
-        }
-      }
     }
   }
   &__header {
     width: 65%;
     margin: 20px auto;
-    & h1, p {
+    h2, p {
       text-align: center;
     }
   }
@@ -262,57 +123,25 @@
   width: 100%;
   position: relative;
   margin-bottom: 15vh;
-  &__header {
-    & a {
-      font-size: 1.3rem;
-      margin: 15px auto;
-      &:visited {
-        color: #3d405b;
-      }
-    }
-  }
   &__body {
     justify-content: space-evenly;
     .content {
       width: 30%;
       align-items: center;
-      & p {
+      p {
         width: 90%;
         margin: 0 auto;
-      }
-      .image {
-        width: 85%;
-        height: 325px;
-        & img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50% 50%;
-        }
       }
     }
   }
 }
 
 @include respond-below(phone) {
-  .home__slogan--content {
-    & h1 {
-      font-size: 2rem;
-    }
-    & p {
-      width: 90%;
-    }
-  }
   .room {
-    &--image {
-      width: 90%;
-      height: 350px;
-      margin-bottom: 20px;
-    }
     &--type {
       width: 85%;
       margin: 0 auto;
-      & ul li {
+      ul li {
         font-size: 1.3rem;
       }
     }
@@ -326,18 +155,14 @@
     &__content {
       width: 85%;
     }
-    &__image {
-      width: 90%;
-      height: 350px;
-      margin-bottom: 20px;
-    }
   }
   .spa {
     height: auto;
     &__container {
       &--slogan {
         width: 100%;
-        & h1 {
+        height: auto;
+        h2 {
           font-size: 1.6rem;
           width: 95%;
           margin: 0 auto;
@@ -348,13 +173,9 @@
       &--content {
         width: 100%;
         height: auto;
-        & p {
+        p {
           width: 90%;
           margin: 0 auto;
-        }
-        & button {
-          padding: 10px 40px;
-          margin-bottom: 30px;
         }
       }
     }
@@ -366,11 +187,6 @@
     &__content {
       width: 90%;
       margin-bottom: 20px;
-    }
-    &__body {
-      .image {
-        height: 350px;
-      }
     }
   }
   .offers {
@@ -384,21 +200,11 @@
 }
 
 @include respond-between(phone, tablet) {
-  .home__slogan--content {
-    & p {
-      width: 85%;
-    }
-  }
   .room {
-    &--image {
-      width: 85%;
-      height: 325px;
-      margin-bottom: 20px;
-    }
     &--type {
       width: 75%;
       margin: 0 auto;
-      & ul li {
+      ul li {
         font-size: 1.4rem;
       }
     }
@@ -412,18 +218,14 @@
     &__content {
       width: 75%;
     }
-    &__image {
-      width: 85%;
-      height: 325px;
-      margin-bottom: 20px;
-    }
   }
   .spa {
     height: auto;
     &__container {
       &--slogan {
         width: 100%;
-        & h1 {
+        height: auto;
+        h2 {
           font-size: 1.9rem;
           width: 95%;
           margin: 0 auto;
@@ -434,13 +236,9 @@
       &--content {
         width: 100%;
         height: auto;
-        & p {
+        p {
           width: 90%;
           margin: 0 auto;
-        }
-        & button {
-          padding: 10px 40px;
-          margin-bottom: 30px;
         }
       }
     }
@@ -453,20 +251,12 @@
       width: 75%;
       margin-bottom: 20px;
     }
-    &__body {
-      .image {
-        height: 325px;
-      }
-    }
   }
   .offers {
     &__body{
       .content {
         width: 87.5%;
         margin-bottom: 30px;
-        .image {
-          height: 275px;
-        }
       }
     }
   }
@@ -474,26 +264,21 @@
 
 @include  respond-between(tablet, tablet-lg) {
   .room {
-    &--image {
-      width: 75%;
-      height: 325px;
-      margin-bottom: 20px;
-    }
     &--type {
       width: 72.5%;
       margin: 0 auto;
-      & ul li {
+      ul li {
         font-size: 1.5rem;
       }
     }
   }
   .carousel {
-    height: auto;
+    height: 45vh;
   }
   .spa {
     &__container {
       &--slogan {
-        & h1 {
+        h2 {
           font-size: 2.8rem;
           line-height: 3.5rem;
           width: 95%;
@@ -503,11 +288,8 @@
       }
       &--content {
         width: 55%;
-        & p {
+        p {
           width: 100%;
-        }
-        & button {
-          padding: 15px 50px;
         }
       }
     }
@@ -520,20 +302,12 @@
       width: 75%;
       margin-bottom: 20px;
     }
-    &__body {
-      .image {
-        height: 325px;
-      }
-    }
   }
   .offers {
     &__body{
       .content {
         width: 82.5%;
         margin-bottom: 30px;
-        .image {
-          height: 300px;
-        }
       }
     }
   }
@@ -541,24 +315,195 @@
 
 @include respond-between(tablet, desktop) {
   .room {
-    &--image {
-      width: 45%;
-      height: 450px;
-    }
     &--type {
       width: 30%;
     }
   }
-  .events__body {
-    .image {
-      height: 375px;
+}
+
+@include ipad-pro-portrait(ipadpro-sm-w, ipadpro-sm-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    &--type {
+      margin: unset;
+      width: 40%;
+    }
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    &__content {
+      width: 40%;
+    }
+  }
+  .spa {
+    height: 57.5vh;
+    &__container {
+      &--slogan {
+        width: 40%;
+        h2 {
+          text-align: start;
+        }
+      }
+      &--content {
+        width: 55%;
+        height: auto;
+        p {
+          width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  .events {
+    &__header {
+      width: 80%;
+    }
+    &__content {
+      width: 50%;
+      margin-bottom: 20px;
     }
   }
   .offers {
     &__body{
       .content {
-        width: 67.5%;
-        margin-bottom: 30px;
+        width: 50%;
+      }
+    }
+  }
+  .carousel {
+    display: block;
+    height: 45vh;
+  }
+}
+
+@include ipad-pro-landscape(ipadpro-sm-h, ipadpro-sm-h) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    &--type {
+      margin: unset;
+      width: 40%;
+    }
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    &__content {
+      width: 40%;
+    }
+  }
+  .spa {
+    height: 60vh;
+  }
+  .events {
+    &__header {
+      width: 80%;
+    }
+    &__content {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
+    }
+  }
+  .carousel {
+    display: block;
+    height: 80vh;
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-md-w, ipadpro-md-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+    &--type {
+      margin: unset;
+    }
+  }
+  .carousel {
+    height: 45vh;
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 42.5vw;
+      width: 42.5vw;
+    }
+  }
+  .spa {
+    height: 50vh;
+  }
+  .events {
+    &__content {
+      width: 50%;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@include ipad-pro-portrait(ipadpro-lg-w, ipadpro-lg-w) {
+  .room {
+    justify-content: space-evenly;
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+    &--type {
+      margin: unset;
+    }
+  }
+  .carousel {
+    height: 45vh;
+  }
+  .dining {
+    .image-fluid.xl {
+      height: 40vw;
+      width: 40vw;
+    }
+  }
+  .spa {
+    height: 50vh;
+  }
+  .events {
+    &__content {
+      width: 50%;
+    }
+  }
+  .offers {
+    &__body{
+      .content {
+        width: 50%;
       }
     }
   }

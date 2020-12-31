@@ -2,11 +2,9 @@
   <div class="home">
     <Navbar :isOnHomepage="isOnHomepage"/>
     <Header/>
-    <section class="home flex--column">
-      <div class="home__slogan flex--column flex--center">
-        <div class="home__slogan--icon">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-               viewBox="0 0 24 24" style="enable-background:new 0 0 24 24; fill: #3d405b;" xml:space="preserve">
+    <section class="slogan flex--column flex--center">
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+               viewBox="0 0 24 24" xml:space="preserve">
             <path d="M23.5,15h-23C0.224,15,0,15.224,0,15.5S0.224,16,0.5,16h23c0.276,0,0.5-0.224,0.5-0.5S23.776,15,23.5,15z"/>
             <path d="M11,17.5c0-0.276-0.224-0.5-0.5-0.5h-4C6.224,17,6,17.224,6,17.5S6.224,18,6.5,18h4C10.776,18,11,17.776,11,17.5z"/>
             <path d="M18.5,18h-4c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h4c0.276,0,0.5-0.224,0.5-0.5S18.776,18,18.5,18z"/>
@@ -30,34 +28,40 @@
             <path d="M14.25,4.737c0.079,0.045,0.165,0.067,0.25,0.067c0.172,0,0.341-0.089,0.433-0.25l1-1.732c0.139-0.239,0.057-0.545-0.183-0.683c-0.238-0.136-0.545-0.057-0.683,0.183l-1,1.732C13.929,4.293,14.011,4.599,14.25,4.737z"/>
             <circle cx="4.5" cy="17.5" r="0.5"/>
           </svg>
-        </div>
-        <div class="home__slogan--content flex--column flex--center">
-          <h1>Let Your Soul Follow the Nature</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At autem cupiditate dolor eaque ex fuga inventore, ipsa molestiae perspiciatis sunt? A excepturi explicabo natus nisi nobis omnis, placeat quod ut.</p>
-        </div>
-      </div>
+      <h2 class="page__subtitle">Let Your Soul Follow the Nature</h2>
+      <span>
+        <p>- John S.</p>
+        <p>Newport Beach, CA</p>
+      </span>
     </section>
     <section class="room flex--row">
-      <div class="room--image">
-        <img
-          src="@/assets/images/homepage/room-img.jpg"
-          alt="Room"
-        >
+      <div class="image-fluid xl">
+        <image-box :imageName="imageUrl[0]"/>
       </div>
-      <div class="room--type flex--column page-content--header">
-        <h1>Stay with us</h1>
-        <h4>Beautifully set amidst the wonderful nature around.</h4>
+      <div class="room--type flex--column">
+        <h2 class="page__subtitle">Stay with us</h2>
+        <h4 class="content__title">
+          Beautifully set amidst the wonderful nature around.
+        </h4>
         <br>
         <ul>
-          <li><router-link to="/rooms/classic-guestroom">Classic Guestroom</router-link></li>
+          <li>
+            <router-link to="/rooms/classic-guestroom">Classic Guestroom</router-link>
+          </li>
           <el-divider/>
-          <li><router-link to="/rooms/deluxe-guestroom">Deluxe Guestroom</router-link></li>
+          <li>
+            <router-link to="/rooms/deluxe-guestroom">Deluxe Guestroom</router-link>
+          </li>
           <el-divider/>
-          <li><router-link to="/rooms/the-spa-suite">The Spa Suite</router-link></li>
+          <li>
+            <router-link to="/rooms/the-spa-suite">The Spa Suite</router-link>
+          </li>
           <el-divider/>
-          <li><router-link to="/rooms/luxury-suite">Luxury Suite</router-link></li>
+          <li>
+            <router-link to="/rooms/luxury-suite">Luxury Suite</router-link>
+          </li>
         </ul>
-        <router-link to="/rooms" class="room--link">VIEW DETAIL</router-link>
+        <router-link to="/rooms" class="link colored no-underline">VIEW DETAIL</router-link>
       </div>
     </section>
     <section class="carousel">
@@ -70,112 +74,137 @@
           <template v-slot:preloader>
             <flux-preloader />
           </template>
-
-          <template v-slot:controls>
-            <flux-controls />
-          </template>
         </vue-flux>
       </div>
     </section>
     <section class="dining flex--row">
       <div class="dining__content flex--column">
-        <div class="page-content--header">
-          <h1>Dine with stunning view</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur beatae culpa facilis ipsum laudantium, nihil porro quam quod sapiente tenetur velit. Aliquam aliquid dolor enim est iste nisi quisquam!</p>
-        </div>
-        <button><router-link to="/dining">DINE WITH US</router-link></button>
+        <h2 class="page__subtitle">Dine with stunning view</h2>
+        <p class="content__description">
+          We offer few types of food, including western style and eastern style.
+          Especially, we have a front-row seat outside our dining place surrounded by stunning nature.
+          Delight in a 360-degree view of the canyon with handcrafted cocktails and sophisticated light-fare.
+        </p>
+        <br>
+        <p class="content__description">Reservations are recommended.</p>
+        <button class="btn-outline-md">
+          <router-link to="/dining">DINE WITH US</router-link>
+        </button>
       </div>
-      <div class="dining__image">
-        <img src="@/assets/images/homepage/dinning-img.jpg" alt="Dining">
+      <div class="image-fluid xl">
+        <image-box :imageName="imageUrl[1]"/>
       </div>
     </section>
     <section class="spa flex--column flex--center">
       <div class="spa__container flex--row">
-        <div class="spa__container--slogan">
-          <h1>Recover and relax with rejuvenating spa treatment</h1>
+        <div class="spa__container--slogan flex--column flex--center">
+          <h2>Recover and relax with rejuvenating spa treatment</h2>
         </div>
-        <div class="spa__container--content flex--column page-content--body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad facilis harum tempore! Beatae dolores eaque impedit non obcaecati? Accusantium, aliquam dolore earum ipsam iusto quo recusandae similique ullam unde vero? possimus, quidem reiciendis velit vero voluptas voluptates. Commodi doloribus natus perspiciatis quas saepe!</p>
+        <div class="spa__container--content flex--column flex--center">
+          <p class="content__description">
+            As our honorable guest at A Resort & Spa, please enjoy the complimentary use of our resort pools, fitness center,
+             bathrobes, slippers, and different kinds of herbal teas. With five private treatment rooms, there are several
+            treatments you can choose as you wish. Our reserved spots are limited, please make reservations as soon as possible.
+          </p>
           <br>
-          <button><router-link to="/spa-wellness">VIEW MORE</router-link></button>
+          <button class="btn-outline-lg">
+            <router-link to="/spa-wellness">VIEW MORE</router-link>
+          </button>
         </div>
       </div>
     </section>
     <section class="events flex--column flex--center">
-      <div class="events__header flex--column page-content--header">
-        <h1>Inspired Gatherings</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur ipsum labore nobis provident similique. Aspernatur cupiditate debitis iste quidem rem.</p>
+      <div class="events__header flex--column">
+        <h2 class="page__subtitle">Inspired Gatherings</h2>
+        <p class="content__description">
+          Combined with amazing view and fantastic cuisine, A Resort & Spa provide a
+          great place for o one-of-a-kind wedding or an unforgettable meeting.
+        </p>
       </div>
       <div class="events__body flex--row">
         <div class="flex--column events__content">
-          <div class="image">
-            <img src="@/assets/images/homepage/events-img.jpg" alt="Events">
+          <div class="image-fluid lg">
+            <image-box :imageName="imageUrl[2]"/>
           </div>
-          <div class="content page-content--body">
-            <h4>Meeting & Events</h4>
+          <div class="content">
+            <h4 class="image-label">Meeting & Events</h4>
             <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eum explicabo quidem.</p>
+            <p class="image-description">
+              Need a place for grouping an event or celebrating party? Make them real by
+              make an appointment with us.
+            </p>
             <br>
-            <router-link to="/events">Learn more</router-link>
+            <router-link to="/events" class="link">Learn more</router-link>
           </div>
         </div>
         <div class="flex--column events__content">
-          <div class="image">
-            <img src="@/assets/images/homepage/wedding-img.jpg" alt="Wedding">
+          <div class="image-fluid lg">
+            <image-box :imageName="imageUrl[3]"/>
           </div>
           <div class="content page-content--body">
-            <h4>Wedding</h4>
+            <h4 class="image-label">Wedding</h4>
             <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi at dolorum exercitationem!</p>
+            <p class="image-description">
+              Preparing a unforgettable wedding with us. Have the wedding you envisioned
+              from the moment you imagined.
+            </p>
             <br>
-            <router-link to="/wedding">Learn more</router-link>
+            <router-link to="/wedding" class="link">Learn more</router-link>
           </div>
         </div>
       </div>
     </section>
     <section class="offers">
       <div class="flex--column flex--center">
-        <div class="offers__header flex--column page-content--header">
-          <h1>Special Offers</h1>
-          <router-link to="/specials">VIEW ALL OFFERS</router-link>
+        <div class="flex--column">
+          <h2 class="page__subtitle">Special Offers</h2>
+          <br>
+          <router-link to="/specials" class="link">VIEW ALL OFFERS</router-link>
+          <br>
         </div>
         <div class="offers__body flex--row">
           <div class="content flex--column">
-            <div class="image">
-              <img src="@/assets/images/homepage/specials-1.jpg" alt="Spa">
+            <div class="image-fluid md">
+              <image-box :imageName="imageUrl[4]"/>
             </div>
             <br>
-            <div class="page-content--body">
-              <h4>Spa & Breakfast Package</h4>
+            <div>
+              <h4 class="image-label">Spa & Breakfast Package</h4>
               <br>
-              <p>Refresh your mind and bodies with a couples
+              <p class="image-description">
+                Refresh your mind and bodies with a couples
               massage, our classic spa treatment, or private in-room treatment, including one continental
-              breakfast in offer.</p>
+              breakfast in offer.
+              </p>
             </div>
           </div>
           <div class="content flex--column">
-            <div class="image">
-              <img src="@/assets/images/homepage/specials-2.jpg" alt="River">
+            <div class="image-fluid md">
+              <image-box :imageName="imageUrl[5]"/>
             </div>
             <br>
-            <div class="page-content--body">
-              <h4>Summertime Escape</h4>
+            <div>
+              <h4 class="image-label">Summertime Escape</h4>
               <br>
-              <p>It's easy to fall in love and free your soul through the stunning
+              <p class="image-description">
+                It's easy to fall in love and free your soul through the stunning
                 nature from your private deck. There're only few spots available for Deluxe Guestrooms and Luxury Suite.
-                Contact us to get the early deal as soon as possible.</p>
+                Contact us to get the early deal as soon as possible.
+              </p>
             </div>
           </div>
           <div class="content flex--column">
-            <div class="image">
-              <img src="@/assets/images/homepage/specials-3.jpg" alt="Adventure">
+            <div class="image-fluid md">
+              <image-box :imageName="imageUrl[6]"/>
             </div>
             <br>
-            <div class="page-content--body">
-              <h4>Nature Adventure Package</h4>
+            <div>
+              <h4 class="image-label">Nature Adventure Package</h4>
               <br>
-              <p>Experience with one-day hike with our local hiking
-              guides to create the forgettable memories in this trip that best suits your desires.</p>
+              <p class="image-description">
+                Experience with one-day hike with our local hiking
+              guides to create the forgettable memories in this trip that best suits your desires.
+              </p>
             </div>
           </div>
         </div>
@@ -190,7 +219,7 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import Header from '@/components/header/Header.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 import {
   VueFlux,
   FluxControls,
@@ -205,16 +234,26 @@ export default {
     Navbar,
     Header,
     SignupBanner,
+    ImageBox,
     Footer
   },
   data () {
     return {
       isOnHomepage: true,
+      imageUrl: [
+        ['homepage/room-img.jpg', 'Room'],
+        ['homepage/dinning-img.jpg', 'Dining'],
+        ['homepage/events-img.jpg', 'Events'],
+        ['homepage/wedding-img.jpg', 'Wedding'],
+        ['homepage/specials-1.jpg', 'Spa'],
+        ['homepage/specials-2.jpg', 'River'],
+        ['homepage/specials-3.jpg', 'Adventure']
+      ],
       options: {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
-        autoplay: false,
+        autoplay: true,
         bindKeys: false,
         delay: 3000,
         enableGestures: false,
@@ -234,22 +273,11 @@ export default {
         'blinds3d',
         'blocks2',
         'book',
-        'cube',
-        'round2',
         'swipe',
         'warp',
         'wave'
       ]
     }
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
   }
 }
 </script>

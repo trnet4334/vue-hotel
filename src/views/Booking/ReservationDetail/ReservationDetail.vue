@@ -1,13 +1,13 @@
 <template>
   <section class="activity flex--column">
     <checkout-navbar></checkout-navbar>
-    <div class="activity-container page-content--header flex--column">
-      <h1>Latest Activity</h1>
+    <div class="activity-container flex--column">
+      <h1 class="page__title">Latest Activity</h1>
       <div>
         <div class="flex--row activity-content">
           <div class="flex--row filter">
             <label for="types">Filters:</label>
-            <div class="flex--row filter-select">
+            <div class="flex--row filter-select input__select">
               <select name="types" id="types" v-model="type">
                 <option value="All">All Types</option>
                 <option value="Upcoming">Upcoming/Completed</option>
@@ -28,7 +28,7 @@
           </div>
         </div>
         <el-divider/>
-        <p>We can only show up to <b>12 months</b> of past activity.</p>
+        <p class="content__description">We can only show up to <b>12 months</b> of past activity.</p>
       </div>
       <div class="activity-items-wrapper">
         <ul

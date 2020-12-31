@@ -178,9 +178,6 @@
   .type {
     margin-left: 0;
     margin-bottom: 15px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     span {
       font-size: 1.3rem;
@@ -191,6 +188,10 @@
   }
   .option {
     margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    width: 100%;
     &-item {
       svg {
         width: 15px;
@@ -230,5 +231,12 @@
   }
   .option {
     margin-bottom: 15px;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    &-item {
+      flex-basis: unset;
+      margin-right: 15px;
+    }
   }
 }

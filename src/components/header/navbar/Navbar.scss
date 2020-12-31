@@ -5,7 +5,7 @@
   justify-content: center;
   height: 85px;
   width: 100%;
-  position: fixed;
+  position: relative;
   z-index: 15;
   &__container {
     padding: 10px 2vw;
@@ -16,7 +16,7 @@
     .link {
       position: relative;
       align-items: center;
-      & a {
+      a {
         text-decoration: none;
         align-items: center;
         padding: 0 15px;
@@ -24,7 +24,7 @@
           color: inherit;
         }
       }
-      & span {
+      span {
         font-size: 1.3rem;
         font-weight: 600;
         padding: 0 5px;
@@ -42,7 +42,7 @@
       position: relative;
       transform: rotate(0deg);
       transition: .5s ease-in-out;
-      & span {
+      span {
         position: absolute;
         display: block;
         left: 0;
@@ -53,13 +53,13 @@
         transform: rotate(0deg);
         transition: .25s ease-in-out;
       }
-      & span:nth-of-type(1) {
+      span:nth-of-type(1) {
         top: 8px;
       }
-      & span:nth-of-type(2) {
+      span:nth-of-type(2) {
         top: 16px;
       }
-      & span:nth-of-type(3) {
+      span:nth-of-type(3) {
         top: 24px;
       }
     }
@@ -75,21 +75,40 @@
     .icon-color {
       fill: #3d405b;
     }
+    &.name {
+      a {
+        text-decoration: none;
+      }
+      span {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #3d405b;
+      }
+      span:nth-of-type(2) {
+        display: none;
+      }
+    }
+  }
+  &.mobile {
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    display: none;
   }
 }
 .navbar--scroll {
-  background-color: #ffffff;
   height: 60px;
-  & span {
-    color: #3d405b;
+  &.mobile {
+    display: block;
   }
 }
 .navbar--homepage {
-  & span {
+  position: fixed;
+  span {
     color: #ffffff;
   }
   .icon-color {
-    & path, circle {
+    path, circle {
       fill: #ffffff;
     }
   }
@@ -97,12 +116,18 @@
     background-color: #ffffff;
   }
 }
+.nav-mobile.navbar {
+  background-color: transparent;
+  .logo span {
+    color: #ffffff;
+  }
+}
 .menu-display {
-  & span {
+  span {
     color: #ffffff;
   }
   .icon-color {
-    & path, circle {
+    path, circle {
       fill: #ffffff;
     }
   }
@@ -114,15 +139,15 @@
   }
 }
 .menuBtn.button-open {
-  & span:nth-child(1) {
+  span:nth-child(1) {
     top: 16px;
     transform: rotate(-135deg);
   }
-  & span:nth-child(2) {
+  span:nth-child(2) {
     opacity: 0;
     left: -55px;
   }
-  & span:nth-child(3) {
+  span:nth-child(3) {
     top: 16px;
     transform: rotate(135deg);
   }
@@ -134,96 +159,13 @@
   display: none;
 }
 
-/deep/ .el-dialog__body {
-  display: flex;
-  justify-content: space-around;
-}
-/deep/ .el-dialog {
-  width: 70%;
-}
-.dialog-content {
-  padding-bottom: 30px;
-  &.block-1 {
-    flex-basis: 45%;
-    h2 {
-      font-size: 3rem !important;
-    }
-    h4 {
-      font-size: 1.6rem !important;
-    }
-    p {
-      font-size: 1.2rem !important;
-      line-height: 2.4rem !important;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0 !important;
-      font-size: 1.2rem !important;
-      li span{
-        color: #e07a5f !important;
-      }
-    }
-  }
-  &.block-2 {
-    flex-basis: 30%;
-    label {
-      font-size: 1.2rem !important;
-      line-height: 2.8rem !important;
-      font-weight: 700;
-    }
-    button {
-      padding: 12px 12px;
-      font-size: 1.3rem;
-      margin-top: 10px;
-      border: none;
-      background-color: #283845;
-      color: #ffffff;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    span {
-      font-size: 1.2rem;
-    }
-    /deep/ .date-picker-input {
-      font-family: inherit;
-      background-color: transparent;
-      border: 1px solid #202c39;
-      font-size: 1.2rem;
-      line-height: 2.5rem;
-      padding-left: 10px;
-      text-align: start;
-      outline: none;
-      width: 100%;
-      color: #3d405b;
-    }
-    .guest-content {
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 5px;
-    }
-    /deep/ .el-input__inner {
-      font-size: 1.2rem;
-    }
-    /deep/ .el-input-number__increase, /deep/ .el-input-number__decrease {
-      background-color: transparent;
-      height: 100%;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
 @include respond-below(phone) {
   .navbar {
     &__container {
       .link {
-        & a {
+        a {
           padding: 0 10px;
-          & span {
+          span {
             display: none;
             width: 0;
           }
@@ -234,28 +176,14 @@
         margin-right: 10px;
       }
     }
-  }
-  /deep/ .el-dialog {
-    width: 95%;
-  }
-  /deep/ .el-dialog__body {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  /deep/ .el-divider--horizontal {
-    margin: 7.5px 0;
-  }
-  .dialog-content {
-    padding-bottom: 5px;
-    &.block-1 {
-      .info {
+    .logo.name {
+      span:nth-of-type(1) {
         display: none;
       }
-    }
-    &.block-2 {
-      .guest-content {
-        flex-direction: column;
-        align-items: flex-start;
+      span:nth-of-type(2) {
+        display: block;
+        font-size: 2.5rem;
+        padding-left: 20px;
       }
     }
   }
@@ -265,9 +193,9 @@
   .navbar {
     &__container {
       .link {
-        & a {
+        a {
           padding: 0 10px;
-          & span {
+          span {
             display: none;
             width: 0;
           }
@@ -277,44 +205,5 @@
         margin-left: 10px;
       }
     }
-  }
-  /deep/ .el-dialog {
-    width: 80%;
-  }
-  /deep/ .el-dialog__body {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  /deep/ .el-divider--horizontal {
-    margin: 7.5px 0;
-  }
-  .dialog-content {
-    padding-bottom: 5px;
-    &.block-1 {
-      .info {
-        display: none;
-      }
-    }
-    &.block-2 {
-      /deep/ .date-picker-input {
-        width: 250px;
-      }
-      div:first-of-type {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-  }
-}
-
-@include respond-between(tablet, tablet-lg) {
-  /deep/ .el-dialog {
-    width: 90%;
-  }
-}
-
-@include respond-between(tablet-lg, desktop) {
-  /deep/ .el-dialog {
-    width: 85%;
   }
 }

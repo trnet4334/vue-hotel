@@ -1,27 +1,27 @@
 <template>
   <div class="flex--column">
     <div class="flex--row row">
-      <span><u>Guest Name</u></span>
+      <span>Guest Name</span>
       <p>{{customer.fullName}}</p>
     </div>
     <div class="flex--row row">
-      <span><u>Email Address</u></span>
+      <span>Email Address</span>
       <p>{{customer.email}}</p>
     </div>
     <div class="flex--row row">
-      <span><u>Phone Number</u></span>
+      <span>Phone Number</span>
       <p>{{customer.phoneNum}}</p>
     </div>
     <div class="flex--row row">
-      <span><u>Address</u></span>
+      <span>Address</span>
       <p>{{customer.address}}</p>
     </div>
     <div class="flex--row row">
-      <span><u>Payment Method</u></span>
+      <span>Payment Method</span>
       <p>Pay at Check-in</p>
     </div>
     <div class="flex--row row">
-      <span><u>Special Request</u></span>
+      <span>Special Request</span>
       <p>{{customer.note}}</p>
     </div>
   </div>

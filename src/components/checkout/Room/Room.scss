@@ -7,7 +7,7 @@
   padding: 15px;
   .col-1 {
     flex-basis: 35%;
-    & img {
+    img {
       width: 100%;
     }
   }
@@ -17,23 +17,23 @@
   }
   &--introduction {
     text-align: start;
-    & h4 {
+    h4 {
       font-size: 1.4rem;
     }
-    & h5 {
+    h5 {
       font-size: 1rem;
       padding: 5px 0;
     }
-    & span {
+    span {
       padding-top: 10px;
       text-decoration: underline;
       cursor: pointer;
     }
   }
-  & span {
+  span {
     font-size: 1.2rem;
   }
-  & p {
+  p {
     font-size: 1.1rem;
   }
 }
@@ -48,14 +48,20 @@
     }
     .col-1 {
       width: 90%;
+      flex-basis: unset;
       margin: 20px auto;
+      height: 47.5vw;
+      overflow-y: hidden;
+    }
+    .col-2 {
+      flex-basis: unset;
     }
     &--introduction {
       text-align: start;
-      & h4 {
+      h4 {
         font-size: 1.25rem;
       }
-      & h5 {
+      h5 {
         font-size: 1rem;
         padding: 5px 0;
       }

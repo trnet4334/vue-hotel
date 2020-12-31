@@ -2,19 +2,20 @@ footer {
   padding: 1.5vh 5vw;
   justify-content: space-between;
   align-items: center;
-  & ul {
+  ul {
     list-style-type: none;
     font-size: 1rem;
     padding-left: 0;
-    & li {
+    li {
       padding: 0 5px;
-      & a {
+      a {
         text-decoration: none;
         vertical-align: middle;
+        color: #3d405b;
         &:visited {
           color: #3d405b;
         }
-        & svg {
+        svg {
           width: 20px;
           height: 20px;
         }

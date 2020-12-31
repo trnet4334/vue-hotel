@@ -8,8 +8,8 @@
       </svg>
     </div>
     <div class="collapse__body">
-      <div class="page-content--body" :class="displayContentBorder">
-        <p>{{faq.answer}}</p>
+      <div :class="displayContentBorder">
+        <p class="content__description">{{faq.answer}}</p>
       </div>
     </div>
     <el-divider/>

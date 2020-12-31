@@ -9,22 +9,13 @@
   border: 1px solid #3d405b;
   border-radius: 5px;
   padding: 20px 10px;
-  button {
-    margin-left: 30px;
-    padding: 12px 12px;
-    font-size: 1.1rem;
-    border: none;
-    background-color: #283845;
-    color: #ffffff;
-    border-radius: 5px;
-    &:hover {
-      cursor: pointer;
-    }
-  }
   svg {
     width: 45px;
     height:45px;
     margin-right: 20px;
+  }
+  .btn-solid-md {
+    margin-top: 0;
   }
 }
 .alert__content {
@@ -45,18 +36,6 @@
       flex-basis: 10%;
       width: 36px;
       height: 36px;
-    }
-    button {
-      margin-left: 0;
-      padding: 10px;
-      font-size: 1rem;
-      border: none;
-      background-color: #283845;
-      color: #ffffff;
-      border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
   .alert__content {

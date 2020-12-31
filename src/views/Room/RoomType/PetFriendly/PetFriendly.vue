@@ -5,44 +5,44 @@
       <div class="page-container">
         <div class="page-wrapper">
           <div class="pet-friendly__body--first flex--row">
-            <div class="pet-friendly__image">
-              <img src="@/assets/images/room/pet-friendly-img.jpg" alt="Pet">
+            <div class="image-fluid xl">
+              <image-box :imageName="['room/pet-friendly-img.jpg', 'Pet 1']"/>
             </div>
-            <div class="pet-friendly__content page-content--header">
-              <h4>Pet Friendly</h4>
-              <h1>We welcome your pet(s)</h1>
+            <div class="pet-friendly__content">
+              <h4 class="content__title">Pet Friendly</h4>
+              <h1 class="page__title">We welcome your pet(s)</h1>
               <br>
-              <p>A hotel is one of the most pet-friendly hotels and resorts
+              <p class="content__description">A hotel is one of the most pet-friendly hotels and resorts
                 nearby. In fact, we are crazy about animals as you are, and we really welcome their coming and get
                 out royal treatment as you do.</p>
             </div>
           </div>
           <div class="pet-friendly__body--second flex--row">
-            <div class="pet-friendly__content page-content--body">
-              <h2 class="page-content--title">What we do for your lovely furry friend</h2>
+            <div class="pet-friendly__content list-group">
+              <h2 class="page__subtitle">What we do for your lovely furry friend</h2>
               <br>
-              <ul class="list-group">
+              <ul>
                 <li>Disposable pick-up bags around living area</li>
                 <li>Pet-sitting, grooming and walking services appointment are available</li>
                 <li>Water bowls, food and pet bed can be delivered to your room before arrival</li>
               </ul>
               <br>
-              <p>Our concierge is always happy to coordinate additional pet services if you need them.
+              <p class="content__description">Our concierge is always happy to coordinate additional pet services if you need them.
                 Please contact us before your arrival at 480.000.0008 to let us know what you need. Otherwise,
                 we kindly invite you to fill out our pet registration form below.</p>
               <br>
-              <button>
+              <button class="btn-outline-md">
                 <router-link to="/pet-friendly/pet-friendly-form">REGISTER FORM</router-link>
               </button>
             </div>
-            <div class="pet-friendly__image">
-              <img src="@/assets/images/room/pet-friendly-img-2.jpg" alt="Pet">
+            <div class="image-fluid xl">
+              <image-box :imageName="['room/pet-friendly-img-2.jpg', 'Pet 2']"/>
             </div>
           </div>
-          <div class="pet-friendly__body--third flex--column page-content--body">
-            <h2 class="page-content--title">What you need to know before arrival</h2>
+          <div class="pet-friendly__body--third flex--column list-group">
+            <h2 class="page__subtitle">What you need to know before arrival</h2>
             <br>
-            <ul class="list-group">
+            <ul>
               <li>Guests must fill out pet registration form before arrival, and $150 non-refundable pet deposit
                 per stay will be charge upon check-in.</li>
               <li>Pet must weigh under 50 pounds or under 70 pounds combined.</li>
@@ -58,7 +58,7 @@
                 responsible for retrieving for their pet waste.</li>
             </ul>
             <br>
-            <p>*ADA service animals are exempt from the policy above</p>
+            <p class="content__description">*ADA service animals are exempt from the policy above</p>
           </div>
         </div>
       </div>
@@ -71,21 +71,13 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner'
 import Footer from '@/components/footer/Footer.vue'
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 export default {
   components: {
     Navbar,
     SignupBanner,
-    Footer
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
+    Footer,
+    ImageBox
   }
 }
 </script>

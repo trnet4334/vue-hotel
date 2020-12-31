@@ -1,117 +1,19 @@
 @import './media-queries';
 
-// General page container to define padding, margin or width setting
-.page-container {
-  width: 100%;
-  padding: 20vh 7.5vw;
+body {
+  background-color: #f4f1de;
+}
+h1, h2, h4, h5, label {
+  font-family: 'Merriweather', serif;
+}
+p, span, a, button, li, input, select, textarea {
+  font-family: 'Raleway', sans-serif;
 }
 
-// General page wrapper to define padding, margin or width setting
-.page-wrapper {
-  max-width: 100%;
-}
-
-// General page content style in header section, include h4 for title,
-// h1 for subtitle, p for description
-.page-content--header {
-  h4 {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    text-align: start;
-    font-weight: 600;
-  }
-  h1 {
-    font-size: 3rem;
-    line-height: 3.2rem;
-    text-align: start;
-    font-weight: 700;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    @include respond-below(tablet-lg) {
-      font-size: 2.6rem;
-      line-height: 2.8rem;
-    }
-  }
-  p {
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-    text-align: start;
-    word-wrap: anywhere;
-  }
-}
-
-// General page content style in title,
-// include h2 for title, p for description
-.page-content--title {
-  font-size: 2.7rem;
-  line-height: 3rem;
+label {
   text-align: start;
+}
+
+b {
   font-weight: 700;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  @include respond-below(tablet-lg) {
-    font-size: 2.4rem;
-    line-height: 2.8rem;
-  }
-}
-
-// General page content style in body section, include h4 for title,
-// h1 for subtitle, p for description
-.page-content--body {
-  h4 {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    text-align: center;
-    font-weight: 600;
-  }
-  p {
-    font-size: 1.3rem;
-    line-height: 1.8rem;
-    text-align: start;
-    word-wrap: anywhere;
-  }
-}
-
-.list-group {
-  li {
-    text-align: start;
-    font-size: 1.3rem;
-    line-height: 2rem;
-    @include respond-below(phone) {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-    }
-  }
-}
-// Custom class for notification box
-.notification-class {
-  .el-message-box__title {
-    font-size: 1.4rem;
-  }
-  .el-message-box__message {
-    font-size: 1.3rem;
-    font-weight: 600;
-    text-align: start;
-    word-break: break-all;
-  }
-  .el-message-box__container {
-    display: flex;
-    align-items: center;
-  }
-  .el-button {
-    font-size: 1rem;
-  }
-  .el-notification {
-    display: flex;
-    align-items: center;
-  }
-  .el-notification__title {
-    font-size: 1.4rem;
-  }
-  .el-notification__content {
-    font-size: 1.3rem;
-    text-align: start;
-    word-break: break-all;
-    margin: 0;
-  }
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar flex--column" :class="[scrollClass, homepageColorClass, menuDisplayClass, menuScrollClass]">
+    <nav class="navbar flex--column" :class="[homepageColorClass, menuDisplayClass, menuScrollClass]">
       <div class="navbar__container flex--row">
         <div class="logo">
           <router-link to="/home">
@@ -59,7 +59,48 @@
             </svg>
             <span>Reservation</span>
           </a>
-          <a href="javascript:;" class="flex--row">
+          <a class="flex--row">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
+              <g>
+                <path d="M2.801,10.066c0.547,0.547,1.539,0.53,2.044,0.023c0.744-0.688,1.563-1.258,2.428-1.69C7.809,8.139,8,7.506,8,7V6.374C9.276,6.031,10.725,6,12,6c1.351,0,2.764,0.031,4,0.371V7c0,0.664,0.268,1.19,0.712,1.406c0.904,0.452,1.726,1.02,2.439,1.689c0.272,0.257,0.642,0.405,1.014,0.405c0.393,0,0.76-0.15,1.034-0.424l2.376-2.376C23.849,7.426,24,7.059,24,6.665c0-0.393-0.15-0.76-0.435-1.043C20.923,3.117,17.355,2,12,2C6.644,2,3.077,3.117,0.424,5.631C0.15,5.905,0,6.272,0,6.665c0,0.396,0.158,0.773,0.424,1.024L2.801,10.066z"/>
+                <path d="M12,7c-2.804,0-5,1.538-5,3.5S9.196,14,12,14s5-1.538,5-3.5S14.804,7,12,7z"/>
+                <path d="M20.181,12.473c-0.351-0.351-0.818-0.518-1.306-0.475c-0.519,0.047-0.992,0.33-1.298,0.775C16.662,14.105,14.421,15,12,15c-2.42,0-4.662-0.895-5.577-2.227c-0.306-0.446-0.779-0.729-1.298-0.776c-0.485-0.042-0.952,0.123-1.303,0.474l-2.792,2.792C0.308,15.985,0,16.604,0,17.328V19.5C0,20.879,1.122,22,2.5,22h19c1.379,0,2.5-1.121,2.5-2.5v-2.172c0-0.668-0.26-1.295-0.732-1.768L20.181,12.473z"/>
+              </g>
+            </svg>
+            <span>480.000.0000</span>
+          </a>
+          <div class="menuBtn" @click="isOpen = !isOpen" :class="menuButtonClass">
+            <span/>
+            <span/>
+            <span/>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar mobile flex--column" :class="[scrollClass, homepageColorClass, menuDisplayClass, menuScrollClass]">
+      <div class="navbar__container flex--row">
+        <div class="logo name">
+          <router-link to="/home">
+            <span>A Resort & Spa</span>
+            <span>A</span>
+          </router-link>
+        </div>
+        <div class="link flex--row">
+          <a @click="dialogVisible = true" class="flex--row">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                 viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
+              <g>
+                <path d="M12,6.5c-4.136,0-7.5,3.364-7.5,7.5v1c0,0.276,0.224,0.5,0.5,0.5h14c0.276,0,0.5-0.224,0.5-0.5v-1C19.5,9.864,16.136,6.5,12,6.5z M12,9.5c-2.13,0-3.984,1.514-4.41,3.6c-0.048,0.237-0.256,0.4-0.489,0.4c-0.033,0-0.066-0.003-0.1-0.01c-0.271-0.055-0.445-0.319-0.39-0.589C7.13,10.351,9.396,8.5,12,8.5c0.276,0,0.5,0.224,0.5,0.5S12.276,9.5,12,9.5z"/>
+                <path d="M13,2.5h-2c-0.827,0-1.5,0.673-1.5,1.5s0.673,1.5,1.5,1.5h2c0.827,0,1.5-0.673,1.5-1.5S13.827,2.5,13,2.5z"/>
+                <path d="M22,18.5H2c-0.827,0-1.5,0.673-1.5,1.5v1c0,0.276,0.224,0.5,0.5,0.5h22c0.276,0,0.5-0.224,0.5-0.5v-1C23.5,19.173,22.827,18.5,22,18.5z"/>
+                <path d="M22,18.5c-2.322,0-3.5-0.841-3.5-2.5v-1c0-0.276-0.224-0.5-0.5-0.5H6c-0.276,0-0.5,0.224-0.5,0.5c0,1.93-1.57,3.5-3.5,3.5c-0.276,0-0.5,0.224-0.5,0.5s0.224,0.5,0.5,0.5h20c0.276,0,0.5-0.224,0.5-0.5S22.276,18.5,22,18.5z M7.389,16.1c-0.161,0.792-0.504,1.552-0.992,2.201c-0.098,0.13-0.248,0.199-0.4,0.199c-0.104,0-0.21-0.033-0.3-0.101c-0.221-0.166-0.265-0.479-0.099-0.7c0.399-0.53,0.68-1.153,0.812-1.799c0.055-0.271,0.321-0.445,0.589-0.39C7.27,15.565,7.444,15.829,7.389,16.1z"/>
+                <path d="M13,4.5c-0.276,0-0.5,0.224-0.5,0.5h-1c0-0.276-0.224-0.5-0.5-0.5S10.5,4.724,10.5,5v2c0,0.276,0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5h1c0,0.276,0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5V5C13.5,4.724,13.276,4.5,13,4.5z"/>
+              </g>
+            </svg>
+            <span>Reservation</span>
+          </a>
+          <a class="flex--row">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  viewBox="0 0 24 24" style="width: 1.3rem; height: 1.3rem; fill: #2c3e50;" xml:space="preserve" class="icon-color">
               <g>
@@ -81,6 +122,7 @@
     <Menu :isOpen="isOpen"/>
     <el-dialog
       :visible.sync="dialogVisible"
+      custom-class="dialog-class"
       center
     >
       <div class="flex--column dialog-content block-1">
@@ -102,13 +144,8 @@
         <div class="flex--column">
           <label>Dates</label>
           <v-date-picker
-            mode="range"
+            is-range
             is-required
-            class="flex--row"
-            :input-props="{
-              class: 'date-picker-input',
-              readonly: true
-            }"
             v-model="date"
             :disabled-dates="[
               {
@@ -120,7 +157,26 @@
                 end: new Date(new Date().setFullYear(new Date().getFullYear() + 1000))
               }
             ]"
-          />
+          >
+            <template v-slot="{ inputValue, inputEvents }">
+              <div class="date-picker flex--column">
+                <div class="flex--column">
+                  <span>Check-in</span>
+                  <input
+                    :value="inputValue.start"
+                    v-on="inputEvents.start"
+                  />
+                </div>
+                <div class="flex--column">
+                  <span>Check-out</span>
+                  <input
+                    :value="inputValue.end"
+                    v-on="inputEvents.end"
+                  >
+                </div>
+              </div>
+            </template>
+          </v-date-picker>
         </div>
         <div class="flex--column">
           <label>Guests</label>
@@ -154,6 +210,7 @@ export default {
     return {
       isHomepage: this.isOnHomepage,
       isOnTheTop: true,
+      displayMobileBar: false,
       topPosition: 0,
       isOpen: false,
       dialogVisible: false,
@@ -168,7 +225,14 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
+    this.$nextTick(function () {
+      window.addEventListener('scroll', this.onScroll)
+    })
+  },
+  updated () {
+    this.$nextTick(function () {
+      window.addEventListener('scroll', this.onScroll)
+    })
   },
   destroyed () {
     window.removeEventListener('scroll', this.onScroll)
@@ -180,6 +244,7 @@ export default {
       const that = this
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
       that.isOnTheTop = scrollTop === 0
+      that.displayMobileBar = scrollTop > 0
     },
     // Submit search request for making reservation through dialog box
     async setSearchChoice () {
@@ -212,13 +277,14 @@ export default {
     // To add class to navbar while toggle scroll event
     scrollClass: function () {
       return {
-        'navbar--scroll': !this.isOnTheTop
+        'navbar--scroll': this.displayMobileBar
       }
     },
     // To change the navbar color while at homepage and on the top of the page
     homepageColorClass: function () {
       return {
-        'navbar--homepage': this.isOnTheTop && this.isHomepage
+        'navbar--homepage': this.isOnTheTop && this.isHomepage,
+        'nav-mobile': this.displayMobileBar && this.isOpen
       }
     },
     // To control the menu button from open icon to close icon

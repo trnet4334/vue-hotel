@@ -1,7 +1,7 @@
 <template>
   <li>
     <div class="flex--row activity-item">
-      <div class="flex--column date">
+      <div class="flex--column">
         <div class="flex--row date-items">
           <div class="flex--row date-item-1">
             <span class="date-1">{{ dateStart.date }}</span>
@@ -32,7 +32,7 @@
           </ul>
         </div>
         <div class="status">
-          <span>{{ checkStatus }}</span>
+          <span>-- {{checkStatus}} --</span>
         </div>
         <div class="flex--column option">
           <div class="flex--row option-item">

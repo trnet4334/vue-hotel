@@ -5,23 +5,21 @@
       <div class="page-container">
         <div class="page-wrapper">
           <div class="body flex--row">
-            <div class="image">
-              <img src="@/assets/images/wellness/wellness-img-1.jpg" alt="Wellness">
+            <div class="image-fluid xl">
+              <image-box :imageName="['wellness/wellness-img-1.jpg', 'Wellness']"/>
             </div>
-            <div class="content page-content--header">
-              <h4>Spa & Wellness</h4>
-              <h1>Seeking Stillness</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam dolor eligendi eos, expedita explicabo facilis ipsam iusto laborum laudantium mollitia, nemo nihil obcaecati omnis quia similique, vero voluptate voluptatibus.</p>
-              <br>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad assumenda cumque distinctio ducimus earum error esse, fuga itaque maxime minima minus molestiae nisi nostrum porro, quo quod rem, repellat sequi temporibus ut velit voluptate!</p>
+            <div class="content">
+              <h4 class="content__title">Spa & Wellness</h4>
+              <h1 class="page__title">Seeking Stillness</h1>
+              <p class="content__description">As our honorable guest at A Resort & Spa, please enjoy the complimentary use of our resort pools, fitness center, bathrobes, slippers, and different kinds of herbal teas. With five private treatment rooms, there are several treatments you can choose as you wish. Our reserved spots are limited, please make reservations as soon as possible.</p>
             </div>
           </div>
           <div class="body flex--row">
-            <div class="image">
-              <img src="@/assets/images/wellness/wellness-img-2.jpg" alt="Spa">
+            <div class="image-fluid xl">
+              <image-box :imageName="['wellness/wellness-img-2.jpg', 'Spa']"/>
             </div>
-            <div class="content page-content--header">
-              <h1>Our Services</h1>
+            <div class="content list-group">
+              <h2 class="page__subtitle">Our Services</h2>
               <br>
               <ul>
                 <li>Massage</li>
@@ -32,24 +30,26 @@
                 <li>Fitness Class</li>
               </ul>
               <br>
-              <button><a href="javascript:;">MAKE APPOINTMENT</a></button>
+              <button class="btn-outline-md" disabled>
+                <a>MAKE APPOINTMENT</a>
+              </button>
             </div>
           </div>
-          <div class="body flex--column notice page-content--header">
-            <div class="header">
-              <h1>What You Need to Know Before You Go</h1>
+          <div class="body flex--column notice">
+            <div>
+              <h2 class="page__subtitle">What You Need to Know Before You Go</h2>
             </div>
             <br>
             <div class="content">
-              <p>To cancel without charge, please give us
-                a twenty four hours notice. You will be charged the <u>full price</u> of your service if
-                you cancel within <u>24 hours</u> of your scheduled time or fail to show up.</p>
+              <p class="content__description">To cancel without charge, please give us
+                a twenty four hours notice. You will be charged the <u><b>full price</b></u> of your service if
+                you cancel within <u><b>24 hours</b></u> of your scheduled time or fail to show up.</p>
               <br>
-              <p>If you would like to rescheduled your appointment,
-                you have to finish it at least <u>12 hours</u> before your scheduled time. You will be charge <u>25%</u> of
+              <p class="content__description">If you would like to rescheduled your appointment,
+                you have to finish it at least <u><b>12 hours</b></u> before your scheduled time. You will be charged <u><b>25%</b></u> of
                 its value if your reschedule your service within 12 hours.</p>
               <br>
-              <p>Questions? Call us at <u>480.000.0015</u></p>
+              <p class="content__description">Questions? Call us at <u><b>480.000.0015</b></u></p>
             </div>
           </div>
         </div>
@@ -63,21 +63,13 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 export default {
   components: {
     Navbar,
     SignupBanner,
-    Footer
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
+    Footer,
+    ImageBox
   }
 }
 </script>

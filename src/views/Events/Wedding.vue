@@ -4,38 +4,42 @@
     <section class="wedding">
       <div class="page-wrapper">
         <div class="wedding__body--first flex--row">
-          <div class="flex--column content page-content--header">
-            <h4>Wedding</h4>
-            <h1>Lasting Memories Begin Here</h1>
+          <div class="flex--column content">
+            <h4 class="content__title">Wedding</h4>
+            <h1 class="page__title">Lasting Memories Begin Here</h1>
             <br>
-            <p>We recognize it has bee difficult to plan your special day in
+            <p class="content__description">We recognize it has bee difficult to plan your special day in
             times of such uncertainty. Our dedicated team will help ensure your big day is
             everything you ever imagined it would be. We offer bunch of spectacular venues onsite
             for you to choose from. We know that every tiny detail counts, and here's our
             promise to you: The happiest day of your life will be a seamless one as well.</p>
             <br>
-            <button><router-link to="/wedding/inquiry">MAKE AN INQUIRY</router-link></button>
+            <button class="btn-outline-md">
+              <router-link to="/wedding/inquiry">MAKE AN INQUIRY</router-link>
+            </button>
           </div>
-          <div class="image">
-            <img src="@/assets/images/wedding/wedding-img-1.jpg" alt="Wedding">
+          <div class="image-fluid xl">
+            <image-box :imageName="imageUrl[0]"/>
           </div>
         </div>
         <div class="wedding__body--second flex--row">
           <div class="flex--column content page-content--header">
-            <h1>Culinary Talent</h1>
+            <h2 class="page__subtitle">Culinary Talent</h2>
             <br>
-            <p>Our Executive Chef is the most talented and
+            <p class="content__description">Our Executive Chef is the most talented and
             highly skilled at producing customized banquet menus which utilize the freshest
               seasonal ingredients available. </p>
             <br>
-            <p>As part of our responsibility, we also provide customize
+            <p class="content__description">As part of our responsibility, we also provide customize
             menus service to feature traditional fare from many different cultures and regions. Otherwise,
             we also provide vegetarian, vegan and gluten-friendly menus.</p>
             <br>
-            <button><router-link to="/wedding/inquiry">MAKE AN INQUIRY</router-link></button>
+            <button class="btn-outline-md">
+              <router-link to="/wedding/inquiry">MAKE AN INQUIRY</router-link>
+            </button>
           </div>
-          <div class="image">
-            <img src="@/assets/images/wedding/wedding-img-2.jpg" alt="Wedding">
+          <div class="image-fluid xl">
+            <image-box :imageName="imageUrl[1]"/>
           </div>
         </div>
         <div class="wedding__body--third">
@@ -47,15 +51,11 @@
             <template v-slot:preloader>
               <flux-preloader />
             </template>
-
-            <template v-slot:controls>
-              <flux-controls />
-            </template>
           </vue-flux>
         </div>
         <div class="wedding__body--fourth flex--column flex--center">
-          <div class="list-group">
-            <h2>What We Provide for You</h2>
+          <div class="lists">
+            <h2 class="page__subtitle">What We Provide for You</h2>
             <ul>
               <li>Wedding specialist</li>
               <li>Banquet staff</li>
@@ -74,38 +74,46 @@
         </div>
         <div class="wedding__body--fifth flex--row">
           <div class="flex--column flex--center content">
-            <div class="image">
-              <img src="@/assets/images/wedding/wedding-img-3.jpg" alt="Wedding">
+            <div class="image-fluid lg">
+              <image-box :imageName="imageUrl[2]"/>
             </div>
-            <div class="page-content--body">
-              <h4>Wedding Weekend</h4>
+            <div>
+              <h5 class="image-label">Wedding Weekend</h5>
               <br>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur ducimus facilis molestiae necessitatibus quo?</p>
+              <p class="image-description">We take care of your pleasure journey from the rehearsal dinner to the
+               post wedding brunch. A Resort & Spa can host your wonderful wedding weekend.</p>
             </div>
           </div>
           <div class="flex--column flex--center content">
-            <div class="image">
-              <img src="@/assets/images/wedding/wedding-img-4.jpg" alt="Wedding">
+            <div class="image-fluid lg">
+              <image-box :imageName="imageUrl[3]"/>
             </div>
-            <div class="page-content--body">
-              <h4>Group Rate for Wedding</h4>
+            <div>
+              <h5 class="image-label">Group Rate for Wedding</h5>
               <br>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto illum mollitia odit quia voluptatem. Deserunt.</p>
+              <p class="image-description">A Resort & Spa offers group rates of various guestrooms for your
+              wedding parties and guests.</p>
             </div>
           </div>
         </div>
-        <div class="wedding__body--sixth flex--center flex--column page-content--body">
-          <h1>Pre-planning Your Most Important Day</h1>
+        <div class="wedding__body--sixth flex--center flex--column">
+          <h2 class="page__subtitle">Pre-planning Your Most Important Day</h2>
           <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, aut blanditiis, consectetur delectus dignissimos earum fugiat harum in inventore iste libero nemo numquam odit officia porro similique tempora ut? Voluptate.</p>
+          <p class="content__description">As you begin to plan the most important event in your life with us, it's imperative to note that
+          we require that you should fill out the wedding registration form and also send us wedding event plan. Your wedding
+          plan will help us manage the organization of each event, assisting with protocol, structuring schedules, wedding parties and so on, which we want to
+          make sure everything meet your wish.</p>
           <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda delectus dolorem ducimus error explicabo fugit in ipsa natus perferendis quam quas quasi, quibusdam, reiciendis sapiente voluptate. Adipisci illo neque quibusdam.</p>
+          <p class="content__description">
+            Your wedding specialist will contact you and work hand-in-hand with your wedding planner. Our team can help you schedule the plan and
+            recommend numbers of different vendors, including wedding planners, florists, wedding photographers and even music band.
+          </p>
           <br>
           <br>
           <div class="links flex--row">
-            <router-link to="/inquiry" class="link-orange">REQUEST PROPOSAL</router-link>
-            <a href="javascript:;" class="link-orange">WEDDING GUIDE</a>
-            <a href="javascript:;" class="link-orange">WEDDING EXCLUSIVE</a>
+            <router-link to="/wedding/inquiry" class="link colored no-underline">REQUEST PROPOSAL</router-link>
+            <a class="link colored no-underline">WEDDING GUIDE</a>
+            <a class="link colored no-underline">WEDDING EXCLUSIVE</a>
           </div>
         </div>
       </div>
@@ -118,7 +126,7 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
-import lozad from 'lozad'
+import ImageBox from '@/components/imageBox/ImageBox'
 import {
   VueFlux,
   FluxControls,
@@ -131,15 +139,22 @@ export default {
     FluxPreloader,
     Navbar,
     SignupBanner,
-    Footer
+    Footer,
+    ImageBox
   },
   data () {
     return {
+      imageUrl: [
+        ['wedding/wedding-img-1.jpg', 'Wedding 1'],
+        ['wedding/wedding-img-2.jpg', 'Wedding 2'],
+        ['wedding/wedding-img-3.jpg', 'Wedding 3'],
+        ['wedding/wedding-img-4.jpg', 'Wedding 4']
+      ],
       options: {
         allowFullscreen: false,
         allowToSkipTransition: true,
         autohideTime: 2500,
-        autoplay: false,
+        autoplay: true,
         bindKeys: false,
         delay: 5000,
         enableGestures: false,
@@ -161,15 +176,6 @@ export default {
         'swipe'
       ]
     }
-  },
-  mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
   }
 }
 </script>

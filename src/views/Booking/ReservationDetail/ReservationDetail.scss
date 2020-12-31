@@ -16,8 +16,7 @@
     justify-content: space-between;
   }
   &-items-wrapper {
-    height: 50vh;
-    overflow: scroll;
+    height: auto;
     padding: 0 3%;
     margin-top: 10px;
     &::-webkit-scrollbar {
@@ -37,21 +36,10 @@
     font-size: 1.3rem;
     line-height: 1.8rem;
     text-align: start;
+    margin-right: 10px;
   }
   &-select {
     align-items: center;
-    select {
-      border: none;
-      border-bottom: 1px solid #202c39;
-      margin-left: 20px;
-      background-color: transparent;
-      font-size: 1.3rem;
-      font-weight: 600;
-      padding: 5px 15px;
-      text-align: center;
-      width: 250px;
-      outline: none;
-    }
   }
 }
 .buttons {
@@ -68,8 +56,7 @@
     outline: none;
     &:hover {
       cursor: pointer;
-      border: 2px solid #202c39;
-      background-color: transparent;
+      background-color: #ffffff;
       color: #202c39;
     }
   }
@@ -80,11 +67,6 @@
 }
 
 @include respond-below(phone) {
-  .activity {
-    &-items-wrapper {
-      height: 100vh;
-    }
-  }
   .filter {
     margin-bottom: 20px;
     margin-top: 10px;
@@ -92,9 +74,6 @@
     justify-content: center;
     &-select {
       flex-direction: column;
-      select {
-        width: 200px;
-      }
     }
   }
   .buttons {
@@ -112,18 +91,12 @@
     &-content {
       justify-content: flex-start;
     }
-    &-items-wrapper {
-      height: 75vh;
-    }
   }
   .filter {
     margin-bottom: 20px;
     margin-top: 10px;
     &-select {
       flex-direction: column;
-      select {
-        width: 200px;
-      }
     }
   }
   .buttons {
@@ -141,9 +114,6 @@
   .activity {
     &-content {
       justify-content: flex-start;
-    }
-    &-items-wrapper {
-      height: 75vh;
     }
   }
   .filter {
