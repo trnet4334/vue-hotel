@@ -6,8 +6,8 @@
   &__container {
     background-color: #ffffff;
     width: 70vw;
-    height: 55vh;
-    margin: 0 auto;
+    height: auto;
+    margin: 30px auto;
     .block-1 {
       flex-basis: 62.5%;
       text-align: start;
@@ -84,8 +84,9 @@
       width: 95%;
       margin: 20px auto;
       .block-1 {
-        flex-basis: auto;
+        flex-basis: unset;
         padding: 20px;
+        height: auto;
         h2 {
           font-size: 1.6rem;
           line-height: 2rem;
@@ -95,8 +96,9 @@
         }
       }
       .block-2 {
-        flex-basis: auto;
+        flex-basis: unset;
         padding: 20px;
+        height: auto;
         .logo {
           width: 36px;
           height: 36px;
@@ -122,8 +124,9 @@
       width: 70%;
       margin: 20px auto;
       .block-1 {
-        flex-basis: auto;
+        flex-basis: unset;
         padding: 20px;
+        height: auto;
         h2 {
           font-size: 1.8rem;
           line-height: 2.5rem;
@@ -133,8 +136,9 @@
         }
       }
       .block-2 {
-        flex-basis: auto;
+        flex-basis: unset;
         padding: 20px;
+        height: auto;
         .content {
           p, span {
             font-weight: 600;

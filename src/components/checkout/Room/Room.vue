@@ -5,7 +5,7 @@
         <img :src="require(`@/assets/images/room/${room.imageUrl}.jpg`)" :alt="`${room.imageAlt}`">
       </div>
       <div class="flex--column col-2">
-        <div class="flex--column room--introduction" lang="en">
+        <div class="flex--column room--introduction">
           <h4>{{room.type}}</h4>
           <h5>{{room.properties}}</h5>
           <p>{{room.description}}</p>

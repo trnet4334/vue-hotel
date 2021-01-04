@@ -130,21 +130,25 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 10px;
-    flex-basis: 100%;
+    flex-basis: unset;
   }
   .type {
     margin-left: 0;
     margin-bottom: 15px;
+    flex-basis: unset;
     span {
       font-size: 1.3rem;
     }
   }
   .status {
     margin-bottom: 15px;
+    flex-basis: unset;
   }
   .option {
     margin-bottom: 15px;
+    flex-basis: unset;
     &-item {
+      flex-basis: unset;
       svg {
         width: 15px;
         height: 15px;
@@ -173,7 +177,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 10px;
-    flex-basis: 100%;
+    flex-basis: unset;
   }
   .type {
     margin-left: 0;
