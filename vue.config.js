@@ -1,6 +1,19 @@
+const path = require('path')
+
 module.exports = {
   // Skip source maps in production to reduce bundle size
   productionSourceMap: false,
+
+  css: {
+    loaderOptions: {
+      scss: {
+        sassOptions: {
+          // Allow @import "src/styles/app" bare paths used throughout the project
+          loadPaths: [path.resolve(__dirname)]
+        }
+      }
+    }
+  },
 
   devServer: {
     proxy: 'http://localhost:3000',

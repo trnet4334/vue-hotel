@@ -141,7 +141,7 @@
   }
 }
 
-/deep/ .date-picker-input {
+::v-deep  .date-picker-input {
   font-family: inherit;
   background-color: transparent;
   border: none;
@@ -162,10 +162,10 @@
     span {
       font-size: 1.2rem;
     }
-    /deep/ .el-input__inner {
+    ::v-deep  .el-input__inner {
       font-size: 1.2rem;
     }
-    /deep/ .el-input-number__increase, /deep/ .el-input-number__decrease {
+    ::v-deep  .el-input-number__increase, ::v-deep  .el-input-number__decrease {
       background-color: transparent;
       height: 100%;
       border: none;
@@ -181,7 +181,7 @@
   margin: 10px 0;
 }
 
-/deep/ .el-step__icon {
+::v-deep  .el-step__icon {
   cursor: pointer;
 }
 
@@ -277,7 +277,7 @@
       font-size: 1.1rem;
     }
   }
-  /deep/ .date-picker-input {
+  ::v-deep  .date-picker-input {
     font-size: 1.1rem;
   }
 }
@@ -313,7 +313,7 @@
       font-size: 1.1rem;
     }
   }
-  /deep/ .date-picker-input {
+  ::v-deep  .date-picker-input {
     font-size: 1.1rem;
     width: fit-content;
   }
@@ -338,7 +338,7 @@
       height: 28px;
     }
   }
-  /deep/ .date-picker-input {
+  ::v-deep  .date-picker-input {
     width: fit-content;
   }
 }

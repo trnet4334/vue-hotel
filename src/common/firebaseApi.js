@@ -84,10 +84,8 @@ const firebaseApi = {
   // data: new data which will be pushed into db
   async postData (resource, data) {
     await db.collection(resource).add(data)
-      .then(() => {
-        console.log('Successfully submit')
-      }).catch((e) => {
-        console.log(e)
+      .catch((e) => {
+        console.error('[firebaseApi] postData error:', e)
       })
   },
   // Push pet registration data into reservation doc
@@ -98,10 +96,8 @@ const firebaseApi = {
       .doc(data.id)
       .collection(resource)
       .add(data.form)
-      .then(() => {
-        console.log('Successfully submit')
-      }).catch((e) => {
-        console.log(e)
+      .catch((e) => {
+        console.error('[firebaseApi] postPetRegistrationData error:', e)
       })
   },
   // Update data from db
@@ -112,14 +108,12 @@ const firebaseApi = {
       status: payload.status,
       lastUpdateTime: payload.lastUpdateTime
     })
-      .then(() => { console.log('') })
-      .catch((err) => { console.error('[firebaseApi] error:', err) })
+      .catch((err) => { console.error('[firebaseApi] updateData error:', err) })
   },
   // Delete data from db
   // resource: data category
   async deleteData (resource, payload) {
     await db.collection(resource).doc(payload.id).delete()
-      .then(() => { console.log('Successfully deleted') })
       .catch((err) => { console.error('[firebaseApi] deleteData error:', err) })
   }
 }

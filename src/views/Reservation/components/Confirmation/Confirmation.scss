@@ -50,7 +50,7 @@
     }
   }
 }
-/deep/ .el-divider--horizontal {
+::v-deep  .el-divider--horizontal {
   margin: 10px 0;
 }
 

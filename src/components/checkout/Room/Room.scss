@@ -37,7 +37,7 @@
     font-size: 1.1rem;
   }
 }
-/deep/ .el-divider--horizontal {
+::v-deep  .el-divider--horizontal {
   margin: 12.5px 0;
 }
 

@@ -191,7 +191,7 @@ export default {
             this.$router.go(0)
           }, 3500)
         }).catch(err => {
-          console.log(err)
+          console.error('[SignupBanner] subscription error:', err)
         })
       }
     }

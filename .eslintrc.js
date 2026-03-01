@@ -8,21 +8,24 @@ module.exports = {
     '@vue/standard'
   ],
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false
   },
   rules: {
-    // Disallow console/debugger statements in production builds
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // Disallow debug console in production; allow console.error/warn for logging
+    'no-console': process.env.NODE_ENV === 'production' ? ['error', { allow: ['warn', 'error'] }] : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
     // Formatting
     'eol-last': ['error', 'always'],
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
 
-    // Vue-specific
+    // Vue-specific (warn only — pre-existing issues fixed in Vue 3 migration)
+    'vue/multi-word-component-names': 'warn',
+    'vue/no-reserved-component-names': 'warn',
     'vue/no-unused-components': 'warn',
     'vue/no-v-html': 'warn',
-    'vue/order-in-components': ['error', {
+    'vue/order-in-components': ['warn', {
       order: [
         'el', 'name', 'key', 'parent', 'functional',
         ['delimiters', 'comments'],
