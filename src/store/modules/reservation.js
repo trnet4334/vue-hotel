@@ -3,6 +3,8 @@ import addOns from '@/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
+import * as MUTATION_TYPES from '../mutation-types'
+import * as ACTION_TYPES from '../action-types'
 
 const state = {
   roomsIntro: roomsIntro,
@@ -52,7 +54,6 @@ const state = {
 }
 
 const getters = {
-  // Return all rooms from your booking cart
   reservationSelection (state) {
     if (state.reservationDetails.roomSelections.length === 0) {
       return [state.onSearchRoom]
@@ -60,19 +61,16 @@ const getters = {
       return state.reservationDetails.roomSelections
     }
   },
-  // Return searching result from the initial step
   displayRoomSearchResult (state) {
     const totalGuests = state.onSearchRoom.guests.numOfAdultGuests + state.onSearchRoom.guests.numOfChildrenGuest
     return state.roomsIntro.filter(element => element.maxGuestAvailable >= totalGuests)
   }
 }
 const mutations = {
-  // Reset room info in the initial step
-  'SET_ROOMS' (state, roomsIntro) {
+  [MUTATION_TYPES.SET_ROOMS] (state, roomsIntro) {
     state.roomsIntro = roomsIntro
   },
-  // Reset all custom reservation data back to initial
-  'RESET_ALL_RESERVATION' (state) {
+  [MUTATION_TYPES.RESET_ALL_RESERVATION] (state) {
     state.roomsIntro = roomsIntro
     state.tempId = ''
     state.currentStep = 1
@@ -115,8 +113,7 @@ const mutations = {
     }
     state.currentSelectedRoomIdx = 0
   },
-  // Reset onsearch room data back to initial
-  'RESET_ONSEARCHROOM' (state) {
+  [MUTATION_TYPES.RESET_ONSEARCHROOM] (state) {
     state.onSearchRoom = {
       createTime: '',
       totalNight: undefined,
@@ -136,8 +133,7 @@ const mutations = {
       addOns: []
     }
   },
-  // Head to next step
-  'GO_NEXT_STEP' (state) {
+  [MUTATION_TYPES.GO_NEXT_STEP] (state) {
     if (state.currentStep > 4) {
       state.currentStep = 4
     } else {
@@ -145,8 +141,7 @@ const mutations = {
       state.currentStep += 1
     }
   },
-  // Back to previous step
-  'BACK_PREVIOUS_STEP' (state) {
+  [MUTATION_TYPES.BACK_PREVIOUS_STEP] (state) {
     if (state.currentStep < 0) {
       state.currentStep = 0
     } else {
@@ -154,8 +149,7 @@ const mutations = {
       state.currentStep -= 1
     }
   },
-  // Switch step between different step
-  'SWITCH_STEP' (state, step) {
+  [MUTATION_TYPES.SWITCH_STEP] (state, step) {
     const checkStep = function (el) {
       if (el === 's1') return 1
       else if (el === 's2') return 2
@@ -166,16 +160,14 @@ const mutations = {
     state.previousStep = checkStep(step.prev)
     state.currentStep = checkStep(step.current)
   },
-  // Generate unique id for each reservation data
-  'GENERATE_ID' (state, id) {
+  [MUTATION_TYPES.GENERATE_ID] (state, id) {
     if (state.tempId === id) {
       return null
     } else {
       state.tempId = id
     }
   },
-  // Build room selection from room search (step 1) and move to next step
-  'SET_SEARCH_SELECTION' (state, { date, guests, time }) {
+  [MUTATION_TYPES.SET_SEARCH_SELECTION] (state, { date, guests, time }) {
     if (state.reservationDetails.createTime === '') {
       state.reservationDetails.createTime = time
       state.reservationDetails.lastUpdateTime = state.reservationDetails.createTime
@@ -191,28 +183,24 @@ const mutations = {
     state.currentStep === 0 ? state.currentStep += 1 : state.currentStep = 1
     state.isEditingRoom = false
   },
-  // Add selected room from step 1
-  'ADD_ROOM' (state, { type, packageName, rate }) {
+  [MUTATION_TYPES.ADD_ROOM] (state, { type, packageName, rate }) {
     state.onSearchRoom.roomSelect.roomType = type
     state.onSearchRoom.roomSelect.packageName = packageName
     state.onSearchRoom.roomSelect.rate = rate
     state.currentStep += 1
   },
-  // Add add-on(s) from the list
-  'ADD_ADDONS' (state, { name, price }) {
+  [MUTATION_TYPES.ADD_ADDONS] (state, { name, price }) {
     state.onSearchRoom.addOns.push({
       addOnName: name,
       addOnPrice: price
     })
   },
-  // Remove add-on(s) from the list
-  'REMOVE_ADDONS' (state, name) {
+  [MUTATION_TYPES.REMOVE_ADDONS] (state, name) {
     state.onSearchRoom.addOns = state.onSearchRoom.addOns.filter(
       element => element.addOnName !== name
     )
   },
-  // Calculate amount of price from all you room selection
-  'CALCULATE_TOTAL_AMOUNT' (state) {
+  [MUTATION_TYPES.CALCULATE_TOTAL_AMOUNT] (state) {
     const arr = []
     if (state.reservationDetails.roomSelections.length === 0 && state.reservationDetails.onSearchRoom.createTime !== '') {
       // eslint-disable-next-line valid-typeof
@@ -246,8 +234,7 @@ const mutations = {
       return null
     }
   },
-  // Pass room selection data to the final selected data object
-  'SAVE_ROOM_SELECTION_TO_RESERVATION' (state) {
+  [MUTATION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION] (state) {
     const record = state.reservationDetails.roomSelections.find(
       element => element.createTime === state.onSearchRoom.createTime
     )
@@ -261,8 +248,7 @@ const mutations = {
     }
     state.isEditingRoom = false
   },
-  // Remove room selection data from the final selected data object
-  'REMOVE_ROOM_FROM_SELECTION' (state, selection) {
+  [MUTATION_TYPES.REMOVE_ROOM_FROM_SELECTION] (state, selection) {
     const record = state.reservationDetails.roomSelections.map(
       (element) => {
         return element.createTime
@@ -275,8 +261,7 @@ const mutations = {
       state.reservationDetails.roomSelections = []
     }
   },
-  // Edit room selection info from the final selected data object
-  'EDIT_ROOM_FROM_SELECTION' (state, selection) {
+  [MUTATION_TYPES.EDIT_ROOM_FROM_SELECTION] (state, selection) {
     const recordIdx = state.reservationDetails.roomSelections.map(
       (element) => {
         return element.createTime
@@ -297,20 +282,17 @@ const mutations = {
     state.isEditingRoom = true
     state.currentSelectedRoomIdx = recordIdx
   },
-  // Add guest info into temp data object
-  'ADD_CUSTOMER_DETAIL' (state, { contact, address, note }) {
+  [MUTATION_TYPES.ADD_CUSTOMER_DETAIL] (state, { contact, address, note }) {
     state.onEditCustomerInfo.contactDetail = contact
     state.onEditCustomerInfo.addressDetail = address
     state.onEditCustomerInfo.note = note
   },
-  // Save guest info into the final selected data object
-  'SAVE_CUSTOMER_INFO_TO_RESERVATION' (state) {
+  [MUTATION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION] (state) {
     state.reservationDetails.customerInfo = state.onEditCustomerInfo
     state.reservationDetails.email = state.onEditCustomerInfo.contactDetail.email
     state.reservationDetails.lastName = state.onEditCustomerInfo.contactDetail.lastName
   },
-  // Add one more room selection after user finish first room selection
-  'ADD_ANOTHER_ROOM' (state) {
+  [MUTATION_TYPES.ADD_ANOTHER_ROOM] (state) {
     state.currentStep = 0
     state.onSearchRoom = {
       createTime: dayjs().toISOString(),
@@ -330,18 +312,15 @@ const mutations = {
       addOns: []
     }
   },
-  // Generate confirmation number
-  'SET_CONFIRMATION_NUM' (state) {
+  [MUTATION_TYPES.SET_CONFIRMATION_NUM] (state) {
     state.reservationDetails.confirmationNum = 'ARNSS' + dayjs().format('MMDDYYSSS')
   },
-  // Abandon change from edited room selection
-  'DISCARD_CHANGES' (state) {
+  [MUTATION_TYPES.DISCARD_CHANGES] (state) {
     state.isEditingRoom = false
     state.currentStep = state.previousStep
     state.previousStep = 1
   },
-  // Submit reservation data to database and complete booking
-  'SUBMIT_RESERVATION' (state) {
+  [MUTATION_TYPES.SUBMIT_RESERVATION] (state) {
     state.tempId = ''
     state.currentStep = 1
     state.previousStep = 1
@@ -374,8 +353,7 @@ const mutations = {
     }
     state.currentSelectedRoomIdx = 0
   },
-  // Reset reservation data back to initial
-  'RESET_RESERVED_INFO' (state) {
+  [MUTATION_TYPES.RESET_RESERVED_INFO] (state) {
     state.reservationDetails = {
       createTime: '',
       lastUpdateTime: '',
@@ -389,30 +367,29 @@ const mutations = {
   }
 }
 const actions = {
-  goNextStep ({ commit }) {
-    commit('GO_NEXT_STEP')
+  [ACTION_TYPES.GO_NEXT_STEP] ({ commit }) {
+    commit(MUTATION_TYPES.GO_NEXT_STEP)
   },
-  resetAllReservation ({ commit }) {
-    commit('RESET_ALL_RESERVATION')
+  [ACTION_TYPES.RESET_ALL_RESERVATION] ({ commit }) {
+    commit(MUTATION_TYPES.RESET_ALL_RESERVATION)
   },
-  backPreviousStep ({ commit }) {
-    commit('BACK_PREVIOUS_STEP')
+  [ACTION_TYPES.BACK_PREVIOUS_STEP] ({ commit }) {
+    commit(MUTATION_TYPES.BACK_PREVIOUS_STEP)
   },
-  // Switch components between different routes
-  async switchStep ({ commit }, order) {
-    commit('SWITCH_STEP', order)
+  async [ACTION_TYPES.SWITCH_STEP] ({ commit }, order) {
+    commit(MUTATION_TYPES.SWITCH_STEP, order)
   },
-  initRoom ({ commit }) {
-    commit('SET_ROOMS', roomsIntro)
+  [ACTION_TYPES.INIT_ROOM] ({ commit }) {
+    commit(MUTATION_TYPES.SET_ROOMS, roomsIntro)
   },
-  initReservation ({ commit }) {
-    commit('RESET_RESERVATION')
+  [ACTION_TYPES.INIT_RESERVATION] ({ commit }) {
+    commit(MUTATION_TYPES.RESET_RESERVED_INFO)
   },
-  async initOnSearchRoom ({ commit }) {
-    commit('RESET_ONSEARCHROOM')
+  async [ACTION_TYPES.INIT_ON_SEARCH_ROOM] ({ commit }) {
+    commit(MUTATION_TYPES.RESET_ONSEARCHROOM)
   },
-  async addAnotherRoom ({ state, commit }) {
-    await commit('ADD_ANOTHER_ROOM')
+  async [ACTION_TYPES.ADD_ANOTHER_ROOM] ({ state, commit }) {
+    await commit(MUTATION_TYPES.ADD_ANOTHER_ROOM)
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
@@ -423,16 +400,16 @@ const actions = {
       }
     })
   },
-  async generateId ({ commit }, payload) {
-    commit('GENERATE_ID', payload)
+  async [ACTION_TYPES.GENERATE_ID] ({ commit }, payload) {
+    commit(MUTATION_TYPES.GENERATE_ID, payload)
   },
-  async searchRoomType ({ commit }, selection) {
-    commit('SET_SEARCH_SELECTION', selection)
+  async [ACTION_TYPES.SEARCH_ROOM_TYPE] ({ commit }, selection) {
+    commit(MUTATION_TYPES.SET_SEARCH_SELECTION, selection)
   },
-  async addRoomToSelection ({ commit }, selection) {
-    commit('ADD_ROOM', selection)
+  async [ACTION_TYPES.ADD_ROOM_TO_SELECTION] ({ commit }, selection) {
+    commit(MUTATION_TYPES.ADD_ROOM, selection)
   },
-  async removeRoomFromSelection ({ state, commit }, selection) {
+  async [ACTION_TYPES.REMOVE_ROOM_FROM_SELECTION] ({ state, commit, dispatch }, selection) {
     if (state.reservationDetails.roomSelections.length === 1) {
       await router.push({
         name: 'Reservation',
@@ -443,13 +420,13 @@ const actions = {
           prevStep: `s${state.currentStep}`
         }
       })
-      commit('REMOVE_ROOM_FROM_SELECTION', selection)
+      commit(MUTATION_TYPES.REMOVE_ROOM_FROM_SELECTION, selection)
     } else {
-      commit('REMOVE_ROOM_FROM_SELECTION', selection)
+      commit(MUTATION_TYPES.REMOVE_ROOM_FROM_SELECTION, selection)
     }
   },
-  async editRoomFromSelection ({ state, commit }, selection) {
-    commit('EDIT_ROOM_FROM_SELECTION', selection)
+  async [ACTION_TYPES.EDIT_ROOM_FROM_SELECTION] ({ state, commit }, selection) {
+    commit(MUTATION_TYPES.EDIT_ROOM_FROM_SELECTION, selection)
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
@@ -460,22 +437,22 @@ const actions = {
       }
     })
   },
-  async addAddonsToSelection ({ commit }, selection) {
-    commit('ADD_ADDONS', selection)
+  async [ACTION_TYPES.ADD_ADDONS_TO_SELECTION] ({ commit }, selection) {
+    commit(MUTATION_TYPES.ADD_ADDONS, selection)
   },
-  async removeAddonsFromSelection ({ commit }, selection) {
-    commit('REMOVE_ADDONS', selection)
+  async [ACTION_TYPES.REMOVE_ADDONS_FROM_SELECTION] ({ commit }, selection) {
+    commit(MUTATION_TYPES.REMOVE_ADDONS, selection)
   },
-  async calculateTotalAmount ({ commit }) {
-    commit('CALCULATE_TOTAL_AMOUNT')
+  async [ACTION_TYPES.CALCULATE_TOTAL_AMOUNT] ({ commit }) {
+    commit(MUTATION_TYPES.CALCULATE_TOTAL_AMOUNT)
   },
-  async saveRoomSelectionToReservation ({ commit }) {
-    commit('SAVE_ROOM_SELECTION_TO_RESERVATION')
+  async [ACTION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION] ({ commit }) {
+    commit(MUTATION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION)
   },
-  async forwardToCustomerInfo ({ state, commit, dispatch }) {
-    await dispatch('saveRoomSelectionToReservation')
-    await dispatch('calculateTotalAmount')
-    await dispatch('initOnSearchRoom')
+  async [ACTION_TYPES.FORWARD_TO_CUSTOMER_INFO] ({ state, commit, dispatch }) {
+    await dispatch(ACTION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION)
+    await dispatch(ACTION_TYPES.CALCULATE_TOTAL_AMOUNT)
+    await dispatch(ACTION_TYPES.INIT_ON_SEARCH_ROOM)
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
@@ -485,19 +462,16 @@ const actions = {
         prevStep: 's2'
       }
     })
-    // commit('GO_NEXT_STEP')
   },
-
-  // Manipulation of customer details
-  async addCustomerDetails ({ commit }, information) {
-    commit('ADD_CUSTOMER_DETAIL', information)
+  async [ACTION_TYPES.ADD_CUSTOMER_DETAILS] ({ commit }, information) {
+    commit(MUTATION_TYPES.ADD_CUSTOMER_DETAIL, information)
   },
-  async saveCustomerInfoToReservation ({ commit }) {
-    commit('SAVE_CUSTOMER_INFO_TO_RESERVATION')
+  async [ACTION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION] ({ commit }) {
+    commit(MUTATION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION)
   },
-  async forwardToConfirmation ({ state, commit, dispatch }, information) {
-    await dispatch('addCustomerDetails', information)
-    await dispatch('saveCustomerInfoToReservation')
+  async [ACTION_TYPES.FORWARD_TO_CONFIRMATION] ({ state, commit, dispatch }, information) {
+    await dispatch(ACTION_TYPES.ADD_CUSTOMER_DETAILS, information)
+    await dispatch(ACTION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION)
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
@@ -508,25 +482,23 @@ const actions = {
       }
     })
   },
-
-  //
-  async setConfirmationNum ({ commit }) {
-    commit('SET_CONFIRMATION_NUM')
+  async [ACTION_TYPES.SET_CONFIRMATION_NUM] ({ commit }) {
+    commit(MUTATION_TYPES.SET_CONFIRMATION_NUM)
   },
-  async submitReservation ({ commit, dispatch, state }) {
-    await dispatch('setConfirmationNum')
+  async [ACTION_TYPES.SUBMIT_RESERVATION] ({ commit, dispatch, state }) {
+    await dispatch(ACTION_TYPES.SET_CONFIRMATION_NUM)
     await firebaseApi.postData('reservationList', state.reservationDetails)
     await router.push({
       name: 'Completion',
       params: { tempId: state.tempId }
     })
-    commit('SUBMIT_RESERVATION')
+    commit(MUTATION_TYPES.SUBMIT_RESERVATION)
   },
-  async resetReservedInfo ({ commit }) {
-    commit('RESET_RESERVED_INFO')
+  async [ACTION_TYPES.RESET_RESERVED_INFO] ({ commit }) {
+    commit(MUTATION_TYPES.RESET_RESERVED_INFO)
   },
-  async discardChanges ({ state, commit, dispatch }) {
-    await dispatch('initOnSearchRoom')
+  async [ACTION_TYPES.DISCARD_CHANGES] ({ state, commit, dispatch }) {
+    await dispatch(ACTION_TYPES.INIT_ON_SEARCH_ROOM)
     await router.push({
       name: 'Reservation',
       params: { tempId: state.tempId },
@@ -536,7 +508,7 @@ const actions = {
         prevStep: 's1'
       }
     })
-    commit('DISCARD_CHANGES')
+    commit(MUTATION_TYPES.DISCARD_CHANGES)
   }
 }
 

@@ -12,7 +12,7 @@ const firebaseApi = {
       .then(querySnapshot => {
         _temp = !querySnapshot.empty
       }).catch(err => {
-        console.log(err)
+        console.error('[firebaseApi] error:', err)
       })
     return _temp
   },
@@ -37,7 +37,7 @@ const firebaseApi = {
           })
         }
       }).catch((err) => {
-        console.log(err)
+        console.error('[firebaseApi] error:', err)
       })
     // Check if pet has been registered when the stay exists.
     if (isStayExist) {
@@ -75,7 +75,7 @@ const firebaseApi = {
           })
         }
       }).catch((err) => {
-        console.log(err)
+        console.error('[firebaseApi] error:', err)
       })
     return _temp
   },
@@ -113,11 +113,15 @@ const firebaseApi = {
       lastUpdateTime: payload.lastUpdateTime
     })
       .then(() => { console.log('') })
-      .catch((err) => { console.log(err) })
+      .catch((err) => { console.error('[firebaseApi] error:', err) })
   },
   // Delete data from db
   // resource: data category
-  async deleteData (resource, payload) {}
+  async deleteData (resource, payload) {
+    await db.collection(resource).doc(payload.id).delete()
+      .then(() => { console.log('Successfully deleted') })
+      .catch((err) => { console.error('[firebaseApi] deleteData error:', err) })
+  }
 }
 
 export default firebaseApi

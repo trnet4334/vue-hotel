@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { MessageBox } from 'element-ui'
 import home from './modules/home'
 import about from './modules/about'
 import dining from './modules/dining'
@@ -10,7 +11,7 @@ import specials from './modules/specials'
 import wellness from './modules/wellness'
 import reservation from './modules/reservation'
 import booking from './modules/booking'
-import store from '../../src/store'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -43,35 +44,41 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (from.name === 'Reservation') {
-    if (to.name !== 'Completion' && to.name !== 'Reservation') {
-      const answer = window.confirm('You might lose all the data you typed. Do you really want to leave this page?')
-      if (answer) {
-        store.dispatch('resetAllReservation').then(() => {
-          window.sessionStorage.clear()
-          next()
-        })
-      } else {
-        next(false)
-      }
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
+router.beforeEach(async (to, from, next) => {
+  // Guard 1: Block direct access to the Completion page
   if (to.name === 'Completion' && from.name !== 'Reservation') {
-    next('/home')
+    return next('/home')
   }
-  if (from.name === 'Activity' && to.name !== 'Activity') {
-    store.dispatch('leaveSearchResult').then(() => {
+
+  // Guard 2: Warn the user when navigating away from an in-progress reservation
+  if (from.name === 'Reservation' && to.name !== 'Completion' && to.name !== 'Reservation') {
+    try {
+      await MessageBox.confirm(
+        'You might lose all the data you typed.',
+        'Leave page?',
+        {
+          confirmButtonText: 'Leave',
+          cancelButtonText: 'Stay',
+          type: 'warning'
+        }
+      )
+      await store.dispatch('resetAllReservation')
       window.sessionStorage.clear()
-      next()
-    })
-  } else {
-    next()
+      return next()
+    } catch (e) {
+      // User clicked "Stay" or dismissed the dialog
+      return next(false)
+    }
   }
+
+  // Guard 3: Clear booking search state when leaving the Activity page
+  if (from.name === 'Activity' && to.name !== 'Activity') {
+    await store.dispatch('leaveSearchResult')
+    window.sessionStorage.clear()
+    return next()
+  }
+
+  next()
 })
 
 export default router
