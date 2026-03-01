@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { MessageBox } from 'element-ui'
 import home from './modules/home'
 import about from './modules/about'
 import dining from './modules/dining'
@@ -10,7 +11,7 @@ import specials from './modules/specials'
 import wellness from './modules/wellness'
 import reservation from './modules/reservation'
 import booking from './modules/booking'
-import store from '../../src/store'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -51,14 +52,21 @@ router.beforeEach(async (to, from, next) => {
 
   // Guard 2: Warn the user when navigating away from an in-progress reservation
   if (from.name === 'Reservation' && to.name !== 'Completion' && to.name !== 'Reservation') {
-    const confirmed = window.confirm(
-      'You might lose all the data you typed. Do you really want to leave this page?'
-    )
-    if (confirmed) {
+    try {
+      await MessageBox.confirm(
+        'You might lose all the data you typed.',
+        'Leave page?',
+        {
+          confirmButtonText: 'Leave',
+          cancelButtonText: 'Stay',
+          type: 'warning'
+        }
+      )
       await store.dispatch('resetAllReservation')
       window.sessionStorage.clear()
       return next()
-    } else {
+    } catch (e) {
+      // User clicked "Stay" or dismissed the dialog
       return next(false)
     }
   }
