@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import createLogger from 'vuex/dist/logger'
-import reservation from './modules/resevation'
+import reservation from './modules/reservation'
 import booking from './modules/booking'
 import * as MUTATION_TYPES from './mutation-types'
 
