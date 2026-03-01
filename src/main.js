@@ -28,6 +28,17 @@ Vue.use(VCalendar, {
 })
 
 Vue.config.productionTip = false
+
+// Global handler for Vue component errors (lifecycle, render, watchers)
+Vue.config.errorHandler = (err, vm, info) => {
+  console.error(`[Vue Error] ${info}:`, err)
+}
+
+// Global handler for unhandled Promise rejections
+window.addEventListener('unhandledrejection', (event) => {
+  console.error('[Unhandled Rejection]:', event.reason)
+  event.preventDefault()
+})
 // Define prototype for Lodash
 Vue.prototype.$_ = _
 // Define prototype for dayjs
