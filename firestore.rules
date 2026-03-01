@@ -1,9 +1,51 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2021, 3, 24);
+
+    // Reservations: anyone can create or look up their own booking
+    match /reservationList/{reservationId} {
+      allow create: if request.resource.data.keys().hasAll([
+                        'email', 'lastName', 'status', 'type',
+                        'totalAmount', 'roomSelections', 'customerInfo'
+                      ])
+                      && request.resource.data.status == 'Upcoming'
+                      && request.resource.data.type == 'Stay'
+                      && request.resource.data.totalAmount is number
+                      && request.resource.data.totalAmount >= 0;
+
+      allow read: if true;
+
+      allow update: if request.resource.data.keys().hasAll(['status', 'lastUpdateTime'])
+                      && request.resource.data.status in ['Upcoming', 'Canceled'];
+
+      // Pet registration sub-collection
+      match /petRegistration/{petId} {
+        allow read, create: if true;
+      }
+    }
+
+    // Event / wedding inquiries: write-only from the client
+    match /eventsRequestList/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['type', 'email'])
+                      && request.resource.data.type == 'Event/Meeting Inquiry';
+      allow read: if false;
+    }
+
+    match /weddingRequestList/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['type', 'email'])
+                      && request.resource.data.type == 'Wedding Inquiry';
+      allow read: if false;
+    }
+
+    // Customer service & subscriptions: write-only from the client
+    match /customerServiceRequest/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['email']);
+      allow read: if false;
+    }
+
+    match /subscriptionList/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['email']);
+      allow read: if false;
     }
   }
 }
