@@ -72,15 +72,17 @@
           </div>
         </div>
         <div class="events__body--fourth">
-          <vue-flux
-            :options="options"
-            :images="images"
-            :transitions="transitions"
+          <swiper
+            :modules="swiperModules"
+            :slides-per-view="1"
+            :autoplay="{ delay: 3000, disableOnInteraction: false }"
+            :loop="true"
+            style="width:100%;height:100%"
           >
-            <template v-slot:preloader>
-              <flux-preloader />
-            </template>
-          </vue-flux>
+            <swiper-slide v-for="(image, idx) in images" :key="idx">
+              <img :src="image" style="width:100%;height:100%;object-fit:cover" alt="Gallery image">
+            </swiper-slide>
+          </swiper>
         </div>
         <div class="events__body--fifth flex--row">
             <div class="events__content">
@@ -104,16 +106,13 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import ImageBox from '@/components/imageBox/ImageBox'
-import {
-  VueFlux,
-  FluxControls,
-  FluxPreloader
-} from 'vue-flux'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 export default {
   components: {
-    VueFlux,
-    FluxControls,
-    FluxPreloader,
+    Swiper,
+    SwiperSlide,
     Navbar,
     SignupBanner,
     Footer,
@@ -127,29 +126,12 @@ export default {
         ['meeting/meeting-img-2.jpg', 'Meeting 2'],
         ['meeting/meeting-img-3.jpg', 'Meeting 3']
       ],
-      options: {
-        allowFullscreen: false,
-        allowToSkipTransition: true,
-        autohideTime: 2500,
-        autoplay: true,
-        bindKeys: false,
-        delay: 3000,
-        enableGestures: false,
-        infinite: true,
-        lazyLoad: true,
-        lazyLoadAfter: 3
-      },
+      swiperModules: [Autoplay],
       images: [
         require('@/assets/images/meeting/carousel/meeting-carousel-1.jpg'),
         require('@/assets/images/meeting/carousel/meeting-carousel-2.jpg'),
         require('@/assets/images/meeting/carousel/meeting-carousel-3.jpg'),
         require('@/assets/images/meeting/carousel/meeting-carousel-4.jpg')
-      ],
-      transitions: [
-        'blinds3d',
-        'blocks2',
-        'warp',
-        'wave'
       ]
     }
   }

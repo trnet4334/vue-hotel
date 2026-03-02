@@ -1,7 +1,10 @@
-/* theme color */
-$--color-primary: teal;
-
-/* icon font path, required */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
-
-@import "~element-ui/packages/theme-chalk/src/index";
+/* Override Element Plus primary color via CSS variable */
+:root {
+  --el-color-primary: teal;
+  --el-color-primary-light-3: #33b2b2;
+  --el-color-primary-light-5: #66c9c9;
+  --el-color-primary-light-7: #99dfdf;
+  --el-color-primary-light-8: #b2e8e8;
+  --el-color-primary-light-9: #cceaea;
+  --el-color-primary-dark-2: #006666;
+}

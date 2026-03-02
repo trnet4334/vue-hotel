@@ -103,7 +103,7 @@
       <span>© A Resort & Spa All right reserved</span>
     </div>
     <el-dialog
-      :visible.sync="dialogVisible"
+      v-model:visible="dialogVisible"
       custom-class="dialog-class"
       center
     >

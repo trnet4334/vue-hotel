@@ -1,5 +1,5 @@
-import roomsIntro from '@/data/checkout/roomsIntro'
-import addOns from '@/data/checkout/addOns'
+import roomsIntro from '@/assets/data/checkout/roomsIntro'
+import addOns from '@/assets/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
@@ -409,7 +409,7 @@ const actions = {
   async [ACTION_TYPES.ADD_ROOM_TO_SELECTION] ({ commit }, selection) {
     commit(MUTATION_TYPES.ADD_ROOM, selection)
   },
-  async [ACTION_TYPES.REMOVE_ROOM_FROM_SELECTION] ({ state, commit, dispatch }, selection) {
+  async [ACTION_TYPES.REMOVE_ROOM_FROM_SELECTION] ({ state, commit }, selection) {
     if (state.reservationDetails.roomSelections.length === 1) {
       await router.push({
         name: 'Reservation',
@@ -449,7 +449,7 @@ const actions = {
   async [ACTION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION] ({ commit }) {
     commit(MUTATION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION)
   },
-  async [ACTION_TYPES.FORWARD_TO_CUSTOMER_INFO] ({ state, commit, dispatch }) {
+  async [ACTION_TYPES.FORWARD_TO_CUSTOMER_INFO] ({ state, dispatch }) {
     await dispatch(ACTION_TYPES.SAVE_ROOM_SELECTION_TO_RESERVATION)
     await dispatch(ACTION_TYPES.CALCULATE_TOTAL_AMOUNT)
     await dispatch(ACTION_TYPES.INIT_ON_SEARCH_ROOM)
@@ -469,7 +469,7 @@ const actions = {
   async [ACTION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION] ({ commit }) {
     commit(MUTATION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION)
   },
-  async [ACTION_TYPES.FORWARD_TO_CONFIRMATION] ({ state, commit, dispatch }, information) {
+  async [ACTION_TYPES.FORWARD_TO_CONFIRMATION] ({ state, dispatch }, information) {
     await dispatch(ACTION_TYPES.ADD_CUSTOMER_DETAILS, information)
     await dispatch(ACTION_TYPES.SAVE_CUSTOMER_INFO_TO_RESERVATION)
     await router.push({

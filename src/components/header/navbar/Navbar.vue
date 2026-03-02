@@ -121,7 +121,7 @@
     </nav>
     <Menu :isOpen="isOpen"/>
     <el-dialog
-      :visible.sync="dialogVisible"
+      v-model:visible="dialogVisible"
       custom-class="dialog-class"
       center
     >
@@ -234,7 +234,7 @@ export default {
       window.addEventListener('scroll', this.onScroll)
     })
   },
-  destroyed () {
+  unmounted () {
     window.removeEventListener('scroll', this.onScroll)
   },
   methods: {

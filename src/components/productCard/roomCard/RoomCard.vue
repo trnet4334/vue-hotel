@@ -1,15 +1,17 @@
 <template>
   <div class="card flex--column">
     <div class="card__carousel">
-      <vue-flux
-        :options="options"
-        :images="images"
-        :transitions="transitions"
+      <swiper
+        :modules="swiperModules"
+        :slides-per-view="1"
+        :autoplay="{ delay: 3000, disableOnInteraction: false }"
+        :loop="true"
+        style="width:100%;height:100%"
       >
-        <template v-slot:preloader>
-          <flux-preloader />
-        </template>
-      </vue-flux>
+        <swiper-slide v-for="(image, idx) in images" :key="idx">
+          <img :src="image" style="width:100%;height:100%;object-fit:cover" alt="Gallery image">
+        </swiper-slide>
+      </swiper>
     </div>
     <div class="card__body flex--column flex--center">
       <div class="card__body--content">
@@ -28,7 +30,7 @@
       </div>
     </div>
     <el-dialog
-      :visible.sync="dialogVisible"
+      v-model:visible="dialogVisible"
       custom-class="dialog-class"
       center
     >
@@ -104,19 +106,16 @@
   </div>
 </template>
 <script>
-import {
-  VueFlux,
-  FluxControls,
-  FluxPreloader
-} from 'vue-flux'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 import dayjs from 'dayjs'
 import { nanoid } from 'nanoid'
 export default {
   props: ['room'],
   components: {
-    VueFlux,
-    FluxControls,
-    FluxPreloader
+    Swiper,
+    SwiperSlide
   },
   data () {
     return {
@@ -129,33 +128,12 @@ export default {
         numOfAdultGuests: 1,
         numOfChildrenGuest: 0
       },
-      options: {
-        allowFullscreen: false,
-        allowToSkipTransition: true,
-        autohideTime: 2500,
-        autoplay: true,
-        bindKeys: false,
-        delay: 3000,
-        enableGestures: false,
-        infinite: true,
-        lazyLoad: true,
-        lazyLoadAfter: 3
-      },
+      swiperModules: [Autoplay],
       images: [
         require(`@/assets/images/room/room-card/${this.room.galleryUrl[0]}.jpg`),
         require(`@/assets/images/room/room-card/${this.room.galleryUrl[1]}.jpg`),
         require(`@/assets/images/room/room-card/${this.room.galleryUrl[2]}.jpg`),
         require(`@/assets/images/room/room-card/${this.room.galleryUrl[3]}.jpg`)
-      ],
-      transitions: [
-        'blinds3d',
-        'blocks2',
-        'book',
-        'cube',
-        'round2',
-        'swipe',
-        'warp',
-        'wave'
       ]
     }
   },

@@ -1,19 +1,16 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import createLogger from 'vuex/dist/logger'
+import { createLogger } from 'vuex'
 import reservation from './modules/reservation'
 import booking from './modules/booking'
 import * as MUTATION_TYPES from './mutation-types'
-
-Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 const createPersisted = createPersistedState({
   storage: window.sessionStorage
 })
 
-export default new Vuex.Store({
+export default createStore({
   state: {
     isMobileSidebarDisplay: false,
     isReservationModalDisplay: false

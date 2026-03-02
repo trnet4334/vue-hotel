@@ -90,7 +90,7 @@
       </div>
     </div>
     <el-dialog
-      :visible.sync="dialogVisible"
+      v-model:visible="dialogVisible"
       custom-class="dialog-class"
       center
     >

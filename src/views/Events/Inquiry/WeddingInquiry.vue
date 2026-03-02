@@ -2,8 +2,9 @@
   <div>
     <navbar/>
     <section class="page-container">
-      <ValidationObserver
+      <Form
         ref="form"
+        as="div"
         class="page-wrapper"
         v-slot="{ handleSubmit }"
       >
@@ -21,61 +22,66 @@
           <div class="body">
             <div class="content flex--column">
               <div class="flex--column">
-                <ValidationProvider
+                <Field
                   rules="required"
                   name="Your title"
+                  v-model="requestWeddingInfo.title"
+                  v-slot="{ field, errors }"
                   class="flex--column input__select alert-message"
-                  v-slot="{ errors }"
                 >
                   <label for="title">Title</label>
-                  <select name="title" id="title" v-model="requestWeddingInfo.title">
+                  <select name="title" id="title" v-bind="field">
                     <option value="Mr.">Mr.</option>
                     <option value="Ms.">Ms.</option>
                   </select>
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
                 <div class="flex--row">
-                  <ValidationProvider
+                  <Field
                     rules="required|alpha_spaces"
                     name="Your first name"
-                    v-slot="{ errors }"
+                    v-model.trim="requestWeddingInfo.firstName"
+                    v-slot="{ field, errors }"
                     class="flex--column input__text sm alert-message"
                   >
                     <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestWeddingInfo.firstName">
+                    <input type="text" id="firstName" placeholder="First name" required v-bind="field">
                     <span class="alert-message">{{errors[0]}}</span>
-                  </ValidationProvider>
-                  <ValidationProvider
+                  </Field>
+                  <Field
                     rules="required|alpha_spaces"
                     name="Your last name"
-                    v-slot="{ errors }"
+                    v-model.trim="requestWeddingInfo.lastName"
+                    v-slot="{ field, errors }"
                     class="flex--column input__text sm alert-message"
                   >
                     <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestWeddingInfo.lastName">
+                    <input type="text" id="lastName" placeholder="Last name" required v-bind="field">
                     <span class="alert-message">{{errors[0]}}</span>
-                  </ValidationProvider>
+                  </Field>
                 </div>
-                <ValidationProvider
+                <Field
                   rules="required|regexPhoneNum"
                   name="Your phone number"
-                  v-slot="{ errors }"
+                  v-model.trim="requestWeddingInfo.phoneNum"
+                  v-slot="{ field, errors }"
                   class="flex--column input__text md alert-message"
                 >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-model.trim="requestWeddingInfo.phoneNum">
+                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
-                <ValidationProvider
+                </Field>
+                <Field
                   rules="required|regexEmail"
                   name="Your email address"
-                  v-slot="{ errors }"
+                  v-model.trim="requestWeddingInfo.email"
+                  v-slot="{ field, errors }"
                   class="flex--column input__text md alert-message"
                 >
                   <label for="email">Email Address*</label>
-                  <input type="text" id="email" placeholder="Email Address" required v-model.trim="requestWeddingInfo.email">
+                  <input type="text" id="email" placeholder="Email Address" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
                 <div class="flex--column input__text">
                   <label>Wedding Date</label>
                   <v-date-picker
@@ -137,16 +143,17 @@
                     Arrival / Departure Brunch
                   </label>
                 </div>
-                <ValidationProvider
+                <Field
                   rules="required|min_value:8|numeric"
                   name="Number of guests"
-                  v-slot="{ errors }"
+                  v-model.number="requestWeddingInfo.numberOfGuest"
+                  v-slot="{ field, errors }"
                   class="flex--column input__text sm alert-message"
                 >
                   <label for="numberOfGuest">Number of Guests*</label>
-                  <input type="text" id="numberOfGuest" required v-model.number="requestWeddingInfo.numberOfGuest">
+                  <input type="text" id="numberOfGuest" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
                 <div class="input__checkbox">
                   <label for="consent">
                     <input type="checkbox" id="consent" @click="checked = !checked" required>
@@ -164,7 +171,7 @@
             class="btn-outline-md"
           >SUBMIT</button>
         </form>
-      </ValidationObserver>
+      </Form>
     </section>
     <signup-banner/>
     <Footer/>
@@ -174,50 +181,16 @@
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
-import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
-// eslint-disable-next-line camelcase
-import { alpha, alpha_spaces, min_value, numeric } from 'vee-validate/dist/rules'
+import { Form, Field } from 'vee-validate'
 import firebaseApi from '@/common/firebaseApi'
 import dayjs from 'dayjs'
-extend('alpha', alpha)
-extend('alpha_spaces', alpha_spaces)
-extend('min_value', min_value)
-extend('numeric', numeric)
-extend('required', {
-  validate (value) {
-    return {
-      required: true,
-      valid: ['', null, undefined].indexOf(value) === -1
-    }
-  },
-  computesRequired: true
-})
-extend('regexPhoneNum', {
-  validate (value) {
-    const regex = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-s.]?[(]?[0-9]{1,3}[)]?([-s.]?[0-9]{3})([-s.]?[0-9]{3,4})/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
-extend('regexEmail', {
-  validate (value) {
-    // eslint-disable-next-line no-control-regex
-    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
 export default {
   components: {
     Navbar,
     SignupBanner,
     Footer,
-    ValidationObserver,
-    ValidationProvider
+    Form,
+    Field
   },
   data () {
     return {

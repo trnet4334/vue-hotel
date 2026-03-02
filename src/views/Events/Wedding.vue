@@ -43,15 +43,17 @@
           </div>
         </div>
         <div class="wedding__body--third">
-          <vue-flux
-            :options="options"
-            :images="images"
-            :transitions="transitions"
+          <swiper
+            :modules="swiperModules"
+            :slides-per-view="1"
+            :autoplay="{ delay: 3000, disableOnInteraction: false }"
+            :loop="true"
+            style="width:100%;height:100%"
           >
-            <template v-slot:preloader>
-              <flux-preloader />
-            </template>
-          </vue-flux>
+            <swiper-slide v-for="(image, idx) in images" :key="idx">
+              <img :src="image" style="width:100%;height:100%;object-fit:cover" alt="Gallery image">
+            </swiper-slide>
+          </swiper>
         </div>
         <div class="wedding__body--fourth flex--column flex--center">
           <div class="lists">
@@ -127,16 +129,13 @@ import Navbar from '@/components/header/navbar/Navbar.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import ImageBox from '@/components/imageBox/ImageBox'
-import {
-  VueFlux,
-  FluxControls,
-  FluxPreloader
-} from 'vue-flux'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 export default {
   components: {
-    VueFlux,
-    FluxControls,
-    FluxPreloader,
+    Swiper,
+    SwiperSlide,
     Navbar,
     SignupBanner,
     Footer,
@@ -150,30 +149,13 @@ export default {
         ['wedding/wedding-img-3.jpg', 'Wedding 3'],
         ['wedding/wedding-img-4.jpg', 'Wedding 4']
       ],
-      options: {
-        allowFullscreen: false,
-        allowToSkipTransition: true,
-        autohideTime: 2500,
-        autoplay: true,
-        bindKeys: false,
-        delay: 5000,
-        enableGestures: false,
-        infinite: true,
-        lazyLoad: true,
-        lazyLoadAfter: 3
-      },
+      swiperModules: [Autoplay],
       images: [
         require('@/assets/images/wedding/carousel/wedding-carousel-1.jpg'),
         require('@/assets/images/wedding/carousel/wedding-carousel-2.jpg'),
         require('@/assets/images/wedding/carousel/wedding-carousel-3.jpg'),
         require('@/assets/images/wedding/carousel/wedding-carousel-4.jpg'),
         require('@/assets/images/wedding/carousel/wedding-carousel-5.jpg')
-      ],
-      transitions: [
-        'blocks2',
-        'cube',
-        'round2',
-        'swipe'
       ]
     }
   }

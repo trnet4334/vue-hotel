@@ -28,15 +28,17 @@
           </div>
           <div class="room-details__body--third">
             <div class="room-details__content--third">
-              <vue-flux
-                :options="options"
-                :images="images"
-                :transitions="transitions"
+              <swiper
+                :modules="swiperModules"
+                :slides-per-view="1"
+                :autoplay="{ delay: 3000, disableOnInteraction: false }"
+                :loop="true"
+                style="width:100%;height:100%"
               >
-                <template v-slot:preloader>
-                  <flux-preloader />
-                </template>
-              </vue-flux>
+                <swiper-slide v-for="(image, idx) in images" :key="idx">
+                  <img :src="image" style="width:100%;height:100%;object-fit:cover" alt="Gallery image">
+                </swiper-slide>
+              </swiper>
             </div>
           </div>
           <div class="room-details__body--fourth">
@@ -53,7 +55,7 @@
       </div>
     </section>
     <el-dialog
-      :visible.sync="dialogVisible"
+      v-model:visible="dialogVisible"
       custom-class="dialog-class"
       center
     >
@@ -124,11 +126,9 @@ import RoomCard from '@/components/productCard/roomCard/RoomCard'
 import rooms from '@/assets/data/rooms'
 import roomType from '@/assets/data/checkout/roomType'
 import ImageBox from '@/components/imageBox/ImageBox'
-import {
-  VueFlux,
-  FluxControls,
-  FluxPreloader
-} from 'vue-flux'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 import dayjs from 'dayjs'
 import { nanoid } from 'nanoid'
 export default {
@@ -138,9 +138,8 @@ export default {
     Footer,
     RoomCard,
     ImageBox,
-    VueFlux,
-    FluxControls,
-    FluxPreloader
+    Swiper,
+    SwiperSlide
   },
   data () {
     return {
@@ -156,33 +155,12 @@ export default {
       },
       rooms: rooms.slice(1, 3),
       classicGuestroom: roomType[0],
-      options: {
-        allowFullscreen: false,
-        allowToSkipTransition: true,
-        autohideTime: 2500,
-        autoplay: true,
-        bindKeys: false,
-        delay: 3000,
-        enableGestures: false,
-        infinite: true,
-        lazyLoad: true,
-        lazyLoadAfter: 3
-      },
+      swiperModules: [Autoplay],
       images: [
         require('@/assets/images/room/room-card/room-carousel-1.jpg'),
         require('@/assets/images/room/room-card/room-carousel-3.jpg'),
         require('@/assets/images/room/room-card/room-carousel-5.jpg'),
         require('@/assets/images/room/room-card/room-carousel-6.jpg')
-      ],
-      transitions: [
-        'blinds3d',
-        'blocks2',
-        'book',
-        'cube',
-        'round2',
-        'swipe',
-        'warp',
-        'wave'
       ]
     }
   },

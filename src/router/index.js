@@ -1,6 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import { MessageBox } from 'element-ui'
+import { createRouter, createWebHistory } from 'vue-router'
+import { ElMessageBox } from 'element-plus'
 import home from './modules/home'
 import about from './modules/about'
 import dining from './modules/dining'
@@ -12,8 +11,6 @@ import wellness from './modules/wellness'
 import reservation from './modules/reservation'
 import booking from './modules/booking'
 import store from '../store'
-
-Vue.use(VueRouter)
 
 const routes = [
   ...home,
@@ -32,28 +29,27 @@ const routes = [
     component: () => import('@/views/Information/section/Jobs/Jobs.vue')
   },
   {
-    path: '*',
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFound/NotFound.vue')
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from) => {
   // Guard 1: Block direct access to the Completion page
   if (to.name === 'Completion' && from.name !== 'Reservation') {
-    return next('/home')
+    return '/home'
   }
 
   // Guard 2: Warn the user when navigating away from an in-progress reservation
   if (from.name === 'Reservation' && to.name !== 'Completion' && to.name !== 'Reservation') {
     try {
-      await MessageBox.confirm(
+      await ElMessageBox.confirm(
         'You might lose all the data you typed.',
         'Leave page?',
         {
@@ -64,10 +60,10 @@ router.beforeEach(async (to, from, next) => {
       )
       await store.dispatch('resetAllReservation')
       window.sessionStorage.clear()
-      return next()
+      return true
     } catch (e) {
       // User clicked "Stay" or dismissed the dialog
-      return next(false)
+      return false
     }
   }
 
@@ -75,10 +71,10 @@ router.beforeEach(async (to, from, next) => {
   if (from.name === 'Activity' && to.name !== 'Activity') {
     await store.dispatch('leaveSearchResult')
     window.sessionStorage.clear()
-    return next()
+    return true
   }
 
-  next()
+  return true
 })
 
 export default router
