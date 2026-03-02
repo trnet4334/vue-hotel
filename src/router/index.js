@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
 import home from './modules/home'
 import about from './modules/about'
@@ -36,7 +36,9 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: process.env.NODE_ENV === 'production'
+    ? createWebHashHistory(process.env.BASE_URL)
+    : createWebHistory(process.env.BASE_URL),
   routes
 })
 

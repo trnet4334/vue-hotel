@@ -1,6 +1,9 @@
 const path = require('path')
 
 module.exports = {
+  // GitHub Pages serves from /vue-hotel/ subdirectory
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue-hotel/' : '/',
+
   // Skip source maps in production to reduce bundle size
   productionSourceMap: false,
 
