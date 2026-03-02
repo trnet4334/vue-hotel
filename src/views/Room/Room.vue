@@ -73,7 +73,7 @@
   </main>
 </template>
 <script>
-import rooms from '@/assets/data/rooms.js'
+import rooms from '@/assets/data/rooms'
 import Navbar from '@/components/header/navbar/Navbar.vue'
 import RoomCard from '@/components/productCard/roomCard/RoomCard.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner'

@@ -21,7 +21,20 @@ module.exports = {
     disableHostCheck: true
   },
 
+  chainWebpack: config => {
+    // Process .ts files with the same babel-loader used for .js
+    config.module
+      .rule('ts')
+      .test(/\.ts$/)
+      .use('babel-loader')
+      .loader('babel-loader')
+      .end()
+  },
+
   configureWebpack: config => {
+    // Allow webpack to resolve .ts files alongside .js
+    config.resolve.extensions = ['.ts', '.js', '.vue', '.json']
+
     if (process.env.NODE_ENV === 'production') {
       // Warn when a single asset exceeds 512 KB and error at 1 MB
       config.performance = {

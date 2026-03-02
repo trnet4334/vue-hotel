@@ -1,4 +1,15 @@
-const roomType = [
+export interface RoomType {
+  name: string
+  title: string
+  description: string
+  description2: string
+  amenities: string[]
+  galleryUrl: string[]
+  id: string
+  typeIndex: number
+}
+
+const roomType: RoomType[] = [
   {
     name: 'Classic Guestroom',
     title: 'Mediterranean Inspired',

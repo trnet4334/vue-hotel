@@ -1,4 +1,10 @@
-const main = [
+export interface FaqItem {
+  question: string
+  answer: string
+  id: string
+}
+
+const main: FaqItem[] = [
   {
     question: 'How do I view my reservation?',
     answer: 'Check out Manage my Booking page to view, modify or cancel your reservation.',
@@ -47,7 +53,7 @@ const main = [
   }
 ]
 
-const transportation = [
+const transportation: FaqItem[] = [
   {
     question: 'Do you have onsite parking? How much does it cost?',
     answer: 'We do have complimentary onsite parking and complimentary valet, which is included in your room rate.',
@@ -60,7 +66,7 @@ const transportation = [
   }
 ]
 
-const reservation = [
+const reservation: FaqItem[] = [
   {
     question: 'Do you have an early departure fee?',
     answer: 'All reservations will be subjected to an early departure fee, which charge $70 minimum or up to one night room including tax.',
@@ -79,7 +85,7 @@ const reservation = [
   }
 ]
 
-const accounting = [
+const accounting: FaqItem[] = [
   {
     question: 'Who do I call if I have questions about my bill?',
     answer: 'Feel free to contact our financial department at 480.000.0007. We will be happy to help.',
@@ -92,7 +98,7 @@ const accounting = [
   }
 ]
 
-const faq = [
+const faq: FaqItem[] = [
   ...main,
   ...transportation,
   ...reservation,

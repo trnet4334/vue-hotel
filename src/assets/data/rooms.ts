@@ -1,4 +1,13 @@
-const rooms = [
+export interface Room {
+  name: string
+  description: string
+  galleryUrl: string[]
+  routeName: string
+  id: string
+  maxGuestAllow?: number
+}
+
+const rooms: Room[] = [
   {
     name: 'Classic Guestroom',
     description: 'You will find the interior of our refreshed classic rooms alluring and ' +
