@@ -57,7 +57,7 @@
 <script>
 // import router from '@/router'
 import dayjs from 'dayjs'
-import shortid from 'shortid'
+import { nanoid } from 'nanoid'
 const toObject = require('dayjs/plugin/toObject')
 dayjs.extend(toObject)
 export default {
@@ -74,7 +74,7 @@ export default {
       rooms: this.bookingItem.roomSelections,
       dateStart: this.checkBookingDateStart(this.bookingItem),
       dateEnd: this.checkBookingDateEnd(this.bookingItem),
-      keyNum: shortid.generate(),
+      keyNum: nanoid(),
       months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     }
   },
@@ -129,7 +129,7 @@ export default {
     async submitBookingRequest () {
       if (this.bookingItem.type === 'Stay') {
         const createTime = dayjs().toISOString()
-        const id = shortid.generate()
+        const id = nanoid()
         const selection = {
           date: {
             start: new Date(new Date().setDate(new Date().getDate() + 2)),

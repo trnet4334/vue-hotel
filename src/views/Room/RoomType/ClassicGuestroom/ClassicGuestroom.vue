@@ -130,7 +130,7 @@ import {
   FluxPreloader
 } from 'vue-flux'
 import dayjs from 'dayjs'
-import shortid from 'shortid'
+import { nanoid } from 'nanoid'
 export default {
   components: {
     Navbar,
@@ -195,7 +195,7 @@ export default {
         this.date.end === null) {
         alert('Please select a different date.')
       } else {
-        const id = shortid.generate()
+        const id = nanoid()
         const selection = {
           date: this.date,
           guests: this.guests,

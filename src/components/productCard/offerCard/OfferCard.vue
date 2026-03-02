@@ -13,7 +13,6 @@
 </template>
 <script>
 import ImageBox from '@/components/imageBox/ImageBox'
-import lozad from 'lozad'
 export default {
   components: {
     ImageBox
@@ -25,13 +24,18 @@ export default {
     }
   },
   mounted () {
-    const el = document.querySelectorAll('img')
-    const observer = lozad(el, {
-      rootMargin: '10px',
-      threshold: 0.1,
-      enableAutoReload: true
-    })
-    observer.observe()
+    const imgs = document.querySelectorAll('img')
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target
+          if (img.dataset.src) img.src = img.dataset.src
+          observer.unobserve(img)
+        }
+      }),
+      { rootMargin: '10px', threshold: 0.1 }
+    )
+    imgs.forEach(img => observer.observe(img))
   }
 }
 </script>

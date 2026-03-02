@@ -1,6 +1,6 @@
-import firebase from 'firebase'
-import 'firebase/auth'
-import 'firebase/firestore'
+import { initializeApp, getApps } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore'
 
 const config = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -13,18 +13,11 @@ const config = {
   measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
 }
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config)
-}
+const app = getApps().length ? getApps()[0] : initializeApp(config)
+
+export const auth = getAuth(app)
+export const db = getFirestore(app)
 
 if (window.location.hostname === 'localhost') {
-  console.log('testing field start')
-  firebase.firestore().settings({
-    host: 'localhost:8080',
-    ssl: false
-  })
+  connectFirestoreEmulator(db, 'localhost', 8080)
 }
-
-export const auth = firebase.auth()
-export const db = firebase.firestore()
-export default firebase
