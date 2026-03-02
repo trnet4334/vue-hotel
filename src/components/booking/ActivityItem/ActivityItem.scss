@@ -111,7 +111,7 @@
   display: none;
 }
 
-::v-deep  .el-divider--vertical {
+:deep(.el-divider--vertical) {
   width: 2px;
   height: 3.2rem;
 }

@@ -45,11 +45,11 @@
   border-left: 5px solid #202c39;
   background-color: rgba(105, 105, 105, 0.2);
 }
-::v-deep  .el-divider--horizontal {
+:deep(.el-divider--horizontal) {
   width: 95%;
   margin: 7.5px auto;
 }
-::v-deep  .el-message-box__content {
+:deep(.el-message-box__content) {
   font-size: 1.1rem;
 }
 

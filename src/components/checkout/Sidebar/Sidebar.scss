@@ -41,7 +41,7 @@
   }
 }
 
-::v-deep  .el-divider--horizontal {
+:deep(.el-divider--horizontal) {
   margin: 7.5px auto;
   width: 95%;
 }
