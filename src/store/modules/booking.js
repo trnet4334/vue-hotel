@@ -1,6 +1,6 @@
 import router from '@/router'
 import dayjs from 'dayjs'
-import shortid from 'shortid'
+import { nanoid } from 'nanoid'
 import firebaseApi from '@/common/firebaseApi'
 import * as MUTATION_TYPES from '../mutation-types'
 import * as ACTION_TYPES from '../action-types'
@@ -128,7 +128,7 @@ const actions = {
     commit(MUTATION_TYPES.CANCEL_CHECKING_REQUEST)
   },
   async [ACTION_TYPES.SUBMIT_CHECKING_REQUEST] ({ commit, dispatch, state }, selection) {
-    const id = shortid.generate()
+    const id = nanoid()
     await dispatch(ACTION_TYPES.GET_BOOKING_RESULT, selection)
     if (state.isAuth === true) {
       await router.push({

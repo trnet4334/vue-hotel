@@ -95,12 +95,12 @@ export default {
       window.addEventListener('popstate', this.back, false)
     }
   },
-  beforeDestroy () {
+  beforeUnmount () {
     if (this.$router.currentRoute.name !== 'Completion') {
       this.$store.dispatch('resetReservedInfo')
     }
   },
-  destroyed () {
+  unmounted () {
     window.removeEventListener('popstate', this.back, false)
     window.sessionStorage.clear()
   },

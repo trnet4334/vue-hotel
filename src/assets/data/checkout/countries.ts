@@ -1,4 +1,9 @@
-const countries = [
+export interface Country {
+  name: string
+  code: string
+}
+
+const countries: Country[] = [
   { name: 'Afghanistan', code: 'AF' },
   { name: 'Åland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },
@@ -114,11 +119,11 @@ const countries = [
   { name: 'Kazakhstan', code: 'KZ' },
   { name: 'Kenya', code: 'KE' },
   { name: 'Kiribati', code: 'KI' },
-  { name: 'Korea, Democratic People\'S Republic of', code: 'KP' },
+  { name: 'Korea, Democratic People\'s Republic of', code: 'KP' },
   { name: 'Korea, Republic of', code: 'KR' },
   { name: 'Kuwait', code: 'KW' },
   { name: 'Kyrgyzstan', code: 'KG' },
-  { name: 'Lao People\'S Democratic Republic', code: 'LA' },
+  { name: 'Lao People\'s Democratic Republic', code: 'LA' },
   { name: 'Latvia', code: 'LV' },
   { name: 'Lebanon', code: 'LB' },
   { name: 'Lesotho', code: 'LS' },
@@ -180,7 +185,7 @@ const countries = [
   { name: 'Reunion', code: 'RE' },
   { name: 'Romania', code: 'RO' },
   { name: 'Russian Federation', code: 'RU' },
-  { name: 'RWANDA', code: 'RW' },
+  { name: 'Rwanda', code: 'RW' },
   { name: 'Saint Helena', code: 'SH' },
   { name: 'Saint Kitts and Nevis', code: 'KN' },
   { name: 'Saint Lucia', code: 'LC' },

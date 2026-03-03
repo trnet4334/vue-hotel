@@ -1,4 +1,12 @@
-const addOns = [
+export interface AddOn {
+  name: string
+  description: string
+  price: number
+  alt: string
+  id: string
+}
+
+const addOns: AddOn[] = [
   {
     name: 'Bedtime Snacks & Milk',
     description: 'This package include 4 pre-packaged cookies and four packages of salty items, along' +

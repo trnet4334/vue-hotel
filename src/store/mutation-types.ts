@@ -1,0 +1,39 @@
+// Root store
+export const RESET_SIDEBAR_STATE = 'RESET_SIDEBAR_STATE' as const
+export const RESET_MODAL_STATE = 'RESET_MODAL_STATE' as const
+export const DISPLAY_MOBILE_SIDEBAR = 'DISPLAY_MOBILE_SIDEBAR' as const
+export const DISPLAY_RESERVATION_MODAL = 'DISPLAY_RESERVATION_MODAL' as const
+
+// Booking module
+export const GET_BOOKING_RESULT = 'GET_BOOKING_RESULT' as const
+export const CANCEL_CHECKING_REQUEST = 'CANCEL_CHECKING_REQUEST' as const
+export const SUBMIT_CHECKING_REQUEST = 'SUBMIT_CHECKING_REQUEST' as const
+export const CANCEL_BOOKING = 'CANCEL_BOOKING' as const
+export const SUBMIT_BOOKING_REQUEST = 'SUBMIT_BOOKING_REQUEST' as const
+export const SUBMIT_FILTER_CHOICE = 'SUBMIT_FILTER_CHOICE' as const
+export const RESET_FILTER_CHOICE = 'RESET_FILTER_CHOICE' as const
+export const LEAVE_SEARCH_RESULT = 'LEAVE_SEARCH_RESULT' as const
+
+// Reservation module
+export const SET_ROOMS = 'SET_ROOMS' as const
+export const RESET_ALL_RESERVATION = 'RESET_ALL_RESERVATION' as const
+export const RESET_ONSEARCHROOM = 'RESET_ONSEARCHROOM' as const
+export const GO_NEXT_STEP = 'GO_NEXT_STEP' as const
+export const BACK_PREVIOUS_STEP = 'BACK_PREVIOUS_STEP' as const
+export const SWITCH_STEP = 'SWITCH_STEP' as const
+export const GENERATE_ID = 'GENERATE_ID' as const
+export const SET_SEARCH_SELECTION = 'SET_SEARCH_SELECTION' as const
+export const ADD_ROOM = 'ADD_ROOM' as const
+export const ADD_ADDONS = 'ADD_ADDONS' as const
+export const REMOVE_ADDONS = 'REMOVE_ADDONS' as const
+export const CALCULATE_TOTAL_AMOUNT = 'CALCULATE_TOTAL_AMOUNT' as const
+export const SAVE_ROOM_SELECTION_TO_RESERVATION = 'SAVE_ROOM_SELECTION_TO_RESERVATION' as const
+export const REMOVE_ROOM_FROM_SELECTION = 'REMOVE_ROOM_FROM_SELECTION' as const
+export const EDIT_ROOM_FROM_SELECTION = 'EDIT_ROOM_FROM_SELECTION' as const
+export const ADD_CUSTOMER_DETAIL = 'ADD_CUSTOMER_DETAIL' as const
+export const SAVE_CUSTOMER_INFO_TO_RESERVATION = 'SAVE_CUSTOMER_INFO_TO_RESERVATION' as const
+export const ADD_ANOTHER_ROOM = 'ADD_ANOTHER_ROOM' as const
+export const SET_CONFIRMATION_NUM = 'SET_CONFIRMATION_NUM' as const
+export const DISCARD_CHANGES = 'DISCARD_CHANGES' as const
+export const SUBMIT_RESERVATION = 'SUBMIT_RESERVATION' as const
+export const RESET_RESERVED_INFO = 'RESET_RESERVED_INFO' as const

@@ -1,120 +1,103 @@
 import { db } from './firebase'
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc
+} from 'firebase/firestore'
 
 const firebaseApi = {
   // Fetch all matched members data from api
-  // resource: data category
-  // category: child route from baseURL
   async getMembersData (resource, params) {
-    let _temp = false
-    const ref = db.collection(resource)
-      .where('email', '==', params)
-    await ref.get()
-      .then(querySnapshot => {
-        _temp = !querySnapshot.empty
-      }).catch(err => {
-        console.error('[firebaseApi] error:', err)
-      })
-    return _temp
-  },
-  // Fetch matched reserved stay data id from api
-  // resource: data category
-  // category: child route from baseURL
-  async getReservedStayData (resource, params) {
-    let isReserved, docId, isStayExist
-    const ref = await db.collection(resource)
-      .where('email', '==', params.email)
-      .where('confirmationNum', '==', params.reservationNum)
-      .where('lastName', '==', params.lastName)
-    // Check if the stay exists through email, confirmation number and last name
-    await ref.get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          isStayExist = false
-        } else {
-          isStayExist = true
-          querySnapshot.forEach((doc) => {
-            docId = doc.id
-          })
-        }
-      }).catch((err) => {
-        console.error('[firebaseApi] error:', err)
-      })
-    // Check if pet has been registered when the stay exists.
-    if (isStayExist) {
-      await db.collection(resource).doc(docId).collection('petRegistration')
-        .get()
-        .then((querySnapshot) => {
-          isReserved = !querySnapshot.empty
-        })
+    try {
+      const q = query(collection(db, resource), where('email', '==', params))
+      const snapshot = await getDocs(q)
+      return !snapshot.empty
+    } catch (err) {
+      console.error('[firebaseApi] getMembersData error:', err)
+      return false
     }
-    // Return reserve condition and id of document
-    if (isReserved === true) {
-      return { id: docId, isRegistered: isReserved }
-    } else if (isReserved === false) {
-      return { id: docId, isRegistered: isReserved }
-    } else {
+  },
+
+  // Fetch matched reserved stay data id from api
+  async getReservedStayData (resource, params) {
+    try {
+      const q = query(
+        collection(db, resource),
+        where('email', '==', params.email),
+        where('confirmationNum', '==', params.reservationNum),
+        where('lastName', '==', params.lastName)
+      )
+      const snapshot = await getDocs(q)
+      if (snapshot.empty) return {}
+
+      const docId = snapshot.docs[0].id
+      const petSnapshot = await getDocs(collection(db, resource, docId, 'petRegistration'))
+      return { id: docId, isRegistered: !petSnapshot.empty }
+    } catch (err) {
+      console.error('[firebaseApi] getReservedStayData error:', err)
       return {}
     }
   },
+
   // Fetch all matched reservation data from api
-  // resource: data category
-  // category: child route from baseURL
   async getReservedData (resource, params) {
-    const _temp = []
-    const ref = db.collection(resource)
-      .where('email', '==', params.email)
-      .where('lastName', '==', params.lastName)
-    await ref.get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          // console.log('No data')
-          return -1
-        } else {
-          querySnapshot.forEach((doc) => {
-            _temp.push({ id: doc.id, ...doc.data() })
-          })
-        }
-      }).catch((err) => {
-        console.error('[firebaseApi] error:', err)
-      })
-    return _temp
+    try {
+      const q = query(
+        collection(db, resource),
+        where('email', '==', params.email),
+        where('lastName', '==', params.lastName)
+      )
+      const snapshot = await getDocs(q)
+      if (snapshot.empty) return []
+      return snapshot.docs.map(d => ({ id: d.id, ...d.data() }))
+    } catch (err) {
+      console.error('[firebaseApi] getReservedData error:', err)
+      return []
+    }
   },
-  // Push new data into db file
-  // resource: data category
-  // data: new data which will be pushed into db
+
+  // Push new data into db
   async postData (resource, data) {
-    await db.collection(resource).add(data)
-      .catch((e) => {
-        console.error('[firebaseApi] postData error:', e)
-      })
+    try {
+      await addDoc(collection(db, resource), data)
+    } catch (err) {
+      console.error('[firebaseApi] postData error:', err)
+    }
   },
+
   // Push pet registration data into reservation doc
-  // resource: data category
-  // data: new data which will be pushed into db
   async postPetRegistrationData (resource, data) {
-    await db.collection('reservationList')
-      .doc(data.id)
-      .collection(resource)
-      .add(data.form)
-      .catch((e) => {
-        console.error('[firebaseApi] postPetRegistrationData error:', e)
-      })
+    try {
+      await addDoc(collection(db, 'reservationList', data.id, resource), data.form)
+    } catch (err) {
+      console.error('[firebaseApi] postPetRegistrationData error:', err)
+    }
   },
-  // Update data from db
-  // resource: data category
+
+  // Update reservation status
   async updateData (resource, payload) {
-    const ref = db.collection(resource).doc(payload.id)
-    await ref.update({
-      status: payload.status,
-      lastUpdateTime: payload.lastUpdateTime
-    })
-      .catch((err) => { console.error('[firebaseApi] updateData error:', err) })
+    try {
+      await updateDoc(doc(db, resource, payload.id), {
+        status: payload.status,
+        lastUpdateTime: payload.lastUpdateTime
+      })
+    } catch (err) {
+      console.error('[firebaseApi] updateData error:', err)
+    }
   },
-  // Delete data from db
-  // resource: data category
+
+  // Delete a document
   async deleteData (resource, payload) {
-    await db.collection(resource).doc(payload.id).delete()
-      .catch((err) => { console.error('[firebaseApi] deleteData error:', err) })
+    try {
+      await deleteDoc(doc(db, resource, payload.id))
+    } catch (err) {
+      console.error('[firebaseApi] deleteData error:', err)
+    }
   }
 }
 

@@ -66,15 +66,17 @@
     </section>
     <section class="carousel">
       <div class="carousel__container">
-        <vue-flux
-          :options="options"
-          :images="images"
-          :transitions="transitions"
+        <swiper
+          :modules="swiperModules"
+          :slides-per-view="1"
+          :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :loop="true"
+          style="width:100%;height:100%"
         >
-          <template v-slot:preloader>
-            <flux-preloader />
-          </template>
-        </vue-flux>
+          <swiper-slide v-for="(image, idx) in images" :key="idx">
+            <img :src="image" style="width:100%;height:100%;object-fit:cover" alt="Gallery image">
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
     <section class="dining flex--row">
@@ -220,17 +222,14 @@ import Header from '@/components/header/Header.vue'
 import Footer from '@/components/footer/Footer.vue'
 import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import ImageBox from '@/components/imageBox/ImageBox'
-import {
-  VueFlux,
-  FluxControls,
-  FluxPreloader
-} from 'vue-flux'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 export default {
   name: 'Home',
   components: {
-    VueFlux,
-    FluxControls,
-    FluxPreloader,
+    Swiper,
+    SwiperSlide,
     Navbar,
     Header,
     SignupBanner,
@@ -249,18 +248,7 @@ export default {
         ['homepage/specials-2.jpg', 'River'],
         ['homepage/specials-3.jpg', 'Adventure']
       ],
-      options: {
-        allowFullscreen: false,
-        allowToSkipTransition: true,
-        autohideTime: 2500,
-        autoplay: true,
-        bindKeys: false,
-        delay: 3000,
-        enableGestures: false,
-        infinite: true,
-        lazyLoad: true,
-        lazyLoadAfter: 3
-      },
+      swiperModules: [Autoplay],
       images: [
         require('@/assets/images/homepage/carousel/hotel.jpg'),
         require('@/assets/images/homepage/carousel/dining.jpg'),
@@ -268,14 +256,6 @@ export default {
         require('@/assets/images/homepage/carousel/outdoor.jpg'),
         require('@/assets/images/homepage/carousel/room.jpg'),
         require('@/assets/images/homepage/carousel/bar.jpg')
-      ],
-      transitions: [
-        'blinds3d',
-        'blocks2',
-        'book',
-        'swipe',
-        'warp',
-        'wave'
       ]
     }
   }

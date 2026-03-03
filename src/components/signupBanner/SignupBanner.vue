@@ -11,76 +11,82 @@
         </svg>
       </div>
     </div>
-    <ValidationObserver
+    <Form
       ref="form"
+      as="div"
       v-if="displaySignupCollapse && !signupSuccess"
       class="signup-banner__form flex--column flex--center"
-      v-slot="{ handleSubmit, invalid }"
+      v-slot="{ handleSubmit, meta }"
     >
       <form @submit.prevent="handleSubmit(onSubmit)">
         <div class="row flex--row">
-          <ValidationProvider
+          <Field
             rules="required|alpha_spaces"
-            v-slot="{ errors }"
+            v-model="signupDetail.name"
             name="Your name"
             class="column flex--column"
+            v-slot="{ field, errors }"
           >
             <label for="fullName">Full Name*</label>
-            <input type="text" id="fullName" placeholder="Full Name" required v-model="signupDetail.name">
+            <input type="text" id="fullName" placeholder="Full Name" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
-          </ValidationProvider>
-          <ValidationProvider
+          </Field>
+          <Field
             rules="required|regexEmail"
-            v-slot="{ errors }"
+            v-model="signupDetail.email"
             name="Your email address"
             class="column flex--column"
+            v-slot="{ field, errors }"
           >
             <label for="email">Email Address*</label>
-            <input type="text" id="email" placeholder="E-mail Address" required v-model="signupDetail.email">
+            <input type="text" id="email" placeholder="E-mail Address" v-bind="field">
             <span>{{errors[0]}}</span>
-          </ValidationProvider>
-          <ValidationProvider
+          </Field>
+          <Field
             rules="required|regexAddress"
             class="column flex--column"
-            v-slot="{ errors }"
+            v-model="signupDetail.address"
             name="Your address"
+            v-slot="{ field, errors }"
           >
             <label for="address">Address*</label>
-            <input type="text" id="address" placeholder="Address" required v-model="signupDetail.address">
+            <input type="text" id="address" placeholder="Address" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
-          </ValidationProvider>
-          <ValidationProvider
+          </Field>
+          <Field
             rules="required|alpha_spaces"
             class="column flex--column"
-            v-slot="{ errors }"
+            v-model="signupDetail.state"
             name="Your state or region"
+            v-slot="{ field, errors }"
           >
             <label for="state">State/Province/Region*</label>
-            <input type="text" id="state" placeholder="State/Province/Region" required v-model="signupDetail.state">
+            <input type="text" id="state" placeholder="State/Province/Region" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
-          </ValidationProvider>
-          <ValidationProvider
+          </Field>
+          <Field
             rules="required"
             class="column flex--column"
-            v-slot="{ errors }"
+            v-model="signupDetail.country"
             name="Your country name"
+            v-slot="{ field, errors }"
           >
             <label for="country">Country*</label>
-            <input type="text" id="country" placeholder="Country" required v-model="signupDetail.country">
+            <input type="text" id="country" placeholder="Country" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
-          </ValidationProvider>
+          </Field>
           <div class="column flex--column">
             <label for="zipCode">Zip Code</label>
             <input type="text" id="zipCode" placeholder="Zip Code" v-model="signupDetail.zipCode">
           </div>
         </div>
         <div class="row">
-          <button type="submit" :disabled="invalid">
+          <button type="submit" :disabled="!meta.valid">
             <span>SIGN UP</span>
           </button>
         </div>
       </form>
-    </ValidationObserver>
+    </Form>
     <div v-if="displaySignupCollapse && signupSuccess" class="signup-banner__sent flex--column flex--center">
       <h2>Thank you for choosing to stay connect with us!</h2>
       <br>
@@ -95,44 +101,13 @@
   </section>
 </template>
 <script>
-import { ValidationProvider, extend, ValidationObserver } from 'vee-validate'
-// eslint-disable-next-line camelcase
-import { alpha_spaces } from 'vee-validate/dist/rules'
+import { Form, Field } from 'vee-validate'
 import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
-extend('alpha_spaces', alpha_spaces)
-extend('required', {
-  validate (value) {
-    return {
-      required: true,
-      valid: ['', null, undefined].indexOf(value) === -1
-    }
-  },
-  computesRequired: true
-})
-extend('regexEmail', {
-  validate (value) {
-    // eslint-disable-next-line no-control-regex
-    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
-extend('regexAddress', {
-  validate (value) {
-    const regex = /^\s*\S+(?:\s+\S+){2}/
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
 export default {
   components: {
-    ValidationObserver,
-    ValidationProvider
+    Form,
+    Field
   },
   data () {
     return {

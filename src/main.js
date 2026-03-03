@@ -1,59 +1,45 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import _ from 'lodash'
-// Element UI — on-demand import (JS only; CSS is loaded via styles.scss)
-import {
-  Dialog,
-  Divider,
-  InputNumber,
-  Popover,
-  Step,
-  Steps,
-  MessageBox,
-  Message,
-  Notification
-} from 'element-ui'
-import elLocale from 'element-ui/lib/locale'
-import lang from 'element-ui/lib/locale/lang/en'
+import ElementPlus from 'element-plus'
+import { ElMessageBox, ElMessage, ElNotification } from 'element-plus'
+import en from 'element-plus/es/locale/lang/en'
+import 'element-plus/dist/index.css'
 import './styles.scss'
 import 'normalize.css/normalize.css'
-import VCalendar from 'v-calendar'
-import faq from './data/faq'
-import rooms from './data/rooms'
-import offers from './data/offers'
-import roomType from './data/roomType'
-import addOns from './data/checkout/addOns'
-import countries from './data/checkout/countries'
+import { setupCalendar } from 'v-calendar'
+import 'v-calendar/style.css'
+import faq from '@/assets/data/faq'
+import rooms from '@/assets/data/rooms'
+import offers from '@/assets/data/offers'
+import roomType from '@/assets/data/checkout/roomType'
+import addOns from '@/assets/data/checkout/addOns'
+import countries from '@/assets/data/checkout/countries'
 import dayjs from 'dayjs'
-// eslint-disable-next-line no-unused-vars
 import preventMultipleClick from './plugins/directives'
+import './plugins/validation'
 import 'default-passive-events'
 
-// Element UI locale
-elLocale.use(lang)
+const app = createApp(App)
 
-// Element UI components
-;[Dialog, Divider, InputNumber, Popover, Step, Steps].forEach(c => Vue.use(c))
+// Element Plus (includes all components + locale)
+app.use(ElementPlus, { locale: en })
 
-// Element UI JS services
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$alert = MessageBox.alert
-Vue.prototype.$confirm = MessageBox.confirm
-Vue.prototype.$prompt = MessageBox.prompt
-Vue.prototype.$notify = Notification
-Vue.prototype.$message = Message
-// Use v-calendar & v-date-picker components
-Vue.use(VCalendar, {
-  componentPrefix: 'v'
-})
+// v-calendar components (registers v-calendar and v-date-picker globally)
+app.use(setupCalendar, {})
 
-Vue.config.productionTip = false
+// Vue Router & Vuex
+app.use(router)
+app.use(store)
 
-// Global handler for Vue component errors (lifecycle, render, watchers)
-Vue.config.errorHandler = (err, vm, info) => {
+// Global directive
+app.directive('preventMultipleClick', preventMultipleClick)
+
+// Global error handler for Vue component errors
+app.config.errorHandler = (err, _vm, info) => {
   console.error(`[Vue Error] ${info}:`, err)
 }
 
@@ -62,21 +48,23 @@ window.addEventListener('unhandledrejection', (event) => {
   console.error('[Unhandled Rejection]:', event.reason)
   event.preventDefault()
 })
-// Define prototype for Lodash
-Vue.prototype.$_ = _
-// Define prototype for dayjs
-Vue.prototype.$dayjs = dayjs
 
-// Define prototype for preload data
-Vue.prototype.$faq = faq
-Vue.prototype.$roomCardsInfo = rooms
-Vue.prototype.$roomsInfo = roomType
-Vue.prototype.$offersInfo = offers
-Vue.prototype.$checkoutAddOns = addOns
-Vue.prototype.$countriesList = countries
+// Global properties (replaces Vue.prototype)
+app.config.globalProperties.$_ = _
+app.config.globalProperties.$dayjs = dayjs
+app.config.globalProperties.$msgbox = ElMessageBox
+app.config.globalProperties.$alert = ElMessageBox.alert
+app.config.globalProperties.$confirm = ElMessageBox.confirm
+app.config.globalProperties.$prompt = ElMessageBox.prompt
+app.config.globalProperties.$notify = ElNotification
+app.config.globalProperties.$message = ElMessage
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+// Preloaded data
+app.config.globalProperties.$faq = faq
+app.config.globalProperties.$roomCardsInfo = rooms
+app.config.globalProperties.$roomsInfo = roomType
+app.config.globalProperties.$offersInfo = offers
+app.config.globalProperties.$checkoutAddOns = addOns
+app.config.globalProperties.$countriesList = countries
+
+app.mount('#app')

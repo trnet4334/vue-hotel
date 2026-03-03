@@ -2,8 +2,9 @@
   <div>
     <navbar/>
     <section class="events-inquiry page-container">
-      <ValidationObserver
+      <Form
         ref="form"
+        as="div"
         class="page-wrapper"
         v-slot="{ handleSubmit }"
       >
@@ -22,184 +23,199 @@
             <div class="content--first flex--column">
               <h2>Contact Information</h2>
               <div class="flex--column">
-                <ValidationProvider
+                <Field
                   rules="required"
-                  class="flex--column input__select alert-message"
                   name="Selection"
-                  v-slot="{ errors }"
+                  v-model="requestInfo.title"
+                  v-slot="{ field, errors }"
+                  class="flex--column input__select alert-message"
                 >
                   <label for="title">Title</label>
-                  <select name="title" id="title" v-model="requestInfo.title">
+                  <select name="title" id="title" v-bind="field">
                     <option value="Mr.">Mr.</option>
                     <option value="Ms.">Ms.</option>
                   </select>
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
                 <div class="flex--row">
-                  <ValidationProvider
+                  <Field
                     rules="required|alpha_spaces"
                     name="Your first name"
-                    v-slot="{ errors }"
+                    v-model.trim="requestInfo.firstName"
+                    v-slot="{ field, errors }"
                     class="flex--column input__text sm alert-message"
                   >
                     <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" placeholder="First name" required v-model.trim="requestInfo.firstName">
+                    <input type="text" id="firstName" placeholder="First name" required v-bind="field">
                     <span>{{errors[0]}}</span>
-                  </ValidationProvider>
-                  <ValidationProvider
+                  </Field>
+                  <Field
                     rules="required|alpha"
-                    class="flex--column input__text sm alert-message"
                     name="Your last name"
-                    v-slot="{ errors }"
+                    v-model.trim="requestInfo.lastName"
+                    v-slot="{ field, errors }"
+                    class="flex--column input__text sm alert-message"
                   >
                     <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" placeholder="Last name" required v-model.trim="requestInfo.lastName">
+                    <input type="text" id="lastName" placeholder="Last name" required v-bind="field">
                     <span>{{errors[0]}}</span>
-                  </ValidationProvider>
+                  </Field>
                 </div>
               </div>
-              <ValidationProvider
+              <Field
                 rules="required|regexAddress"
                 name="Your address"
-                v-slot="{ errors }"
+                v-model.trim="requestInfo.address"
+                v-slot="{ field, errors }"
                 class="content--second flex--column input__text lg alert-message"
               >
                 <label for="address">Address*</label>
-                <input type="text" id="address" placeholder="Address" v-model.trim="requestInfo.address" required>
+                <input type="text" id="address" placeholder="Address" v-bind="field" required>
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
+              </Field>
               <div class="flex--column">
                 <div class="flex--row">
-                  <ValidationProvider
+                  <Field
                     rules="required"
-                    class="flex--column input__text md alert-message"
                     name="Your company name"
-                    v-slot="{ errors }"
+                    v-model.trim="requestInfo.company"
+                    v-slot="{ field, errors }"
+                    class="flex--column input__text md alert-message"
                   >
                     <label for="company">Company*</label>
-                    <input type="text" id="company" placeholder="Company" v-model.trim="requestInfo.company" required>
+                    <input type="text" id="company" placeholder="Company" v-bind="field" required>
                     <span class="alert-message">{{errors[0]}}</span>
-                  </ValidationProvider>
-                  <ValidationProvider
+                  </Field>
+                  <Field
                     rules="required|regexEmail"
                     name="Your email address"
+                    v-model.trim="requestInfo.email"
+                    v-slot="{ field, errors }"
                     class="flex--column input__text md alert-message"
-                    v-slot="{ errors }"
                   >
                     <label for="email">Email*</label>
-                    <input type="text" id="email" placeholder="email" v-model.trim="requestInfo.email" required>
+                    <input type="text" id="email" placeholder="email" v-bind="field" required>
                     <span class="alert-message">{{errors[0]}}</span>
-                  </ValidationProvider>
+                  </Field>
                 </div>
-                <ValidationProvider
+                <Field
                   rules="required|regexPhoneNum"
                   name="Your phone number"
-                  v-slot="{ errors }"
+                  v-model.trim="requestInfo.phoneNum"
+                  v-slot="{ field, errors }"
                   class="flex--column input__text md alert-message"
                 >
                   <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" v-model.trim="requestInfo.phoneNum" required>
+                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" v-bind="field" required>
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
               </div>
             </div>
             <div class="content--third flex--column">
               <h2>Guestroom Information</h2>
-              <ValidationProvider
+              <Field
                 rules="required"
-                class="flex--row radio-input-group input__radio"
                 name="Selection"
-                v-slot="{ errors }"
+                v-model="requestInfo.guestroomRequirement"
+                v-slot="{ field, errors }"
+                class="flex--row radio-input-group input__radio"
               >
                 <label>Guest Rooms Required?*</label>
                 <div class="flex--row center">
-                  <input type="radio" value="yes" id="needGuestrooms" v-model="requestInfo.guestroomRequirement">
+                  <input type="radio" value="yes" id="needGuestrooms" v-bind="field">
                   <label for="needGuestrooms">Yes</label>
-                  <input type="radio" value="no" id="noNeedGuestrooms" v-model="requestInfo.guestroomRequirement">
+                  <input type="radio" value="no" id="noNeedGuestrooms" v-bind="field">
                   <label for="noNeedGuestrooms">No</label>
                 </div>
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
-              <ValidationProvider
+              </Field>
+              <Field
                 rules="numeric"
-                class="flex--column input__text lg alert-message"
                 name="Number"
-                v-slot="{ errors }"
+                v-model.number.trim="requestInfo.numberOfGuestroom"
+                v-slot="{ field, errors }"
+                class="flex--column input__text lg alert-message"
               >
                 <label for="numberOfGuestroom">If yes, how many guest rooms do you need?</label>
                 <input
                   type="text"
                   id="numberOfGuestroom"
                   placeholder="Number of guest Rooms required"
-                  v-model.number.trim="requestInfo.numberOfGuestroom"
+                  v-bind="field"
                   :disabled="requestInfo.guestroomRequirement === 'no'|| requestInfo.guestroomRequirement === ''"
                 >
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
+              </Field>
             </div>
             <div class="content--fourth flex--column">
               <h2>Meeting/Event Information</h2>
               <div class="flex--column">
-                <ValidationProvider
+                <Field
                   rules="required"
                   name="Your meeting/event name"
+                  v-model.trim="requestInfo.eventName"
+                  v-slot="{ field, errors }"
                   class="flex--column input__text lg alert-message"
-                  v-slot="{ errors }"
                 >
                   <label for="eventName">Meeting/Event Name*</label>
-                  <input type="text" placeholder="Enter meeting / event name" id="eventName" v-model.trim="requestInfo.eventName" required>
+                  <input type="text" placeholder="Enter meeting / event name" id="eventName" v-bind="field" required>
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
-                <ValidationProvider
+                </Field>
+                <Field
                   rules="numeric|required"
-                  class="flex--column input__text md alert-message"
                   name="Number"
-                  v-slot="{ errors }"
+                  v-model.number="requestInfo.attendeesNum"
+                  v-slot="{ field, errors }"
+                  class="flex--column input__text md alert-message"
                 >
                   <label for="attendeesNum">Number of Attendees*</label>
-                  <input type="text" placeholder="Enter number" id="attendeesNum" v-model.number="requestInfo.attendeesNum" required>
+                  <input type="text" placeholder="Enter number" id="attendeesNum" v-bind="field" required>
                   <span class="alert-message">{{errors[0]}}</span>
-                </ValidationProvider>
+                </Field>
               </div>
-              <ValidationProvider
+              <Field
                 rules="required"
                 name="Selection"
-                v-slot="{ errors }"
+                v-model="requestInfo.foodRequirement"
+                v-slot="{ field, errors }"
                 class="flex--row radio-input-group input__radio"
               >
                 <label>Food Service Requirements?*</label>
                 <div class="flex--row center">
-                  <input type="radio" value="yes" id="foodRequired" v-model="requestInfo.foodRequirement">
+                  <input type="radio" value="yes" id="foodRequired" v-bind="field">
                   <label for="foodRequired">Yes</label>
-                  <input type="radio" value="no" id="noFoodRequired" v-model="requestInfo.foodRequirement">
+                  <input type="radio" value="no" id="noFoodRequired" v-bind="field">
                   <label for="noFoodRequired">No</label>
                 </div>
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
-              <ValidationProvider
+              </Field>
+              <Field
                 rules="required"
                 name="Selection"
+                v-model="requestInfo.avRequirement"
+                v-slot="{ field, errors }"
                 class="flex--row radio-input-group input__radio"
-                v-slot="{ errors }"
               >
                 <label>Any AV Requirements for the meeting/event?*</label>
                 <div class="flex--row center">
-                  <input type="radio" value="yes" id="AvRequired" v-model="requestInfo.avRequirement">
+                  <input type="radio" value="yes" id="AvRequired" v-bind="field">
                   <label for="AvRequired">Yes</label>
-                  <input type="radio" value="no" id="noAvRequired" v-model="requestInfo.avRequirement">
+                  <input type="radio" value="no" id="noAvRequired" v-bind="field">
                   <label for="noAvRequired">No</label>
                 </div>
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
-              <ValidationProvider
+              </Field>
+              <Field
                 rules="required|numeric"
                 name="Your budget number"
-                v-slot="{ errors }"
-                class="flex--column input__text md alert-message">
+                v-model.number="requestInfo.budget"
+                v-slot="{ field, errors }"
+                class="flex--column input__text md alert-message"
+              >
                 <label for="budget">Total Budget*</label>
-                <input type="text" id="budget" v-model.number="requestInfo.budget" placeholder="Number of budget" required>
+                <input type="text" id="budget" v-bind="field" placeholder="Number of budget" required>
                 <span class="alert-message">{{errors[0]}}</span>
-              </ValidationProvider>
+              </Field>
               <div class="flex--column input__textarea">
                 <label for="comments">Comments</label>
                 <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Comments" v-model="requestInfo.comments"/>
@@ -208,9 +224,7 @@
             <div class="content--fourth flex--column">
               <h2>Dates</h2>
               <div class="flex--column">
-                <ValidationProvider
-                  class="flex--column input__text"
-                >
+                <div class="flex--column input__text">
                   <label>Dates*</label>
                   <v-date-picker
                       id="scheduledArrivalDate"
@@ -251,8 +265,8 @@
                       </div>
                     </template>
                   </v-date-picker>
-                </ValidationProvider>
-                <ValidationProvider class="flex--column input__text">
+                </div>
+                <div class="flex--column input__text">
                   <label>Alternate Dates*</label>
                     <v-date-picker
                       id="alternateArrivalDate"
@@ -296,7 +310,7 @@
                         </div>
                       </template>
                     </v-date-picker>
-                </ValidationProvider>
+                </div>
               </div>
             </div>
             <div class="content--fifth flex--column input__textarea">
@@ -316,7 +330,7 @@
           </div>
           <button type="submit" :disabled="!checked" class="btn-outline-md">SUBMIT</button>
         </form>
-      </ValidationObserver>
+      </Form>
     </section>
     <signup-banner/>
     <Footer/>
@@ -328,57 +342,14 @@ import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
-import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
-// eslint-disable-next-line camelcase
-import { alpha, alpha_spaces, min_value, numeric } from 'vee-validate/dist/rules'
-extend('alpha', alpha)
-extend('alpha_spaces', alpha_spaces)
-extend('min_value', min_value)
-extend('numeric', numeric)
-extend('required', {
-  validate (value) {
-    return {
-      required: true,
-      valid: ['', null, undefined].indexOf(value) === -1
-    }
-  },
-  computesRequired: true
-})
-extend('regexPhoneNum', {
-  validate (value) {
-    const regex = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-s.]?[(]?[0-9]{1,3}[)]?([-s.]?[0-9]{3})([-s.]?[0-9]{3,4})/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
-extend('regexEmail', {
-  validate (value) {
-    // eslint-disable-next-line no-control-regex
-    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
-extend('regexAddress', {
-  validate (value) {
-    const regex = /^\s*\S+(?:\s+\S+){2}/
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
+import { Form, Field } from 'vee-validate'
 export default {
   components: {
     Navbar,
     SignupBanner,
     Footer,
-    ValidationObserver,
-    ValidationProvider
+    Form,
+    Field
   },
   data () {
     return {

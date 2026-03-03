@@ -46,43 +46,47 @@
         <br>
         <el-divider/>
         <br>
-        <ValidationObserver
+        <Form
           ref="form"
+          as="div"
           v-slot="{ handleSubmit }"
           class="contact__form flex--column"
         >
           <h2 class="page__subtitle">Contact Us, We're Happy to Hear from You.</h2>
           <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
-            <ValidationProvider
+            <Field
               rules="required|alpha_spaces"
-              name="Your last name"
-              v-slot="{ errors }"
+              name="fullName"
+              v-model="contactForm.name"
+              v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
               <label for="fullName">Full Name*</label>
-              <input type="text" id="fullName" v-model="contactForm.name" required>
+              <input type="text" id="fullName" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
-            </ValidationProvider>
-            <ValidationProvider
+            </Field>
+            <Field
               rules="required|regexEmail"
-              name="Your email address"
-              v-slot="{ errors }"
+              name="email"
+              v-model="contactForm.email"
+              v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
               <label for="email">Email Address*</label>
-              <input type="email" id="email" v-model="contactForm.email" required>
+              <input type="email" id="email" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
-            </ValidationProvider>
-            <ValidationProvider
+            </Field>
+            <Field
               rules="required|regexPhoneNum"
-              name="Your phone number"
-              v-slot="{ errors }"
+              name="phone"
+              v-model="contactForm.phoneNum"
+              v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
               <label for="phone">Phone Number*</label>
-              <input type="text" id="phone" v-model="contactForm.phoneNum" required>
+              <input type="text" id="phone" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
-            </ValidationProvider>
+            </Field>
             <div class="flex--column input__select">
               <label for="purpose">Purpose*</label>
               <select name="purpose" v-model="contactForm.purpose" id="purpose">
@@ -95,71 +99,44 @@
                 <option value="Donation Request">Donation Request</option>
               </select>
             </div>
-            <ValidationProvider
+            <Field
               rules="required"
-              name="Your description"
-              v-slot="{ errors }"
+              name="comments"
+              v-model="contactForm.comments"
+              v-slot="{ field, errors }"
               class="flex--column input__textarea"
             >
               <label for="comments">Comments</label>
               <textarea
                 name="comments"
                 id="comments"
-                v-model="contactForm.comments"
+                v-bind="field"
                 placeholder="Let us know what we can help you"
                 rows="8"
               />
               <span class="alert-message">{{ errors[0] }}</span>
-            </ValidationProvider>
+            </Field>
             <label for="consent" class="input__checkbox">
-              <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked" required>
+              <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked">
               <span>
                 I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener" class="link">privacy policy</router-link>.
               </span>
             </label>
             <button type="submit" :disabled="!checked" class="btn-outline-md">SEND</button>
           </form>
-        </ValidationObserver>
+        </Form>
       </div>
     </div>
   </section>
 </template>
 <script>
 import ImageBox from '@/components/imageBox/ImageBox'
-import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
+import { Form, Field } from 'vee-validate'
 import firebaseApi from '@/common/firebaseApi'
-extend('required', {
-  validate (value) {
-    return {
-      required: true,
-      valid: ['', null, undefined].indexOf(value) === -1
-    }
-  },
-  computesRequired: true
-})
-extend('regexPhoneNum', {
-  validate (value) {
-    const regex = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-s.]?[(]?[0-9]{1,3}[)]?([-s.]?[0-9]{3})([-s.]?[0-9]{3,4})/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
-extend('regexEmail', {
-  validate (value) {
-    // eslint-disable-next-line no-control-regex
-    const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
-    return {
-      required: true,
-      valid: regex.test(value)
-    }
-  }
-})
 export default {
   components: {
-    ValidationObserver,
-    ValidationProvider,
+    Form,
+    Field,
     ImageBox
   },
   data () {

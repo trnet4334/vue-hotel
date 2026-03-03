@@ -1,9 +1,7 @@
-import Vue from 'vue'
-
-// Directive for preventing multiple button click at the same time
-const preventMultipleClick = Vue.directive('preventMultipleClick', {
-  inserted: (el, binding) => {
-    el.addEventListener('click', event => {
+// Directive for preventing multiple button clicks at the same time
+const preventMultipleClick = {
+  mounted (el, binding) {
+    el.addEventListener('click', () => {
       if (!el.disabled) {
         el.disabled = true
         setTimeout(() => {
@@ -12,6 +10,6 @@ const preventMultipleClick = Vue.directive('preventMultipleClick', {
       }
     })
   }
-})
+}
 
-export default { preventMultipleClick }
+export default preventMultipleClick
