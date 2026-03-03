@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import i18n from './i18n'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
@@ -30,6 +31,9 @@ app.use(ElementPlus, { locale: en })
 
 // v-calendar components (registers v-calendar and v-date-picker globally)
 app.use(setupCalendar, {})
+
+// i18n
+app.use(i18n)
 
 // Vue Router & Vuex
 app.use(router)

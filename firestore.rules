@@ -47,5 +47,29 @@ service cloud.firestore {
       allow create: if request.resource.data.keys().hasAll(['email']);
       allow read: if false;
     }
+
+    // New newsletter subscriptions (deduplicated by email query)
+    match /newsletters/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['email', 'subscribedAt'])
+                      && request.resource.data.email is string
+                      && request.resource.data.email.size() > 0;
+      allow read: if true;  // needed for duplicate-email query
+    }
+
+    // Contact enquiries (with booking number)
+    match /contacts/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['refId', 'email', 'bookingNumber', 'createdAt'])
+                      && request.resource.data.email is string
+                      && request.resource.data.bookingNumber is string
+                      && request.resource.data.bookingNumber.size() > 0;
+      allow read: if false;
+    }
+
+    // Wedding requests (new collection with generated orderId)
+    match /wedding_requests/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['orderId', 'email', 'firstName', 'lastName', 'createdAt'])
+                      && request.resource.data.email is string;
+      allow read: if false;
+    }
   }
 }

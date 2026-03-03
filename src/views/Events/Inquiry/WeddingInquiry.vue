@@ -9,15 +9,16 @@
         v-slot="{ handleSubmit }"
       >
         <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
+          <!-- Honeypot -->
+          <input type="text" name="website" v-model="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+
           <div class="header">
-            <h4 class="content__title">Weddings</h4>
-            <h1 class="page__title">Request Proposal</h1>
+            <h4 class="content__title">{{ $t('wedding.title') }}</h4>
+            <h1 class="page__title">{{ $t('wedding.subtitle') }}</h1>
             <br>
-            <p class="content__description">We offer a various range of possibilities for your wedding. Please take a moment
-             to fill out your information in the form below in two weeks before your wedding date.
-              Our team staff will contact you for more details as soon as possible.</p>
+            <p class="content__description">{{ $t('wedding.description') }}</p>
             <br>
-            <p class="content__description">If you would like to contact us directly, please call 480.000.0008</p>
+            <p class="content__description">{{ $t('wedding.phone') }}</p>
           </div>
           <div class="body">
             <div class="content flex--column">
@@ -29,7 +30,7 @@
                   v-slot="{ field, errors }"
                   class="flex--column input__select alert-message"
                 >
-                  <label for="title">Title</label>
+                  <label for="title">{{ $t('wedding.titleField') }}</label>
                   <select name="title" id="title" v-bind="field">
                     <option value="Mr.">Mr.</option>
                     <option value="Ms.">Ms.</option>
@@ -44,8 +45,8 @@
                     v-slot="{ field, errors }"
                     class="flex--column input__text sm alert-message"
                   >
-                    <label for="firstName">First Name*</label>
-                    <input type="text" id="firstName" placeholder="First name" required v-bind="field">
+                    <label for="firstName">{{ $t('wedding.firstName') }}</label>
+                    <input type="text" id="firstName" :placeholder="$t('wedding.firstNamePlaceholder')" required v-bind="field">
                     <span class="alert-message">{{errors[0]}}</span>
                   </Field>
                   <Field
@@ -55,8 +56,8 @@
                     v-slot="{ field, errors }"
                     class="flex--column input__text sm alert-message"
                   >
-                    <label for="lastName">Last Name*</label>
-                    <input type="text" id="lastName" placeholder="Last name" required v-bind="field">
+                    <label for="lastName">{{ $t('wedding.lastName') }}</label>
+                    <input type="text" id="lastName" :placeholder="$t('wedding.lastNamePlaceholder')" required v-bind="field">
                     <span class="alert-message">{{errors[0]}}</span>
                   </Field>
                 </div>
@@ -67,8 +68,8 @@
                   v-slot="{ field, errors }"
                   class="flex--column input__text md alert-message"
                 >
-                  <label for="phoneNum">Phone Number*</label>
-                  <input type="text" id="phoneNum" placeholder="Start from country code(+)" required v-bind="field">
+                  <label for="phoneNum">{{ $t('wedding.phoneNum') }}</label>
+                  <input type="text" id="phoneNum" :placeholder="$t('wedding.phoneNumPlaceholder')" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
                 </Field>
                 <Field
@@ -78,12 +79,12 @@
                   v-slot="{ field, errors }"
                   class="flex--column input__text md alert-message"
                 >
-                  <label for="email">Email Address*</label>
-                  <input type="text" id="email" placeholder="Email Address" required v-bind="field">
+                  <label for="email">{{ $t('wedding.email') }}</label>
+                  <input type="text" id="email" :placeholder="$t('wedding.emailPlaceholder')" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
                 </Field>
                 <div class="flex--column input__text">
-                  <label>Wedding Date</label>
+                  <label>{{ $t('wedding.weddingDate') }}</label>
                   <v-date-picker
                       id="weddingDate"
                       is-required
@@ -117,30 +118,30 @@
                     </v-date-picker>
                 </div>
                 <div class="flex--column input__checkbox">
-                  <label>Select all that apply</label>
+                  <label>{{ $t('wedding.selectAll') }}</label>
                   <label for="ceremony">
                     <input type="checkbox" id="ceremony" value="Ceremony / Reception" v-model="requestWeddingInfo.serviceNeed">
-                    Ceremony / Reception
+                    {{ $t('wedding.services.ceremony') }}
                   </label>
                   <label for="shower">
                     <input type="checkbox" id="shower" value="Wedding Shower" v-model="requestWeddingInfo.serviceNeed">
-                    Wedding Shower
+                    {{ $t('wedding.services.shower') }}
                   </label>
                   <label for="dinner">
                     <input type="checkbox" id="dinner" value="Rehearsal Dinner" v-model="requestWeddingInfo.serviceNeed">
-                    Rehearsal Dinner
+                    {{ $t('wedding.services.dinner') }}
                   </label>
                   <label for="guestrooms">
                     <input type="checkbox" id="guestrooms" value="Guestrooms Only" v-model="requestWeddingInfo.serviceNeed">
-                    Guestrooms Only
+                    {{ $t('wedding.services.guestrooms') }}
                   </label>
                   <label for="reception">
                     <input type="checkbox" id="reception" value="Reception Only" v-model="requestWeddingInfo.serviceNeed">
-                    Reception Only
+                    {{ $t('wedding.services.reception') }}
                   </label>
                   <label for="brunch">
                     <input type="checkbox" id="brunch" value="Arrival / Departure Brunch" v-model="requestWeddingInfo.serviceNeed">
-                    Arrival / Departure Brunch
+                    {{ $t('wedding.services.brunch') }}
                   </label>
                 </div>
                 <Field
@@ -150,16 +151,15 @@
                   v-slot="{ field, errors }"
                   class="flex--column input__text sm alert-message"
                 >
-                  <label for="numberOfGuest">Number of Guests*</label>
+                  <label for="numberOfGuest">{{ $t('wedding.numberOfGuest') }}</label>
                   <input type="text" id="numberOfGuest" required v-bind="field">
                   <span class="alert-message">{{errors[0]}}</span>
                 </Field>
                 <div class="input__checkbox">
                   <label for="consent">
                     <input type="checkbox" id="consent" @click="checked = !checked" required>
-                    I understand that this form collects my name, email and phone number so I can be contacted.
-                    For more information, please check our
-                    <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer" class="link">privacy policy</router-link>.
+                    {{ $t('wedding.consent') }}
+                    <router-link to="/information/privacy-policy" target="_blank" rel="noopener noreferrer" class="link">{{ $t('wedding.privacyPolicy') }}</router-link>.
                   </label>
                 </div>
               </div>
@@ -167,11 +167,16 @@
           </div>
           <button
             type="submit"
-            :disabled="!checked"
+            :disabled="!checked || submitting"
             class="btn-outline-md"
-          >SUBMIT</button>
+          >{{ $t('common.submit') }}</button>
         </form>
       </Form>
+
+      <div v-if="orderId" class="wedding-confirmation page-wrapper">
+        <h3>{{ $t('wedding.successMessage') }}</h3>
+        <p><strong>{{ $t('wedding.orderLabel') }}:</strong> {{ orderId }}</p>
+      </div>
     </section>
     <signup-banner/>
     <Footer/>
@@ -183,7 +188,7 @@ import SignupBanner from '@/components/signupBanner/SignupBanner.vue'
 import Footer from '@/components/footer/Footer.vue'
 import { Form, Field } from 'vee-validate'
 import firebaseApi from '@/common/firebaseApi'
-import dayjs from 'dayjs'
+import { sendConfirmationEmail } from '@/common/emailService'
 export default {
   components: {
     Navbar,
@@ -195,12 +200,12 @@ export default {
   data () {
     return {
       checked: false,
+      submitting: false,
+      orderId: null,
+      honeypot: '',
       requestWeddingInfo: {
         type: 'Wedding Inquiry',
         status: 'Upcoming',
-        confirmationNum: '',
-        createTime: '',
-        lastUpdateTime: '',
         title: '',
         firstName: '',
         lastName: '',
@@ -213,38 +218,54 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      this.requestWeddingInfo.confirmationNum = 'ARNSW' + dayjs().format('MMDDYYSSS')
-      this.requestWeddingInfo.createTime = dayjs().format()
-      this.requestWeddingInfo.lastUpdateTime = dayjs().format()
-      // Alert message for inquiry confirmation
-      this.$confirm('Ready to submit?',
+    async onSubmit () {
+      if (this.honeypot) return
+      this.$confirm(this.$t('common.readyToSubmit'),
         {
-          confirmButtonText: 'YES',
-          cancelButtonText: 'CANCEL',
+          confirmButtonText: this.$t('common.yes'),
+          cancelButtonText: this.$t('common.cancel'),
           customClass: 'notification-class',
           type: 'warning'
-        }).then(() => {
-        firebaseApi.postData('weddingRequestList', this.requestWeddingInfo)
-          .then(() => {
-            this.$notify({
-              type: 'success',
-              customClass: 'notification-class',
-              message: 'Your request has been submitted successfully.'
-            })
+        }).then(async () => {
+        this.submitting = true
+        const result = await firebaseApi.submitWeddingRequest({
+          type: this.requestWeddingInfo.type,
+          status: this.requestWeddingInfo.status,
+          title: this.requestWeddingInfo.title,
+          firstName: this.requestWeddingInfo.firstName,
+          lastName: this.requestWeddingInfo.lastName,
+          email: this.requestWeddingInfo.email,
+          phoneNum: this.requestWeddingInfo.phoneNum,
+          weddingDate: this.requestWeddingInfo.weddingDate ? this.requestWeddingInfo.weddingDate.toString() : '',
+          serviceNeed: this.requestWeddingInfo.serviceNeed,
+          numberOfGuest: this.requestWeddingInfo.numberOfGuest
+        })
+        if (result.success) {
+          this.orderId = result.orderId
+          await sendConfirmationEmail(
+            process.env.VUE_APP_EMAILJS_TEMPLATE_WEDDING,
+            {
+              guest_name: `${this.requestWeddingInfo.firstName} ${this.requestWeddingInfo.lastName}`,
+              email: this.requestWeddingInfo.email,
+              event_date: this.requestWeddingInfo.weddingDate ? this.requestWeddingInfo.weddingDate.toString() : '',
+              order_id: result.orderId,
+              package: this.requestWeddingInfo.serviceNeed.join(', ')
+            }
+          )
+        } else {
+          this.$notify({
+            type: 'error',
+            customClass: 'notification-class',
+            message: this.$t('common.error')
           })
-          .then(() => {
-            // Reload current page to reset all data
-            setTimeout(() => {
-              this.$router.push('/wedding')
-            }, 2000)
-          })
+        }
+        this.submitting = false
       }).catch(() => {
         setTimeout(() => {
           this.$notify({
             type: 'info',
             customClass: 'notification-class',
-            message: 'Request canceled'
+            message: this.$t('common.requestCanceled')
           })
         }, 500)
       })

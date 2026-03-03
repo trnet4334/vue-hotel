@@ -5,10 +5,14 @@ import {
   where,
   getDocs,
   addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
-  doc
+  doc,
+  serverTimestamp
 } from 'firebase/firestore'
+import { nanoid } from 'nanoid'
+import dayjs from 'dayjs'
 
 const firebaseApi = {
   // Fetch all matched members data from api
@@ -97,6 +101,64 @@ const firebaseApi = {
       await deleteDoc(doc(db, resource, payload.id))
     } catch (err) {
       console.error('[firebaseApi] deleteData error:', err)
+    }
+  },
+
+  // Subscribe to newsletter (deduplicated by email)
+  async subscribeNewsletter (email) {
+    try {
+      const q = query(collection(db, 'newsletters'), where('email', '==', email))
+      const snapshot = await getDocs(q)
+      if (!snapshot.empty) return { success: false, duplicate: true }
+      await addDoc(collection(db, 'newsletters'), { email, subscribedAt: serverTimestamp() })
+      return { success: true, duplicate: false }
+    } catch (err) {
+      console.error('[firebaseApi] subscribeNewsletter error:', err)
+      return { success: false, duplicate: false, error: err }
+    }
+  },
+
+  // Submit a contact enquiry; returns { success, refId, error }
+  async submitContact (payload) {
+    try {
+      const datePart = dayjs().format('YYYYMMDD')
+      const refId = `CNT-${datePart}-${nanoid(6).toUpperCase()}`
+      await setDoc(doc(db, 'contacts', refId), {
+        ...payload,
+        refId,
+        createdAt: serverTimestamp()
+      })
+      return { success: true, refId }
+    } catch (err) {
+      console.error('[firebaseApi] submitContact error:', err)
+      return { success: false, error: err }
+    }
+  },
+
+  // Submit a wedding request; returns { success, orderId, error }
+  async submitWeddingRequest (payload) {
+    const datePart = dayjs().format('YYYYMMDD')
+    const tryWrite = async () => {
+      const orderId = `WED-${datePart}-${nanoid(6).toUpperCase()}`
+      await setDoc(doc(db, 'wedding_requests', orderId), {
+        ...payload,
+        orderId,
+        createdAt: serverTimestamp()
+      })
+      return orderId
+    }
+    try {
+      const orderId = await tryWrite()
+      return { success: true, orderId }
+    } catch (firstErr) {
+      // Retry once on collision or transient error
+      try {
+        const orderId = await tryWrite()
+        return { success: true, orderId }
+      } catch (err) {
+        console.error('[firebaseApi] submitWeddingRequest error:', err)
+        return { success: false, error: err }
+      }
     }
   }
 }

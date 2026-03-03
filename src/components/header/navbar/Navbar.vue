@@ -70,6 +70,7 @@
             </svg>
             <span>480.000.0000</span>
           </a>
+          <button class="lang-toggle" @click="toggleLang">{{ currentLangLabel }}</button>
           <div class="menuBtn" @click="isOpen = !isOpen" :class="menuButtonClass">
             <span/>
             <span/>
@@ -200,6 +201,7 @@
 import Menu from '@/components/header/menu/Menu.vue'
 import dayjs from 'dayjs'
 import { nanoid } from 'nanoid'
+import { STORAGE_KEY } from '@/i18n'
 export default {
   name: 'Navbar',
   components: {
@@ -238,6 +240,11 @@ export default {
     window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
+    toggleLang () {
+      const next = this.$i18n.locale.value === 'zh-TW' ? 'en' : 'zh-TW'
+      this.$i18n.locale.value = next
+      localStorage.setItem(STORAGE_KEY, next)
+    },
     // Computed scroll event: to calculate how far between current position of the
     // window and the absolute top of window
     onScroll () {
@@ -274,6 +281,9 @@ export default {
     }
   },
   computed: {
+    currentLangLabel () {
+      return this.$i18n.locale.value === 'zh-TW' ? 'EN' : '中文'
+    },
     // To add class to navbar while toggle scroll event
     scrollClass: function () {
       return {

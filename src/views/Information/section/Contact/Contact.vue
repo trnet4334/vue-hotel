@@ -4,16 +4,17 @@
       <div class="page-wrapper">
         <div class="flex--row">
           <div class="contact__content list-group no-decoration">
-            <h4 class="content__title">Contact Us</h4>
-            <h1 class="page__title">Get in touch</h1>
-            <p class="content__description">We're always happy to help, but you may find what you'd like to know here
-              in the <router-link to="/information/faq" class="link">FAQ page</router-link>.</p>
+            <h4 class="content__title">{{ $t('contact.title') }}</h4>
+            <h1 class="page__title">{{ $t('contact.subtitle') }}</h1>
+            <p class="content__description">{{ $t('contact.description') }}
+              <router-link to="/information/faq" class="link">FAQ</router-link>.
+            </p>
             <br>
-            <h4 class="content__title">A Resort & Spa</h4>
+            <h4 class="content__title">A Resort &amp; Spa</h4>
             <br>
-            <p class="content__description">135 Bear Wallow Ln, Sedona, AZ 86336</p>
+            <p class="content__description">{{ $t('contact.address') }}</p>
             <br>
-            <h4 class="content__title">For Reservation:</h4>
+            <h4 class="content__title">{{ $t('contact.forReservation') }}</h4>
             <br>
             <ul>
               <li>T. 480.000.0000</li>
@@ -52,8 +53,11 @@
           v-slot="{ handleSubmit }"
           class="contact__form flex--column"
         >
-          <h2 class="page__subtitle">Contact Us, We're Happy to Hear from You.</h2>
+          <h2 class="page__subtitle">{{ $t('contact.formTitle') }}</h2>
           <form @submit.prevent="handleSubmit(onSubmit)" class="flex--column">
+            <!-- Honeypot -->
+            <input type="text" name="website" v-model="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+
             <Field
               rules="required|alpha_spaces"
               name="fullName"
@@ -61,7 +65,7 @@
               v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
-              <label for="fullName">Full Name*</label>
+              <label for="fullName">{{ $t('contact.fullName') }}</label>
               <input type="text" id="fullName" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
             </Field>
@@ -72,7 +76,7 @@
               v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
-              <label for="email">Email Address*</label>
+              <label for="email">{{ $t('contact.email') }}</label>
               <input type="email" id="email" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
             </Field>
@@ -83,20 +87,36 @@
               v-slot="{ field, errors }"
               class="flex--column input__text lg alert-message"
             >
-              <label for="phone">Phone Number*</label>
+              <label for="phone">{{ $t('contact.phone') }}</label>
               <input type="text" id="phone" v-bind="field">
               <span class="alert-message">{{ errors[0] }}</span>
             </Field>
+            <Field
+              rules="required"
+              name="bookingNumber"
+              v-model="contactForm.bookingNumber"
+              v-slot="{ field, errors }"
+              class="flex--column input__text lg alert-message"
+            >
+              <label for="bookingNumber">{{ $t('contact.bookingNumber') }}</label>
+              <input
+                type="text"
+                id="bookingNumber"
+                :placeholder="$t('contact.bookingNumberPlaceholder')"
+                v-bind="field"
+              >
+              <span class="alert-message">{{ errors[0] || (errors[0] === undefined && !field.value ? $t('contact.bookingNumberRequired') : '') }}</span>
+            </Field>
             <div class="flex--column input__select">
-              <label for="purpose">Purpose*</label>
+              <label for="purpose">{{ $t('contact.purpose') }}</label>
               <select name="purpose" v-model="contactForm.purpose" id="purpose">
                 <option value="">----</option>
-                <option value="Dinning Reservation">Dinning Reservation</option>
-                <option value="Public Relations">Public Relations</option>
-                <option value="Hotel Activities">Hotel Activities</option>
-                <option value="Room Reservation">Room Reservation</option>
-                <option value="Sales">Sales</option>
-                <option value="Donation Request">Donation Request</option>
+                <option value="Dining Reservation">{{ $t('contact.purposeOptions.dining') }}</option>
+                <option value="Public Relations">{{ $t('contact.purposeOptions.pr') }}</option>
+                <option value="Hotel Activities">{{ $t('contact.purposeOptions.activities') }}</option>
+                <option value="Room Reservation">{{ $t('contact.purposeOptions.room') }}</option>
+                <option value="Sales">{{ $t('contact.purposeOptions.sales') }}</option>
+                <option value="Donation Request">{{ $t('contact.purposeOptions.donation') }}</option>
               </select>
             </div>
             <Field
@@ -106,12 +126,12 @@
               v-slot="{ field, errors }"
               class="flex--column input__textarea"
             >
-              <label for="comments">Comments</label>
+              <label for="comments">{{ $t('contact.comments') }}</label>
               <textarea
                 name="comments"
                 id="comments"
                 v-bind="field"
-                placeholder="Let us know what we can help you"
+                :placeholder="$t('contact.commentsPlaceholder')"
                 rows="8"
               />
               <span class="alert-message">{{ errors[0] }}</span>
@@ -119,12 +139,18 @@
             <label for="consent" class="input__checkbox">
               <input type="checkbox" id="consent" name="contact-consent" @click="checked = !checked">
               <span>
-                I understand that this form collects my name, email and phone number, so I can be contacted. For more information, please check our <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener" class="link">privacy policy</router-link>.
+                {{ $t('contact.consent') }}
+                <router-link to="/information/privacy-policy" target="_blank" rel="noreferrer noopener" class="link">{{ $t('contact.privacyPolicy') }}</router-link>.
               </span>
             </label>
-            <button type="submit" :disabled="!checked" class="btn-outline-md">SEND</button>
+            <button type="submit" :disabled="!checked || submitting" class="btn-outline-md">{{ $t('common.send') }}</button>
           </form>
         </Form>
+
+        <div v-if="refId" class="contact__success">
+          <p>{{ $t('contact.successMessage') }}</p>
+          <p><strong>{{ $t('contact.refLabel') }}:</strong> {{ refId }}</p>
+        </div>
       </div>
     </div>
   </section>
@@ -133,6 +159,7 @@
 import ImageBox from '@/components/imageBox/ImageBox'
 import { Form, Field } from 'vee-validate'
 import firebaseApi from '@/common/firebaseApi'
+import { sendConfirmationEmail } from '@/common/emailService'
 export default {
   components: {
     Form,
@@ -142,43 +169,65 @@ export default {
   data () {
     return {
       checked: false,
+      submitting: false,
+      refId: null,
+      honeypot: '',
       contactForm: {
         name: '',
         email: '',
         phoneNum: '',
+        bookingNumber: '',
         purpose: '',
         comments: ''
       }
     }
   },
   methods: {
-    onSubmit () {
-      // Alert message for inquiry confirmation
-      this.$confirm('Ready to submit?',
+    async onSubmit () {
+      if (this.honeypot) return
+      this.$confirm(this.$t('common.readyToSubmit'),
         {
-          confirmButtonText: 'YES',
-          cancelButtonText: 'CANCEL',
+          confirmButtonText: this.$t('common.yes'),
+          cancelButtonText: this.$t('common.cancel'),
           customClass: 'notification-class',
           type: 'warning'
-        }).then(() => {
-        firebaseApi.postData('customerServiceRequest', this.contactForm).then(() => {
-          this.$notify({
-            type: 'success',
-            customClass: 'notification-class',
-            message: 'Your request has been submitted successfully.'
-          })
-        }).then(() => {
-          // Reload current page to reset all data
-          setTimeout(() => {
-            this.$router.go(0)
-          }, 2000)
+        }).then(async () => {
+        this.submitting = true
+        const result = await firebaseApi.submitContact({
+          name: this.contactForm.name,
+          email: this.contactForm.email,
+          phoneNum: this.contactForm.phoneNum,
+          bookingNumber: this.contactForm.bookingNumber,
+          purpose: this.contactForm.purpose,
+          comments: this.contactForm.comments
         })
+        if (result.success) {
+          this.refId = result.refId
+          await sendConfirmationEmail(
+            process.env.VUE_APP_EMAILJS_TEMPLATE_CONTACT,
+            {
+              guest_name: this.contactForm.name,
+              email: this.contactForm.email,
+              booking_number: this.contactForm.bookingNumber,
+              contact_ref: result.refId
+            }
+          )
+          this.contactForm = { name: '', email: '', phoneNum: '', bookingNumber: '', purpose: '', comments: '' }
+          this.checked = false
+        } else {
+          this.$notify({
+            type: 'error',
+            customClass: 'notification-class',
+            message: this.$t('common.error')
+          })
+        }
+        this.submitting = false
       }).catch(() => {
         setTimeout(() => {
           this.$notify({
             type: 'info',
             customClass: 'notification-class',
-            message: 'Request canceled'
+            message: this.$t('common.requestCanceled')
           })
         }, 500)
       })

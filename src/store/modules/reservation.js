@@ -3,6 +3,7 @@ import addOns from '@/assets/data/checkout/addOns'
 import router from '@/router'
 import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
+import { sendConfirmationEmail } from '@/common/emailService'
 import * as MUTATION_TYPES from '../mutation-types'
 import * as ACTION_TYPES from '../action-types'
 
@@ -488,6 +489,22 @@ const actions = {
   async [ACTION_TYPES.SUBMIT_RESERVATION] ({ commit, dispatch, state }) {
     await dispatch(ACTION_TYPES.SET_CONFIRMATION_NUM)
     await firebaseApi.postData('reservationList', state.reservationDetails)
+
+    // Send confirmation email (non-blocking — booking is already saved)
+    const info = state.reservationDetails.customerInfo || {}
+    const onSearch = state.onSearchRoom || {}
+    await sendConfirmationEmail(
+      process.env.VUE_APP_EMAILJS_TEMPLATE_BOOKING,
+      {
+        guest_name: `${info.contactDetail?.firstName || ''} ${info.contactDetail?.lastName || ''}`.trim(),
+        email: info.contactDetail?.email || '',
+        room_type: onSearch.roomSelect?.type || '',
+        check_in: onSearch.date?.start ? dayjs(onSearch.date.start).format('YYYY-MM-DD') : '',
+        check_out: onSearch.date?.end ? dayjs(onSearch.date.end).format('YYYY-MM-DD') : '',
+        order_id: state.reservationDetails.confirmationNum || ''
+      }
+    )
+
     await router.push({
       name: 'Completion',
       params: { tempId: state.tempId }

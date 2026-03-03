@@ -2,9 +2,7 @@
   <section class="signup-banner">
     <div class="flex--column flex--center">
       <div v-if="!displaySignupCollapse && !signupSuccess" class="signup-banner__header flex--row" @click="toggleSignupForm">
-        <span>
-          Sign up for our latest news and promotions
-        </span>
+        <span>{{ $t('newsletter.title') }}</span>
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
              viewBox="0 0 24 24" style="fill: #ffffff; width: 24px; height: 24px; margin-left: 10px;" xml:space="preserve">
           <path d="M12,0.5C5.659,0.5,0.5,5.659,0.5,12S5.659,23.5,12,23.5S23.5,18.341,23.5,12S18.341,0.5,12,0.5z M18.604,14.104l-5.543,5.543c-0.292,0.292-0.677,0.438-1.061,0.438s-0.769-0.146-1.061-0.438l-5.543-5.543c-0.429-0.428-0.664-0.998-0.664-1.604s0.235-1.175,0.664-1.604c0.857-0.856,2.35-0.856,3.207,0L9.5,11.793V6c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5v5.793l0.896-0.896c0.857-0.856,2.35-0.856,3.207,0c0.429,0.428,0.664,0.998,0.664,1.604S19.032,13.675,18.604,14.104z"/>
@@ -18,6 +16,8 @@
       class="signup-banner__form flex--column flex--center"
       v-slot="{ handleSubmit, meta }"
     >
+      <!-- Honeypot -->
+      <input type="text" name="website" v-model="honeypot" style="display:none" tabindex="-1" autocomplete="off">
       <form @submit.prevent="handleSubmit(onSubmit)">
         <div class="row flex--row">
           <Field
@@ -27,8 +27,8 @@
             class="column flex--column"
             v-slot="{ field, errors }"
           >
-            <label for="fullName">Full Name*</label>
-            <input type="text" id="fullName" placeholder="Full Name" v-bind="field">
+            <label for="fullName">{{ $t('newsletter.fullName') }}</label>
+            <input type="text" id="fullName" :placeholder="$t('newsletter.fullNamePlaceholder')" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
           </Field>
           <Field
@@ -38,8 +38,8 @@
             class="column flex--column"
             v-slot="{ field, errors }"
           >
-            <label for="email">Email Address*</label>
-            <input type="text" id="email" placeholder="E-mail Address" v-bind="field">
+            <label for="email">{{ $t('newsletter.email') }}</label>
+            <input type="text" id="email" :placeholder="$t('newsletter.emailPlaceholder')" v-bind="field">
             <span>{{errors[0]}}</span>
           </Field>
           <Field
@@ -49,8 +49,8 @@
             name="Your address"
             v-slot="{ field, errors }"
           >
-            <label for="address">Address*</label>
-            <input type="text" id="address" placeholder="Address" v-bind="field">
+            <label for="address">{{ $t('newsletter.address') }}</label>
+            <input type="text" id="address" :placeholder="$t('newsletter.addressPlaceholder')" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
           </Field>
           <Field
@@ -60,8 +60,8 @@
             name="Your state or region"
             v-slot="{ field, errors }"
           >
-            <label for="state">State/Province/Region*</label>
-            <input type="text" id="state" placeholder="State/Province/Region" v-bind="field">
+            <label for="state">{{ $t('newsletter.stateRegion') }}</label>
+            <input type="text" id="state" :placeholder="$t('newsletter.stateRegionPlaceholder')" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
           </Field>
           <Field
@@ -71,26 +71,26 @@
             name="Your country name"
             v-slot="{ field, errors }"
           >
-            <label for="country">Country*</label>
-            <input type="text" id="country" placeholder="Country" v-bind="field">
+            <label for="country">{{ $t('newsletter.country') }}</label>
+            <input type="text" id="country" :placeholder="$t('newsletter.countryPlaceholder')" v-bind="field">
             <span class="alert-message">{{errors[0]}}</span>
           </Field>
           <div class="column flex--column">
-            <label for="zipCode">Zip Code</label>
+            <label for="zipCode">{{ $t('newsletter.zipCode') }}</label>
             <input type="text" id="zipCode" placeholder="Zip Code" v-model="signupDetail.zipCode">
           </div>
         </div>
         <div class="row">
-          <button type="submit" :disabled="!meta.valid">
-            <span>SIGN UP</span>
+          <button type="submit" :disabled="!meta.valid || submitting">
+            <span>{{ $t('newsletter.signUp') }}</span>
           </button>
         </div>
       </form>
     </Form>
     <div v-if="displaySignupCollapse && signupSuccess" class="signup-banner__sent flex--column flex--center">
-      <h2>Thank you for choosing to stay connect with us!</h2>
+      <h2>{{ $t('newsletter.thankYou') }}</h2>
       <br>
-      <h4>We are looking forward for your coming.</h4>
+      <h4>{{ $t('newsletter.thankYouSub') }}</h4>
     </div>
     <div v-if="displaySignupCollapse || signupSuccess" @click="closeSignupForm" class="signup-banner--close-icon">
       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -102,8 +102,8 @@
 </template>
 <script>
 import { Form, Field } from 'vee-validate'
-import dayjs from 'dayjs'
 import firebaseApi from '@/common/firebaseApi'
+import { sendConfirmationEmail } from '@/common/emailService'
 export default {
   components: {
     Form,
@@ -113,9 +113,9 @@ export default {
     return {
       displaySignupCollapse: false,
       signupSuccess: false,
+      submitting: false,
+      honeypot: '',
       signupDetail: {
-        membershipNum: '',
-        createdTime: '',
         name: '',
         email: '',
         address: '',
@@ -134,41 +134,39 @@ export default {
       this.signupSuccess = false
     },
     async onSubmit () {
-      this.signupDetail.membershipNum = dayjs().format('DDYYYYmmssSSS')
-      this.signupDetail.createdTime = dayjs().format()
-      const isMemberExist = await firebaseApi.getMembersData('subscriptionList', this.signupDetail.email)
+      if (this.honeypot) return
+      this.submitting = true
+      const result = await firebaseApi.subscribeNewsletter(this.signupDetail.email)
 
-      // Alert message for inquiry confirmation
-      if (isMemberExist) {
-        await this.$alert('You have already been in our subscription list. Thank you very much.',
+      if (result.duplicate) {
+        await this.$alert(this.$t('newsletter.alreadySubscribed'),
           {
             confirmButtonClass: 'OK',
             customClass: 'notification-class',
             type: 'info'
           })
+        this.submitting = false
+        return
+      }
+
+      if (result.success) {
+        await sendConfirmationEmail(
+          process.env.VUE_APP_EMAILJS_TEMPLATE_NEWSLETTER,
+          { email: this.signupDetail.email, name: this.signupDetail.name }
+        )
+        this.signupSuccess = true
+        this.signupDetail = { name: '', email: '', address: '', state: '', country: '', zipCode: '' }
+        setTimeout(() => {
+          this.$router.go(0)
+        }, 3500)
       } else {
-        await firebaseApi.postData('subscriptionList', this.signupDetail).then(() => {
-          this.signupSuccess = true
-          // Reset all data
-          this.signupDetail = {
-            id: '',
-            membershipNum: '',
-            createdTime: '',
-            name: '',
-            email: '',
-            address: '',
-            state: '',
-            country: '',
-            zipCode: ''
-          }
-        }).then(() => {
-          setTimeout(() => {
-            this.$router.go(0)
-          }, 3500)
-        }).catch(err => {
-          console.error('[SignupBanner] subscription error:', err)
+        this.$notify({
+          type: 'error',
+          customClass: 'notification-class',
+          message: this.$t('common.error')
         })
       }
+      this.submitting = false
     }
   }
 }
