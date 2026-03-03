@@ -27,5 +27,4 @@ ui-debug.log*
 .firebase/
 .firebaserc/
 src/common/config.js
-src/common/firebase.js
 package-lock.json
