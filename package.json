@@ -44,7 +44,7 @@
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-vue": "^9.32.0",
     "jsdom": "^28.1.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "nanoid": "^3.3.7",
     "normalize.css": "^8.0.1",
     "sass": "^1.77.0",
